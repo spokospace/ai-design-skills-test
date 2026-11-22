@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</title>
+<meta name="description" content="Pogotowie awaryjne, godziny pracy biura, ogłoszenia i dokumenty Spółdzielni Mieszkaniowej „Słoneczne Wzgórze”. Strona demonstracyjna.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%2316305E'/%3E%3Ccircle cx='24' cy='27' r='11' fill='%23F2B705'/%3E%3Cpath d='M0 34c12-9 32-9 48 0v14H0z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600;700&family=Sofia+Sans+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sciana: #F3F4EF;
+    --biel: #FFFFFF;
+    --tusz: #111C2E;
+    --tusz-2: #46526A;
+    --emalia: #16305E;
+    --alarm: #B3211A;
+    --slonce: #F2B705;
+    --las: #2B5D45;
+    --linia: #C9CEC6;
+    --tekst: "Sofia Sans", Verdana, "Segoe UI", sans-serif;
+    --tablica: "Sofia Sans Condensed", "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+    --szer: 68rem;
+    --bok: 1.125rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    font-size: 112.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 1rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--sciana);
+    color: var(--tusz);
+    font-family: var(--tekst);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  a { color: var(--emalia); text-underline-offset: 0.18em; text-decoration-thickness: 0.09em; }
+  a:hover { text-decoration-thickness: 0.16em; }
+
+  :focus-visible {
+    outline: 4px solid var(--slonce);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 3px var(--tusz);
+    border-radius: 4px;
+  }
+
+  .ramka {
+    max-width: var(--szer);
+    margin-inline: auto;
+    padding-inline: var(--bok);
+  }
+
+  .pomin {
+    position: absolute;
+    left: var(--bok);
+    top: -6rem;
+    z-index: 20;
+    background: var(--tusz);
+    color: var(--biel);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+  }
+  .pomin:focus { top: 0.5rem; }
+
+  .ukryte { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+  /* ---------- Nagłówek ---------- */
+
+  .naglowek {
+    padding-block: 1.1rem 0.9rem;
+  }
+  .naglowek .ramka {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+  }
+  .szyld {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .szyld svg { flex: none; width: 3.1rem; height: 3.1rem; }
+  .szyld h1 {
+    font-family: var(--tablica);
+    font-weight: 800;
+    font-size: 1.75rem;
+    line-height: 1;
+    letter-spacing: 0.005em;
+  }
+  .szyld h1 small {
+    display: block;
+    font-family: var(--tekst);
+    font-weight: 400;
+    font-size: 0.83rem;
+    letter-spacing: 0;
+    color: var(--tusz-2);
+    margin-bottom: 0.2rem;
+  }
+
+  .dzialy ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .dzialy a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding: 0.3rem 1rem;
+    border: 2px solid var(--emalia);
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--biel);
+  }
+  .dzialy a:hover { background: var(--emalia); color: var(--biel); }
+  @media (max-width: 26rem) {
+    .dzialy ul { gap: 0.35rem; }
+    .dzialy a { padding-inline: 0.75rem; }
+  }
+
+  /* ---------- Tabliczki: pogotowie i biuro ---------- */
+
+  .tabliczki {
+    padding-block: 0.6rem 3rem;
+  }
+  .tabliczki .ramka {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 56rem) {
+    .tabliczki .ramka { grid-template-columns: 1.25fr 1fr; align-items: stretch; }
+  }
+
+  .tabliczka {
+    position: relative;
+    border-radius: 18px;
+    padding: 1.9rem 1.6rem 1.7rem;
+    color: var(--biel);
+    container-type: inline-size;
+  }
+  /* biała obwódka jak na emaliowanej tabliczce z numerem domu */
+  .tabliczka::before {
+    content: "";
+    position: absolute;
+    inset: 7px;
+    border: 3px solid rgba(255, 255, 255, 0.92);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .tabliczka a { color: inherit; }
+  .tabliczka h2 {
+    font-family: var(--tablica);
+    font-weight: 700;
+    font-size: 1.7rem;
+    line-height: 1.1;
+  }
+
+  .tabliczka--alarm { background: var(--alarm); }
+  .tabliczka--alarm .zakres { font-size: 1.05rem; margin-top: 0.2rem; }
+  .numer-alarmowy {
+    display: block;
+    width: fit-content;
+    margin-top: 0.9rem;
+    font-family: var(--tablica);
+    font-weight: 800;
+    font-size: clamp(2.3rem, 12.4cqi, 6rem);
+    line-height: 1;
+    white-space: nowrap;
+    font-variant-numeric: lining-nums tabular-nums;
+    text-decoration: none;
+  }
+  .numer-alarmowy:hover { text-decoration: underline; text-decoration-thickness: 0.06em; }
+  .przycisk-dzwon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3.4rem;
+    margin-top: 1.1rem;
+    padding: 0.5rem 1.5rem;
+    background: var(--biel);
+    color: var(--alarm) !important;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+  }
+  .przycisk-dzwon:hover { background: #FFF3C7; }
+  .przycisk-dzwon svg { width: 1.3rem; height: 1.3rem; flex: none; }
+  .tabliczka--alarm .uwaga {
+    margin-top: 1.1rem;
+    font-size: 0.95rem;
+    max-width: 34em;
+  }
+  @media (max-width: 30rem) {
+    .przycisk-dzwon { width: 100%; }
+  }
+
+  .tabliczka--biuro { background: var(--emalia); }
+  .stan-biura {
+    margin-top: 0.7rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+  .stan-biura::before {
+    content: "";
+    flex: none;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid var(--biel);
+    transform: translateY(0.05rem);
+  }
+  .stan-biura[data-stan="otwarte"]::before { background: var(--slonce); border-color: var(--slonce); }
+  .stan-biura:empty { display: none; }
+
+  .godziny {
+    margin-top: 1rem;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.05rem;
+  }
+  .godziny th, .godziny td {
+    padding: 0.5rem 0;
+    text-align: left;
+    font-weight: 400;
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+  }
+  .godziny th { white-space: nowrap; }
+  .godziny td {
+    text-align: right;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .godziny tr.dzis th::after {
+    content: "dziś";
+    margin-left: 0.6rem;
+    padding: 0.05rem 0.5rem;
+    border-radius: 999px;
+    background: var(--slonce);
+    color: var(--tusz);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .tel-biura {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--tablica);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 9.5cqi, 2.5rem);
+    line-height: 1.1;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .tel-biura:hover { text-decoration: underline; text-decoration-thickness: 0.06em; }
+  .tabliczka--biuro .podpis { font-size: 0.95rem; margin-top: 1rem; }
+  .tabliczka--biuro .podpis + .tel-biura { margin-top: 0; }
+
+  /* ---------- Działy ---------- */
+
+  .dzial {
+    padding-block: 3rem;
+    border-top: 2px solid var(--tusz);
+  }
+  .dzial > .ramka > h2 {
+    font-family: var(--tablica);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 7vw, 3.2rem);
+    line-height: 1;
+  }
+  .dzial .wstep {
+    margin-top: 0.6rem;
+    max-width: 38em;
+    color: var(--tusz-2);
+  }
+
+  /* ---------- Ogłoszenia ---------- */
+
+  .ogloszenia { margin-top: 1.6rem; }
+  .ogloszenie {
+    display: grid;
+    gap: 0.4rem 2rem;
+    padding-block: 1.4rem;
+    border-top: 1px solid var(--linia);
+  }
+  .ogloszenie:first-child { border-top: 0; padding-top: 0; }
+  @media (min-width: 48rem) {
+    .ogloszenie { grid-template-columns: 15rem 1fr; }
+  }
+  .ogloszenie .termin {
+    font-family: var(--tablica);
+    font-weight: 700;
+    font-size: 1.9rem;
+    line-height: 1.05;
+    color: var(--emalia);
+  }
+  .ogloszenie .termin span {
+    display: block;
+    margin-top: 0.25rem;
+    font-family: var(--tekst);
+    font-weight: 400;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: var(--tusz-2);
+  }
+  .ogloszenie h3 {
+    font-size: 1.2rem;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .ogloszenie p { margin-top: 0.35rem; max-width: 36em; }
+  .dotyczy {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0.1rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--biel);
+    background: var(--tusz);
+  }
+  .dotyczy--przylesie { background: var(--las); }
+  .dotyczy--biuro { background: var(--emalia); }
+
+  /* ---------- Dokumenty ---------- */
+
+  .szukaj {
+    margin-top: 1.6rem;
+    display: grid;
+    gap: 0.4rem;
+    max-width: 34rem;
+  }
+  .szukaj label { font-weight: 700; }
+  .szukaj input {
+    width: 100%;
+    min-height: 3.4rem;
+    padding: 0.6rem 1rem;
+    font: inherit;
+    font-size: 1.1rem;
+    color: var(--tusz);
+    background: var(--biel);
+    border: 2px solid var(--tusz);
+    border-radius: 10px;
+  }
+  .szukaj input::placeholder { color: #6A748A; }
+
+  .rodzaje {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .rodzaje button {
+    min-height: 2.75rem;
+    padding: 0.3rem 1rem;
+    font: inherit;
+    font-weight: 600;
+    color: var(--emalia);
+    background: var(--biel);
+    border: 2px solid var(--emalia);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .rodzaje button:hover { background: #E4EAF5; }
+  .rodzaje button[aria-pressed="true"] { background: var(--emalia); color: var(--biel); }
+
+  .licznik {
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    color: var(--tusz-2);
+    min-height: 1.5em;
+  }
+
+  .dokumenty {
+    margin-top: 0.4rem;
+    background: var(--biel);
+    border: 2px solid var(--tusz);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .dokumenty li + li { border-top: 1px solid var(--linia); }
+  .dokumenty li[hidden] { display: none; }
+  .dokumenty a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.2rem 1.2rem;
+    padding: 0.95rem 1.1rem;
+    color: var(--tusz);
+    text-decoration: none;
+  }
+  .dokumenty a:hover { background: #EEF2FA; }
+  .dokumenty a:focus-visible { outline-offset: -4px; box-shadow: none; }
+  .dokumenty .tytul {
+    font-weight: 700;
+    font-size: 1.08rem;
+    line-height: 1.3;
+    text-decoration: underline;
+    text-decoration-thickness: 0.07em;
+    text-underline-offset: 0.18em;
+    color: var(--emalia);
+  }
+  .dokumenty .opis {
+    grid-column: 1;
+    font-size: 0.93rem;
+    color: var(--tusz-2);
+  }
+  .dokumenty .plik {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    padding: 0.15rem 0.55rem;
+    border: 2px solid var(--tusz);
+    border-radius: 6px;
+    font-family: var(--tablica);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .brak, .demo-info {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border-left: 6px solid var(--slonce);
+    background: var(--biel);
+    max-width: 38em;
+  }
+  .brak[hidden], .demo-info:empty { display: none; }
+
+  /* ---------- Kontakt ---------- */
+
+  .kontakt-siatka {
+    margin-top: 1.6rem;
+    display: grid;
+    gap: 1.8rem 3rem;
+  }
+  @media (min-width: 48rem) {
+    .kontakt-siatka { grid-template-columns: 1fr 1fr; }
+  }
+  .kontakt-siatka dt {
+    font-size: 0.95rem;
+    color: var(--tusz-2);
+  }
+  .kontakt-siatka dd {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+  .kontakt-siatka dd a {
+    display: inline-block;
+    padding-block: 0.25rem;
+  }
+  .kontakt-siatka dd span { display: block; font-weight: 400; font-size: 1rem; }
+  .kontakt-siatka .alarmowy a { color: var(--alarm); }
+
+  /* ---------- Stopka ---------- */
+
+  .stopka {
+    background: var(--tusz);
+    color: #E6E9EF;
+    padding-block: 2.2rem 2.6rem;
+  }
+  .stopka p { max-width: 40em; }
+  .stopka .demo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--biel);
+    padding-left: 1rem;
+    border-left: 6px solid var(--slonce);
+  }
+  .stopka .o-nas { margin-top: 1.2rem; font-size: 0.95rem; }
+  body.z-paskiem .stopka { padding-bottom: 6.5rem; }
+
+  /* ---------- Pasek z pogotowiem na telefonie ---------- */
+
+  .pasek-alarm {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 10;
+    display: none;
+    padding: 0.5rem var(--bok) calc(0.5rem + env(safe-area-inset-bottom));
+    background: var(--sciana);
+    border-top: 2px solid var(--tusz);
+  }
+  .pasek-alarm a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3.2rem;
+    border-radius: 10px;
+    background: var(--alarm);
+    color: var(--biel);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .pasek-alarm svg { width: 1.2rem; height: 1.2rem; flex: none; }
+  @media (max-width: 47.99rem) {
+    body.z-paskiem .pasek-alarm { display: block; }
+  }
+
+  @media (min-width: 64rem) {
+    html { font-size: 118.75%; }
+    :root { --bok: 2rem; }
+    .tabliczka { padding: 2.2rem 2.1rem 2rem; }
+  }
+
+  @media print {
+    .pasek-alarm, .dzialy, .szukaj, .rodzaje, .pomin { display: none !important; }
+    .tabliczka { color: #000; background: none !important; border: 2px solid #000; }
+    .przycisk-dzwon { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<a class="pomin" href="#ogloszenia">Przejdź do ogłoszeń</a>
+
+<header class="naglowek">
+  <div class="ramka">
+    <div class="szyld">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <rect width="48" height="48" rx="10" fill="#16305E"/>
+        <circle cx="24" cy="27" r="11" fill="#F2B705"/>
+        <path d="M0 34c12-9 32-9 48 0v14H0z" fill="#fff"/>
+        <rect x="1.5" y="1.5" width="45" height="45" rx="8.5" fill="none" stroke="#16305E" stroke-width="3"/>
+      </svg>
+      <h1><small>Spółdzielnia Mieszkaniowa</small>Słoneczne Wzgórze</h1>
+    </div>
+    <nav class="dzialy" aria-label="Działy strony">
+      <ul>
+        <li><a href="#ogloszenia">Ogłoszenia</a></li>
+        <li><a href="#dokumenty">Dokumenty</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="tabliczki">
+    <div class="ramka">
+
+      <section class="tabliczka tabliczka--alarm" id="pogotowie" aria-labelledby="pogotowie-h">
+        <h2 id="pogotowie-h">Pogotowie awaryjne, całą dobę</h2>
+        <p class="zakres">Awaria wody, gazu albo windy</p>
+        <a class="numer-alarmowy" href="tel:+48000000999" aria-label="Zadzwoń na pogotowie awaryjne: +48 000 000 999">+48 000 000 999</a>
+        <a class="przycisk-dzwon" href="tel:+48000000999">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+          Zadzwoń na pogotowie
+        </a>
+        <p class="uwaga">Gdy zagrożone jest życie lub zdrowie, dzwoń pod numer alarmowy 112.</p>
+      </section>
+
+      <section class="tabliczka tabliczka--biuro" aria-labelledby="biuro-h">
+        <h2 id="biuro-h">Biuro spółdzielni</h2>
+        <p class="stan-biura" id="stan-biura" aria-live="polite"></p>
+        <table class="godziny">
+          <caption class="ukryte">Godziny pracy biura</caption>
+          <tbody>
+            <tr data-dni="1"><th scope="row">Poniedziałek</th><td>10:00–18:00</td></tr>
+            <tr data-dni="2345"><th scope="row">Wtorek–piątek</th><td>7:30–15:30</td></tr>
+            <tr data-dni="60"><th scope="row">Weekend</th><td>nieczynne</td></tr>
+          </tbody>
+        </table>
+        <p class="podpis">Telefon do biura</p>
+        <a class="tel-biura" href="tel:+48000000001">+48 000 000 001</a>
+      </section>
+
+    </div>
+  </div>
+
+  <section class="dzial" id="ogloszenia" aria-labelledby="ogloszenia-h">
+    <div class="ramka">
+      <h2 id="ogloszenia-h">Ogłoszenia</h2>
+
+      <ol class="ogloszenia">
+        <li class="ogloszenie">
+          <p class="termin"><time datetime="2026-12-03T08:00">3 grudnia 2026</time><span>czwartek, godz. 8:00–14:00</span></p>
+          <div>
+            <span class="dotyczy dotyczy--przylesie">Przylesie 4</span>
+            <h3>Przerwa w dostawie zimnej wody</h3>
+            <p>W budynku Przylesie 4 nie będzie zimnej wody od 8:00 do 14:00. Warto wcześniej przygotować zapas wody.</p>
+          </div>
+        </li>
+        <li class="ogloszenie">
+          <p class="termin"><time datetime="2026-12-07">7–18 grudnia 2026</time><span>od poniedziałku 7 grudnia do piątku 18 grudnia</span></p>
+          <div>
+            <span class="dotyczy">Wszystkie budynki</span>
+            <h3>Roczne przeglądy instalacji gazowej</h3>
+            <p>Przeglądy odbędą się we wszystkich budynkach. Harmonogram dla każdego budynku wisi na klatkach schodowych.</p>
+          </div>
+        </li>
+        <li class="ogloszenie">
+          <p class="termin"><time datetime="2026-12-24">24 i 31 grudnia 2026</time><span>czwartki</span></p>
+          <div>
+            <span class="dotyczy dotyczy--biuro">Biuro</span>
+            <h3>Biuro nieczynne</h3>
+            <p>W Wigilię i w sylwestra biuro będzie zamknięte. Pogotowie awaryjne działa bez zmian, całą dobę: <a href="tel:+48000000999">+48 000 000 999</a>.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="dzial" id="dokumenty" aria-labelledby="dokumenty-h">
+    <div class="ramka">
+      <h2 id="dokumenty-h">Dokumenty spółdzielni</h2>
+      <p class="wstep">Statut, regulaminy, uchwały, protokoły i sprawozdania finansowe, udostępnione zgodnie z art. 8¹ ust. 3 ustawy o spółdzielniach mieszkaniowych.</p>
+
+      <div class="szukaj">
+        <label for="szukaj-pole">Szukaj dokumentu</label>
+        <input id="szukaj-pole" type="search" placeholder="np. wodomierze, statut, 2025" autocomplete="off" aria-controls="lista-dokumentow">
+      </div>
+
+      <div class="rodzaje" id="rodzaje" role="group" aria-label="Rodzaj dokumentu">
+        <button type="button" data-rodzaj="" aria-pressed="true">Wszystkie</button>
+        <button type="button" data-rodzaj="statut" aria-pressed="false">Statut</button>
+        <button type="button" data-rodzaj="regulamin" aria-pressed="false">Regulaminy</button>
+        <button type="button" data-rodzaj="uchwala" aria-pressed="false">Uchwały</button>
+        <button type="button" data-rodzaj="protokol" aria-pressed="false">Protokoły obrad</button>
+        <button type="button" data-rodzaj="lustracja" aria-pressed="false">Lustracje</button>
+        <button type="button" data-rodzaj="sprawozdanie" aria-pressed="false">Sprawozdania finansowe</button>
+      </div>
+
+      <p class="licznik" id="licznik" aria-live="polite"></p>
+
+      <ul class="dokumenty" id="lista-dokumentow">
+        <li data-rodzaj="statut">
+          <a href="#">
+            <span class="tytul">Statut Spółdzielni</span>
+            <span class="opis">Statut, tekst jednolity, marzec 2026</span>
+            <span class="plik">PDF</span>
+          </a>
+        </li>
+        <li data-rodzaj="regulamin">
+          <a href="#">
+            <span class="tytul">Regulamin porządku domowego</span>
+            <span class="opis">Regulamin</span>
+            <span class="plik">PDF</span>
+          </a>
+        </li>
+        <li data-rodzaj="regulamin">
+          <a href="#">
+            <span class="tytul">Regulamin rozliczania kosztów zużycia wody</span>
+            <span class="opis">Regulamin</span>
+            <span class="plik">PDF</span>
+          </a>
+        </li>
+        <li data-rodzaj="uchwala">
+          <a href="#">
+            <span class="tytul">Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy</span>
+            <span class="opis">Uchwała Zarządu, 2026</span>
+            <span class="plik">PDF</span>
+          </a>
+        </li>
+        <li data-rodzaj="protokol">
+          <a href="#">
+            <span class="tytul">Protokół z Walnego Zgromadzenia</span>
+            <span class="opis">Protokół obrad, czerwiec 2026</span>
+            <span class="plik">PDF</span>
+          </a>
+        </li>
+        <li data-rodzaj="lustracja">
+          <a href="#">
+            <span class="tytul">Protokół lustracji za lata 2023–2025</span>
+            <span class="opis">Lustracja</span>
+            <span class="plik">PDF</span>
+          </a>
+        </li>
+        <li data-rodzaj="sprawozdanie">
+          <a href="#">
+            <span class="tytul">Sprawozdanie finansowe za 2025 rok</span>
+            <span class="opis">Roczne sprawozdanie finansowe</span>
+            <span class="plik">PDF</span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="brak" id="brak" hidden>
+        Nie znaleziono takiego dokumentu. Spróbuj wpisać jedno słowo, na przykład „regulamin”, albo
+        <button type="button" id="wyczysc" style="font:inherit;font-weight:700;color:var(--emalia);background:none;border:0;padding:0;text-decoration:underline;cursor:pointer">pokaż wszystkie dokumenty</button>.
+        Możesz też zapytać w biurze: <a href="tel:+48000000001">+48 000 000 001</a>.
+      </p>
+      <p class="demo-info" id="demo-info" role="status"></p>
+    </div>
+  </section>
+
+  <section class="dzial" id="kontakt" aria-labelledby="kontakt-h">
+    <div class="ramka">
+      <h2 id="kontakt-h">Kontakt</h2>
+      <dl class="kontakt-siatka">
+        <div>
+          <dt>Adres biura</dt>
+          <dd>ul. Przykładowa 1<br>00-000 Miasto</dd>
+        </div>
+        <div>
+          <dt>Godziny pracy biura</dt>
+          <dd>poniedziałek 10:00–18:00<br>wtorek–piątek 7:30–15:30</dd>
+        </div>
+        <div>
+          <dt>Telefon do biura</dt>
+          <dd><a href="tel:+48000000001">+48 000 000 001</a></dd>
+        </div>
+        <div>
+          <dt>E-mail</dt>
+          <dd><a href="mailto:biuro@example.com">biuro@example.com</a></dd>
+        </div>
+        <div class="alarmowy">
+          <dt>Pogotowie awaryjne (woda, gaz, winda)</dt>
+          <dd><a href="tel:+48000000999">+48 000 000 999</a><span>czynne całą dobę, także w święta</span></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="stopka">
+  <div class="ramka">
+    <p class="demo">To jest strona demonstracyjna. Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” nie istnieje, a wszystkie dane na tej stronie – adres, telefony, ogłoszenia i dokumenty – są zmyślone.</p>
+    <p class="o-nas">W tym przykładzie spółdzielnia zarządza dwoma osiedlami, Słoneczne Wzgórze i Przylesie: 6 budynków, 412 mieszkań.</p>
+  </div>
+</footer>
+
+<div class="pasek-alarm" id="pasek-alarm">
+  <a href="tel:+48000000999">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+    Pogotowie awaryjne: 000 000 999
+  </a>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---- Czy biuro jest teraz otwarte (czas polski) ---- */
+
+  var NIECZYNNE = { "2026-12-24": true, "2026-12-31": true };
+  var KIEDY = ["w niedzielę", "w poniedziałek", "we wtorek", "w środę", "w czwartek", "w piątek", "w sobotę"];
+
+  function godzinyDnia(dzienTyg, data) {
+    if (NIECZYNNE[data]) return null;
+    if (dzienTyg === 1) return [600, 1080];
+    if (dzienTyg >= 2 && dzienTyg <= 5) return [450, 930];
+    return null;
+  }
+  function zapis(min) {
+    var m = min % 60;
+    return Math.floor(min / 60) + ":" + (m < 10 ? "0" : "") + m;
+  }
+  function stanBiura() {
+    var el = document.getElementById("stan-biura");
+    if (!el) return;
+    var cz = {};
+    try {
+      new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Europe/Warsaw", year: "numeric", month: "2-digit", day: "2-digit",
+        hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+      }).formatToParts(new Date()).forEach(function (p) { cz[p.type] = p.value; });
+    } catch (e) { return; }
+
+    var y = +cz.year, mo = +cz.month, d = +cz.day;
+    var teraz = (+cz.hour % 24) * 60 + (+cz.minute);
+
+    function dzien(i) {
+      var t = new Date(Date.UTC(y, mo - 1, d + i));
+      var data = t.toISOString().slice(0, 10);
+      return { tyg: t.getUTCDay(), data: data, godz: godzinyDnia(t.getUTCDay(), data) };
+    }
+
+    var dzis = dzien(0);
+    var tekst = "", stan = "zamkniete";
+
+    if (dzis.godz && teraz >= dzis.godz[0] && teraz < dzis.godz[1]) {
+      stan = "otwarte";
+      tekst = "Teraz otwarte, do " + zapis(dzis.godz[1]);
+    } else if (dzis.godz && teraz < dzis.godz[0]) {
+      tekst = "Teraz zamknięte. Otwieramy dziś o " + zapis(dzis.godz[0]);
+    } else {
+      for (var i = 1; i <= 14; i++) {
+        var n = dzien(i);
+        if (n.godz) {
+          tekst = (NIECZYNNE[dzis.data] ? "Dziś nieczynne. " : "Teraz zamknięte. ") +
+            "Otwieramy " + (i === 1 ? "jutro" : KIEDY[n.tyg]) + " o " + zapis(n.godz[0]);
+          break;
+        }
+      }
+    }
+    el.textContent = tekst;
+    el.setAttribute("data-stan", stan);
+
+    var wiersze = document.querySelectorAll(".godziny tr[data-dni]");
+    for (var w = 0; w < wiersze.length; w++) {
+      var pasuje = wiersze[w].getAttribute("data-dni").indexOf(String(dzis.tyg)) !== -1;
+      wiersze[w].classList.toggle("dzis", pasuje);
+    }
+  }
+  stanBiura();
+  setInterval(stanBiura, 60000);
+
+  /* ---- Wyszukiwarka dokumentów ---- */
+
+  var pole = document.getElementById("szukaj-pole");
+  var rodzaje = document.getElementById("rodzaje");
+  var pozycje = Array.prototype.slice.call(document.querySelectorAll("#lista-dokumentow li"));
+  var lista = document.getElementById("lista-dokumentow");
+  var licznik = document.getElementById("licznik");
+  var brak = document.getElementById("brak");
+  var demoInfo = document.getElementById("demo-info");
+  var wybrany = "";
+
+  function prosto(s) {
+    return s.toLowerCase().replace(/ł/g, "l")
+      .normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .replace(/[–—]/g, "-").replace(/\s+/g, " ").trim();
+  }
+  var teksty = pozycje.map(function (li) { return prosto(li.textContent); });
+
+  function odmiana(n) {
+    if (n === 1) return "dokument";
+    var j = n % 10, dz = n % 100;
+    return (j >= 2 && j <= 4 && (dz < 12 || dz > 14)) ? "dokumenty" : "dokumentów";
+  }
+
+  function filtruj() {
+    var slowa = prosto(pole.value).split(" ").filter(Boolean);
+    var widoczne = 0;
+    pozycje.forEach(function (li, i) {
+      var ok = (!wybrany || li.getAttribute("data-rodzaj") === wybrany) &&
+        slowa.every(function (s) { return teksty[i].indexOf(s) !== -1; });
+      li.hidden = !ok;
+      if (ok) widoczne++;
+    });
+    lista.hidden = widoczne === 0;
+    brak.hidden = widoczne !== 0;
+    licznik.textContent = widoczne === pozycje.length
+      ? "Wszystkie dokumenty: " + widoczne
+      : (widoczne === 0 ? "" : "Znaleziono: " + widoczne + " " + odmiana(widoczne) + " z " + pozycje.length);
+    demoInfo.textContent = "";
+  }
+
+  function ustawRodzaj(r) {
+    wybrany = r;
+    var przyciski = rodzaje.querySelectorAll("button");
+    for (var i = 0; i < przyciski.length; i++) {
+      przyciski[i].setAttribute("aria-pressed", przyciski[i].getAttribute("data-rodzaj") === r ? "true" : "false");
+    }
+  }
+
+  pole.addEventListener("input", filtruj);
+  rodzaje.addEventListener("click", function (e) {
+    var b = e.target.closest("button");
+    if (!b) return;
+    ustawRodzaj(b.getAttribute("data-rodzaj"));
+    filtruj();
+  });
+  document.getElementById("wyczysc").addEventListener("click", function () {
+    pole.value = "";
+    ustawRodzaj("");
+    filtruj();
+    pole.focus();
+  });
+  lista.addEventListener("click", function (e) {
+    var a = e.target.closest("a");
+    if (!a) return;
+    e.preventDefault();
+    demoInfo.textContent = "„" + a.querySelector(".tytul").textContent +
+      "” – tego pliku nie można pobrać, bo to strona demonstracyjna.";
+  });
+  filtruj();
+
+  /* ---- Pasek z pogotowiem: widoczny na telefonie, gdy czerwona tabliczka zniknie z ekranu ---- */
+
+  var tabliczka = document.getElementById("pogotowie");
+  if ("IntersectionObserver" in window && tabliczka) {
+    new IntersectionObserver(function (wpisy) {
+      document.body.classList.toggle("z-paskiem", !wpisy[0].isIntersecting);
+    }).observe(tabliczka);
+  }
+})();
+</script>
+</body>
+</html>

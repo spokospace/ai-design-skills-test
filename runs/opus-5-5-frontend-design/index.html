@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SM „Słoneczne Wzgórze”</title>
+<meta name="description" content="Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”: pogotowie awaryjne, godziny pracy biura, ogłoszenia i dokumenty dla mieszkańców osiedli Słoneczne Wzgórze i Przylesie. Strona demonstracyjna.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tynk: #E9EFEC;
+    --tynk-2: #DCE5E0;
+    --lupek: #1C2D36;
+    --lupek-2: #4A5C64;
+    --slonce: #F4B400;
+    --slonce-jasne: #FFE9A8;
+    --las: #2E6A4E;
+    --las-jasny: #D3E6DA;
+    --cegla: #A3271D;
+    --bialy: #FFFFFF;
+    --linia: #C3CFC9;
+
+    --font: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    --r-maly: 6px;
+    --r-duzy: 18px;
+    --gutter: 16px;
+    --max: 72rem;
+  }
+
+  html { font-size: 118.75%; -webkit-text-size-adjust: 100%; }
+  html.duzy-tekst { font-size: 137.5%; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--tynk);
+    color: var(--lupek);
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: var(--lupek); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  a:hover { color: var(--las); }
+  :focus-visible { outline: 3px solid var(--lupek); outline-offset: 3px; box-shadow: 0 0 0 6px var(--slonce); border-radius: 4px; }
+
+  h1, h2, h3 { line-height: 1.15; margin: 0; font-weight: 700; }
+  h2 { font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.3rem); letter-spacing: -0.01em; }
+  h3 { font-size: 1.12rem; }
+  p { margin: 0; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  @media (min-width: 48rem) { :root { --gutter: 32px; } }
+
+  .skip { position: absolute; left: -999px; top: 0; background: var(--slonce); padding: .6rem 1rem; z-index: 10; font-weight: 700; }
+  .skip:focus { left: 8px; top: 8px; }
+
+  /* ---------- Pasek górny ---------- */
+  .gora {
+    background: var(--lupek);
+    color: var(--bialy);
+  }
+  .gora .wrap {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    min-height: 3.4rem; flex-wrap: wrap; padding-top: .4rem; padding-bottom: .4rem;
+  }
+  .logo { min-width: 0; display: flex; align-items: center; gap: .6rem; color: var(--bialy); text-decoration: none; font-weight: 700; line-height: 1.15; }
+  .logo:hover { color: var(--slonce-jasne); }
+  .logo svg { width: 2.1rem; height: 2.1rem; flex: none; }
+  .logo small { display: block; font-weight: 400; font-size: .78rem; opacity: .85; }
+  .tekst-btn {
+    font: inherit; font-size: .85rem; font-weight: 700;
+    background: transparent; color: var(--bialy);
+    border: 2px solid rgba(255,255,255,.55); border-radius: 999px;
+    padding: .35rem .9rem; min-height: 44px; cursor: pointer;
+  }
+  .tekst-btn:hover { border-color: var(--slonce); }
+  .tekst-btn[aria-pressed="true"] { background: var(--slonce); color: var(--lupek); border-color: var(--slonce); }
+
+  nav.menu { background: var(--bialy); border-bottom: 1px solid var(--linia); }
+  nav.menu ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; overflow-x: auto; }
+  nav.menu a {
+    display: block; padding: .7rem .85rem; text-decoration: none; font-weight: 700; white-space: nowrap;
+    border-bottom: 4px solid transparent;
+  }
+  nav.menu a:hover { border-bottom-color: var(--slonce); color: var(--lupek); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 1.6rem 0 2.4rem; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.6rem; }
+  .hero-grid > * { min-width: 0; }
+  @media (min-width: 60rem) {
+    .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: end; gap: 3rem; }
+  }
+  .hero h1 {
+    font-size: clamp(2.1rem, 1.3rem + 4vw, 3.9rem);
+    letter-spacing: -0.02em;
+    max-width: 14ch;
+  }
+  .hero-lead { margin-top: .8rem; font-size: 1.08rem; color: var(--lupek-2); max-width: 34rem; }
+  .pejzaz { margin-top: 1.4rem; }
+  .pejzaz svg { width: 100%; height: auto; }
+
+  /* Tablica awaryjna: jedyny mocny akcent strony */
+  .tablica {
+    background: var(--slonce);
+    border: 4px solid var(--lupek);
+    border-radius: var(--r-duzy);
+    padding: 1.2rem 1.2rem 1.3rem;
+    position: relative;
+  }
+  .tablica::before, .tablica::after {
+    /* "śruby" tabliczki */
+    content: ""; position: absolute; top: 12px; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--lupek); opacity: .8;
+  }
+  .tablica::before { left: 12px; }
+  .tablica::after { right: 12px; }
+  .tablica h2 { font-size: 1.35rem; padding: 0 1rem; }
+  .tablica .co { margin-top: .3rem; padding: 0 1rem; }
+  .tel-awaria {
+    display: block; margin-top: .9rem;
+    background: var(--lupek); color: var(--slonce);
+    border-radius: 12px; text-decoration: none;
+    padding: .85rem 1rem; text-align: center;
+  }
+  .tel-awaria:hover { color: var(--bialy); }
+  .tel-awaria .nr { display: block; font-size: clamp(1.35rem, 7.4vw, 2.4rem); font-weight: 700; white-space: nowrap; }
+  .tel-awaria .zadzwon { display: block; font-size: .9rem; color: var(--bialy); }
+  .tablica .uwaga { margin-top: .9rem; font-size: .9rem; padding: 0 .2rem; }
+
+  .biuro-teraz {
+    margin-top: 1rem; background: var(--bialy); border-radius: var(--r-duzy);
+    padding: 1rem 1.2rem; display: flex; gap: .9rem; align-items: flex-start;
+    border: 1px solid var(--linia);
+  }
+  .kropka { width: 14px; height: 14px; border-radius: 50%; margin-top: .4rem; flex: none; background: var(--lupek-2); }
+  .kropka.otwarte { background: var(--las); box-shadow: 0 0 0 4px var(--las-jasny); }
+  .kropka.zamkniete { background: var(--cegla); box-shadow: 0 0 0 4px #F3D6D3; }
+  .biuro-teraz strong { display: block; font-size: 1.05rem; }
+  .biuro-teraz p { color: var(--lupek-2); font-size: .92rem; }
+  .biuro-teraz a { font-weight: 700; }
+
+  /* ---------- Sekcje ---------- */
+  .sekcja { padding: 2.6rem 0; }
+  .sekcja + .sekcja { border-top: 1px solid var(--linia); }
+  .sekcja-bialy { background: var(--bialy); }
+  .sekcja-head { display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; align-items: baseline; justify-content: space-between; margin-bottom: 1.4rem; }
+  .sekcja-head p { color: var(--lupek-2); max-width: 38rem; }
+
+  /* Ogłoszenia: wiersze z kartką kalendarza */
+  .ogloszenia { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+  .ogl {
+    display: grid; grid-template-columns: auto 1fr; gap: 1rem;
+    background: var(--bialy); border-radius: var(--r-maly); padding: 1rem;
+    border-left: 6px solid var(--lupek-2);
+  }
+  .ogl.woda { border-left-color: var(--cegla); }
+  .ogl.gaz { border-left-color: var(--slonce); }
+  .ogl.biuro { border-left-color: var(--las); }
+  .kartka {
+    width: 4.6rem; text-align: center; border: 2px solid var(--lupek); border-radius: 8px; overflow: hidden;
+    background: var(--bialy); align-self: start; line-height: 1.1;
+  }
+  .kartka .mies { display: block; background: var(--lupek); color: var(--bialy); font-size: .75rem; font-weight: 700; padding: .25rem 0; }
+  .kartka .dzien { display: block; font-size: 1.6rem; font-weight: 700; padding: .3rem 0 .05rem; }
+  .kartka .do { display: block; font-size: .72rem; padding-bottom: .35rem; color: var(--lupek-2); }
+  .ogl > div:last-child { max-width: 42rem; }
+  .ogl h3 { margin-bottom: .25rem; }
+  .ogl .kiedy { font-weight: 700; }
+  .ogl .gdzie { margin-top: .3rem; color: var(--lupek-2); }
+  .za-ile { display: inline-block; margin-top: .5rem; font-size: .82rem; font-weight: 700; background: var(--tynk); border-radius: 999px; padding: .1rem .65rem; }
+  .za-ile:empty { display: none; }
+
+  /* Dokumenty */
+  .dok-narzedzia { display: grid; gap: 1rem; margin-bottom: 1.2rem; }
+  .szukaj label { display: block; font-weight: 700; margin-bottom: .35rem; }
+  .szukaj-pole { position: relative; max-width: 36rem; }
+  .szukaj input {
+    width: 100%; font: inherit; font-size: 1.05rem; color: var(--lupek);
+    padding: .75rem 1rem .75rem 2.8rem; min-height: 52px;
+    border: 2px solid var(--lupek-2); border-radius: 12px; background: var(--bialy);
+  }
+  .szukaj input:focus-visible { border-color: var(--lupek); }
+  .szukaj svg { position: absolute; left: .9rem; top: 50%; transform: translateY(-50%); width: 1.25rem; height: 1.25rem; pointer-events: none; }
+  .filtry { display: flex; flex-wrap: wrap; gap: .5rem; border: 0; padding: 0; margin: 0; }
+  .filtry legend { font-weight: 700; margin-bottom: .45rem; padding: 0; }
+  .filtr {
+    font: inherit; font-size: .9rem; font-weight: 700; cursor: pointer;
+    min-height: 44px; padding: .4rem .9rem; border-radius: 999px;
+    background: var(--bialy); color: var(--lupek); border: 2px solid var(--linia);
+  }
+  .filtr:hover { border-color: var(--lupek-2); }
+  .filtr[aria-pressed="true"] { background: var(--lupek); color: var(--bialy); border-color: var(--lupek); }
+  .filtr .ile { font-weight: 400; opacity: .8; }
+
+  .dok-grupa { margin-top: 1.6rem; }
+  .dok-grupa[hidden] { display: none; }
+  .dok-grupa h3 { font-size: 1.05rem; padding-bottom: .4rem; border-bottom: 2px solid var(--lupek); }
+  .dok-grupa .podstawa { font-size: .85rem; color: var(--lupek-2); margin-top: .35rem; }
+  .dok-lista { list-style: none; margin: 0; padding: 0; }
+  .dok-lista li { border-bottom: 1px solid var(--linia); }
+  .dok-lista li[hidden] { display: none; }
+  .dok {
+    display: grid; grid-template-columns: auto 1fr; gap: .2rem .9rem; align-items: start;
+    padding: .85rem .25rem; text-decoration: none; color: var(--lupek);
+  }
+  .dok:hover { background: var(--tynk); }
+  .dok:hover .dok-tytul { text-decoration: underline; }
+  .dok svg { width: 1.6rem; height: 2rem; grid-row: span 2; margin-top: .1rem; }
+  .dok-tytul { font-weight: 700; }
+  .dok-meta { font-size: .85rem; color: var(--lupek-2); }
+  .brak { margin-top: 1.4rem; padding: 1rem 1.2rem; background: var(--slonce-jasne); border-radius: var(--r-maly); }
+  .brak button { font: inherit; font-weight: 700; background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; color: var(--lupek); }
+  .wynik-info { font-size: .9rem; color: var(--lupek-2); min-height: 1.4em; }
+
+  /* Kontakt */
+  .kontakt-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.6rem; }
+  @media (min-width: 52rem) { .kontakt-grid { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 3rem; } }
+  .godziny { width: 100%; border-collapse: collapse; font-size: 1rem; }
+  .godziny caption { text-align: left; font-weight: 700; font-size: 1.12rem; margin-bottom: .5rem; }
+  .godziny th, .godziny td { text-align: left; padding: .6rem .5rem; border-bottom: 1px solid var(--linia); }
+  .godziny th { font-weight: 400; }
+  .godziny td { font-weight: 700; white-space: nowrap; }
+  .godziny tr.dzis { background: var(--slonce-jasne); }
+  .godziny tr.dzis th::after { content: " (dziś)"; font-weight: 700; }
+  .godziny-uwaga { margin-top: .7rem; font-size: .92rem; color: var(--lupek-2); }
+  .kontakty { margin: 0; display: grid; gap: 1.1rem; }
+  .kontakty dt { font-size: .9rem; color: var(--lupek-2); }
+  .kontakty dd { margin: .1rem 0 0; font-size: 1.15rem; font-weight: 700; }
+  .kontakty dd a { word-break: break-word; }
+  .kontakty dd.awaria a { background: var(--slonce); padding: .1rem .4rem; border-radius: 4px; text-decoration: none; }
+
+  .osiedla { margin-top: 2.2rem; display: grid; gap: 1rem; }
+  @media (min-width: 40rem) { .osiedla { grid-template-columns: 1fr 1fr; } }
+  .osiedle { padding: 1rem 1.1rem; border-radius: var(--r-maly); background: var(--tynk); }
+  .osiedle.przylesie { background: var(--las-jasny); }
+  .osiedle h3 { margin-bottom: .3rem; }
+  .osiedle p { font-size: .95rem; }
+
+  /* Stopka */
+  footer { background: var(--lupek); color: #DDE6E2; padding: 2.2rem 0 6rem; font-size: .92rem; }
+  footer a { color: var(--bialy); }
+  .demo {
+    border: 2px dashed var(--slonce); border-radius: var(--r-maly); padding: 1rem 1.1rem; color: var(--bialy);
+    max-width: 44rem;
+  }
+  .demo strong { color: var(--slonce); }
+  .stopka-dol { margin-top: 1.4rem; display: flex; flex-wrap: wrap; gap: .5rem 2rem; }
+
+  /* Przycisk awarii zawsze pod kciukiem na telefonie */
+  .awaria-dol {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+    background: var(--slonce); border-top: 3px solid var(--lupek);
+    padding: .5rem var(--gutter) calc(.5rem + env(safe-area-inset-bottom));
+  }
+  .awaria-dol a {
+    display: flex; align-items: center; justify-content: center; gap: .6rem;
+    background: var(--lupek); color: var(--bialy); text-decoration: none; font-weight: 700;
+    border-radius: 10px; min-height: 52px; padding: .4rem .8rem; text-align: center; line-height: 1.2;
+  }
+  .awaria-dol svg { width: 1.3rem; height: 1.3rem; flex: none; }
+  @media (min-width: 60rem) { .awaria-dol { display: none; } footer { padding-bottom: 2.2rem; } }
+
+  /* Jeden moment ruchu: wschód słońca w pejzażu */
+  .slonce-wsch { transform-box: fill-box; transform-origin: center; animation: wschod 1.6s cubic-bezier(.2,.7,.2,1) both .2s; }
+  @keyframes wschod { from { transform: translateY(38px); opacity: .2; } to { transform: none; opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .slonce-wsch { animation: none; } }
+
+  @media print {
+    .awaria-dol, nav.menu, .tekst-btn, .dok-narzedzia { display: none; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#tresc">Przejdź do treści</a>
+
+<header class="gora">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="22" r="9" fill="#F4B400"/>
+        <path d="M0 30 Q20 14 40 30 V40 H0Z" fill="#2E6A4E"/>
+        <rect x="9" y="22" width="7" height="12" fill="#E9EFEC"/>
+        <rect x="18" y="18" width="7" height="16" fill="#FFFFFF"/>
+        <rect x="27" y="23" width="6" height="11" fill="#E9EFEC"/>
+      </svg>
+      <span>SM „Słoneczne Wzgórze”<small>Spółdzielnia Mieszkaniowa</small></span>
+    </a>
+    <button class="tekst-btn" type="button" id="tekstBtn" aria-pressed="false">Większy tekst</button>
+  </div>
+</header>
+
+<nav class="menu" aria-label="Menu główne">
+  <div class="wrap">
+    <ul>
+      <li><a href="#ogloszenia">Ogłoszenia</a></li>
+      <li><a href="#dokumenty">Dokumenty</a></li>
+      <li><a href="#kontakt">Kontakt i godziny biura</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="tresc">
+  <section class="hero" aria-labelledby="tytul">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 id="tytul">Dzień dobry, sąsiedzi ze Wzgórza i Przylesia</h1>
+        <p class="hero-lead">Tu znajdziecie numer pogotowia, godziny pracy biura, bieżące ogłoszenia i dokumenty spółdzielni. 6 budynków, 412 mieszkań, jedno biuro.</p>
+        <div class="pejzaz">
+          <svg viewBox="0 0 640 230" role="img" aria-label="Rysunek: sześć bloków spółdzielni, trzy na wzgórzu i trzy przy lesie, nad nimi wschodzące słońce">
+            <defs>
+              <pattern id="okna" width="14" height="16" patternUnits="userSpaceOnUse">
+                <rect x="3" y="4" width="7" height="8" rx="1" fill="#1C2D36" opacity=".55"/>
+              </pattern>
+              <clipPath id="nadZiemia"><rect x="0" y="0" width="640" height="196"/></clipPath>
+            </defs>
+            <g clip-path="url(#nadZiemia)">
+              <circle class="slonce-wsch" cx="215" cy="92" r="58" fill="#F4B400"/>
+            </g>
+            <!-- wzgórze -->
+            <path d="M0 200 C 90 120, 260 96, 380 168 L 380 230 L 0 230 Z" fill="#C9D8CF"/>
+            <!-- Słoneczne Wzgórze: 3 bloki -->
+            <g>
+              <rect x="70" y="108" width="70" height="80" fill="#FFFFFF" stroke="#1C2D36" stroke-width="3"/>
+              <rect x="74" y="112" width="62" height="62" fill="url(#okna)"/>
+              <rect x="98" y="174" width="14" height="14" fill="#1C2D36"/>
+              <rect x="160" y="78" width="84" height="104" fill="#FFFFFF" stroke="#1C2D36" stroke-width="3"/>
+              <rect x="164" y="82" width="76" height="80" fill="url(#okna)"/>
+              <rect x="195" y="166" width="16" height="16" fill="#1C2D36"/>
+              <rect x="264" y="104" width="70" height="80" fill="#FFFFFF" stroke="#1C2D36" stroke-width="3"/>
+              <rect x="268" y="108" width="62" height="62" fill="url(#okna)"/>
+              <rect x="292" y="170" width="14" height="14" fill="#1C2D36"/>
+            </g>
+            <!-- ziemia -->
+            <rect x="0" y="192" width="640" height="38" fill="#2E6A4E"/>
+            <!-- Przylesie: las i 3 bloki -->
+            <g fill="#2E6A4E">
+              <path d="M600 192 L 620 120 L 640 192 Z"/>
+              <path d="M566 192 L 590 104 L 614 192 Z" opacity=".85"/>
+              <path d="M384 192 L 400 140 L 416 192 Z" opacity=".85"/>
+            </g>
+            <g>
+              <rect x="420" y="128" width="46" height="64" fill="#D3E6DA" stroke="#1C2D36" stroke-width="3"/>
+              <rect x="423" y="132" width="40" height="46" fill="url(#okna)"/>
+              <rect x="476" y="112" width="46" height="80" fill="#D3E6DA" stroke="#1C2D36" stroke-width="3"/>
+              <rect x="479" y="116" width="40" height="62" fill="url(#okna)"/>
+              <rect x="532" y="136" width="42" height="56" fill="#D3E6DA" stroke="#1C2D36" stroke-width="3"/>
+              <rect x="535" y="140" width="36" height="38" fill="url(#okna)"/>
+            </g>
+            <g font-family="Atkinson Hyperlegible, Segoe UI, sans-serif" font-size="19" font-weight="700" fill="#FFFFFF">
+              <text x="16" y="218">Słoneczne Wzgórze 1–3</text>
+              <text x="440" y="218">Przylesie 2–6</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div>
+        <div class="tablica" role="region" aria-labelledby="awaria-tytul">
+          <h2 id="awaria-tytul">Awaria? Dzwoń o każdej porze</h2>
+          <p class="co">Woda, gaz, winda, prąd na klatce. Pogotowie odbiera całą dobę, także w święta.</p>
+          <a class="tel-awaria" href="tel:+48000000999">
+            <span class="nr">+48 000 000 999</span>
+            <span class="zadzwon">Dotknij, żeby zadzwonić</span>
+          </a>
+          <p class="uwaga">Czujesz gaz? Najpierw wyjdź z mieszkania i dzwoń pod <a href="tel:112"><strong>112</strong></a>.</p>
+        </div>
+
+        <div class="biuro-teraz" aria-live="polite">
+          <span class="kropka" id="statusKropka" aria-hidden="true"></span>
+          <div>
+            <strong id="statusTekst">Biuro: pon. 10:00–18:00, wt.–pt. 7:30–15:30</strong>
+            <p id="statusDalej">Telefon do biura: <a href="tel:+48000000001">+48 000 000 001</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sekcja sekcja-bialy" id="ogloszenia" aria-labelledby="ogl-tytul">
+    <div class="wrap">
+      <div class="sekcja-head">
+        <h2 id="ogl-tytul">Ogłoszenia</h2>
+        <p>Te same ogłoszenia wiszą na tablicach przy wejściach do klatek.</p>
+      </div>
+      <ol class="ogloszenia">
+        <li class="ogl woda" data-od="2026-12-03" data-do="2026-12-03">
+          <div class="kartka" aria-hidden="true"><span class="mies">grudzień</span><span class="dzien">3</span><span class="do">czwartek</span></div>
+          <div>
+            <h3>Przerwa w dostawie zimnej wody</h3>
+            <p class="kiedy">3 grudnia 2026, od 8:00 do 14:00</p>
+            <p class="gdzie">Tylko budynek Przylesie 4. Warto wcześniej odstawić wodę do picia i spłukiwania.</p>
+            <span class="za-ile"></span>
+          </div>
+        </li>
+        <li class="ogl gaz" data-od="2026-12-07" data-do="2026-12-18">
+          <div class="kartka" aria-hidden="true"><span class="mies">grudzień</span><span class="dzien">7</span><span class="do">do 18 gru</span></div>
+          <div>
+            <h3>Roczne przeglądy instalacji gazowej</h3>
+            <p class="kiedy">Od 7 do 18 grudnia 2026</p>
+            <p class="gdzie">Wszystkie budynki. Dzień i godzina dla Twojej klatki są w harmonogramie na klatce schodowej. Prosimy o udostępnienie mieszkania w tym terminie.</p>
+            <span class="za-ile"></span>
+          </div>
+        </li>
+        <li class="ogl biuro" data-od="2026-12-24" data-do="2026-12-31">
+          <div class="kartka" aria-hidden="true"><span class="mies">grudzień</span><span class="dzien">24</span><span class="do">i 31 gru</span></div>
+          <div>
+            <h3>Biuro nieczynne</h3>
+            <p class="kiedy">24 i 31 grudnia 2026</p>
+            <p class="gdzie">W te dni sprawy załatwicie mailowo. Pogotowie awaryjne działa normalnie.</p>
+            <span class="za-ile"></span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sekcja" id="dokumenty" aria-labelledby="dok-tytul">
+    <div class="wrap">
+      <div class="sekcja-head">
+        <h2 id="dok-tytul">Dokumenty spółdzielni</h2>
+        <p>Udostępniamy je zgodnie z art. 8¹ ust. 3 ustawy o spółdzielniach mieszkaniowych. Wszystkie pliki są w formacie PDF.</p>
+      </div>
+
+      <div class="dok-narzedzia">
+        <div class="szukaj">
+          <label for="szukajDok">Szukaj dokumentu</label>
+          <div class="szukaj-pole">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1C2D36" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+            <input type="search" id="szukajDok" placeholder="np. wodomierze, statut, 2025" autocomplete="off">
+          </div>
+        </div>
+        <fieldset class="filtry" id="filtry">
+          <legend>Pokaż</legend>
+        </fieldset>
+        <p class="wynik-info" id="wynikInfo" aria-live="polite"></p>
+      </div>
+
+      <div id="dokumentyLista">
+        <div class="dok-grupa" data-kat="statut">
+          <h3>Statut i regulaminy</h3>
+          <ul class="dok-lista">
+            <li><a class="dok" href="#" data-szukaj="statut tekst jednolity"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Statut Spółdzielni</span><span class="dok-meta">Tekst jednolity, marzec 2026</span></a></li>
+            <li><a class="dok" href="#" data-szukaj="regulamin porzadku domowego cisza nocna"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Regulamin porządku domowego</span><span class="dok-meta">Obowiązuje od 1 stycznia 2025</span></a></li>
+            <li><a class="dok" href="#" data-szukaj="regulamin rozliczania kosztow zuzycia wody woda wodomierze"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Regulamin rozliczania kosztów zużycia wody</span><span class="dok-meta">Obowiązuje od 1 lipca 2025</span></a></li>
+            <li><a class="dok" href="#" data-szukaj="regulamin walnego zgromadzenia"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Regulamin Walnego Zgromadzenia</span><span class="dok-meta">Uchwalony w czerwcu 2024</span></a></li>
+            <li><a class="dok" href="#" data-szukaj="regulamin rady nadzorczej"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Regulamin Rady Nadzorczej</span><span class="dok-meta">Uchwalony w czerwcu 2024</span></a></li>
+          </ul>
+        </div>
+
+        <div class="dok-grupa" data-kat="uchwaly">
+          <h3>Uchwały</h3>
+          <ul class="dok-lista">
+            <li><a class="dok" href="#" data-szukaj="uchwala zarzadu 14/2026 wymiana wodomierzy woda"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy</span><span class="dok-meta">Zarząd, 2026</span></a></li>
+            <li><a class="dok" href="#" data-szukaj="uchwala rady nadzorczej 6/2026 oplaty eksploatacyjne stawki czynsz"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Uchwała Rady Nadzorczej nr 6/2026 w sprawie stawek opłat eksploatacyjnych</span><span class="dok-meta">Rada Nadzorcza, 2026</span></a></li>
+          </ul>
+        </div>
+
+        <div class="dok-grupa" data-kat="protokoly">
+          <h3>Protokoły obrad organów spółdzielni</h3>
+          <ul class="dok-lista">
+            <li><a class="dok" href="#" data-szukaj="protokol walne zgromadzenie czerwiec 2026"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Protokół z Walnego Zgromadzenia</span><span class="dok-meta">Czerwiec 2026</span></a></li>
+            <li><a class="dok" href="#" data-szukaj="protokol walne zgromadzenie czerwiec 2025"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Protokół z Walnego Zgromadzenia</span><span class="dok-meta">Czerwiec 2025</span></a></li>
+          </ul>
+        </div>
+
+        <div class="dok-grupa" data-kat="lustracja">
+          <h3>Protokoły lustracji</h3>
+          <ul class="dok-lista">
+            <li><a class="dok" href="#" data-szukaj="protokol lustracji 2023 2024 2025"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Protokół lustracji za lata 2023–2025</span><span class="dok-meta">Lustracja pełna</span></a></li>
+          </ul>
+        </div>
+
+        <div class="dok-grupa" data-kat="sprawozdania">
+          <h3>Sprawozdania finansowe</h3>
+          <ul class="dok-lista">
+            <li><a class="dok" href="#" data-szukaj="sprawozdanie finansowe 2025 bilans"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Sprawozdanie finansowe za 2025 rok</span><span class="dok-meta">Roczne, zatwierdzone przez Walne Zgromadzenie w czerwcu 2026</span></a></li>
+            <li><a class="dok" href="#" data-szukaj="sprawozdanie finansowe 2024 bilans"><svg viewBox="0 0 32 40" aria-hidden="true"><use href="#ikonaPdf"/></svg><span class="dok-tytul">Sprawozdanie finansowe za 2024 rok</span><span class="dok-meta">Roczne, zatwierdzone przez Walne Zgromadzenie w czerwcu 2025</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="brak" id="brak" hidden>
+        <p>Nie znaleźliśmy dokumentu pasującego do „<span id="brakFraza"></span>”. Sprawdź pisownię albo <button type="button" id="wyczysc">pokaż wszystkie dokumenty</button>. Jeśli dokumentu nie ma na liście, zapytaj w biurze: <a href="tel:+48000000001">+48 000 000 001</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sekcja sekcja-bialy" id="kontakt" aria-labelledby="kon-tytul">
+    <div class="wrap">
+      <div class="sekcja-head">
+        <h2 id="kon-tytul">Biuro spółdzielni</h2>
+      </div>
+      <div class="kontakt-grid">
+        <div>
+          <table class="godziny">
+            <caption>Godziny pracy biura</caption>
+            <tbody>
+              <tr data-dni="1"><th scope="row">Poniedziałek</th><td>10:00–18:00</td></tr>
+              <tr data-dni="2"><th scope="row">Wtorek</th><td>7:30–15:30</td></tr>
+              <tr data-dni="3"><th scope="row">Środa</th><td>7:30–15:30</td></tr>
+              <tr data-dni="4"><th scope="row">Czwartek</th><td>7:30–15:30</td></tr>
+              <tr data-dni="5"><th scope="row">Piątek</th><td>7:30–15:30</td></tr>
+              <tr data-dni="6 0"><th scope="row">Sobota i niedziela</th><td>nieczynne</td></tr>
+            </tbody>
+          </table>
+          <p class="godziny-uwaga">24 i 31 grudnia 2026 biuro jest nieczynne.</p>
+        </div>
+        <dl class="kontakty">
+          <div><dt>Pogotowie awaryjne, całą dobę</dt><dd class="awaria"><a href="tel:+48000000999">+48 000 000 999</a></dd></div>
+          <div><dt>Telefon do biura</dt><dd><a href="tel:+48000000001">+48 000 000 001</a></dd></div>
+          <div><dt>E-mail</dt><dd><a href="mailto:biuro@example.com">biuro@example.com</a></dd></div>
+          <div><dt>Adres biura</dt><dd>ul. Przykładowa 1<br>00-000 Miasto</dd></div>
+        </dl>
+      </div>
+
+      <div class="osiedla">
+        <div class="osiedle">
+          <h3>Osiedle Słoneczne Wzgórze</h3>
+          <p>Budynki Słoneczne Wzgórze 1, 2 i 3.</p>
+        </div>
+        <div class="osiedle przylesie">
+          <h3>Osiedle Przylesie</h3>
+          <p>Budynki Przylesie 2, 4 i 6.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="demo" role="note">
+      <p><strong>To jest strona demonstracyjna.</strong> Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”, jej osiedla, budynki, adresy, numery telefonów, ogłoszenia i dokumenty nie istnieją. Wszystkie dane zostały wymyślone na potrzeby testu.</p>
+    </div>
+    <div class="stopka-dol">
+      <p>SM „Słoneczne Wzgórze”, ul. Przykładowa 1, 00-000 Miasto</p>
+      <p><a href="#tresc">Wróć na górę strony</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="awaria-dol">
+  <a href="tel:+48000000999">
+    <svg viewBox="0 0 24 24" fill="#F4B400" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+    <span>Pogotowie awaryjne 24h: +48 000 000 999</span>
+  </a>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ikonaPdf" viewBox="0 0 32 40">
+    <path d="M2 2h20l8 8v28H2z" fill="#fff" stroke="#1C2D36" stroke-width="2.5"/>
+    <path d="M22 2v8h8" fill="none" stroke="#1C2D36" stroke-width="2.5"/>
+    <rect x="2" y="24" width="20" height="9" fill="#A3271D"/>
+    <text x="4" y="31.5" font-size="7.5" font-weight="700" fill="#fff" font-family="sans-serif">PDF</text>
+  </symbol>
+</svg>
+
+<script>
+(function () {
+  /* ---------- Większy tekst ---------- */
+  var btn = document.getElementById('tekstBtn');
+  function ustawTekst(duzy) {
+    document.documentElement.classList.toggle('duzy-tekst', duzy);
+    btn.setAttribute('aria-pressed', duzy ? 'true' : 'false');
+  }
+  try { if (localStorage.getItem('smsw-duzy') === '1') ustawTekst(true); } catch (e) {}
+  btn.addEventListener('click', function () {
+    var duzy = btn.getAttribute('aria-pressed') !== 'true';
+    ustawTekst(duzy);
+    try { localStorage.setItem('smsw-duzy', duzy ? '1' : '0'); } catch (e) {}
+  });
+
+  /* ---------- Czy biuro jest teraz otwarte ---------- */
+  var GODZ = { 1: [600, 1080], 2: [450, 930], 3: [450, 930], 4: [450, 930], 5: [450, 930] };
+  var ZAMKNIETE = ['2026-12-24','2026-12-25','2026-12-26','2026-12-31','2027-01-01','2027-01-06'];
+  var KIEDY = ['w niedzielę','w poniedziałek','we wtorek','w środę','w czwartek','w piątek','w sobotę'];
+  function iso(d) { return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+  function hm(m) { return Math.floor(m/60) + ':' + String(m%60).padStart(2,'0'); }
+  function godzinyDnia(d) { return ZAMKNIETE.indexOf(iso(d)) === -1 ? GODZ[d.getDay()] : null; }
+
+  var teraz = new Date();
+  var min = teraz.getHours()*60 + teraz.getMinutes();
+  var dzis = godzinyDnia(teraz);
+  var kropka = document.getElementById('statusKropka');
+  var tekst = document.getElementById('statusTekst');
+  var dalej = document.getElementById('statusDalej');
+
+  if (dzis && min >= dzis[0] && min < dzis[1]) {
+    kropka.classList.add('otwarte');
+    tekst.textContent = 'Biuro jest teraz otwarte, do ' + hm(dzis[1]);
+  } else {
+    kropka.classList.add('zamkniete');
+    var nast = null;
+    if (dzis && min < dzis[0]) {
+      nast = 'dziś o ' + hm(dzis[0]);
+    } else {
+      for (var i = 1; i <= 14; i++) {
+        var d = new Date(teraz.getFullYear(), teraz.getMonth(), teraz.getDate() + i);
+        var g = godzinyDnia(d);
+        if (g) { nast = (i === 1 ? 'jutro' : KIEDY[d.getDay()]) + ' o ' + hm(g[0]); break; }
+      }
+    }
+    tekst.textContent = 'Biuro jest teraz zamknięte' + (nast ? ', otwieramy ' + nast : '');
+    dalej.innerHTML = 'W sprawie awarii dzwoń na pogotowie. Inne sprawy: <a href="mailto:biuro@example.com">biuro@example.com</a>';
+  }
+
+  var wiersze = document.querySelectorAll('.godziny tr[data-dni]');
+  for (var w = 0; w < wiersze.length; w++) {
+    if (wiersze[w].getAttribute('data-dni').split(' ').indexOf(String(teraz.getDay())) !== -1) wiersze[w].classList.add('dzis');
+  }
+
+  /* ---------- Ile dni do ogłoszenia ---------- */
+  var dzien0 = new Date(teraz.getFullYear(), teraz.getMonth(), teraz.getDate());
+  function parse(s) { var p = s.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
+  function dniSlowo(n) { return n === 1 ? 'dzień' : 'dni'; }
+  var ogl = document.querySelectorAll('.ogl');
+  for (var o = 0; o < ogl.length; o++) {
+    var od = parse(ogl[o].dataset.od), doo = parse(ogl[o].dataset.do);
+    var roznica = Math.round((od - dzien0) / 86400000);
+    var el = ogl[o].querySelector('.za-ile');
+    if (dzien0 > doo) { el.textContent = 'Zakończone'; ogl[o].style.opacity = '.6'; }
+    else if (roznica <= 0) el.textContent = 'Trwa teraz';
+    else if (roznica === 1) el.textContent = 'Jutro';
+    else el.textContent = 'Za ' + roznica + ' ' + dniSlowo(roznica);
+  }
+
+  /* ---------- Dokumenty: szukanie i filtry ---------- */
+  var KATEGORIE = [
+    ['wszystkie', 'Wszystkie'],
+    ['statut', 'Statut i regulaminy'],
+    ['uchwaly', 'Uchwały'],
+    ['protokoly', 'Protokoły obrad'],
+    ['lustracja', 'Lustracje'],
+    ['sprawozdania', 'Sprawozdania finansowe']
+  ];
+  var grupy = document.querySelectorAll('.dok-grupa');
+  var pole = document.getElementById('szukajDok');
+  var filtry = document.getElementById('filtry');
+  var info = document.getElementById('wynikInfo');
+  var brak = document.getElementById('brak');
+  var aktywna = 'wszystkie';
+
+  function norm(s) {
+    return s.toLowerCase().replace(/ł/g, 'l').normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  KATEGORIE.forEach(function (k) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'filtr'; b.dataset.kat = k[0];
+    var ile = k[0] === 'wszystkie'
+      ? document.querySelectorAll('.dok-lista li').length
+      : document.querySelectorAll('.dok-grupa[data-kat="' + k[0] + '"] li').length;
+    b.innerHTML = k[1] + ' <span class="ile">(' + ile + ')</span>';
+    b.setAttribute('aria-pressed', k[0] === aktywna ? 'true' : 'false');
+    b.addEventListener('click', function () { aktywna = k[0]; odswiez(); });
+    filtry.appendChild(b);
+  });
+
+  function odswiez() {
+    var fraza = norm(pole.value.trim());
+    var slowa = fraza ? fraza.split(/\s+/) : [];
+    var razem = 0;
+    grupy.forEach(function (g) {
+      var widoczne = 0;
+      var wKat = aktywna === 'wszystkie' || g.dataset.kat === aktywna;
+      g.querySelectorAll('li').forEach(function (li) {
+        var a = li.querySelector('.dok');
+        var tekst = norm(a.textContent + ' ' + (a.dataset.szukaj || ''));
+        var ok = wKat && slowa.every(function (s) { return tekst.indexOf(s) !== -1; });
+        li.hidden = !ok;
+        if (ok) widoczne++;
+      });
+      g.hidden = widoczne === 0;
+      razem += widoczne;
+    });
+    filtry.querySelectorAll('.filtr').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.kat === aktywna ? 'true' : 'false');
+    });
+    brak.hidden = razem !== 0;
+    document.getElementById('brakFraza').textContent = pole.value.trim();
+    if (fraza || aktywna !== 'wszystkie') {
+      info.textContent = razem === 0 ? '' : 'Znalezione dokumenty: ' + razem;
+    } else {
+      info.textContent = '';
+    }
+  }
+  pole.addEventListener('input', odswiez);
+  document.getElementById('wyczysc').addEventListener('click', function () {
+    pole.value = ''; aktywna = 'wszystkie'; odswiez(); pole.focus();
+  });
+})();
+</script>
+</body>
+</html>

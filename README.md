@@ -2,7 +2,7 @@
 
 A small, repeatable test: the same brief for a housing cooperative's home page,
 run in Claude Code on three models, once without a skill and once with each of
-four popular agent skills. Fifteen pages in total, kept here as they came out,
+four popular design skills. Fifteen pages in total, kept here as they came out,
 with screenshots and a few measurements.
 
 The results are written up in [Do design skills fix AI-built pages? Four skills tested](https://spoko.space/blog/design-skills-for-ai-agents-tested/)
@@ -18,9 +18,11 @@ are made up, and every page says so in its footer.
 | | |
 | --- | --- |
 | Models | Claude Sonnet 5.5, Claude Opus 5.5, Claude Fable 5.2 |
-| Skills | none · [Taste Skill](https://github.com/Leonxlnx/taste-skill) (`design-taste-frontend`, tasteskill 2.5.1, commit `f6b7657`) · [Impeccable](https://github.com/pbakaus/impeccable) (4.10.0, commit `b49177d`) · [Ponytail](https://github.com/dietrichgebert/ponytail) (commit `dec89d9`) · [Emil Kowalski's `emil-design-eng`](https://github.com/emilkowalski/skills) (commit `64eb3de`, described at [aiforui.dev/skills](https://aiforui.dev/skills)) |
+| Skills | none · [Taste Skill](https://github.com/Leonxlnx/taste-skill) (`design-taste-frontend`, tasteskill 2.5.1, commit `f6b7657`) · [Impeccable](https://github.com/pbakaus/impeccable) (4.10.0, commit `b49177d`) · [Emil Kowalski's `emil-design-eng`](https://github.com/emilkowalski/skills) (commit `64eb3de`, described at [aiforui.dev/skills](https://aiforui.dev/skills)) · Anthropic's [`frontend-design`](https://github.com/anthropics/skills/tree/main/skills/frontend-design) (commit `41bbe19`) |
 | Brief | [`brief.md`](brief.md), in Polish, identical in every run |
 | Tool | Claude Code 2.1.326, headless (`claude -p`) |
+
+Three more runs, with [Ponytail](https://github.com/dietrichgebert/ponytail) (commit `dec89d9`), are kept in `runs/` and shown as an extra row in the gallery. Ponytail is a skill about writing less code, not about design, so it is not part of the comparison.
 
 A run with a skill gets one extra first line in the prompt, "Użyj skilla `<name>`." ("Use the `<name>` skill."), and the skill in the project's `.claude/skills/`. Nothing else differs.
 
@@ -50,9 +52,9 @@ One run per combination is a sample of one. The pages show what each setup tends
 ```bash
 pnpm install
 export RUNS_CFG=/path/to/empty-config   # holds only .credentials.json
-export SKILLS_SRC=/path/to/skills       # design-taste-frontend/, impeccable/, ponytail/, emil-design-eng/
+export SKILLS_SRC=/path/to/skills       # design-taste-frontend/, impeccable/, emil-design-eng/, frontend-design/
 for m in claude-fable-5-2 claude-opus-5-5 claude-sonnet-5-5; do
-  for s in none design-taste-frontend impeccable ponytail emil-design-eng; do echo "$m $s"; done
+  for s in none emil-design-eng frontend-design impeccable design-taste-frontend; do echo "$m $s"; done
 done | xargs -P 4 -L 1 scripts/run.sh
 RUNS_WORK=../skill-runs pnpm measure   # copies each page into runs/, writes results.json and shots/
 node scripts/gallery.mjs               # rebuilds index.html

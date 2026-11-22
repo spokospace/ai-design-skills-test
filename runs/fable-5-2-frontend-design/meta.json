@@ -1,0 +1,85 @@
+{
+  "id": "fable-5-2-frontend-design",
+  "log": {
+    "skillsInvoked": [
+      "frontend-design"
+    ],
+    "toolCalls": 12,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 3.6,
+    "turns": 15,
+    "costUsd": 1.8938950000000003,
+    "tokens": {
+      "input": 20,
+      "output": 23629,
+      "cacheRead": 516155,
+      "cacheWrite": 52834,
+      "total": 592638
+    },
+    "models": [
+      {
+        "name": "claude-fable-5-2",
+        "input": 20,
+        "output": 23629,
+        "cacheRead": 516155,
+        "cacheWrite": 52834,
+        "costUsd": 1.8938950000000003
+      }
+    ],
+    "durationMin": 4,
+    "durationSource": "wall clock",
+    "agentMin": 3.9
+  },
+  "files": 1,
+  "bytes": {
+    "total": 28944,
+    "html": 28944,
+    "js": 5315,
+    "css": 12825,
+    "images": 0
+  },
+  "htmlLines": 908,
+  "external": [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
+  ],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3315,
+      "violations": []
+    },
+    "mobile": {
+      "height": 4644,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"dzial\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"dzial\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"dzial\": children flush against border-top on top (no inset)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/fable-5-2-frontend-design-desktop-first.jpg",
+    "desktop-full": "shots/fable-5-2-frontend-design-desktop-full.jpg",
+    "mobile-first": "shots/fable-5-2-frontend-design-mobile-first.jpg",
+    "mobile-full": "shots/fable-5-2-frontend-design-mobile-full.jpg"
+  }
+}

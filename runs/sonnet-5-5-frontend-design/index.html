@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</title>
+<meta name="description" content="Strona demonstracyjna fikcyjnej spółdzielni mieszkaniowej: pogotowie awaryjne, godziny biura, ogłoszenia i dokumenty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14213D; --ink-soft:#3B4A68;
+  --sky:#EAF3F8; --paper:#FFFFFF;
+  --sun:#F5B82E; --sun-deep:#8A5A00;
+  --hill:#2F6B4F; --hill-dark:#1F4B37;
+  --alert:#B3261E;
+  --line:#C9D6E2;
+  --font:"Atkinson Hyperlegible Next","Atkinson Hyperlegible","Segoe UI",Verdana,sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{margin:0;font:400 1.125rem/1.6 var(--font);color:var(--ink);background:var(--sky);-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 7px var(--sun)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{line-height:1.12;margin:0;letter-spacing:-.015em}
+h2{font-size:clamp(1.9rem,4.5vw,2.6rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:800}
+p{margin:0}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.8rem 1rem;z-index:100}
+.skip:focus{left:0}
+
+/* Pasek awaryjny */
+.alarm{background:var(--alert);color:#fff;position:sticky;top:0;z-index:50}
+.alarm .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:3.5rem;flex-wrap:wrap;padding-top:.4rem;padding-bottom:.4rem}
+.alarm span{font-weight:600}
+.alarm a{font-weight:800;font-size:1.3rem;text-decoration:none;background:#fff;color:var(--alert);padding:.35rem 1rem;border-radius:.5rem;white-space:nowrap}
+.alarm a:hover{background:var(--sun);color:var(--ink)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(var(--sky) 0%,#F7E9C4 100%)}
+.hero .wrap{display:grid;gap:1rem;padding-top:2.5rem}
+.brand{font-weight:600;color:var(--ink-soft);font-size:1.05rem}
+.hero h1{font-size:clamp(2.4rem,7.5vw,4.8rem);font-weight:800;max-width:14ch;line-height:1.02;letter-spacing:-.03em}
+.hero .lead{max-width:34rem;color:var(--ink-soft);font-size:1.25rem}
+.scene{display:block;width:100%;height:auto;margin-top:1rem;max-height:340px}
+#sun{transform-origin:center;animation:rise 2.2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{transform:translateY(140px)}to{transform:none}}
+
+/* Skróty */
+.quick{margin-top:-1px;background:var(--hill);padding:1.5rem 0 2rem}
+.quick ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.9rem}
+.quick a{display:block;height:100%;text-decoration:none;background:var(--paper);border-radius:.9rem;padding:1.1rem 1.25rem;min-height:6.5rem;border-bottom:6px solid var(--sun)}
+.quick a:hover{background:#FFF8E1}
+.quick strong{display:block;font-size:1.3rem;font-weight:800}
+.quick small{display:block;font-size:1rem;color:var(--ink-soft);margin-top:.2rem}
+.quick .danger{background:var(--alert);color:#fff;border-bottom-color:#fff}
+.quick .danger small{color:#fff}
+.quick .danger:hover{background:#8F1D17}
+.status{display:inline-block;font-weight:800}
+.status.open{color:var(--hill-dark)}
+.status.closed{color:var(--alert)}
+
+section{padding:4rem 0}
+.head{display:flex;flex-wrap:wrap;gap:.5rem 2rem;align-items:baseline;justify-content:space-between;margin-bottom:1.75rem}
+.head p{color:var(--ink-soft);max-width:30rem}
+
+/* Ogłoszenia */
+.news{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.news li{display:grid;grid-template-columns:7.5rem 1fr;background:var(--paper);border-radius:.9rem;overflow:hidden}
+.when{background:var(--ink);color:#fff;padding:1rem;display:flex;flex-direction:column;justify-content:center}
+.when b{font-size:2.2rem;line-height:1;font-weight:800}
+.when span{font-size:1rem}
+.when.sun{background:var(--sun);color:var(--ink)}
+.news .body{padding:1.1rem 1.4rem}
+.news h3{margin-bottom:.35rem}
+.tag{display:inline-block;font-weight:800;font-size:.95rem;color:var(--sun-deep);margin-bottom:.15rem}
+
+/* Dokumenty */
+#dokumenty{background:var(--paper)}
+.tools{display:grid;gap:1rem;margin-bottom:1.25rem}
+.search label{display:block;font-weight:800;margin-bottom:.4rem}
+.search input{width:100%;font:inherit;font-size:1.2rem;padding:.9rem 1rem;border:3px solid var(--ink);border-radius:.7rem;background:#fff;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;border:0;padding:0;margin:0}
+.chips legend{font-weight:800;margin-bottom:.4rem;padding:0}
+.chip{font:inherit;font-weight:600;border:3px solid var(--ink);background:#fff;color:var(--ink);border-radius:2rem;padding:.5rem 1.1rem;min-height:2.9rem;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chip:hover{background:var(--sun);color:var(--ink)}
+.docs{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.docs li{border-bottom:1px solid var(--line)}
+.docs a{display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;align-items:center;padding:1rem .5rem;text-decoration:none;min-height:4.2rem}
+.docs a:hover{background:#FFF8E1}
+.docs .t{font-weight:600;font-size:1.2rem}
+.docs a:hover .t{text-decoration:underline;text-underline-offset:4px}
+.docs .c{color:var(--ink-soft);font-size:1rem;grid-column:1}
+.docs .f{grid-row:1/3;grid-column:2;font-weight:800;border:2px solid var(--ink);border-radius:.4rem;padding:.25rem .6rem;font-size:.95rem}
+.count{margin:1rem 0 0;font-weight:600;color:var(--ink-soft)}
+.empty{padding:1.25rem .5rem;font-weight:600}
+.legal{margin-top:1.5rem;color:var(--ink-soft);font-size:1rem;max-width:44rem}
+
+/* Kontakt */
+.contact{display:grid;gap:2rem;grid-template-columns:1fr}
+@media(min-width:820px){.contact{grid-template-columns:1fr 1fr}}
+.card{background:var(--paper);border-radius:.9rem;padding:1.5rem}
+.card h3{margin-bottom:.9rem}
+.card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.35rem 1.2rem}
+.card dt{font-weight:600;color:var(--ink-soft)}
+.card dd{margin:0}
+.big{display:block;font-size:clamp(1.6rem,5vw,2.1rem);font-weight:800;text-decoration:none;margin:.2rem 0 .7rem}
+.big:hover{text-decoration:underline}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.6rem .4rem;border-bottom:1px solid var(--line)}
+th{font-weight:600}
+tr.today{background:#FFF1C7;font-weight:800}
+tr.today td:first-child::after{content:" (dziś)"}
+.emerg{background:var(--alert);color:#fff}
+.emerg .big{color:#fff}
+.emerg p{max-width:26rem}
+
+footer{background:var(--ink);color:#E6ECF5;padding:2.5rem 0 3rem;font-size:1rem}
+footer .demo{background:var(--sun);color:var(--ink);font-weight:800;padding:1rem 1.25rem;border-radius:.7rem;margin-bottom:1.25rem;font-size:1.1rem}
+footer p+p{margin-top:.5rem}
+
+@media(max-width:560px){
+  .news li{grid-template-columns:1fr}
+  .when{flex-direction:row;align-items:baseline;gap:.6rem}
+  .when b{font-size:1.8rem}
+  .alarm span{font-size:1rem}
+}
+@media(prefers-reduced-motion:reduce){#sun{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#glowna">Przejdź do treści</a>
+
+<div class="alarm" role="region" aria-label="Pogotowie awaryjne">
+  <div class="wrap">
+    <span>Awaria wody, gazu lub windy? Całą dobę:</span>
+    <a href="tel:+48000000999">Zadzwoń +48 000 000 999</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="brand">Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</p>
+    <h1>Wszystko o Waszym osiedlu w jednym miejscu</h1>
+    <p class="lead">Numer awaryjny, godziny biura, ogłoszenia i dokumenty. Dla 412 mieszkań na osiedlach Słoneczne Wzgórze i Przylesie.</p>
+  </div>
+  <svg class="scene" viewBox="0 0 1200 340" role="img" aria-label="Rysunek: słońce wschodzi nad dwoma wzgórzami z budynkami osiedli" preserveAspectRatio="xMidYMax slice">
+    <g id="sun"><circle cx="600" cy="150" r="90" fill="#F5B82E"/><circle cx="600" cy="150" r="118" fill="#F5B82E" opacity=".25"/></g>
+    <path d="M-20 340V230C150 130 330 140 480 230C560 270 640 300 700 340Z" fill="#2F6B4F"/>
+    <path d="M420 340C520 250 700 190 880 200C1020 210 1120 250 1220 230V340Z" fill="#1F4B37"/>
+    <g fill="#F7F3E6">
+      <rect x="130" y="150" width="70" height="80"/><rect x="215" y="165" width="60" height="70"/><rect x="290" y="175" width="52" height="62"/>
+    </g>
+    <g fill="#E8EEF4">
+      <rect x="760" y="130" width="60" height="90"/><rect x="835" y="140" width="70" height="80"/><rect x="920" y="155" width="55" height="70"/>
+    </g>
+    <g fill="#14213D" opacity=".55">
+      <rect x="145" y="165" width="12" height="14"/><rect x="170" y="165" width="12" height="14"/><rect x="145" y="195" width="12" height="14"/><rect x="170" y="195" width="12" height="14"/>
+      <rect x="228" y="180" width="12" height="14"/><rect x="250" y="180" width="12" height="14"/><rect x="228" y="208" width="12" height="14"/><rect x="250" y="208" width="12" height="14"/>
+      <rect x="303" y="190" width="10" height="12"/><rect x="322" y="190" width="10" height="12"/>
+      <rect x="772" y="145" width="12" height="14"/><rect x="796" y="145" width="12" height="14"/><rect x="772" y="175" width="12" height="14"/><rect x="796" y="175" width="12" height="14"/>
+      <rect x="850" y="155" width="12" height="14"/><rect x="876" y="155" width="12" height="14"/><rect x="850" y="185" width="12" height="14"/><rect x="876" y="185" width="12" height="14"/>
+      <rect x="933" y="170" width="10" height="12"/><rect x="954" y="170" width="10" height="12"/>
+    </g>
+    <text x="130" y="310" fill="#fff" font-family="Atkinson Hyperlegible Next, Segoe UI, sans-serif" font-size="26" font-weight="700">Słoneczne Wzgórze</text>
+    <text x="760" y="310" fill="#fff" font-family="Atkinson Hyperlegible Next, Segoe UI, sans-serif" font-size="26" font-weight="700">Przylesie</text>
+  </svg>
+</header>
+
+<main id="glowna">
+  <nav class="quick" aria-label="Najczęstsze sprawy">
+    <div class="wrap">
+      <ul>
+        <li><a class="danger" href="tel:+48000000999"><strong>Zgłoś awarię</strong><small>Pogotowie, całą dobę: +48 000 000 999</small></a></li>
+        <li><a href="#kontakt"><strong>Biuro</strong><small><span id="status" class="status">Sprawdzam godziny…</span></small></a></li>
+        <li><a href="#ogloszenia"><strong>Ogłoszenia</strong><small>3 aktualne: woda, gaz, biuro</small></a></li>
+        <li><a href="#dokumenty"><strong>Dokumenty</strong><small>Statut, regulaminy, uchwały</small></a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="ogloszenia" aria-labelledby="h-ogl">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="h-ogl">Ogłoszenia</h2>
+        <p>Grudzień 2026. Harmonogram przeglądów gazowych wisi też na klatkach schodowych.</p>
+      </div>
+      <ul class="news">
+        <li>
+          <div class="when"><b>3 grudnia</b><span>8:00–14:00</span></div>
+          <div class="body"><span class="tag">Woda</span><h3>Przerwa w dostawie zimnej wody</h3><p>Bez zimnej wody będzie budynek Przylesie 4. Zapasy warto zrobić wcześniej.</p></div>
+        </li>
+        <li>
+          <div class="when"><b>7–18 grudnia</b><span>wszystkie budynki</span></div>
+          <div class="body"><span class="tag">Gaz</span><h3>Roczne przeglądy instalacji gazowej</h3><p>Przeglądy obejmują wszystkie 6 budynków. Harmonogram jest na klatkach schodowych.</p></div>
+        </li>
+        <li>
+          <div class="when sun"><b>24 i 31 grudnia</b><span>biuro nieczynne</span></div>
+          <div class="body"><span class="tag">Biuro</span><h3>Biuro jest zamknięte w Wigilię i w Sylwestra</h3><p>W awarii dzwoń na pogotowie: +48 000 000 999. Działa całą dobę, także w święta.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="dokumenty" aria-labelledby="h-dok">
+    <div class="wrap">
+      <div class="head">
+        <h2 id="h-dok">Dokumenty spółdzielni</h2>
+        <p>Wpisz kilka liter albo wybierz rodzaj dokumentu.</p>
+      </div>
+      <div class="tools">
+        <div class="search">
+          <label for="q">Szukaj dokumentu</label>
+          <input id="q" type="search" placeholder="np. wodomierze" autocomplete="off">
+        </div>
+        <fieldset class="chips" id="chips">
+          <legend>Rodzaj dokumentu</legend>
+        </fieldset>
+      </div>
+      <ul class="docs" id="docs"></ul>
+      <p class="count" id="count" aria-live="polite"></p>
+      <p class="legal">Spółdzielnia udostępnia te dokumenty zgodnie z art. 8¹ ust. 3 ustawy o spółdzielniach mieszkaniowych: statut, regulaminy, uchwały i protokoły obrad organów, protokoły lustracji oraz roczne sprawozdanie finansowe.</p>
+    </div>
+  </section>
+
+  <section id="kontakt" aria-labelledby="h-kon">
+    <div class="wrap">
+      <div class="head"><h2 id="h-kon">Kontakt i godziny biura</h2></div>
+      <div class="contact">
+        <div class="card">
+          <h3>Godziny pracy biura</h3>
+          <table id="hours">
+            <caption class="sr" style="position:absolute;left:-999px">Godziny pracy biura</caption>
+            <tbody>
+              <tr data-d="1"><td>Poniedziałek</td><td>10:00–18:00</td></tr>
+              <tr data-d="2"><td>Wtorek</td><td>7:30–15:30</td></tr>
+              <tr data-d="3"><td>Środa</td><td>7:30–15:30</td></tr>
+              <tr data-d="4"><td>Czwartek</td><td>7:30–15:30</td></tr>
+              <tr data-d="5"><td>Piątek</td><td>7:30–15:30</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:.8rem">Soboty i niedziele: biuro nieczynne. Dodatkowo zamknięte 24 i 31 grudnia 2026.</p>
+          <dl style="margin-top:1.2rem">
+            <dt>Adres</dt><dd>ul. Przykładowa 1, 00-000 Miasto</dd>
+            <dt>Telefon</dt><dd><a href="tel:+48000000001">+48 000 000 001</a></dd>
+            <dt>E-mail</dt><dd><a href="mailto:biuro@example.com">biuro@example.com</a></dd>
+          </dl>
+        </div>
+        <div class="card emerg">
+          <h3>Pogotowie awaryjne</h3>
+          <a class="big" href="tel:+48000000999">+48 000 000 999</a>
+          <p>Całą dobę, także w weekendy i święta. Dzwoń, gdy pęknie rura, poczujesz gaz albo zatrzyma się winda.</p>
+          <p style="margin-top:.8rem"><strong>Czujesz gaz?</strong> Nie zapalaj światła i nie używaj telefonu w mieszkaniu. Wyjdź na zewnątrz, dopiero stamtąd zadzwoń.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="demo">To jest strona demonstracyjna. Spółdzielnia „Słoneczne Wzgórze” i wszystkie dane na tej stronie (adresy, telefony, dokumenty, ogłoszenia) są zmyślone i nie istnieją.</p>
+    <p>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”, ul. Przykładowa 1, 00-000 Miasto</p>
+    <p>Osiedla: Słoneczne Wzgórze i Przylesie. 6 budynków, 412 mieszkań.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Dokumenty */
+  var CATS=["Wszystkie","Statut","Regulaminy","Uchwały","Protokoły","Sprawozdania"];
+  var DOCS=[
+    {t:"Statut Spółdzielni (tekst jednolity, marzec 2026)",c:"Statut"},
+    {t:"Regulamin porządku domowego",c:"Regulaminy"},
+    {t:"Regulamin rozliczania kosztów zużycia wody",c:"Regulaminy"},
+    {t:"Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy",c:"Uchwały"},
+    {t:"Protokół z Walnego Zgromadzenia, czerwiec 2026",c:"Protokoły"},
+    {t:"Protokół lustracji za lata 2023–2025",c:"Protokoły"},
+    {t:"Sprawozdanie finansowe za 2025 rok",c:"Sprawozdania"}
+  ];
+  var cat="Wszystkie",list=document.getElementById("docs"),q=document.getElementById("q"),
+      chips=document.getElementById("chips"),count=document.getElementById("count");
+  function norm(s){return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/ł/g,"l")}
+  CATS.forEach(function(c){
+    var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=c;
+    b.setAttribute("aria-pressed",c===cat);
+    b.onclick=function(){cat=c;[].forEach.call(chips.querySelectorAll("button"),function(x){x.setAttribute("aria-pressed",x===b)});render()};
+    chips.appendChild(b);
+  });
+  function render(){
+    var n=norm(q.value.trim()),out=DOCS.filter(function(d){return (cat==="Wszystkie"||d.c===cat)&&(!n||norm(d.t+" "+d.c).indexOf(n)>-1)});
+    list.innerHTML="";
+    out.forEach(function(d){
+      var li=document.createElement("li");
+      li.innerHTML='<a href="#"><span class="t"></span><span class="c"></span><span class="f">PDF</span></a>';
+      li.querySelector(".t").textContent=d.t;li.querySelector(".c").textContent=d.c;
+      li.firstChild.addEventListener("click",function(e){e.preventDefault()});
+      list.appendChild(li);
+    });
+    if(!out.length){list.innerHTML='<li class="empty">Nie znaleziono dokumentu. Zmień szukaną frazę albo wybierz „Wszystkie”.</li>';count.textContent="Brak wyników."}
+    else count.textContent="Pokazano "+out.length+" z "+DOCS.length+" dokumentów.";
+  }
+  q.addEventListener("input",render);render();
+
+  /* Status biura */
+  var H={1:[600,1080],2:[450,930],3:[450,930],4:[450,930],5:[450,930]};
+  var now=new Date(),d=now.getDay(),m=now.getHours()*60+now.getMinutes();
+  var closedDay=(now.getFullYear()===2026&&now.getMonth()===11&&(now.getDate()===24||now.getDate()===31));
+  var el=document.getElementById("status"),h=H[d],txt,open=false;
+  function hm(x){return Math.floor(x/60)+":"+("0"+x%60).slice(-2)}
+  if(closedDay){txt="Dziś biuro nieczynne"}
+  else if(!h){txt="Biuro nieczynne. Otwarte w poniedziałek od 10:00"}
+  else if(m<h[0]){txt="Biuro otwiera się dziś o "+hm(h[0])}
+  else if(m<h[1]){txt="Biuro otwarte do "+hm(h[1]);open=true}
+  else{txt="Biuro już zamknięte"}
+  el.textContent=txt;el.className="status "+(open?"open":"closed");
+  var row=document.querySelector('#hours tr[data-d="'+d+'"]');if(row)row.className="today";
+})();
+</script>
+</body>
+</html>

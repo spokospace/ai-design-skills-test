@@ -1,0 +1,109 @@
+{
+  "id": "opus-5-5-frontend-design",
+  "log": {
+    "skillsInvoked": [
+      "frontend-design"
+    ],
+    "toolCalls": 15,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 4.2,
+    "turns": 21,
+    "costUsd": 1.2291805999999998,
+    "tokens": {
+      "input": 34,
+      "output": 29496,
+      "cacheRead": 819583,
+      "cacheWrite": 59401,
+      "total": 908514
+    },
+    "models": [
+      {
+        "name": "claude-opus-5-5",
+        "input": 34,
+        "output": 29496,
+        "cacheRead": 819583,
+        "cacheWrite": 59401,
+        "costUsd": 1.2291805999999998
+      }
+    ],
+    "durationMin": 6.5,
+    "durationSource": "wall clock",
+    "agentMin": 6.4
+  },
+  "files": 1,
+  "bytes": {
+    "total": 36155,
+    "html": 36155,
+    "js": 5962,
+    "css": 12966,
+    "images": 0
+  },
+  "htmlLines": 700,
+  "external": [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
+  ],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 4506,
+      "violations": []
+    },
+    "mobile": {
+      "height": 6778,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 6px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 6px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 6px"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": ":hover state 3.5:1 (need 4.5:1) — text #2e6a4e on #f4b400 (and 1 more)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"kartka\": children flush against border on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"kartka\": children flush against border on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"kartka\": children flush against border on right/left (no inset)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/opus-5-5-frontend-design-desktop-first.jpg",
+    "desktop-full": "shots/opus-5-5-frontend-design-desktop-full.jpg",
+    "mobile-first": "shots/opus-5-5-frontend-design-mobile-first.jpg",
+    "mobile-full": "shots/opus-5-5-frontend-design-mobile-full.jpg"
+  }
+}

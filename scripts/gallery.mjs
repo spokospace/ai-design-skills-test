@@ -14,11 +14,14 @@ const MODELS = [
 ];
 const SETUPS = [
   ['none', 'No skill', 'The brief alone.'],
-  ['ponytail', 'Ponytail', 'Write as little code as the task needs.'],
   ['emil-design-eng', 'emil-design-eng', 'Emil Kowalski’s rules for interface polish and motion.'],
+  ['frontend-design', 'frontend-design', 'Anthropic’s own skill: a design direction chosen for the brief.'],
   ['impeccable', 'Impeccable', 'A design vocabulary, a critique and a slop detector.'],
   ['design-taste-frontend', 'Taste Skill', 'Art direction, real photographs and a browser check.'],
 ];
+// Three more runs are in runs/ but not part of the comparison: Ponytail is a
+// skill about writing less code, not about design.
+const EXTRA = [['ponytail', 'Ponytail', 'Not a design skill: write as little code as the task needs. Kept for reference.']];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 const kb = (b) => `${Math.round(b / 1024)} KB`;
@@ -49,7 +52,7 @@ function cell(id, modelName, setupName) {
 </article>`;
 }
 
-const rows = SETUPS.map(([key, name, note]) => `<section class="row" aria-labelledby="h-${key}">
+const rows = [...SETUPS, ...EXTRA].map(([key, name, note]) => `<section class="row" aria-labelledby="h-${key}">
   <header><h2 id="h-${key}">${esc(name)}</h2><p>${esc(note)}</p></header>
   <div class="grid">${MODELS.map(([m, mName]) => cell(`${m}-${key}`, mName, name)).join('\n')}</div>
 </section>`).join('\n');
@@ -96,7 +99,7 @@ const html = `<!doctype html>
 <body>
 <main>
   <h1>One brief, three models, four skills</h1>
-  <p class="lead">The same brief for the home page of a made-up housing cooperative, built in Claude Code by Sonnet 5.5, Opus 5.5 and Fable 5.2: once without a skill, then once with each of four agent skills. One run per combination, so this shows tendencies, not a ranking.</p>
+  <p class="lead">The same brief for the home page of a made-up housing cooperative, built in Claude Code by Sonnet 5.5, Opus 5.5 and Fable 5.2: once without a skill, then once with each of four design skills. One run per combination, so this shows tendencies, not a ranking.</p>
   <p class="lead"><a href="brief.md">The brief</a> (in Polish) · <a href="README.md">Method and versions</a> · <a href="https://spoko.space/blog/design-skills-for-ai-agents-tested/">The write-up on spoko.space</a></p>
   <p class="lead"><strong>Tokens</strong> include cache reads, which are most of them. <strong>Detector</strong> counts the findings of Impeccable's own rule-based checker (<code>npx impeccable detect</code>), so it judges every page by one skill's rules. <strong>axe rules</strong> counts distinct WCAG 2.2 A/AA rules axe-core flags at 1440 and 390 px.</p>
 ${rows}

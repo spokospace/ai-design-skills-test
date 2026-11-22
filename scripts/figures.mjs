@@ -13,8 +13,8 @@ const shot = (id, kind) => pathToFileURL(path.join(ROOT, 'shots', `${id}-${kind}
 const MODELS = [['sonnet-5-5', 'Sonnet 5.5'], ['opus-5-5', 'Opus 5.5'], ['fable-5-2', 'Fable 5.2']];
 const SETUPS = (lang) => [
   ['none', lang === 'pl' ? 'Bez skilla' : 'No skill'],
-  ['ponytail', 'Ponytail'],
   ['emil-design-eng', 'emil-design-eng'],
+  ['frontend-design', 'frontend-design'],
   ['impeccable', 'Impeccable'],
   ['design-taste-frontend', 'Taste Skill'],
 ];
@@ -47,7 +47,7 @@ ${MODELS.map(([m, n]) => `<div class="l">${n}</div>` + SETUPS(lang).map(([s]) =>
 
 // A plain board of ten first screens for the post cover's backdrop.
 const BOARD = ['sonnet-5-5-none', 'opus-5-5-impeccable', 'sonnet-5-5-design-taste-frontend', 'fable-5-2-none', 'sonnet-5-5-impeccable',
-  'opus-5-5-none', 'fable-5-2-impeccable', 'fable-5-2-design-taste-frontend', 'fable-5-2-emil-design-eng', 'opus-5-5-ponytail'];
+  'opus-5-5-none', 'fable-5-2-impeccable', 'fable-5-2-design-taste-frontend', 'fable-5-2-emil-design-eng', 'opus-5-5-frontend-design'];
 const board = () => `<style>body{margin:0;background:#1d1f24}
 .g{display:grid;grid-template-columns:repeat(5,560px);gap:24px;padding:30px;width:max-content}
 img{display:block;width:560px;height:350px;object-fit:cover;object-position:top;border-radius:4px}</style>
@@ -55,7 +55,7 @@ img{display:block;width:560px;height:350px;object-fit:cover;object-position:top;
 
 const figures = {
   'grid-en': grid('en'), 'grid-pl': grid('pl'),
-  taste: row('design-taste-frontend'), impeccable: row('impeccable'), none: row('none'),
+  taste: row('design-taste-frontend'), impeccable: row('impeccable'), none: row('none'), 'frontend-design': row('frontend-design'),
   'phones-en': phones('en'), 'phones-pl': phones('pl'),
   board: board(),
 };
