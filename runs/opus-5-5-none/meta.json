@@ -1,0 +1,104 @@
+{
+  "id": "opus-5-5-none",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 11,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 2.9,
+    "turns": 13,
+    "costUsd": 1.1505182000000005,
+    "tokens": {
+      "input": 20,
+      "output": 21430,
+      "cacheRead": 510871,
+      "cacheWrite": 77458,
+      "total": 609779
+    },
+    "models": [
+      {
+        "name": "claude-opus-5-5",
+        "input": 20,
+        "output": 21430,
+        "cacheRead": 510871,
+        "cacheWrite": 77458,
+        "costUsd": 1.1505182000000005
+      }
+    ],
+    "durationMin": 4.6,
+    "durationSource": "wall clock",
+    "agentMin": 4.6
+  },
+  "files": 1,
+  "bytes": {
+    "total": 35425,
+    "html": 35425,
+    "js": 8446,
+    "css": 14987,
+    "images": 0
+  },
+  "htmlLines": 631,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3541,
+      "violations": []
+    },
+    "mobile": {
+      "height": 7058,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 14px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 14px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 14px"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"alertbar\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"block\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"block\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"block\": children flush against border-top on top (no inset)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/opus-5-5-none-desktop-first.jpg",
+    "desktop-full": "shots/opus-5-5-none-desktop-full.jpg",
+    "mobile-first": "shots/opus-5-5-none-mobile-first.jpg",
+    "mobile-full": "shots/opus-5-5-none-mobile-full.jpg"
+  }
+}

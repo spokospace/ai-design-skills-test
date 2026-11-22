@@ -1,0 +1,94 @@
+{
+  "id": "sonnet-5-5-ponytail",
+  "log": {
+    "skillsInvoked": [
+      "ponytail"
+    ],
+    "toolCalls": 2,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 0.7,
+    "turns": 4,
+    "costUsd": 0.1644903,
+    "tokens": {
+      "input": 8,
+      "output": 6176,
+      "cacheRead": 129183,
+      "cacheWrite": 22449,
+      "total": 157816
+    },
+    "models": [
+      {
+        "name": "claude-sonnet-5-5",
+        "input": 8,
+        "output": 6176,
+        "cacheRead": 129183,
+        "cacheWrite": 22449,
+        "costUsd": 0.1644903
+      }
+    ],
+    "durationMin": 0.7,
+    "durationSource": "wall clock",
+    "agentMin": 0.7
+  },
+  "files": 1,
+  "bytes": {
+    "total": 10495,
+    "html": 10495,
+    "js": 1226,
+    "css": 4124,
+    "images": 0
+  },
+  "htmlLines": 193,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 2171,
+      "violations": []
+    },
+    "mobile": {
+      "height": 3331,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 12px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 12px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 12px"
+    },
+    {
+      "rule": "tight-leading",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "line-height 1.20x (need >=1.3)"
+    },
+    {
+      "rule": "cream-palette",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "cream/beige page background rgb(251, 248, 241)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/sonnet-5-5-ponytail-desktop-first.jpg",
+    "desktop-full": "shots/sonnet-5-5-ponytail-desktop-full.jpg",
+    "mobile-first": "shots/sonnet-5-5-ponytail-mobile-first.jpg",
+    "mobile-full": "shots/sonnet-5-5-ponytail-mobile-full.jpg"
+  }
+}

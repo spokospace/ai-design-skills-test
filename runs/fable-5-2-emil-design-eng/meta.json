@@ -1,0 +1,63 @@
+{
+  "id": "fable-5-2-emil-design-eng",
+  "log": {
+    "skillsInvoked": [
+      "emil-design-eng"
+    ],
+    "toolCalls": 9,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 4.1,
+    "turns": 13,
+    "costUsd": 2.2420528,
+    "tokens": {
+      "input": 16,
+      "output": 28904,
+      "cacheRead": 412984,
+      "cacheWrite": 62698,
+      "total": 504602
+    },
+    "models": [
+      {
+        "name": "claude-fable-5-2",
+        "input": 16,
+        "output": 28904,
+        "cacheRead": 412984,
+        "cacheWrite": 62698,
+        "costUsd": 2.2420528
+      }
+    ],
+    "durationMin": 4.3,
+    "durationSource": "agent time",
+    "agentMin": 4.3
+  },
+  "files": 1,
+  "bytes": {
+    "total": 44509,
+    "html": 44509,
+    "js": 5021,
+    "css": 17022,
+    "images": 0
+  },
+  "htmlLines": 797,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3352,
+      "violations": []
+    },
+    "mobile": {
+      "height": 5235,
+      "violations": []
+    }
+  },
+  "detector": [],
+  "shots": {
+    "desktop-first": "shots/fable-5-2-emil-design-eng-desktop-first.jpg",
+    "desktop-full": "shots/fable-5-2-emil-design-eng-desktop-full.jpg",
+    "mobile-first": "shots/fable-5-2-emil-design-eng-mobile-first.jpg",
+    "mobile-full": "shots/fable-5-2-emil-design-eng-mobile-full.jpg"
+  }
+}

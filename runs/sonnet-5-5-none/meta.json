@@ -1,0 +1,68 @@
+{
+  "id": "sonnet-5-5-none",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 1,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 0.9,
+    "turns": 2,
+    "costUsd": 0.3250982,
+    "tokens": {
+      "input": 4,
+      "output": 9569,
+      "cacheRead": 47362,
+      "cacheWrite": 56166,
+      "total": 113101
+    },
+    "models": [
+      {
+        "name": "claude-sonnet-5-5",
+        "input": 4,
+        "output": 9569,
+        "cacheRead": 47362,
+        "cacheWrite": 56166,
+        "costUsd": 0.3250982
+      }
+    ],
+    "durationMin": 1,
+    "durationSource": "wall clock",
+    "agentMin": 1
+  },
+  "files": 1,
+  "bytes": {
+    "total": 17153,
+    "html": 17153,
+    "js": 3353,
+    "css": 6650,
+    "images": 0
+  },
+  "htmlLines": 332,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3250,
+      "violations": []
+    },
+    "mobile": {
+      "height": 5584,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"alarm\": children flush against bg on all sides (no inset)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/sonnet-5-5-none-desktop-first.jpg",
+    "desktop-full": "shots/sonnet-5-5-none-desktop-full.jpg",
+    "mobile-first": "shots/sonnet-5-5-none-mobile-first.jpg",
+    "mobile-full": "shots/sonnet-5-5-none-mobile-full.jpg"
+  }
+}

@@ -1,0 +1,1509 @@
+[
+  {
+    "id": "fable-5-2-design-taste-frontend",
+    "log": {
+      "skillsInvoked": [
+        "design-taste-frontend"
+      ],
+      "toolCalls": 62,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 8,
+      "turns": 65,
+      "costUsd": 7.252671599999999,
+      "tokens": {
+        "input": 86,
+        "output": 49735,
+        "cacheRead": 7801078,
+        "cacheWrite": 231398,
+        "total": 8082297
+      },
+      "models": [
+        {
+          "name": "claude-fable-5-2",
+          "input": 86,
+          "output": 49735,
+          "cacheRead": 7801078,
+          "cacheWrite": 231398,
+          "costUsd": 7.252671599999999
+        }
+      ],
+      "durationMin": 35,
+      "durationSource": "wall clock",
+      "agentMin": 35
+    },
+    "files": 19,
+    "bytes": {
+      "total": 1093720,
+      "html": 19558,
+      "js": 137335,
+      "css": 259988,
+      "images": 681484
+    },
+    "htmlLines": 297,
+    "external": [
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "axe": {
+      "desktop": {
+        "height": 5400,
+        "violations": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      },
+      "mobile": {
+        "height": 6853,
+        "violations": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against bg on right/bottom/left (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "pulsing-dot",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": ".ly-live::before — 7x7px dot with infinite \"ly-pulse\" animation"
+      },
+      {
+        "rule": "radial-halo",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "radial-gradient halo (#c8b092 → transparent) on dark page"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "category": "slop",
+        "severity": "advisory",
+        "snippet": "repeating-gradient decorative stripes"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/fable-5-2-design-taste-frontend-desktop-first.jpg",
+      "desktop-full": "shots/fable-5-2-design-taste-frontend-desktop-full.jpg",
+      "mobile-first": "shots/fable-5-2-design-taste-frontend-mobile-first.jpg",
+      "mobile-full": "shots/fable-5-2-design-taste-frontend-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "fable-5-2-emil-design-eng",
+    "log": {
+      "skillsInvoked": [
+        "emil-design-eng"
+      ],
+      "toolCalls": 9,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 4.1,
+      "turns": 13,
+      "costUsd": 2.2420528,
+      "tokens": {
+        "input": 16,
+        "output": 28904,
+        "cacheRead": 412984,
+        "cacheWrite": 62698,
+        "total": 504602
+      },
+      "models": [
+        {
+          "name": "claude-fable-5-2",
+          "input": 16,
+          "output": 28904,
+          "cacheRead": 412984,
+          "cacheWrite": 62698,
+          "costUsd": 2.2420528
+        }
+      ],
+      "durationMin": 4.3,
+      "durationSource": "agent time",
+      "agentMin": 4.3
+    },
+    "files": 1,
+    "bytes": {
+      "total": 44509,
+      "html": 44509,
+      "js": 5021,
+      "css": 17022,
+      "images": 0
+    },
+    "htmlLines": 797,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3352,
+        "violations": []
+      },
+      "mobile": {
+        "height": 5235,
+        "violations": []
+      }
+    },
+    "detector": [],
+    "shots": {
+      "desktop-first": "shots/fable-5-2-emil-design-eng-desktop-first.jpg",
+      "desktop-full": "shots/fable-5-2-emil-design-eng-desktop-full.jpg",
+      "mobile-first": "shots/fable-5-2-emil-design-eng-mobile-first.jpg",
+      "mobile-full": "shots/fable-5-2-emil-design-eng-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "fable-5-2-impeccable",
+    "log": {
+      "skillsInvoked": [
+        "impeccable"
+      ],
+      "toolCalls": 49,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 13,
+      "turns": 30,
+      "costUsd": 7.3624492,
+      "tokens": {
+        "input": 50,
+        "output": 84261,
+        "cacheRead": 1904306,
+        "cacheWrite": 294227,
+        "total": 2282844
+      },
+      "models": [
+        {
+          "name": "claude-fable-5-2",
+          "input": 50,
+          "output": 84261,
+          "cacheRead": 1904306,
+          "cacheWrite": 294227,
+          "costUsd": 7.3624492
+        }
+      ],
+      "durationMin": 11.1,
+      "durationSource": "wall clock",
+      "agentMin": 11
+    },
+    "files": 3,
+    "bytes": {
+      "total": 91569,
+      "html": 38469,
+      "js": 7311,
+      "css": 15407,
+      "images": 0
+    },
+    "htmlLines": 706,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3539,
+        "violations": []
+      },
+      "mobile": {
+        "height": 4802,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"dado\": children flush against bg on all sides (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<ol> \"notices\": children flush against border-top on top (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li> \"notice\": children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li> \"notice\": children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li> \"notice\": children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"dado\": children flush against bg on all sides (no inset)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/fable-5-2-impeccable-desktop-first.jpg",
+      "desktop-full": "shots/fable-5-2-impeccable-desktop-full.jpg",
+      "mobile-first": "shots/fable-5-2-impeccable-mobile-first.jpg",
+      "mobile-full": "shots/fable-5-2-impeccable-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "fable-5-2-none",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 10,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 5,
+      "turns": 15,
+      "costUsd": 2.11147,
+      "tokens": {
+        "input": 10,
+        "output": 32841,
+        "cacheRead": 264510,
+        "cacheWrite": 46553,
+        "total": 343914
+      },
+      "models": [
+        {
+          "name": "claude-fable-5-2",
+          "input": 10,
+          "output": 32841,
+          "cacheRead": 264510,
+          "cacheWrite": 46553,
+          "costUsd": 2.11147
+        }
+      ],
+      "durationMin": 5.3,
+      "durationSource": "wall clock",
+      "agentMin": 5.3
+    },
+    "files": 1,
+    "bytes": {
+      "total": 38859,
+      "html": 38859,
+      "js": 6376,
+      "css": 14316,
+      "images": 0
+    },
+    "htmlLines": 843,
+    "external": [
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3617,
+        "violations": []
+      },
+      "mobile": {
+        "height": 5072,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 8px + border-radius: 14px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 8px + border-radius: 14px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 8px + border-radius: 14px"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "8px functional text \"+48\" (below 11px floor)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against bg on all sides (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against bg on all sides (no inset)"
+      },
+      {
+        "rule": "overused-font",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Primary font: fraunces"
+      },
+      {
+        "rule": "cream-palette",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "cream/beige page background rgb(250, 245, 233)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/fable-5-2-none-desktop-first.jpg",
+      "desktop-full": "shots/fable-5-2-none-desktop-full.jpg",
+      "mobile-first": "shots/fable-5-2-none-mobile-first.jpg",
+      "mobile-full": "shots/fable-5-2-none-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "fable-5-2-ponytail",
+    "log": {
+      "skillsInvoked": [
+        "ponytail"
+      ],
+      "toolCalls": 2,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 1.2,
+      "turns": 4,
+      "costUsd": 0.6963394,
+      "tokens": {
+        "input": 8,
+        "output": 8150,
+        "cacheRead": 136417,
+        "cacheWrite": 21437,
+        "total": 166012
+      },
+      "models": [
+        {
+          "name": "claude-fable-5-2",
+          "input": 8,
+          "output": 8150,
+          "cacheRead": 136417,
+          "cacheWrite": 21437,
+          "costUsd": 0.6963394
+        }
+      ],
+      "durationMin": 1.3,
+      "durationSource": "wall clock",
+      "agentMin": 1.2
+    },
+    "files": 1,
+    "bytes": {
+      "total": 13088,
+      "html": 13088,
+      "js": 873,
+      "css": 5208,
+      "images": 0
+    },
+    "htmlLines": 307,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 2591,
+        "violations": []
+      },
+      "mobile": {
+        "height": 4235,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"awaria\": children flush against bg on top/bottom (no inset)"
+      },
+      {
+        "rule": "cream-palette",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "cream/beige page background rgb(251, 247, 238)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/fable-5-2-ponytail-desktop-first.jpg",
+      "desktop-full": "shots/fable-5-2-ponytail-desktop-full.jpg",
+      "mobile-first": "shots/fable-5-2-ponytail-mobile-first.jpg",
+      "mobile-full": "shots/fable-5-2-ponytail-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "opus-5-5-design-taste-frontend",
+    "log": {
+      "skillsInvoked": [
+        "design-taste-frontend"
+      ],
+      "toolCalls": 61,
+      "denied": [],
+      "durationMin": 50,
+      "durationSource": "wall clock",
+      "tokens": {
+        "input": 116,
+        "output": 504,
+        "cacheRead": 9911707,
+        "cacheWrite": 228170,
+        "total": 10140497,
+        "partial": true
+      },
+      "ok": false
+    },
+    "files": 22,
+    "bytes": {
+      "total": 1588085,
+      "html": 28047,
+      "js": 140017,
+      "css": 261892,
+      "images": 1167360
+    },
+    "htmlLines": 369,
+    "external": [
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 5400,
+        "violations": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      },
+      "mobile": {
+        "height": 8440,
+        "violations": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-top on top (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-top on top (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against bg on right/bottom/left (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "tight-leading",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "line-height 1.16x (need >=1.3)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"footer__legal\": children flush against border-top on top (no inset)"
+      },
+      {
+        "rule": "pulsing-dot",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": ".ly-live::before — 7x7px dot with infinite \"ly-pulse\" animation"
+      },
+      {
+        "rule": "radial-halo",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "radial-gradient halo (#c8b092 → transparent) on dark page"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "category": "slop",
+        "severity": "advisory",
+        "snippet": "repeating-gradient decorative stripes"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/opus-5-5-design-taste-frontend-desktop-first.jpg",
+      "desktop-full": "shots/opus-5-5-design-taste-frontend-desktop-full.jpg",
+      "mobile-first": "shots/opus-5-5-design-taste-frontend-mobile-first.jpg",
+      "mobile-full": "shots/opus-5-5-design-taste-frontend-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "opus-5-5-emil-design-eng",
+    "log": {
+      "skillsInvoked": [
+        "emil-design-eng"
+      ],
+      "toolCalls": 12,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 3.2,
+      "turns": 16,
+      "costUsd": 1.077938,
+      "tokens": {
+        "input": 28,
+        "output": 23805,
+        "cacheRead": 770550,
+        "cacheWrite": 55952,
+        "total": 850335
+      },
+      "models": [
+        {
+          "name": "claude-opus-5-5",
+          "input": 28,
+          "output": 23805,
+          "cacheRead": 770550,
+          "cacheWrite": 55952,
+          "costUsd": 1.077938
+        }
+      ],
+      "durationMin": 5.7,
+      "durationSource": "agent time",
+      "agentMin": 5.7
+    },
+    "files": 1,
+    "bytes": {
+      "total": 38612,
+      "html": 38612,
+      "js": 9121,
+      "css": 16199,
+      "images": 0
+    },
+    "htmlLines": 746,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3226,
+        "violations": []
+      },
+      "mobile": {
+        "height": 5322,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "placeholder \"Szukaj, np. statut, woda, 2025\" 3.9:1 (need 4.5:1) — text #7a7f79 on #fbf8f2"
+      },
+      {
+        "rule": "tight-leading",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "line-height 1.20x (need >=1.3)"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Role sizes: h2 16px, body 18px, h3 19px (largest adjacent step 1.13:1; target 1.25:1)"
+      },
+      {
+        "rule": "cream-palette",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "cream/beige page background rgb(251, 248, 242)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/opus-5-5-emil-design-eng-desktop-first.jpg",
+      "desktop-full": "shots/opus-5-5-emil-design-eng-desktop-full.jpg",
+      "mobile-first": "shots/opus-5-5-emil-design-eng-mobile-first.jpg",
+      "mobile-full": "shots/opus-5-5-emil-design-eng-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "opus-5-5-impeccable",
+    "log": {
+      "skillsInvoked": [
+        "impeccable"
+      ],
+      "toolCalls": 85,
+      "denied": [],
+      "results": 4,
+      "ok": true,
+      "apiMin": 14.5,
+      "turns": 46,
+      "costUsd": 5.509660399999999,
+      "tokens": {
+        "input": 152,
+        "output": 103206,
+        "cacheRead": 6263557,
+        "cacheWrite": 357254,
+        "total": 6724169
+      },
+      "models": [
+        {
+          "name": "claude-opus-5-5",
+          "input": 152,
+          "output": 103206,
+          "cacheRead": 6263557,
+          "cacheWrite": 357254,
+          "costUsd": 5.509660399999999
+        }
+      ],
+      "durationMin": 14.8,
+      "durationSource": "wall clock",
+      "agentMin": 8.7
+    },
+    "files": 11,
+    "bytes": {
+      "total": 175159,
+      "html": 47479,
+      "js": 7962,
+      "css": 22438,
+      "images": 0
+    },
+    "htmlLines": 647,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3316,
+        "violations": []
+      },
+      "mobile": {
+        "height": 5762,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "1.2:1 (need 4.5:1) — text #fedbd6 on #f7f9fc"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "1.4:1 (need 4.5:1) — text #c5d2e9 on #f7f9fc (and 2 more)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "1.0:1 (need 4.5:1) — text #fafcff on #f7f9fc (and 4 more)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "1.5:1 (need 4.5:1) — text #f6cd30 on #f7f9fc"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against border-top on top (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against border-top on top (no inset)"
+      },
+      {
+        "rule": "monotonous-spacing",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "~4px used 9/14 times (64%)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/opus-5-5-impeccable-desktop-first.jpg",
+      "desktop-full": "shots/opus-5-5-impeccable-desktop-full.jpg",
+      "mobile-first": "shots/opus-5-5-impeccable-mobile-first.jpg",
+      "mobile-full": "shots/opus-5-5-impeccable-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "opus-5-5-none",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 11,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 2.9,
+      "turns": 13,
+      "costUsd": 1.1505182000000005,
+      "tokens": {
+        "input": 20,
+        "output": 21430,
+        "cacheRead": 510871,
+        "cacheWrite": 77458,
+        "total": 609779
+      },
+      "models": [
+        {
+          "name": "claude-opus-5-5",
+          "input": 20,
+          "output": 21430,
+          "cacheRead": 510871,
+          "cacheWrite": 77458,
+          "costUsd": 1.1505182000000005
+        }
+      ],
+      "durationMin": 4.6,
+      "durationSource": "wall clock",
+      "agentMin": 4.6
+    },
+    "files": 1,
+    "bytes": {
+      "total": 35425,
+      "html": 35425,
+      "js": 8446,
+      "css": 14987,
+      "images": 0
+    },
+    "htmlLines": 631,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3541,
+        "violations": []
+      },
+      "mobile": {
+        "height": 7058,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 14px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 14px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 14px"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"alertbar\": children flush against bg on all sides (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"block\": children flush against border-top on top (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"block\": children flush against border-top on top (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"block\": children flush against border-top on top (no inset)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/opus-5-5-none-desktop-first.jpg",
+      "desktop-full": "shots/opus-5-5-none-desktop-full.jpg",
+      "mobile-first": "shots/opus-5-5-none-mobile-first.jpg",
+      "mobile-full": "shots/opus-5-5-none-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "opus-5-5-ponytail",
+    "log": {
+      "skillsInvoked": [
+        "ponytail"
+      ],
+      "toolCalls": 3,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 0.8,
+      "turns": 5,
+      "costUsd": 0.32746679999999995,
+      "tokens": {
+        "input": 10,
+        "output": 5771,
+        "cacheRead": 178834,
+        "cacheWrite": 22030,
+        "total": 206645
+      },
+      "models": [
+        {
+          "name": "claude-opus-5-5",
+          "input": 10,
+          "output": 5771,
+          "cacheRead": 178834,
+          "cacheWrite": 22030,
+          "costUsd": 0.32746679999999995
+        }
+      ],
+      "durationMin": 0.9,
+      "durationSource": "wall clock",
+      "agentMin": 0.8
+    },
+    "files": 1,
+    "bytes": {
+      "total": 9868,
+      "html": 9868,
+      "js": 881,
+      "css": 3664,
+      "images": 0
+    },
+    "htmlLines": 214,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 2171,
+        "violations": []
+      },
+      "mobile": {
+        "height": 3292,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 8px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 8px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 8px"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"emergency\": children flush against bg on top/bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"docs\": children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cream-palette",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "cream/beige page background rgb(255, 253, 247)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/opus-5-5-ponytail-desktop-first.jpg",
+      "desktop-full": "shots/opus-5-5-ponytail-desktop-full.jpg",
+      "mobile-first": "shots/opus-5-5-ponytail-mobile-first.jpg",
+      "mobile-full": "shots/opus-5-5-ponytail-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "sonnet-5-5-design-taste-frontend",
+    "log": {
+      "skillsInvoked": [
+        "design-taste-frontend"
+      ],
+      "toolCalls": 59,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 4.9,
+      "turns": 61,
+      "costUsd": 1.5728001000000003,
+      "tokens": {
+        "input": 90,
+        "output": 34634,
+        "cacheRead": 5887161,
+        "cacheWrite": 159391,
+        "total": 6081276
+      },
+      "models": [
+        {
+          "name": "claude-sonnet-5-5",
+          "input": 90,
+          "output": 34634,
+          "cacheRead": 5887161,
+          "cacheWrite": 159391,
+          "costUsd": 1.5728001000000003
+        }
+      ],
+      "durationMin": 16.5,
+      "durationSource": "wall clock",
+      "agentMin": 16.4
+    },
+    "files": 20,
+    "bytes": {
+      "total": 666166,
+      "html": 19158,
+      "js": 146029,
+      "css": 260688,
+      "images": 245130
+    },
+    "htmlLines": 317,
+    "external": [
+      "https://fonts.googleapis.com",
+      "https://fonts.gstatic.com"
+    ],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "axe": {
+      "desktop": {
+        "height": 5400,
+        "violations": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      },
+      "mobile": {
+        "height": 7924,
+        "violations": [
+          {
+            "id": "aria-prohibited-attr",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<li>: children flush against border-bottom on bottom (no inset)"
+      },
+      {
+        "rule": "pulsing-dot",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": ".ly-live::before — 7x7px dot with infinite \"ly-pulse\" animation"
+      },
+      {
+        "rule": "radial-halo",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "radial-gradient halo (#c8b092 → transparent) on dark page"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "category": "slop",
+        "severity": "advisory",
+        "snippet": "repeating-gradient decorative stripes"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/sonnet-5-5-design-taste-frontend-desktop-first.jpg",
+      "desktop-full": "shots/sonnet-5-5-design-taste-frontend-desktop-full.jpg",
+      "mobile-first": "shots/sonnet-5-5-design-taste-frontend-mobile-first.jpg",
+      "mobile-full": "shots/sonnet-5-5-design-taste-frontend-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "sonnet-5-5-emil-design-eng",
+    "log": {
+      "skillsInvoked": [
+        "emil-design-eng"
+      ],
+      "toolCalls": 2,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 1.1,
+      "turns": 4,
+      "costUsd": 0.27231520000000004,
+      "tokens": {
+        "input": 8,
+        "output": 11334,
+        "cacheRead": 138192,
+        "cacheWrite": 36285,
+        "total": 185819
+      },
+      "models": [
+        {
+          "name": "claude-sonnet-5-5",
+          "input": 8,
+          "output": 11334,
+          "cacheRead": 138192,
+          "cacheWrite": 36285,
+          "costUsd": 0.27231520000000004
+        }
+      ],
+      "durationMin": 1.2,
+      "durationSource": "agent time",
+      "agentMin": 1.2
+    },
+    "files": 1,
+    "bytes": {
+      "total": 20405,
+      "html": 20405,
+      "js": 1664,
+      "css": 7968,
+      "images": 0
+    },
+    "htmlLines": 319,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3018,
+        "violations": []
+      },
+      "mobile": {
+        "height": 4526,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 8px + border-radius: 14px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 8px + border-radius: 14px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 8px + border-radius: 14px"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Role sizes: body 18px, h3 19.2px, h2 21.6px (largest adjacent step 1.13:1; target 1.25:1)"
+      },
+      {
+        "rule": "cream-palette",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "cream/beige page background rgb(251, 247, 239)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/sonnet-5-5-emil-design-eng-desktop-first.jpg",
+      "desktop-full": "shots/sonnet-5-5-emil-design-eng-desktop-full.jpg",
+      "mobile-first": "shots/sonnet-5-5-emil-design-eng-mobile-first.jpg",
+      "mobile-full": "shots/sonnet-5-5-emil-design-eng-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "sonnet-5-5-impeccable",
+    "log": {
+      "skillsInvoked": [
+        "impeccable"
+      ],
+      "toolCalls": 17,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 3.6,
+      "turns": 22,
+      "costUsd": 0.7527608000000001,
+      "tokens": {
+        "input": 30,
+        "output": 30831,
+        "cacheRead": 1052948,
+        "cacheWrite": 84774,
+        "total": 1168583
+      },
+      "models": [
+        {
+          "name": "claude-sonnet-5-5",
+          "input": 30,
+          "output": 30831,
+          "cacheRead": 1052948,
+          "cacheWrite": 84774,
+          "costUsd": 0.7527608000000001
+        }
+      ],
+      "durationMin": 3.9,
+      "durationSource": "wall clock",
+      "agentMin": 3.9
+    },
+    "files": 5,
+    "bytes": {
+      "total": 69223,
+      "html": 35083,
+      "js": 6652,
+      "css": 14432,
+      "images": 0
+    },
+    "htmlLines": 555,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3890,
+        "violations": []
+      },
+      "mobile": {
+        "height": 5759,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "tight-leading",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "line-height 1.15x (need >=1.3)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"alarm\": children flush against border+bg on all sides (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<span> \"box\": children flush against border+outline+bg on all sides (no inset)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/sonnet-5-5-impeccable-desktop-first.jpg",
+      "desktop-full": "shots/sonnet-5-5-impeccable-desktop-full.jpg",
+      "mobile-first": "shots/sonnet-5-5-impeccable-mobile-first.jpg",
+      "mobile-full": "shots/sonnet-5-5-impeccable-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "sonnet-5-5-none",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 1,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 0.9,
+      "turns": 2,
+      "costUsd": 0.3250982,
+      "tokens": {
+        "input": 4,
+        "output": 9569,
+        "cacheRead": 47362,
+        "cacheWrite": 56166,
+        "total": 113101
+      },
+      "models": [
+        {
+          "name": "claude-sonnet-5-5",
+          "input": 4,
+          "output": 9569,
+          "cacheRead": 47362,
+          "cacheWrite": 56166,
+          "costUsd": 0.3250982
+        }
+      ],
+      "durationMin": 1,
+      "durationSource": "wall clock",
+      "agentMin": 1
+    },
+    "files": 1,
+    "bytes": {
+      "total": 17153,
+      "html": 17153,
+      "js": 3353,
+      "css": 6650,
+      "images": 0
+    },
+    "htmlLines": 332,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3250,
+        "violations": []
+      },
+      "mobile": {
+        "height": 5584,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"alarm\": children flush against bg on all sides (no inset)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/sonnet-5-5-none-desktop-first.jpg",
+      "desktop-full": "shots/sonnet-5-5-none-desktop-full.jpg",
+      "mobile-first": "shots/sonnet-5-5-none-mobile-first.jpg",
+      "mobile-full": "shots/sonnet-5-5-none-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "sonnet-5-5-ponytail",
+    "log": {
+      "skillsInvoked": [
+        "ponytail"
+      ],
+      "toolCalls": 2,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 0.7,
+      "turns": 4,
+      "costUsd": 0.1644903,
+      "tokens": {
+        "input": 8,
+        "output": 6176,
+        "cacheRead": 129183,
+        "cacheWrite": 22449,
+        "total": 157816
+      },
+      "models": [
+        {
+          "name": "claude-sonnet-5-5",
+          "input": 8,
+          "output": 6176,
+          "cacheRead": 129183,
+          "cacheWrite": 22449,
+          "costUsd": 0.1644903
+        }
+      ],
+      "durationMin": 0.7,
+      "durationSource": "wall clock",
+      "agentMin": 0.7
+    },
+    "files": 1,
+    "bytes": {
+      "total": 10495,
+      "html": 10495,
+      "js": 1226,
+      "css": 4124,
+      "images": 0
+    },
+    "htmlLines": 193,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 2171,
+        "violations": []
+      },
+      "mobile": {
+        "height": 3331,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 12px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 12px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 12px"
+      },
+      {
+        "rule": "tight-leading",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "line-height 1.20x (need >=1.3)"
+      },
+      {
+        "rule": "cream-palette",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "cream/beige page background rgb(251, 248, 241)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/sonnet-5-5-ponytail-desktop-first.jpg",
+      "desktop-full": "shots/sonnet-5-5-ponytail-desktop-full.jpg",
+      "mobile-first": "shots/sonnet-5-5-ponytail-mobile-first.jpg",
+      "mobile-full": "shots/sonnet-5-5-ponytail-mobile-full.jpg"
+    }
+  }
+]

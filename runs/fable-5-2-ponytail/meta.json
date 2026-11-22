@@ -1,0 +1,76 @@
+{
+  "id": "fable-5-2-ponytail",
+  "log": {
+    "skillsInvoked": [
+      "ponytail"
+    ],
+    "toolCalls": 2,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 1.2,
+    "turns": 4,
+    "costUsd": 0.6963394,
+    "tokens": {
+      "input": 8,
+      "output": 8150,
+      "cacheRead": 136417,
+      "cacheWrite": 21437,
+      "total": 166012
+    },
+    "models": [
+      {
+        "name": "claude-fable-5-2",
+        "input": 8,
+        "output": 8150,
+        "cacheRead": 136417,
+        "cacheWrite": 21437,
+        "costUsd": 0.6963394
+      }
+    ],
+    "durationMin": 1.3,
+    "durationSource": "wall clock",
+    "agentMin": 1.2
+  },
+  "files": 1,
+  "bytes": {
+    "total": 13088,
+    "html": 13088,
+    "js": 873,
+    "css": 5208,
+    "images": 0
+  },
+  "htmlLines": 307,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 2591,
+      "violations": []
+    },
+    "mobile": {
+      "height": 4235,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"awaria\": children flush against bg on top/bottom (no inset)"
+    },
+    {
+      "rule": "cream-palette",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "cream/beige page background rgb(251, 247, 238)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/fable-5-2-ponytail-desktop-first.jpg",
+    "desktop-full": "shots/fable-5-2-ponytail-desktop-full.jpg",
+    "mobile-first": "shots/fable-5-2-ponytail-mobile-first.jpg",
+    "mobile-full": "shots/fable-5-2-ponytail-mobile-full.jpg"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "gallery", "runtimeExecutable": "node", "runtimeArgs": ["scripts/serve.mjs", "4410"], "port": 4410 }
+  ]
+}

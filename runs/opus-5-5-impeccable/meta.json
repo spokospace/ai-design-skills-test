@@ -1,0 +1,106 @@
+{
+  "id": "opus-5-5-impeccable",
+  "log": {
+    "skillsInvoked": [
+      "impeccable"
+    ],
+    "toolCalls": 85,
+    "denied": [],
+    "results": 4,
+    "ok": true,
+    "apiMin": 14.5,
+    "turns": 46,
+    "costUsd": 5.509660399999999,
+    "tokens": {
+      "input": 152,
+      "output": 103206,
+      "cacheRead": 6263557,
+      "cacheWrite": 357254,
+      "total": 6724169
+    },
+    "models": [
+      {
+        "name": "claude-opus-5-5",
+        "input": 152,
+        "output": 103206,
+        "cacheRead": 6263557,
+        "cacheWrite": 357254,
+        "costUsd": 5.509660399999999
+      }
+    ],
+    "durationMin": 14.8,
+    "durationSource": "wall clock",
+    "agentMin": 8.7
+  },
+  "files": 11,
+  "bytes": {
+    "total": 175159,
+    "html": 47479,
+    "js": 7962,
+    "css": 22438,
+    "images": 0
+  },
+  "htmlLines": 647,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3316,
+      "violations": []
+    },
+    "mobile": {
+      "height": 5762,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "1.2:1 (need 4.5:1) — text #fedbd6 on #f7f9fc"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "1.4:1 (need 4.5:1) — text #c5d2e9 on #f7f9fc (and 2 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "1.0:1 (need 4.5:1) — text #fafcff on #f7f9fc (and 4 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "1.5:1 (need 4.5:1) — text #f6cd30 on #f7f9fc"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "monotonous-spacing",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "~4px used 9/14 times (64%)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/opus-5-5-impeccable-desktop-first.jpg",
+    "desktop-full": "shots/opus-5-5-impeccable-desktop-full.jpg",
+    "mobile-first": "shots/opus-5-5-impeccable-mobile-first.jpg",
+    "mobile-full": "shots/opus-5-5-impeccable-mobile-full.jpg"
+  }
+}

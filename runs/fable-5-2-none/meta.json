@@ -1,0 +1,113 @@
+{
+  "id": "fable-5-2-none",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 10,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 5,
+    "turns": 15,
+    "costUsd": 2.11147,
+    "tokens": {
+      "input": 10,
+      "output": 32841,
+      "cacheRead": 264510,
+      "cacheWrite": 46553,
+      "total": 343914
+    },
+    "models": [
+      {
+        "name": "claude-fable-5-2",
+        "input": 10,
+        "output": 32841,
+        "cacheRead": 264510,
+        "cacheWrite": 46553,
+        "costUsd": 2.11147
+      }
+    ],
+    "durationMin": 5.3,
+    "durationSource": "wall clock",
+    "agentMin": 5.3
+  },
+  "files": 1,
+  "bytes": {
+    "total": 38859,
+    "html": 38859,
+    "js": 6376,
+    "css": 14316,
+    "images": 0
+  },
+  "htmlLines": 843,
+  "external": [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
+  ],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3617,
+      "violations": []
+    },
+    "mobile": {
+      "height": 5072,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 8px + border-radius: 14px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 8px + border-radius: 14px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 8px + border-radius: 14px"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "8px functional text \"+48\" (below 11px floor)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: fraunces"
+    },
+    {
+      "rule": "cream-palette",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "cream/beige page background rgb(250, 245, 233)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/fable-5-2-none-desktop-first.jpg",
+    "desktop-full": "shots/fable-5-2-none-desktop-full.jpg",
+    "mobile-first": "shots/fable-5-2-none-mobile-first.jpg",
+    "mobile-full": "shots/fable-5-2-none-mobile-full.jpg"
+  }
+}

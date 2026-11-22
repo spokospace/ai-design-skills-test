@@ -1,0 +1,100 @@
+{
+  "id": "fable-5-2-impeccable",
+  "log": {
+    "skillsInvoked": [
+      "impeccable"
+    ],
+    "toolCalls": 49,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 13,
+    "turns": 30,
+    "costUsd": 7.3624492,
+    "tokens": {
+      "input": 50,
+      "output": 84261,
+      "cacheRead": 1904306,
+      "cacheWrite": 294227,
+      "total": 2282844
+    },
+    "models": [
+      {
+        "name": "claude-fable-5-2",
+        "input": 50,
+        "output": 84261,
+        "cacheRead": 1904306,
+        "cacheWrite": 294227,
+        "costUsd": 7.3624492
+      }
+    ],
+    "durationMin": 11.1,
+    "durationSource": "wall clock",
+    "agentMin": 11
+  },
+  "files": 3,
+  "bytes": {
+    "total": 91569,
+    "html": 38469,
+    "js": 7311,
+    "css": 15407,
+    "images": 0
+  },
+  "htmlLines": 706,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3539,
+      "violations": []
+    },
+    "mobile": {
+      "height": 4802,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"dado\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<ol> \"notices\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<li> \"notice\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<li> \"notice\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<li> \"notice\": children flush against border-bottom on bottom (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"dado\": children flush against bg on all sides (no inset)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/fable-5-2-impeccable-desktop-first.jpg",
+    "desktop-full": "shots/fable-5-2-impeccable-desktop-full.jpg",
+    "mobile-first": "shots/fable-5-2-impeccable-mobile-first.jpg",
+    "mobile-full": "shots/fable-5-2-impeccable-mobile-full.jpg"
+  }
+}

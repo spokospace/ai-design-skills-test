@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SM „Słoneczne Wzgórze” – strona demonstracyjna</title>
+<meta name="description" content="Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”: pogotowie awaryjne, godziny pracy biura, ogłoszenia i dokumenty. Strona demonstracyjna.">
+<style>
+  :root {
+    --bg: #fffdf7; --text: #1f2328; --muted: #4a5058; --line: #d9d4c7;
+    --brand: #8a4b00; --brand-bg: #fff1d6; --alert: #b3261e; --alert-bg: #fdecea; --card: #fff;
+  }
+  * { box-sizing: border-box; }
+  html { font-size: 112.5%; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 1rem/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--brand); text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #1a5fb4; outline-offset: 2px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+  .skip { position: absolute; left: -9999px; }
+  .skip:focus { left: 16px; top: 8px; background: #fff; padding: 8px 12px; z-index: 10; }
+
+  .emergency { background: var(--alert); color: #fff; }
+  .emergency .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding-block: 10px; }
+  .emergency a { color: #fff; font-weight: 700; font-size: 1.3rem; white-space: nowrap; }
+
+  header.site { border-bottom: 1px solid var(--line); background: var(--card); }
+  header.site .wrap { padding-block: 20px; }
+  header.site h1 { margin: 0; font-size: 1.6rem; line-height: 1.25; }
+  header.site p { margin: 4px 0 0; color: var(--muted); }
+  nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; padding: 0; }
+  nav a { display: inline-block; padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; background: var(--bg); }
+
+  main section { padding-block: 28px; border-bottom: 1px solid var(--line); }
+  h2 { font-size: 1.4rem; margin: 0 0 16px; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; }
+  .card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+
+  .phones .big { display: block; font-size: 1.5rem; font-weight: 700; text-decoration: none; padding: 6px 0; }
+  .phones .card.sos { background: var(--alert-bg); border-color: var(--alert); }
+  .phones .card.sos .big { color: var(--alert); }
+  .hours { border-collapse: collapse; width: 100%; }
+  .hours th, .hours td { text-align: left; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .hours th { font-weight: 400; padding-right: 12px; }
+  .hours td { font-weight: 700; white-space: nowrap; }
+
+  .news { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .news li { background: var(--card); border: 1px solid var(--line); border-left: 6px solid var(--brand); border-radius: 8px; padding: 14px 18px; }
+  .news time { display: block; font-weight: 700; color: var(--brand); }
+  .news p { margin: 4px 0 0; }
+
+  .search label { display: block; font-weight: 600; margin-bottom: 6px; }
+  .search input { width: 100%; font: inherit; padding: 12px 14px; border: 2px solid var(--muted); border-radius: 8px; }
+  .docs h3 { font-size: 1.1rem; margin: 24px 0 8px; }
+  .docs ul { list-style: none; margin: 0; padding: 0; }
+  .docs li a { display: flex; justify-content: space-between; gap: 12px; padding: 12px 4px; border-bottom: 1px solid var(--line); text-decoration: none; }
+  .docs li a span:first-child { text-decoration: underline; text-underline-offset: 3px; }
+  .docs li a span:last-child { color: var(--muted); white-space: nowrap; font-size: .9rem; }
+  #no-results { color: var(--muted); }
+
+  footer { padding-block: 28px; color: var(--muted); font-size: .9rem; }
+  .demo { background: var(--brand-bg); border: 1px solid var(--brand); border-radius: 8px; padding: 12px 16px; color: var(--text); }
+</style>
+</head>
+<body>
+<a class="skip" href="#tresc">Przejdź do treści</a>
+
+<div class="emergency" role="region" aria-label="Pogotowie awaryjne">
+  <div class="wrap">
+    <span>Awaria wody, gazu lub windy? Pogotowie całą dobę:</span>
+    <a href="tel:+48000000999">+48 000 000 999</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <h1>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</h1>
+    <p>Osiedla Słoneczne Wzgórze i Przylesie · 6 budynków · 412 mieszkań</p>
+    <nav aria-label="Na tej stronie">
+      <ul>
+        <li><a href="#kontakt">Kontakt i godziny biura</a></li>
+        <li><a href="#ogloszenia">Ogłoszenia</a></li>
+        <li><a href="#dokumenty">Dokumenty</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="tresc">
+  <section id="kontakt">
+    <div class="wrap">
+      <h2>Kontakt i godziny pracy biura</h2>
+      <div class="grid phones">
+        <div class="card sos">
+          <h3>Pogotowie awaryjne – całą dobę</h3>
+          <a class="big" href="tel:+48000000999">+48 000 000 999</a>
+          <p>Woda, gaz, winda. Przy zapachu gazu najpierw dzwoń pod <a href="tel:112">112</a>.</p>
+        </div>
+        <div class="card">
+          <h3>Biuro spółdzielni</h3>
+          <a class="big" href="tel:+48000000001">+48 000 000 001</a>
+          <p>E-mail: <a href="mailto:biuro@example.com">biuro@example.com</a><br>
+          ul. Przykładowa 1, 00-000 Miasto</p>
+        </div>
+        <div class="card">
+          <h3>Godziny pracy biura</h3>
+          <table class="hours">
+            <tr><th scope="row">Poniedziałek</th><td>10:00–18:00</td></tr>
+            <tr><th scope="row">Wtorek–piątek</th><td>7:30–15:30</td></tr>
+            <tr><th scope="row">Sobota, niedziela</th><td>nieczynne</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ogloszenia">
+    <div class="wrap">
+      <h2>Ogłoszenia</h2>
+      <ul class="news">
+        <li>
+          <time datetime="2026-12-03">3 grudnia 2026, 8:00–14:00</time>
+          <p><strong>Przerwa w dostawie zimnej wody</strong> w budynku Przylesie 4.</p>
+        </li>
+        <li>
+          <time datetime="2026-12-07">7–18 grudnia 2026</time>
+          <p><strong>Roczne przeglądy instalacji gazowej</strong> we wszystkich budynkach. Harmonogram wisi na klatkach schodowych.</p>
+        </li>
+        <li>
+          <time datetime="2026-12-24">24 i 31 grudnia 2026</time>
+          <p><strong>Biuro nieczynne.</strong> Pogotowie awaryjne działa normalnie: <a href="tel:+48000000999">+48 000 000 999</a>.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="dokumenty" class="docs">
+    <div class="wrap">
+      <h2>Dokumenty spółdzielni</h2>
+      <p>Dokumenty udostępniane zgodnie z art. 8<sup>1</sup> ust. 3 ustawy o spółdzielniach mieszkaniowych. Pliki PDF.</p>
+      <div class="search">
+        <label for="q">Szukaj dokumentu</label>
+        <input id="q" type="search" placeholder="np. woda, statut, 2025" autocomplete="off">
+      </div>
+      <p id="no-results" role="status" aria-live="polite"></p>
+
+      <div class="group">
+        <h3>Statut</h3>
+        <ul>
+          <li><a href="#"><span>Statut Spółdzielni (tekst jednolity)</span><span>marzec 2026</span></a></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h3>Regulaminy</h3>
+        <ul>
+          <li><a href="#"><span>Regulamin porządku domowego</span><span>PDF</span></a></li>
+          <li><a href="#"><span>Regulamin rozliczania kosztów zużycia wody</span><span>PDF</span></a></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h3>Uchwały i protokoły organów spółdzielni</h3>
+        <ul>
+          <li><a href="#"><span>Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy</span><span>2026</span></a></li>
+          <li><a href="#"><span>Protokół z Walnego Zgromadzenia</span><span>czerwiec 2026</span></a></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h3>Protokoły lustracji</h3>
+        <ul>
+          <li><a href="#"><span>Protokół lustracji za lata 2023–2025</span><span>PDF</span></a></li>
+        </ul>
+      </div>
+      <div class="group">
+        <h3>Sprawozdania finansowe</h3>
+        <ul>
+          <li><a href="#"><span>Sprawozdanie finansowe za 2025 rok</span><span>PDF</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="demo"><strong>To jest strona demonstracyjna.</strong> Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” nie istnieje, a wszystkie dane na tej stronie (adres, telefony, e-mail, ogłoszenia, dokumenty) są zmyślone.</p>
+    <p>SM „Słoneczne Wzgórze” · ul. Przykładowa 1, 00-000 Miasto · <a href="tel:+48000000001">+48 000 000 001</a> · <a href="mailto:biuro@example.com">biuro@example.com</a></p>
+  </div>
+</footer>
+
+<script>
+  // Filters documents by name; diacritics ignored so "wode" finds "wodę".
+  const norm = s => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l');
+  const q = document.getElementById('q');
+  const status = document.getElementById('no-results');
+  q.addEventListener('input', () => {
+    const words = norm(q.value).split(/\s+/).filter(Boolean);
+    let total = 0;
+    document.querySelectorAll('.docs .group').forEach(g => {
+      let shown = 0;
+      g.querySelectorAll('li').forEach(li => {
+        const text = norm(g.querySelector('h3').textContent + ' ' + li.textContent);
+        const ok = words.every(w => text.includes(w));
+        li.hidden = !ok;
+        shown += ok;
+      });
+      g.hidden = !shown;
+      total += shown;
+    });
+    status.textContent = total ? '' : 'Nie znaleziono dokumentu. Zadzwoń do biura: +48 000 000 001.';
+  });
+</script>
+</body>
+</html>
