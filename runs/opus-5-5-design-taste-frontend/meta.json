@@ -18,13 +18,13 @@
     },
     "ok": false
   },
-  "files": 22,
+  "files": 21,
   "bytes": {
-    "total": 1588085,
+    "total": 1468969,
     "html": 28047,
     "js": 140017,
     "css": 261892,
-    "images": 1167360
+    "images": 1048244
   },
   "htmlLines": 369,
   "external": [

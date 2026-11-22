@@ -146,25 +146,45 @@ async function measure(browser, id) {
   // 1. Collect: copy only what the page requests (plus index.html).
   let server = await serve(src);
   let base = `http://127.0.0.1:${server.address().port}/`;
+  // `used` is one desktop visit (what the weight figures count); `copied` is
+  // everything any visit asks for, because a page may serve a different image
+  // crop to a phone or a high-density screen, plus the local files it links to.
   const used = new Set(['index.html']);
+  const copied = new Set(['index.html']);
   const external = new Set();
-  let ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
-  let page = await ctx.newPage();
-  page.on('request', (r) => {
-    const u = new URL(r.url());
-    if (u.origin === new URL(base).origin) used.add(decodeURIComponent(u.pathname).replace(/^\/+/, '') || 'index.html');
-    else if (u.protocol.startsWith('http')) external.add(u.origin);
-  });
-  await page.goto(base, { waitUntil: 'networkidle' });
-  await scrollThrough(page);
-  for (const w of [1024, 768, 390]) {
-    await page.setViewportSize({ width: w, height: 844 });
-    await page.waitForTimeout(300);
+  let ctx;
+  let page;
+  const visits = [
+    { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 },
+    { viewport: { width: 768, height: 1024 }, deviceScaleFactor: 2 },
+    { viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, isMobile: true, hasTouch: true },
+    { viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true },
+  ];
+  for (const [i, opts] of visits.entries()) {
+    ctx = await browser.newContext(opts);
+    page = await ctx.newPage();
+    page.on('request', (r) => {
+      const u = new URL(r.url());
+      if (u.origin === new URL(base).origin) {
+        const rel = decodeURIComponent(u.pathname).replace(/^\/+/, '') || 'index.html';
+        copied.add(rel);
+        if (i === 0) used.add(rel);
+      } else if (u.protocol.startsWith('http')) external.add(u.origin);
+    });
+    await page.goto(base, { waitUntil: 'networkidle' });
+    await scrollThrough(page);
+    if (i === 0) {
+      const linked = await page.evaluate(() => [...document.querySelectorAll('a[href]')].map((a) => a.getAttribute('href')));
+      for (const href of linked) {
+        if (/^(#|[a-z]+:|\/\/)/i.test(href)) continue;
+        copied.add(decodeURIComponent(href.split(/[?#]/)[0]).replace(/^\.?\/+/, ''));
+      }
+    }
+    await ctx.close();
   }
-  await ctx.close();
   server.close();
   fs.rmSync(dest, { recursive: true, force: true });
-  for (const rel of used) {
+  for (const rel of copied) {
     const from = path.join(src, rel);
     if (!fs.existsSync(from) || fs.statSync(from).isDirectory()) continue;
     fs.mkdirSync(path.dirname(path.join(dest, rel)), { recursive: true });
