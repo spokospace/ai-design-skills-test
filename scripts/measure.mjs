@@ -15,7 +15,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const WORK = process.env.RUNS_WORK ?? 'D:/AI/skill-runs';
+const WORK = process.env.RUNS_WORK ?? path.resolve(ROOT, '..', 'skill-runs');
 const OUT = path.join(ROOT, 'runs');
 const SHOTS = path.join(ROOT, 'shots');
 const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'];

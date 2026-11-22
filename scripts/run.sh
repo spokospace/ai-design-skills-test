@@ -9,7 +9,9 @@ set -euo pipefail
 
 model="$1"; skill="$2"
 root="$(cd "$(dirname "$0")/.." && pwd)"
-work="${RUNS_WORK:-/d/AI/skill-runs}"
+# Keep the work area outside your home folder: Claude Code reads CLAUDE.md
+# files from every parent folder of the run.
+work="${RUNS_WORK:-$root/../skill-runs}"
 cfg="${RUNS_CFG:?set RUNS_CFG to a config dir holding only .credentials.json}"
 skills_src="${SKILLS_SRC:?set SKILLS_SRC to the folder holding the installed skills}"
 
