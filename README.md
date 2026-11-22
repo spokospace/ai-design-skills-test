@@ -5,8 +5,10 @@ run in Claude Code on three models, once without a skill and once with each of
 four popular agent skills. Fifteen pages in total, kept here as they came out,
 with screenshots and a few measurements.
 
-It was made for the post [How I design websites and apps with AI](https://spoko.space/blog/designing-websites-and-apps-with-ai/)
-on spoko.space ([Polish version](https://spoko.space/pl/blog/projektowanie-stron-i-aplikacji-z-ai/)).
+The results are written up in [Do design skills fix AI-built pages? Four skills tested](https://spoko.space/blog/design-skills-for-ai-agents-tested/)
+on spoko.space ([Polish version](https://spoko.space/pl/blog/skille-projektowe-dla-agentow-ai-test/)).
+What a page from one prompt still lacks before it is a website is in
+[How I design websites and apps with AI](https://spoko.space/blog/designing-websites-and-apps-with-ai/).
 
 The cooperative does not exist. Its name, address, phone numbers and documents
 are made up, and every page says so in its footer.
@@ -32,9 +34,9 @@ A run with a skill gets one extra first line in the prompt, "Użyj skilla `<name
 
 ## What was measured
 
-`scripts/measure.mjs` serves each finished folder over HTTP, loads it in Chromium and copies only the files the page actually requested (Taste Skill copies about 37 MB of assets into the project and a page uses a handful). On that copy it records:
+`scripts/measure.mjs` serves each finished folder over HTTP, loads it in Chromium on a desktop, a tablet and a phone, and copies only the files the page actually requested or links to (Taste Skill copies about 37 MB of assets into the project and a page uses a handful). On that copy it records:
 
-- page weight: HTML, CSS, JavaScript and images, in bytes;
+- page weight: what one desktop visit downloads, split into HTML, CSS, JavaScript and images;
 - axe-core violations for WCAG 2.0, 2.1 and 2.2, levels A and AA, at 1440 and 390 px;
 - findings of Impeccable's own deterministic detector (`npx impeccable detect`), the "slop" rules;
 - console errors and requests to other origins;
@@ -52,8 +54,12 @@ export SKILLS_SRC=/path/to/skills       # design-taste-frontend/, impeccable/, p
 for m in claude-fable-5-2 claude-opus-5-5 claude-sonnet-5-5; do
   for s in none design-taste-frontend impeccable ponytail emil-design-eng; do echo "$m $s"; done
 done | xargs -P 4 -L 1 scripts/run.sh
-pnpm measure
+RUNS_WORK=../skill-runs pnpm measure   # copies each page into runs/, writes results.json and shots/
+node scripts/gallery.mjs               # rebuilds index.html
+node scripts/figures.mjs               # optional: the comparison figures used in the posts
 ```
+
+Keep the work folder (`RUNS_WORK`, by default `../skill-runs`) outside your home folder: Claude Code reads `CLAUDE.md` files from every parent folder of a run.
 
 ## Licence
 
