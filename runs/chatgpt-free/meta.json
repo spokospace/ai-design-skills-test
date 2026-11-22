@@ -1,0 +1,205 @@
+{
+  "id": "chatgpt-free",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": []
+  },
+  "files": 1,
+  "bytes": {
+    "total": 22298,
+    "html": 22298,
+    "js": 905,
+    "css": 10611,
+    "images": 0
+  },
+  "htmlLines": 45,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3429,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 2
+        }
+      ]
+    },
+    "mobile": {
+      "height": 4804,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 2
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.4:1 (need 4.5:1) — text #64736d on #edf1e9"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.4:1 (need 4.5:1) — text #64736d on #f0f2eb"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": ":hover state 1.5:1 (need 4.5:1) — text #2f6b59 on #1d5144"
+    },
+    {
+      "rule": "hero-eyebrow-chip",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "eyebrow chip (tracked-caps) \"Nasze wspólne miejsce\" above h1 \"Razem tworzymy dobre miejsce do życia.\""
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"topline\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"hero\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "extreme-negative-tracking",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "letter-spacing: -0.13em at 16px — \"Razem tworzymy dobre miejsce do życia.\""
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"stats\": children flush against border-bottom+bg on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"stat\": children flush against border-right on right (no inset)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"osiedla\" (below 11px floor)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"stat\": children flush against border-right on right (no inset)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"budynków\" (below 11px floor)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"stat\": children flush against border-right on right (no inset)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"mieszkań\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"Ważne · woda\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"Przeglądy techniczne\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"Organizacja pracy\" (below 11px floor)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: arial"
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Bądź na bieżąco\" above h2 \"Ogłoszenia i komunikaty\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Najważniejsze sprawy\" above h2 \"W czym możemy pomóc?\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Transparentność i dostęp\" above h2 \"Dokumenty spółdzielni\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Jesteśmy do dyspozycji\" above h2 \"Kontakt i godziny pracy\""
+    },
+    {
+      "rule": "cream-palette",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "cream/beige page background rgb(247, 245, 238)"
+    },
+    {
+      "rule": "dark-glow",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Colored box-shadow glow (#1b392f) on dark page"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/chatgpt-free-desktop-first.jpg",
+    "desktop-full": "shots/chatgpt-free-desktop-full.jpg",
+    "mobile-first": "shots/chatgpt-free-mobile-first.jpg",
+    "mobile-full": "shots/chatgpt-free-mobile-full.jpg"
+  }
+}

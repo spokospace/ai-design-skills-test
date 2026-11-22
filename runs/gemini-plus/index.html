@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</title>
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --primary-dark: #093358;
+      --accent-yellow: #fff3cd;
+      --accent-yellow-border: #ffe69c;
+      --alert-red: #d9534f;
+      --alert-red-dark: #b52b27;
+      --bg-main: #f8f9fa;
+      --bg-card: #ffffff;
+      --text-main: #212529;
+      --text-muted: #495057;
+      --border-color: #dee2e6;
+      --font-scale: 1rem;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: var(--font-scale);
+      line-height: 1.6;
+      color: var(--text-main);
+      background-color: var(--bg-main);
+    }
+
+    /* Pasek ułatwień dostępu */
+    .accessibility-bar {
+      background-color: #2b3035;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .accessibility-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn-acc {
+      background: #495057;
+      color: #fff;
+      border: 1px solid #6c757d;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      min-height: 38px;
+      min-width: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-acc:hover, .btn-acc:focus {
+      background: #6c757d;
+      outline: 3px solid #ffc107;
+    }
+
+    /* Wysoki kontrast */
+    body.high-contrast {
+      --bg-main: #000000;
+      --bg-card: #121212;
+      --text-main: #ffffff;
+      --text-muted: #e0e0e0;
+      --primary: #ffff00;
+      --primary-dark: #ffff00;
+      --border-color: #ffffff;
+      --accent-yellow: #333300;
+      --accent-yellow-border: #ffff00;
+      --alert-red: #ff0000;
+    }
+
+    body.high-contrast a {
+      color: #ffff00 !important;
+    }
+
+    body.high-contrast .btn-emergency {
+      background-color: #ff0000 !important;
+      color: #ffffff !important;
+      border: 2px solid #ffffff !important;
+    }
+
+    body.high-contrast .header-main {
+      background-color: #000000;
+      border-bottom: 2px solid #ffffff;
+    }
+
+    /* Nagłówek i nawigacja */
+    header {
+      background-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .header-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.2rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo-container h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .logo-container p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      background-color: var(--primary-dark);
+      border-bottom: 3px solid rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .nav-container a {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 1rem 1.2rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: background-color 0.2s;
+      font-size: 1.05rem;
+    }
+
+    .nav-container a:hover, .nav-container a:focus {
+      background-color: rgba(255, 255, 255, 0.2);
+      outline: 2px solid #ffc107;
+    }
+
+    /* Kontener główny */
+    main {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 1rem;
+    }
+
+    /* Sekcja awaryjna (Szybka Pomoc) */
+    .emergency-banner {
+      background-color: #fff0f0;
+      border: 3px solid var(--alert-red);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .emergency-info h2 {
+      color: var(--alert-red);
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .emergency-info p {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .btn-emergency {
+      background-color: var(--alert-red);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.4rem;
+      font-weight: 800;
+      padding: 0.8rem 1.5rem;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.1s, background-color 0.2s;
+    }
+
+    .btn-emergency:hover, .btn-emergency:focus {
+      background-color: var(--alert-red-dark);
+      transform: scale(1.02);
+      outline: 3px solid #000;
+    }
+
+    /* Grid sekcji głównych */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Ogłoszenia */
+    .announcement-list {
+      list-style: none;
+    }
+
+    .announcement-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .announcement-item:last-child {
+      border-bottom: none;
+    }
+
+    .announcement-date {
+      display: inline-block;
+      background-color: var(--accent-yellow);
+      border: 1px solid var(--accent-yellow-border);
+      color: #856404;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      margin-bottom: 5px;
+    }
+
+    .announcement-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    /* Wyszukiwarka i filtry dokumentów */
+    .doc-controls {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .filter-btn {
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .doc-list {
+      list-style: none;
+    }
+
+    .doc-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border-color);
+      gap: 10px;
+    }
+
+    .doc-item:last-child {
+      border-bottom: none;
+    }
+
+    .doc-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .doc-name {
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .doc-category {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .btn-download {
+      background-color: var(--bg-main);
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: 6px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .btn-download:hover, .btn-download:focus {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Kontakt i Biuro */
+    .contact-info p {
+      margin-bottom: 0.8rem;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .hours-table th, .hours-table td {
+      padding: 6px 0;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    /* Stopka */
+    footer {
+      background-color: #212529;
+      color: #f8f9fa;
+      padding: 2rem 1rem;
+      margin-top: 40px;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .demo-notice {
+      background-color: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffe69c;
+      padding: 1rem;
+      border-radius: var(--radius);
+      margin-top: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pasek ułatwień dostępu dla seniorów -->
+  <div class="accessibility-bar" aria-label="Ułatwienia dostępu">
+    <span>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</span>
+    <div class="accessibility-controls">
+      <span>Rozmiar tekstu:</span>
+      <button class="btn-acc" onclick="changeFontSize(1)" title="Powiększ tekst" aria-label="Powiększ tekst">A+</button>
+      <button class="btn-acc" onclick="changeFontSize(-1)" title="Pomniejsz tekst" aria-label="Pomniejsz tekst">A-</button>
+      <button class="btn-acc" onclick="toggleContrast()" title="Włącz/Wyłącz wysoki kontrast" aria-label="Wysoki kontrast">👁 Контраст</button>
+    </div>
+  </div>
+
+  <!-- Nagłówek -->
+  <header>
+    <div class="header-main">
+      <div class="logo-container">
+        <h1>SM „Słoneczne Wzgórze”</h1>
+        <p>Obsługa osiedli: Słoneczne Wzgórze oraz Przylesie (6 budynków, 412 mieszkań)</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Nawigacja -->
+  <nav aria-label="Nawigacja główna">
+    <div class="nav-container">
+      <a href="#pogotowie">🚨 POGOTOWIE</a>
+      <a href="#ogloszenia">📢 Ogłoszenia</a>
+      <a href="#godziny">🕒 Godziny pracy</a>
+      <a href="#dokumenty">📄 Dokumenty</a>
+      <a href="#kontakt">📞 Kontakt</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- Szybki kontakt awaryjny (Priorytet dla seniorów) -->
+    <section id="pogotowie" class="emergency-banner" aria-label="Pogotowie Awaryjne">
+      <div class="emergency-info">
+        <h2>🚨 POGOTOWIE AWARYJNE (24/7)</h2>
+        <p>Awarie wody, gazu, prądu oraz wind – zgłoszenia całodobowe</p>
+      </div>
+      <a href="tel:+48000000999" class="btn-emergency" aria-label="Zadzwoń na pogotowie awaryjne pod numer +48 000 000 999">
+        📞 +48 000 000 999
+      </a>
+    </section>
+
+    <!-- Ogłoszenia i Kontakt w 2 kolumnach -->
+    <div class="grid-2">
+      
+      <!-- Komunikaty i Ogłoszenia -->
+      <section id="ogloszenia" class="card" aria-labelledby="head-ogloszenia">
+        <h2 id="head-ogloszenia" class="card-title">📢 Ważne Ogłoszenia</h2>
+        <ul class="announcement-list">
+          <li class="announcement-item">
+            <span class="announcement-date">3 grudnia 2026 (8:00 – 14:00)</span>
+            <div class="announcement-title">Przerwa w dostawie zimnej wody</div>
+            <p>Dotyczy wyłącznie budynku <strong>Przylesie 4</strong>. Prosimy o wcześniejsze zabezpieczenie wody do celów bytowych.</p>
+          </li>
+          <li class="announcement-item">
+            <span class="announcement-date">7 – 18 grudnia 2026</span>
+            <div class="announcement-title">Roczne przeglądy instalacji gazowej</div>
+            <p>Przeglądy będą prowadzone we wszystkich budynkach. Dokładny harmonogram dla poszczególnych klatek został rozwieszony na tablicach ogłoszeń w klatkach schodowych.</p>
+          </li>
+          <li class="announcement-item">
+            <span class="announcement-date">24 i 31 grudnia 2026</span>
+            <div class="announcement-title">Biuro Spółdzielni nieczynne</div>
+            <p>Informujemy, że w Wigilię oraz w Sylwestra biuro spółdzielni będzie nieczynne. W sprawach pilnych prosimy o kontakt z Pogotowiem Awaryjnym.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Godziny pracy biura i Kontakt -->
+      <section id="godziny" class="card" aria-labelledby="head-kontakt">
+        <h2 id="head-kontakt" class="card-title">🏢 Biuro i Kontakt</h2>
+        <div class="contact-info">
+          <p><strong>Adres biura:</strong><br>ul. Przykładowa 1, 00-000 Miasto</p>
+          <p><strong>Telefon do biura:</strong><br><a href="tel:+48000000001" style="font-size: 1.2rem; font-weight: bold; color: var(--primary);">+48 000 000 001</a></p>
+          <p><strong>E-mail:</strong><br><a href="mailto:biuro@example.com">biuro@example.com</a></p>
+          
+          <h3 style="margin-top: 15px; font-size: 1.1rem; color: var(--primary);">Godziny przyjmowania interesantów:</h3>
+          <table class="hours-table" aria-label="Godziny otwarcia biura">
+            <tbody>
+              <tr>
+                <td><strong>Poniedziałek:</strong></td>
+                <td>10:00 – 18:00</td>
+              </tr>
+              <tr>
+                <td><strong>Wtorek – Piątek:</strong></td>
+                <td>7:30 – 15:30</td>
+              </tr>
+              <tr>
+                <td><strong>Sobota – Niedziela:</strong></td>
+                <td>Nieczynne</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Dokumenty Spółdzielni (Wyszukiwarka i Wymogi Prawne) -->
+    <section id="dokumenty" class="card" aria-labelledby="head-dokumenty">
+      <h2 id="head-dokumenty" class="card-title">📄 Dokumenty Spółdzielni (art. 8¹ ust. 3 ustawy o SM)</h2>
+      <p style="margin-bottom: 15px;">Poniżej znajdują się Statut, regulaminy, uchwały, protokoły oraz sprawozdania spółdzielni. Skorzystaj z wyszukiwarki lub filtrów, aby szybko znaleźć dokument.</p>
+
+      <div class="doc-controls">
+        <input type="text" id="docSearch" class="search-input" placeholder="🔍 Wpisz nazwę dokumentu, np. statut, woda, gaz..." onkeyup="filterDocs()" aria-label="Wyszukaj dokument">
+        <div class="filter-tags">
+          <button class="filter-btn active" onclick="filterCategory('all', this)">Wszystkie</button>
+          <button class="filter-btn" onclick="filterCategory('statut', this)">Statut i Regulaminy</button>
+          <button class="filter-btn" onclick="filterCategory('uchwaly', this)">Uchwały</button>
+          <button class="filter-btn" onclick="filterCategory('protokoly', this)">Protokoły i Sprawozdania</button>
+        </div>
+      </div>
+
+      <ul class="doc-list" id="docList">
+        <li class="doc-item" data-category="statut">
+          <div class="doc-info">
+            <a href="#" class="doc-name">Statut Spółdzielni (tekst jednolity, marzec 2026)</a>
+            <span class="doc-category">Kategoria: Statut i Regulaminy</span>
+          </div>
+          <a href="#" class="btn-download" aria-label="Pobierz Statut Spółdzielni">Pobierz PDF</a>
+        </li>
+        <li class="doc-item" data-category="statut">
+          <div class="doc-info">
+            <a href="#" class="doc-name">Regulamin porządku domowego</a>
+            <span class="doc-category">Kategoria: Statut i Regulaminy</span>
+          </div>
+          <a href="#" class="btn-download" aria-label="Pobierz Regulamin porządku domowego">Pobierz PDF</a>
+        </li>
+        <li class="doc-item" data-category="statut">
+          <div class="doc-info">
+            <a href="#" class="doc-name">Regulamin rozliczania kosztów zużycia wody</a>
+            <span class="doc-category">Kategoria: Statut i Regulaminy</span>
+          </div>
+          <a href="#" class="btn-download" aria-label="Pobierz Regulamin rozliczania kosztów zużycia wody">Pobierz PDF</a>
+        </li>
+        <li class="doc-item" data-category="uchwaly">
+          <div class="doc-info">
+            <a href="#" class="doc-name">Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy</a>
+            <span class="doc-category">Kategoria: Uchwały</span>
+          </div>
+          <a href="#" class="btn-download" aria-label="Pobierz Uchwałę nr 14/2026">Pobierz PDF</a>
+        </li>
+        <li class="doc-item" data-category="protokoly">
+          <div class="doc-info">
+            <a href="#" class="doc-name">Protokół z Walnego Zgromadzenia, czerwiec 2026</a>
+            <span class="doc-category">Kategoria: Protokoły i Sprawozdania</span>
+          </div>
+          <a href="#" class="btn-download" aria-label="Pobierz Protokół z Walnego Zgromadzenia">Pobierz PDF</a>
+        </li>
+        <li class="doc-item" data-category="protokoly">
+          <div class="doc-info">
+            <a href="#" class="doc-name">Protokół lustracji za lata 2023–2025</a>
+            <span class="doc-category">Kategoria: Protokoły i Sprawozdania</span>
+          </div>
+          <a href="#" class="btn-download" aria-label="Pobierz Protokół lustracji">Pobierz PDF</a>
+        </li>
+        <li class="doc-item" data-category="protokoly">
+          <div class="doc-info">
+            <a href="#" class="doc-name">Sprawozdanie finansowe za 2025 rok</a>
+            <span class="doc-category">Kategoria: Protokoły i Sprawozdania</span>
+          </div>
+          <a href="#" class="btn-download" aria-label="Pobierz Sprawozdanie finansowe">Pobierz PDF</a>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- Stopka -->
+  <footer id="kontakt">
+    <div class="footer-content">
+      <p>&copy; 2026 Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</p>
+      <p>ul. Przykładowa 1, 00-000 Miasto | Tel: +48 000 000 001</p>
+
+      <div class="demo-notice" role="note">
+        <strong>UWAGA:</strong> To jest strona demonstracyjna utworzona na potrzeby testu. Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” oraz wszelkie podane dane kontaktowe i dokumenty są fikcyjne i nie istnieją w rzeczywistości.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Dostępny skrypt wewnątrz pliku -->
+  <script>
+    // Zmiana rozmiaru czcionki
+    let currentScale = 1;
+    function changeFontSize(delta) {
+      currentScale += delta * 0.1;
+      if (currentScale < 0.9) currentScale = 0.9;
+      if (currentScale > 1.4) currentScale = 1.4;
+      document.documentElement.style.setProperty('--font-scale', currentScale + 'rem');
+    }
+
+    // Włączanie wysokiego kontrastu
+    function toggleContrast() {
+      document.body.classList.toggle('high-contrast');
+    }
+
+    // Wyszukiwanie dokumentów
+    function filterDocs() {
+      const input = document.getElementById('docSearch').value.toLowerCase();
+      const items = document.querySelectorAll('#docList .doc-item');
+
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(input)) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Filtrowanie wg kategorii
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('#docList .doc-item');
+      items.forEach(item => {
+        if (cat === 'all' || item.getAttribute('data-category') === cat) {
+          item.style.display = 'flex';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

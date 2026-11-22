@@ -1,0 +1,49 @@
+{
+  "id": "gemini-plus",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": []
+  },
+  "files": 1,
+  "bytes": {
+    "total": 20418,
+    "html": 20418,
+    "js": 1448,
+    "css": 9263,
+    "images": 0
+  },
+  "htmlLines": 651,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 2052,
+      "violations": []
+    },
+    "mobile": {
+      "height": 3409,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.6:1 (need 4.5:1) — text #d9534f on #fff0f0"
+    },
+    {
+      "rule": "flat-type-hierarchy",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Role sizes: body 16px, h3 17.6px, h2 20.8px, h1 25.6px (largest adjacent step 1.23:1; target 1.25:1)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/gemini-plus-desktop-first.jpg",
+    "desktop-full": "shots/gemini-plus-desktop-full.jpg",
+    "mobile-first": "shots/gemini-plus-mobile-first.jpg",
+    "mobile-full": "shots/gemini-plus-mobile-full.jpg"
+  }
+}

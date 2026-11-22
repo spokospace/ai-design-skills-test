@@ -53,11 +53,26 @@ const board = () => `<style>body{margin:0;background:#1d1f24}
 img{display:block;width:560px;height:350px;object-fit:cover;object-position:top;border-radius:4px}</style>
 <div class="g">${BOARD.map((id) => `<img src="${shot(id, 'desktop-first')}">`).join('')}</div>`;
 
+// The three chat apps, with the plan each account was on.
+const chats = (lang) => {
+  const items = [
+    ['chatgpt-free', lang === 'pl' ? 'ChatGPT (plan Free)' : 'ChatGPT (Free plan)'],
+    ['gemini-plus', lang === 'pl' ? 'Gemini (plan Plus)' : 'Gemini (Plus plan)'],
+    ['grok-free', lang === 'pl' ? 'Grok (plan darmowy)' : 'Grok (free plan)'],
+  ];
+  return `<style>${BASE}
+.g{display:grid;grid-template-columns:repeat(3,720px);gap:20px;padding:24px;width:max-content}
+img{width:720px;height:450px}</style><div class="g">
+${items.map(([, n]) => `<div class="h">${n}</div>`).join('')}
+${items.map(([id]) => `<img src="${shot(id, 'desktop-first')}">`).join('')}</div>`;
+};
+
 const figures = {
   'grid-en': grid('en'), 'grid-pl': grid('pl'),
   taste: row('design-taste-frontend'), impeccable: row('impeccable'), none: row('none'), 'frontend-design': row('frontend-design'),
   'phones-en': phones('en'), 'phones-pl': phones('pl'),
   board: board(),
+  'chats-en': chats('en'), 'chats-pl': chats('pl'),
 };
 
 const browser = await chromium.launch();

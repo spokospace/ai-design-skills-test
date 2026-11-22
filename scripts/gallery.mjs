@@ -33,16 +33,16 @@ function cell(id, modelName, setupName) {
   const l = r.log;
   const slop = (r.detector ?? []).filter((d) => d.category === 'slop').length;
   const axe = new Set([...r.axe.desktop.violations, ...r.axe.mobile.violations].map((v) => v.id)).size;
-  const cut = l.ok === false;
+  const cut = l.ok === false && !!l.tokens;
   return `<article class="card">
   <a class="shot" href="runs/${id}/index.html" aria-label="Open the ${esc(setupName)} page by ${esc(modelName)}">
     <img src="${r.shots['desktop-first']}" alt="" loading="lazy" width="1440" height="900">
   </a>
   <h3>${esc(modelName)} <span>· ${esc(setupName)}</span></h3>
   <dl>
-    <div><dt>Time</dt><dd>${l.durationMin} min${cut ? ' <abbr title="Stopped at the 50-minute limit">(cut)</abbr>' : ''}</dd></div>
+    ${l.tokens ? `<div><dt>Time</dt><dd>${l.durationMin} min${cut ? ' <abbr title="Stopped at the 50-minute limit">(cut)</abbr>' : ''}</dd></div>
     <div><dt>Tokens</dt><dd>${tok(l.tokens.total)}${l.tokens.partial ? '+' : ''}</dd></div>
-    <div><dt>Output</dt><dd>${l.tokens.partial ? '–' : tok(l.tokens.output)}</dd></div>
+    <div><dt>Output</dt><dd>${l.tokens.partial ? '–' : tok(l.tokens.output)}</dd></div>` : ''}
     <div><dt>Page</dt><dd>${kb(r.bytes.total)}</dd></div>
     <div><dt>JS</dt><dd>${kb(r.bytes.js)}</dd></div>
     <div><dt>Detector</dt><dd>${(r.detector ?? []).length} <small>(${slop} slop)</small></dd></div>
@@ -56,6 +56,14 @@ const rows = [...SETUPS, ...EXTRA].map(([key, name, note]) => `<section class="r
   <header><h2 id="h-${key}">${esc(name)}</h2><p>${esc(note)}</p></header>
   <div class="grid">${MODELS.map(([m, mName]) => cell(`${m}-${key}`, mName, name)).join('\n')}</div>
 </section>`).join('\n');
+
+// The same brief pasted into chat apps in a browser (temporary chats, no
+// personalisation). A chat reports no token counts, so those cells are left out.
+const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['gemini-plus', 'Gemini', 'Plus plan'], ['grok-free', 'Grok', 'free plan']];
+const chatRow = `<section class="row" aria-labelledby="h-chats">
+  <header><h2 id="h-chats">Chat apps</h2><p>The same brief pasted into a browser chat. Each answered in about a minute.</p></header>
+  <div class="grid">${CHATS.map(([id, name, plan]) => cell(id, name, plan)).join('\n')}</div>
+</section>`;
 
 const html = `<!doctype html>
 <html lang="en">
@@ -103,6 +111,7 @@ const html = `<!doctype html>
   <p class="lead"><a href="brief.md">The brief</a> (in Polish) · <a href="README.md">Method and versions</a> · <a href="https://spoko.space/blog/design-skills-for-ai-agents-tested/">The write-up on spoko.space</a></p>
   <p class="lead"><strong>Tokens</strong> include cache reads, which are most of them. <strong>Detector</strong> counts the findings of Impeccable's own rule-based checker (<code>npx impeccable detect</code>), so it judges every page by one skill's rules. <strong>axe rules</strong> counts distinct WCAG 2.2 A/AA rules axe-core flags at 1440 and 390 px.</p>
 ${rows}
+${chatRow}
   <footer>
     <p>The cooperative, its address, phone numbers and documents are made up. Every page says so in its footer. Photographs placed by Taste Skill come from open archives and are credited on the page that uses them.</p>
   </footer>

@@ -1,0 +1,85 @@
+{
+  "id": "grok-free",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": []
+  },
+  "files": 1,
+  "bytes": {
+    "total": 19562,
+    "html": 19562,
+    "js": 680,
+    "css": 11000,
+    "images": 0
+  },
+  "htmlLines": 780,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 2010,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    },
+    "mobile": {
+      "height": 3319,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 5px + border-radius: 12px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px + border-radius: 12px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px + border-radius: 12px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px + border-radius: 12px"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.3:1 (need 4.5:1) — text #64748b on #fdf2f2"
+    },
+    {
+      "rule": "tight-leading",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "line-height 1.25x (need >=1.3)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/grok-free-desktop-first.jpg",
+    "desktop-full": "shots/grok-free-desktop-full.jpg",
+    "mobile-first": "shots/grok-free-mobile-first.jpg",
+    "mobile-full": "shots/grok-free-mobile-full.jpg"
+  }
+}
