@@ -1,0 +1,121 @@
+{
+  "id": "codex-frontend-design",
+  "log": {
+    "skillsInvoked": [
+      "frontend-design"
+    ],
+    "toolCalls": 3,
+    "denied": [],
+    "durationMin": 1.9,
+    "durationSource": "wall clock",
+    "tokens": {
+      "input": 11842,
+      "output": 5878,
+      "cacheRead": 59520,
+      "cacheWrite": 0,
+      "total": 77240
+    },
+    "ok": true
+  },
+  "files": 1,
+  "bytes": {
+    "total": 15925,
+    "html": 15925,
+    "js": 543,
+    "css": 7985,
+    "images": 0
+  },
+  "htmlLines": 39,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 2568,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 7
+        }
+      ]
+    },
+    "mobile": {
+      "height": 3614,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 7
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.3:1 (need 4.5:1) — text #6d7d74 on #ffffff (and 6 more)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"topline\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"hero\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"quick\": children flush against border-bottom+bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"quickitem\": children flush against border-right/bottom on right (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"quickitem\": children flush against border-right/bottom on right (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"quickitem\": children flush against border-right/bottom on right (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"contact\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "shape-assembled-illustration",
+      "category": "slop",
+      "severity": "advisory",
+      "snippet": "inline <svg> scene: 14 primitive shapes, ~520x360px, 6 fill colors"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/codex-frontend-design-desktop-first.jpg",
+    "desktop-full": "shots/codex-frontend-design-desktop-full.jpg",
+    "mobile-first": "shots/codex-frontend-design-mobile-first.jpg",
+    "mobile-full": "shots/codex-frontend-design-mobile-full.jpg"
+  }
+}

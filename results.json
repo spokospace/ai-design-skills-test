@@ -205,6 +205,717 @@
     }
   },
   {
+    "id": "codex-design-taste-frontend",
+    "log": {
+      "skillsInvoked": [
+        "design-taste-frontend"
+      ],
+      "toolCalls": 5,
+      "denied": [],
+      "durationMin": 2.8,
+      "durationSource": "wall clock",
+      "tokens": {
+        "input": 21612,
+        "output": 8411,
+        "cacheRead": 123520,
+        "cacheWrite": 0,
+        "total": 153543
+      },
+      "ok": true
+    },
+    "files": 1,
+    "bytes": {
+      "total": 21601,
+      "html": 21601,
+      "js": 510,
+      "css": 10632,
+      "images": 0
+    },
+    "htmlLines": 66,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3639,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          }
+        ]
+      },
+      "mobile": {
+        "height": 4946,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "advisory",
+        "snippet": "4.3:1 (need 4.5:1) — text #64736d on #f1eddf (and 1 more)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "advisory",
+        "snippet": "4.2:1 (need 4.5:1) — text #64736d on #e9eee5 (and 1 more)"
+      },
+      {
+        "rule": "gray-on-color",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "text #465842 on bg #d9ed89"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "2.7:1 (need 4.5:1) — text #64736d on #1e322e"
+      },
+      {
+        "rule": "hero-eyebrow-chip",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "eyebrow chip (tracked-caps) \"Dla mieszkańców · Słoneczne Wzgórze i Pr\" above h1 \"Dobry adres zaczyna się od dobrego sąsi"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "9px functional text \"Słoneczne Wzgórze\" (below 11px floor)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"emergency\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"content\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"content\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "9px functional text \"Słoneczne Wzgórze\" (below 11px floor)"
+      },
+      {
+        "rule": "overused-font",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Primary font: arial"
+      },
+      {
+        "rule": "kicker-above-heading",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "kicker \"Ważne dla mieszkańców\" above h2 \"Aktualności z osiedli\""
+      },
+      {
+        "rule": "kicker-above-heading",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "kicker \"Jesteśmy do dyspozycji\" above h2 \"Sprawy mieszkańców załatwiamy na miejscu.\""
+      },
+      {
+        "rule": "kicker-above-heading",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "kicker \"Przejrzyste zasady\" above h2 \"Dokumenty spółdzielni\""
+      },
+      {
+        "rule": "shape-assembled-illustration",
+        "category": "slop",
+        "severity": "advisory",
+        "snippet": "inline <svg> scene: 8 primitive shapes, ~700x520px, 9 fill colors"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/codex-design-taste-frontend-desktop-first.jpg",
+      "desktop-full": "shots/codex-design-taste-frontend-desktop-full.jpg",
+      "mobile-first": "shots/codex-design-taste-frontend-mobile-first.jpg",
+      "mobile-full": "shots/codex-design-taste-frontend-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "codex-emil-design-eng",
+    "log": {
+      "skillsInvoked": [
+        "emil-design-eng"
+      ],
+      "toolCalls": 3,
+      "denied": [],
+      "durationMin": 2.5,
+      "durationSource": "wall clock",
+      "tokens": {
+        "input": 16380,
+        "output": 7744,
+        "cacheRead": 70272,
+        "cacheWrite": 0,
+        "total": 94396
+      },
+      "ok": true
+    },
+    "files": 1,
+    "bytes": {
+      "total": 21302,
+      "html": 21302,
+      "js": 790,
+      "css": 9447,
+      "images": 0
+    },
+    "htmlLines": 59,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 2573,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 15
+          }
+        ]
+      },
+      "mobile": {
+        "height": 3960,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 15
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.8:1 (need 4.5:1) — text #718077 on #f7f5ef"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.8:1 (need 4.5:1) — text #96713b on #eeefe7"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "advisory",
+        "snippet": "4.3:1 (need 4.5:1) — text #61736b on #eeefe7"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.9:1 (need 4.5:1) — text #75837b on #fffefa (and 2 more)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "4.1:1 (need 4.5:1) — text #96713b on #f7f5ef"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.5:1 (need 4.5:1) — text #78857d on #f7f5ef (and 6 more)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.7:1 (need 4.5:1) — text #96713b on #e8ede3"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"topline\": children flush against bg on all sides (no inset)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "10px functional text \"Blisko domu. Blisko ludzi.\" (below 11px floor)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "overused-font",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Primary font: inter"
+      },
+      {
+        "rule": "kicker-above-heading",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "kicker \"Nasze wspólne miejsce\" above h1 \"Dobrze byću siebie.\""
+      },
+      {
+        "rule": "kicker-above-heading",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "kicker \"Z życia osiedli\" above h2 \"Aktualne ogłoszenia\""
+      },
+      {
+        "rule": "kicker-above-heading",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "kicker \"Wiedza i przejrzystość\" above h2 \"Dokumentyspółdzielni\""
+      },
+      {
+        "rule": "kicker-above-heading",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "kicker \"Jesteśmy do dyspozycji\" above h2 \"Skontaktuj sięz biurem\""
+      },
+      {
+        "rule": "cream-palette",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "cream/beige page background rgb(247, 245, 239)"
+      },
+      {
+        "rule": "dark-glow",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Colored box-shadow glow (#173e32) on dark page"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/codex-emil-design-eng-desktop-first.jpg",
+      "desktop-full": "shots/codex-emil-design-eng-desktop-full.jpg",
+      "mobile-first": "shots/codex-emil-design-eng-mobile-first.jpg",
+      "mobile-full": "shots/codex-emil-design-eng-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "codex-frontend-design",
+    "log": {
+      "skillsInvoked": [
+        "frontend-design"
+      ],
+      "toolCalls": 3,
+      "denied": [],
+      "durationMin": 1.9,
+      "durationSource": "wall clock",
+      "tokens": {
+        "input": 11842,
+        "output": 5878,
+        "cacheRead": 59520,
+        "cacheWrite": 0,
+        "total": 77240
+      },
+      "ok": true
+    },
+    "files": 1,
+    "bytes": {
+      "total": 15925,
+      "html": 15925,
+      "js": 543,
+      "css": 7985,
+      "images": 0
+    },
+    "htmlLines": 39,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 2568,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 7
+          }
+        ]
+      },
+      "mobile": {
+        "height": 3614,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 7
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "advisory",
+        "snippet": "4.3:1 (need 4.5:1) — text #6d7d74 on #ffffff (and 6 more)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"topline\": children flush against bg on all sides (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"hero\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"quick\": children flush against border-bottom+bg on all sides (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"quickitem\": children flush against border-right/bottom on right (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"quickitem\": children flush against border-right/bottom on right (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"quickitem\": children flush against border-right/bottom on right (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"contact\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "shape-assembled-illustration",
+        "category": "slop",
+        "severity": "advisory",
+        "snippet": "inline <svg> scene: 14 primitive shapes, ~520x360px, 6 fill colors"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/codex-frontend-design-desktop-first.jpg",
+      "desktop-full": "shots/codex-frontend-design-desktop-full.jpg",
+      "mobile-first": "shots/codex-frontend-design-mobile-first.jpg",
+      "mobile-full": "shots/codex-frontend-design-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "codex-impeccable",
+    "log": {
+      "skillsInvoked": [
+        "impeccable"
+      ],
+      "toolCalls": 9,
+      "denied": [],
+      "durationMin": 2.6,
+      "durationSource": "wall clock",
+      "tokens": {
+        "input": 33459,
+        "output": 7310,
+        "cacheRead": 289792,
+        "cacheWrite": 0,
+        "total": 330561
+      },
+      "ok": true
+    },
+    "files": 1,
+    "bytes": {
+      "total": 14308,
+      "html": 14308,
+      "js": 465,
+      "css": 6961,
+      "images": 0
+    },
+    "htmlLines": 61,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 1773,
+        "violations": [
+          {
+            "id": "svg-img-alt",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      },
+      "mobile": {
+        "height": 2923,
+        "violations": [
+          {
+            "id": "svg-img-alt",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "overused-font",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Primary font: arial"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Role sizes: body 17px, h1 17px, h2 17px, h3 17.4px (largest adjacent step 1.02:1; target 1.25:1)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/codex-impeccable-desktop-first.jpg",
+      "desktop-full": "shots/codex-impeccable-desktop-full.jpg",
+      "mobile-first": "shots/codex-impeccable-mobile-first.jpg",
+      "mobile-full": "shots/codex-impeccable-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "codex-none",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 3,
+      "denied": [],
+      "durationMin": 4.7,
+      "durationSource": "wall clock",
+      "tokens": {
+        "input": 17920,
+        "output": 9023,
+        "cacheRead": 143360,
+        "cacheWrite": 0,
+        "total": 170303
+      },
+      "ok": true
+    },
+    "files": 1,
+    "bytes": {
+      "total": 25667,
+      "html": 25667,
+      "js": 1300,
+      "css": 13561,
+      "images": 0
+    },
+    "htmlLines": 42,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 3148,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 9
+          }
+        ]
+      },
+      "mobile": {
+        "height": 4395,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 9
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "advisory",
+        "snippet": "4.3:1 (need 4.5:1) — text #64736b on #eeefe6"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.6:1 (need 4.5:1) — text #728076 on #eeefe6"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.8:1 (need 4.5:1) — text #b4624e on #f8ebe5 (and 6 more)"
+      },
+      {
+        "rule": "gray-on-color",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "text #c4d3c6 on bg #174535"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": ":hover state 1.0:1 (need 4.5:1) — text #285c49 on #285c49"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<div> \"utility\": children flush against bg on all sides (no inset)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "9px functional text \"Spółdzielnia mieszkaniowa\" (below 11px floor)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"hero\": children flush against bg on right/bottom/left (no inset)"
+      },
+      {
+        "rule": "extreme-negative-tracking",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "letter-spacing: -0.10em at 16px — \"Dobry dzień zaczyna się u siebie.\""
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "10px functional text \"PDF\" (below 11px floor)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "10px functional text \"PDF\" (below 11px floor)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "10px functional text \"PDF\" (below 11px floor)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "10px functional text \"PDF\" (below 11px floor)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "10px functional text \"PDF\" (below 11px floor)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "10px functional text \"PDF\" (below 11px floor)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "10px functional text \"PDF\" (below 11px floor)"
+      },
+      {
+        "rule": "cramped-padding",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "<section> \"about-band\": children flush against bg on right/left (no inset)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "9px functional text \"osiedla\" (below 11px floor)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "9px functional text \"budynków\" (below 11px floor)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "9px functional text \"mieszkań\" (below 11px floor)"
+      },
+      {
+        "rule": "undersized-ui-text",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "9px functional text \"Spółdzielnia mieszkaniowa\" (below 11px floor)"
+      },
+      {
+        "rule": "cream-palette",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "cream/beige page background rgb(247, 245, 237)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/codex-none-desktop-first.jpg",
+      "desktop-full": "shots/codex-none-desktop-full.jpg",
+      "mobile-first": "shots/codex-none-mobile-first.jpg",
+      "mobile-full": "shots/codex-none-mobile-full.jpg"
+    }
+  },
+  {
     "id": "copilot-free",
     "log": {
       "skillsInvoked": [],

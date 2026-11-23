@@ -53,25 +53,34 @@ const board = () => `<style>body{margin:0;background:#1d1f24}
 img{display:block;width:560px;height:350px;object-fit:cover;object-position:top;border-radius:4px}</style>
 <div class="g">${BOARD.map((id) => `<img src="${shot(id, 'desktop-first')}">`).join('')}</div>`;
 
+// A grid of labelled first screens, three to a row.
+const shotGrid = (items) => `<style>${BASE}
+.g{display:grid;grid-template-columns:repeat(3,720px);gap:24px 20px;padding:24px;width:max-content}
+.c{display:grid;gap:10px}
+img{width:720px;height:450px}</style><div class="g">
+${items.map(([id, n]) => `<div class="c"><div class="h">${n}</div><img src="${shot(id, 'desktop-first')}"></div>`).join('')}</div>`;
+
 // The chat apps, with the plan each account was on. Three free ones in the
 // first row; Copilot and the two Gemini runs (thinking level Low and High, which
 // the Polish interface calls Podstawowy and Rozszerzony) in the second.
 const chats = (lang) => {
   const pl = lang === 'pl';
-  const items = [
+  return shotGrid([
     ['chatgpt-free', pl ? 'ChatGPT (plan Free)' : 'ChatGPT (Free plan)'],
     ['grok-free', pl ? 'Grok (plan darmowy)' : 'Grok (free plan)'],
     ['deepseek-free', pl ? 'DeepSeek (darmowy)' : 'DeepSeek (free)'],
     ['copilot-free', pl ? 'Copilot (aplikacja w Windows, darmowy)' : 'Copilot (Windows app, free)'],
     ['gemini-plus', pl ? 'Gemini (plan Plus, myślenie podstawowe)' : 'Gemini (Plus plan, thinking Low)'],
     ['gemini-plus-high', pl ? 'Gemini (plan Plus, myślenie rozszerzone)' : 'Gemini (Plus plan, thinking High)'],
-  ];
-  return `<style>${BASE}
-.g{display:grid;grid-template-columns:repeat(3,720px);gap:24px 20px;padding:24px;width:max-content}
-.c{display:grid;gap:10px}
-img{width:720px;height:450px}</style><div class="g">
-${items.map(([id, n]) => `<div class="c"><div class="h">${n}</div><img src="${shot(id, 'desktop-first')}"></div>`).join('')}</div>`;
+  ]);
 };
+
+// The same brief in Codex on a free ChatGPT plan (GPT-6 Luna): no skill, then
+// each of the four skills.
+const codex = (lang) => shotGrid(SETUPS(lang).map(([key, name]) => [
+  `codex-${key}`,
+  key === 'none' ? (lang === 'pl' ? 'Codex bez skilla' : 'Codex, no skill') : `Codex + ${name}`,
+]));
 
 const figures = {
   'grid-en': grid('en'), 'grid-pl': grid('pl'),
@@ -79,6 +88,7 @@ const figures = {
   'phones-en': phones('en'), 'phones-pl': phones('pl'),
   board: board(),
   'chats-en': chats('en'), 'chats-pl': chats('pl'),
+  'codex-en': codex('en'), 'codex-pl': codex('pl'),
 };
 
 const browser = await chromium.launch();

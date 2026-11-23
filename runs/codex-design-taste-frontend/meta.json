@@ -1,0 +1,151 @@
+{
+  "id": "codex-design-taste-frontend",
+  "log": {
+    "skillsInvoked": [
+      "design-taste-frontend"
+    ],
+    "toolCalls": 5,
+    "denied": [],
+    "durationMin": 2.8,
+    "durationSource": "wall clock",
+    "tokens": {
+      "input": 21612,
+      "output": 8411,
+      "cacheRead": 123520,
+      "cacheWrite": 0,
+      "total": 153543
+    },
+    "ok": true
+  },
+  "files": 1,
+  "bytes": {
+    "total": 21601,
+    "html": 21601,
+    "js": 510,
+    "css": 10632,
+    "images": 0
+  },
+  "htmlLines": 66,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3639,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    },
+    "mobile": {
+      "height": 4946,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.3:1 (need 4.5:1) — text #64736d on #f1eddf (and 1 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.2:1 (need 4.5:1) — text #64736d on #e9eee5 (and 1 more)"
+    },
+    {
+      "rule": "gray-on-color",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "text #465842 on bg #d9ed89"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.7:1 (need 4.5:1) — text #64736d on #1e322e"
+    },
+    {
+      "rule": "hero-eyebrow-chip",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "eyebrow chip (tracked-caps) \"Dla mieszkańców · Słoneczne Wzgórze i Pr\" above h1 \"Dobry adres zaczyna się od dobrego sąsi"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "9px functional text \"Słoneczne Wzgórze\" (below 11px floor)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"emergency\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"content\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"content\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "9px functional text \"Słoneczne Wzgórze\" (below 11px floor)"
+    },
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: arial"
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Ważne dla mieszkańców\" above h2 \"Aktualności z osiedli\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Jesteśmy do dyspozycji\" above h2 \"Sprawy mieszkańców załatwiamy na miejscu.\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Przejrzyste zasady\" above h2 \"Dokumenty spółdzielni\""
+    },
+    {
+      "rule": "shape-assembled-illustration",
+      "category": "slop",
+      "severity": "advisory",
+      "snippet": "inline <svg> scene: 8 primitive shapes, ~700x520px, 9 fill colors"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/codex-design-taste-frontend-desktop-first.jpg",
+    "desktop-full": "shots/codex-design-taste-frontend-desktop-full.jpg",
+    "mobile-first": "shots/codex-design-taste-frontend-mobile-first.jpg",
+    "mobile-full": "shots/codex-design-taste-frontend-mobile-full.jpg"
+  }
+}

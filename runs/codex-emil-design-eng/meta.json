@@ -1,0 +1,169 @@
+{
+  "id": "codex-emil-design-eng",
+  "log": {
+    "skillsInvoked": [
+      "emil-design-eng"
+    ],
+    "toolCalls": 3,
+    "denied": [],
+    "durationMin": 2.5,
+    "durationSource": "wall clock",
+    "tokens": {
+      "input": 16380,
+      "output": 7744,
+      "cacheRead": 70272,
+      "cacheWrite": 0,
+      "total": 94396
+    },
+    "ok": true
+  },
+  "files": 1,
+  "bytes": {
+    "total": 21302,
+    "html": 21302,
+    "js": 790,
+    "css": 9447,
+    "images": 0
+  },
+  "htmlLines": 59,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 2573,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 15
+        }
+      ]
+    },
+    "mobile": {
+      "height": 3960,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 15
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.8:1 (need 4.5:1) — text #718077 on #f7f5ef"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.8:1 (need 4.5:1) — text #96713b on #eeefe7"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.3:1 (need 4.5:1) — text #61736b on #eeefe7"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.9:1 (need 4.5:1) — text #75837b on #fffefa (and 2 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "4.1:1 (need 4.5:1) — text #96713b on #f7f5ef"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.5:1 (need 4.5:1) — text #78857d on #f7f5ef (and 6 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.7:1 (need 4.5:1) — text #96713b on #e8ede3"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"topline\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"Blisko domu. Blisko ludzi.\" (below 11px floor)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: inter"
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Nasze wspólne miejsce\" above h1 \"Dobrze byću siebie.\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Z życia osiedli\" above h2 \"Aktualne ogłoszenia\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Wiedza i przejrzystość\" above h2 \"Dokumentyspółdzielni\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Jesteśmy do dyspozycji\" above h2 \"Skontaktuj sięz biurem\""
+    },
+    {
+      "rule": "cream-palette",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "cream/beige page background rgb(247, 245, 239)"
+    },
+    {
+      "rule": "dark-glow",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Colored box-shadow glow (#173e32) on dark page"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/codex-emil-design-eng-desktop-first.jpg",
+    "desktop-full": "shots/codex-emil-design-eng-desktop-full.jpg",
+    "mobile-first": "shots/codex-emil-design-eng-mobile-first.jpg",
+    "mobile-full": "shots/codex-emil-design-eng-mobile-full.jpg"
+  }
+}

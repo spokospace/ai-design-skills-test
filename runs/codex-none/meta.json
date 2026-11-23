@@ -1,0 +1,197 @@
+{
+  "id": "codex-none",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 3,
+    "denied": [],
+    "durationMin": 4.7,
+    "durationSource": "wall clock",
+    "tokens": {
+      "input": 17920,
+      "output": 9023,
+      "cacheRead": 143360,
+      "cacheWrite": 0,
+      "total": 170303
+    },
+    "ok": true
+  },
+  "files": 1,
+  "bytes": {
+    "total": 25667,
+    "html": 25667,
+    "js": 1300,
+    "css": 13561,
+    "images": 0
+  },
+  "htmlLines": 42,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3148,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 9
+        }
+      ]
+    },
+    "mobile": {
+      "height": 4395,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 9
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.3:1 (need 4.5:1) — text #64736b on #eeefe6"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.6:1 (need 4.5:1) — text #728076 on #eeefe6"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.8:1 (need 4.5:1) — text #b4624e on #f8ebe5 (and 6 more)"
+    },
+    {
+      "rule": "gray-on-color",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "text #c4d3c6 on bg #174535"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": ":hover state 1.0:1 (need 4.5:1) — text #285c49 on #285c49"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"utility\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "9px functional text \"Spółdzielnia mieszkaniowa\" (below 11px floor)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"hero\": children flush against bg on right/bottom/left (no inset)"
+    },
+    {
+      "rule": "extreme-negative-tracking",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "letter-spacing: -0.10em at 16px — \"Dobry dzień zaczyna się u siebie.\""
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"PDF\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"PDF\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"PDF\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"PDF\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"PDF\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"PDF\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "10px functional text \"PDF\" (below 11px floor)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"about-band\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "9px functional text \"osiedla\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "9px functional text \"budynków\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "9px functional text \"mieszkań\" (below 11px floor)"
+    },
+    {
+      "rule": "undersized-ui-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "9px functional text \"Spółdzielnia mieszkaniowa\" (below 11px floor)"
+    },
+    {
+      "rule": "cream-palette",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "cream/beige page background rgb(247, 245, 237)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/codex-none-desktop-first.jpg",
+    "desktop-full": "shots/codex-none-desktop-full.jpg",
+    "mobile-first": "shots/codex-none-mobile-first.jpg",
+    "mobile-full": "shots/codex-none-mobile-full.jpg"
+  }
+}

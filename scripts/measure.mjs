@@ -7,6 +7,7 @@
 // impeccable slop detector, and screenshots at 1440 and 390 px.
 //
 // Usage: node scripts/measure.mjs [id ...]   (default: every run found)
+//        TRIAL=2 RUNS_WORK=<second work folder> node scripts/measure.mjs
 import { chromium } from 'playwright';
 import { AxeBuilder } from '@axe-core/playwright';
 import { createServer } from 'node:http';
@@ -16,8 +17,10 @@ import path from 'node:path';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const WORK = process.env.RUNS_WORK ?? path.resolve(ROOT, '..', 'skill-runs');
-const OUT = path.join(ROOT, 'runs');
-const SHOTS = path.join(ROOT, 'shots');
+// TRIAL=2 keeps a repeat of the test apart: runs-2/, shots-2/, results-2.json.
+const TRIAL = process.env.TRIAL ? `-${process.env.TRIAL}` : '';
+const OUT = path.join(ROOT, `runs${TRIAL}`);
+const SHOTS = path.join(ROOT, `shots${TRIAL}`);
 const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'];
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
@@ -72,6 +75,19 @@ function runLog(id) {
         if (c.name === 'Skill') log.skillsInvoked.push(c.input?.skill ?? c.input?.command);
       }
     }
+    // Codex (`codex exec --json`) logs items and one usage block per turn.
+    if (ev.type === 'item.completed' && ['command_execution', 'file_change', 'mcp_tool_call', 'web_search'].includes(ev.item?.type)) {
+      log.toolCalls++;
+      const skill = ev.item.command?.match(/skills[\\/]+([\w-]+)[\\/]+SKILL\.md/)?.[1];
+      if (skill && !log.skillsInvoked.includes(skill)) log.skillsInvoked.push(skill);
+    }
+    if (ev.type === 'turn.completed' && ev.usage) {
+      const c = (log.codex ??= { input: 0, cached: 0, output: 0 });
+      c.input += ev.usage.input_tokens ?? 0;
+      c.cached += ev.usage.cached_input_tokens ?? 0;
+      c.output += ev.usage.output_tokens ?? 0;
+    }
+    if (ev.type === 'turn.failed' || ev.type === 'error') log.failed = true;
     if (ev.type === 'result') {
       // usage covers the main model only; modelUsage also has helper models
       // (e.g. Haiku for summaries), so totals are summed from it.
@@ -114,6 +130,15 @@ function runLog(id) {
   log.durationSource = wall ? 'wall clock' : 'agent time';
   if (log.agentMs) log.agentMin = +(log.agentMs / 60000).toFixed(1);
   delete log.agentMs;
+  if (log.codex) {
+    // Codex counts the cached part inside input_tokens; split it the way the
+    // Claude numbers are split.
+    const { input, cached, output } = log.codex;
+    log.tokens = { input: input - cached, output, cacheRead: cached, cacheWrite: 0, total: input + output };
+    log.ok = !log.failed;
+  }
+  delete log.codex;
+  delete log.failed;
   if (!log.tokens && log.perMessage) {
     const u = Object.values(log.perMessage);
     const sum = (k) => u.reduce((s, x) => s + (x[k] ?? 0), 0);
@@ -211,11 +236,11 @@ async function measure(browser, id) {
     await page.goto(base, { waitUntil: 'networkidle' });
     await page.waitForTimeout(2500); // let hero entrances finish
     fs.mkdirSync(SHOTS, { recursive: true });
-    shots[`${name}-first`] = `shots/${id}-${name}-first.jpg`;
+    shots[`${name}-first`] = `shots${TRIAL}/${id}-${name}-first.jpg`;
     await page.screenshot({ path: path.join(ROOT, shots[`${name}-first`]), type: 'jpeg', quality: 82 });
     await scrollThrough(page);
     const height = await page.evaluate(() => document.documentElement.scrollHeight);
-    shots[`${name}-full`] = `shots/${id}-${name}-full.jpg`;
+    shots[`${name}-full`] = `shots${TRIAL}/${id}-${name}-full.jpg`;
     await page.screenshot({ path: path.join(ROOT, shots[`${name}-full`]), type: 'jpeg', quality: 78, fullPage: true });
     const res = await new AxeBuilder({ page }).withTags(WCAG_TAGS).analyze();
     axe[name] = {
@@ -253,7 +278,7 @@ const results = [];
 for (const id of ids) results.push(await measure(browser, id));
 await browser.close();
 
-const all = path.join(ROOT, 'results.json');
+const all = path.join(ROOT, `results${TRIAL}.json`);
 const prev = fs.existsSync(all) ? JSON.parse(fs.readFileSync(all, 'utf8')) : [];
 const merged = [...prev.filter((r) => !ids.includes(r.id)), ...results].sort((a, b) => a.id.localeCompare(b.id));
 fs.writeFileSync(all, JSON.stringify(merged, null, 2));

@@ -52,18 +52,26 @@ function cell(id, modelName, setupName) {
 </article>`;
 }
 
-const rows = [...SETUPS, ...EXTRA].map(([key, name, note]) => `<section class="row" aria-labelledby="h-${key}">
-  <header><h2 id="h-${key}">${esc(name)}</h2><p>${esc(note)}</p></header>
-  <div class="grid">${MODELS.map(([m, mName]) => cell(`${m}-${key}`, mName, name)).join('\n')}</div>
-</section>`).join('\n');
-
-// The same brief pasted into chat apps in a browser (temporary chats, no
-// personalisation). A chat reports no token counts, so those cells are left out.
-const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High']];
-const chatRow = `<section class="row" aria-labelledby="h-chats">
-  <header><h2 id="h-chats">Chat apps</h2><p>The same brief pasted into a chat: four in a browser, Copilot in its Windows app. The answers took one to two minutes, and about three with Gemini's thinking level set to High. DeepSeek stopped just before the end of the code and needed one click on Continue.</p></header>
-  <div class="grid">${CHATS.map(([id, name, plan]) => cell(id, name, plan)).join('\n')}</div>
+const section = (key, title, note, cells) => `<section class="row" aria-labelledby="h-${key}">
+  <header><h2 id="h-${key}">${esc(title)}</h2><p>${esc(note)}</p></header>
+  <div class="grid">${cells.join('\n')}</div>
 </section>`;
+
+const rows = [...SETUPS, ...EXTRA].map(([key, name, note]) =>
+  section(key, name, note, MODELS.map(([m, mName]) => cell(`${m}-${key}`, mName, name)))).join('\n');
+
+// The same brief in OpenAI's Codex CLI on a free ChatGPT plan, with the skills
+// copied into .agents/skills of the run folder.
+const codexRow = section('codex', 'Codex',
+  "The same brief and the same four skills in OpenAI's Codex CLI on a free ChatGPT plan (GPT-6 Luna, the plan's default model, reasoning effort left at its default). Every run finished in under five minutes.",
+  SETUPS.map(([key, name]) => cell(`codex-${key}`, 'Codex', name)));
+
+// The same brief pasted into chat apps (temporary chats where the app has them).
+// A chat reports no token counts, so those cells are left out.
+const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High']];
+const chatRow = section('chats', 'Chat apps',
+  "The same brief pasted into a chat: four in a browser, Copilot in its Windows app. The answers took one to two minutes, and about three with Gemini's thinking level set to High. DeepSeek stopped just before the end of the code and needed one click on Continue.",
+  CHATS.map(([id, name, plan]) => cell(id, name, plan)));
 
 const html = `<!doctype html>
 <html lang="en">
@@ -111,6 +119,7 @@ const html = `<!doctype html>
   <p class="lead"><a href="brief.md">The brief</a> (in Polish) · <a href="README.md">Method and versions</a> · <a href="https://spoko.space/blog/design-skills-for-ai-agents-tested/">The write-up on spoko.space</a></p>
   <p class="lead"><strong>Tokens</strong> include cache reads, which are most of them. <strong>Detector</strong> counts the findings of Impeccable's own rule-based checker (<code>npx impeccable detect</code>), so it judges every page by one skill's rules. <strong>axe rules</strong> counts distinct WCAG 2.2 A/AA rules axe-core flags at 1440 and 390 px.</p>
 ${rows}
+${codexRow}
 ${chatRow}
   <footer>
     <p>The cooperative, its address, phone numbers and documents are made up. Every page says so in its footer. Photographs placed by Taste Skill come from open archives and are credited on the page that uses them.</p>
