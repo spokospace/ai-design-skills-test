@@ -83,7 +83,7 @@ const html = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>One brief, three models, four skills</title>
+<title>One brief, with and without design skills</title>
 <meta name="description" content="The same brief for a made-up housing cooperative's home page, built by Claude Sonnet 5.5, Opus 5.5 and Fable 5.2, without a skill and with four agent skills.">
 <style>
   :root { color-scheme: light dark; --bg: #f6f7f9; --card: #fff; --ink: #14161a; --muted: #555c66; --line: #d9dde3; --accent: #0b6aa2; }
@@ -118,7 +118,7 @@ const html = `<!doctype html>
 </head>
 <body>
 <main>
-  <h1>One brief, three models, four skills</h1>
+  <h1>One brief, with and without design skills</h1>
   <p class="lead">The same brief for the home page of a made-up housing cooperative, built in Claude Code by Sonnet 5.5, Opus 5.5 and Fable 5.2: once without a skill, then once with each of four design skills. One run per combination, so this shows tendencies, not a ranking.</p>
   <p class="lead">${TRIAL
     ? 'This page is the <strong>second trial</strong>: the same fifteen runs repeated from scratch in a separate folder, to see how much comes back the same. <a href="./">The first trial</a>'
