@@ -3,8 +3,15 @@
 A small, repeatable test: the same brief for a housing cooperative's home page,
 run in Claude Code on three models, once without a skill and once with each of
 four popular design skills. Those fifteen setups ran twice; the same brief also
-went through Codex and five chat apps. Every page is kept here as it came out,
-with screenshots and a few measurements.
+went through OpenAI's Codex, Google's Antigravity, five chat apps, Kimi's desktop
+agent and three models running on a laptop. Every page is kept here as it came
+out, with screenshots and a few measurements.
+
+**[Open the gallery](https://spokospace.github.io/ai-design-skills-test/)** to see every page next to its numbers.
+
+> The pages under `runs/` are test output, not real websites or finished
+> templates. AI models generated them from one brief for this test, and they are
+> kept as they came out, defects included.
 
 The results are written up in [Do design skills fix AI-built pages? I tested four](https://spoko.space/blog/design-skills-for-ai-agents-tested/)
 on spoko.space ([Polish version](https://spoko.space/pl/blog/skille-projektowe-dla-agentow-ai-test/)).
