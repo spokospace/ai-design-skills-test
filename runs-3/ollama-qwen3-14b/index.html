@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Słoneczne Wzgórze - Spółdzielnia Mieszkaniowa</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        .announcement {
+            background-color: #fff;
+            border-left: 5px solid #4CAF50;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .documents {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        .document {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+        .document a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .document a:hover {
+            text-decoration: underline;
+        }
+        .contact {
+            background-color: #fff;
+            padding: 1rem;
+            border: 1px solid #ddd;
+        }
+        .contact h3 {
+            margin-top: 0;
+        }
+        .contact p {
+            margin: 0.5rem 0;
+        }
+        .contact strong {
+            color: #4CAF50;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Słoneczne Wzgórze</h1>
+        <p>Spółdzielnia Mieszkaniowa</p>
+    </header>
+    <nav>
+        <a href="#announcements">Ogłoszenia</a>
+        <a href="#documents">Dokumenty</a>
+        <a href="#contact">Kontakt</a>
+    </nav>
+    <main>
+        <section id="announcements">
+            <h2>Ogłoszenia</h2>
+            <div class="announcement">
+                <strong>3 grudnia 2026</strong><br>
+                Przerwa w dostawie zimnej wody w budynku Przylesie 4 (8:00–14:00)
+            </div>
+            <div class="announcement">
+                <strong>Od 7 do 18 grudnia 2026</strong><br>
+                Roczyne przeglądy instalacji gazowej we wszystkich budynkach (harmonogram na klatkach schodowych)
+            </div>
+            <div class="announcement">
+                <strong>Biuro nieczynne</strong><br>
+                24 i 31 grudnia 2026
+            </div>
+        </section>
+        <section id="documents">
+            <h2>Dokumenty</h2>
+            <div class="documents">
+                <div class="document"><a href="#">Statut Spółdzielni (marzec 2026)</a></div>
+                <div class="document"><a href="#">Regulamin porządku domowego</a></div>
+                <div class="document"><a href="#">Regulamin rozliczania kosztów zużycia wody</a></div>
+                <div class="document"><a href="#">Uchwała Zarządu nr 14/2026</a></div>
+                <div class="document"><a href="#">Protokół z Walnego Zgromadzenia (czerwiec 2026)</a></div>
+                <div class="document"><a href="#">Protokół lustracji (2023–2025)</a></div>
+                <div class="document"><a href="#">Sprawozdanie finansowe za 2025 rok</a></div>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Kontakt</h2>
+            <div class="contact">
+                <p><strong>Biuro:</strong> ul. Przykładowa 1, 00-000 Miasto</p>
+                <p><strong>Godziny pracy:</strong> poniedziałek 10:00–18:00, wtorek–piątek 7:30–15:30</p>
+                <p><strong>Telefon:</strong> +48 000 000 001</p>
+                <p><strong>Pogotowie awaryjne:</strong> +48 000 000 999 (całą dobę)</p>
+                <p><strong>E-mail:</strong> <a href="mailto:biuro@example.com">biuro@example.com</a></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>*Strona demonstracyjna. Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” oraz jej dane nie istnieją.</p>
+    </footer>
+</body>
+</html>

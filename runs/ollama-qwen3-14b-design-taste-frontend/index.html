@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pl" data-type="place" data-radius="soft" data-buttons="arrow" data-motion="true">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="page-type" content="place">
+  <meta name="site-kind" content="other">
+  <title>Słoneczne Wzgórze - Spółdzielnia Mieszkaniowa</title>
+  <link rel="icon" href="assets/icons/sun.svg">
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --ink: #2d2d2d;
+      --accent: #d4a045;
+      --surface: #ffffff;
+      --muted: #eaeaea;
+    }
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: var(--ink);
+      background-color: var(--bg);
+    }
+    .wrap {
+      padding: 2rem;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background-color: var(--accent);
+      color: white;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    section {
+      background-color: var(--surface);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    section h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: var(--accent);
+    }
+    .hero {
+      background-image: url('assets/photos/hero-sunrise.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .hero h1 {
+      font-size: 3rem;
+      text-align: center;
+    }
+    .announcements, .contact, .documents {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .documents a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 1rem;
+      }
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Słoneczne Wzgórze</h1>
+    <nav>
+      <a href="#announcements">Ogłoszenia</a>
+      <a href="#contact">Kontakt</a>
+      <a href="#documents">Dokumenty</a>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" data-enter>
+      <h1>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</h1>
+    </section>
+    <section id="announcements">
+      <h2>Ogłoszenia</h2>
+      <div class="announcements">
+        <div><strong>3 grudnia 2026</strong>: Przerwa w dostawie zimnej wody w budynku Przylesie 4 (8:00–14:00).</div>
+        <div><strong>7–18 grudnia 2026</strong>: Roczyne przeglądy instalacji gazowej we wszystkich budynkach.</div>
+        <div><strong>24 i 31 grudnia 2026</strong>: Biuro nieczynne.</div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Kontakt</h2>
+      <div class="contact">
+        <p><strong>Biuro:</strong> ul. Przykładowa 1, 00-000 Miasto</p>
+        <p><strong>Godziny pracy:</strong> poniedziałek 10:00–18:00, wtorek–piątek 7:30–15:30</p>
+        <p><strong>Pogotowie awaryjne:</strong> +48 000 000 999 (cała dobę)</p>
+        <p><strong>E-mail:</strong> <a href="mailto:biuro@example.com">biuro@example.com</a></p>
+      </div>
+    </section>
+    <section id="documents">
+      <h2>Dokumenty</h2>
+      <div class="documents">
+        <p><a href="#">Statut Spółdzielni (marzec 2026)</a></p>
+        <p><a href="#">Regulamin porządku domowego</a></p>
+        <p><a href="#">Regulamin rozliczania kosztów zużycia wody</a></p>
+        <p><a href="#">Uchwała Zarządu nr 14/2026</a></p>
+        <p><a href="#">Protokół z Walnego Zgromadzenia (czerwiec 2026)</a></p>
+        <p><a href="#">Protokół lustracji (2023–2025)</a></p>
+        <p><a href="#">Sprawozdanie finansowe 2025</a></p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p>Strona demonstracyjna. Spółdzielnia i jej dane nie istnieją.</p>
+  </footer>
+  <script>
+    // Micro-interactions
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('mouseover', () => link.style.transform = 'scale(1.03)');
+      link.addEventListener('mouseout', () => link.style.transform = 'scale(1)');
+    });
+  </script>
+</body>
+</html>

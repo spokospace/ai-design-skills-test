@@ -1,0 +1,96 @@
+{
+  "id": "ollama-qwen3-14b",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 916,
+      "output": 2007,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 2923
+    },
+    "durationMin": 3.2,
+    "durationSource": "agent time",
+    "agentMin": 3.2
+  },
+  "files": 1,
+  "bytes": {
+    "total": 4928,
+    "html": 4928,
+    "js": 0,
+    "css": 2166,
+    "images": 0
+  },
+  "htmlLines": 151,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 1367,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 17
+        }
+      ]
+    },
+    "mobile": {
+      "height": 1922,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 17
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.8:1 (need 4.5:1) — text #ffffff on #4caf50 (and 1 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.6:1 (need 4.5:1) — text #4caf50 on #f9f9f9 (and 2 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.8:1 (need 4.5:1) — text #4caf50 on #ffffff (and 11 more)"
+    },
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: arial"
+    },
+    {
+      "rule": "flat-type-hierarchy",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Role sizes: body 16px, h1 16px, h2 16px (largest adjacent step 1.00:1; target 1.25:1)"
+    },
+    {
+      "rule": "monotonous-spacing",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "~16px used 7/10 times (70%)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-3/ollama-qwen3-14b-desktop-first.jpg",
+    "desktop-full": "shots-3/ollama-qwen3-14b-desktop-full.jpg",
+    "mobile-first": "shots-3/ollama-qwen3-14b-mobile-first.jpg",
+    "mobile-full": "shots-3/ollama-qwen3-14b-mobile-full.jpg"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "ollama-qwen3-14b-frontend-design",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 2866,
+      "output": 2378,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 5244
+    },
+    "durationMin": 2.7,
+    "durationSource": "agent time",
+    "agentMin": 2.7
+  },
+  "files": 1,
+  "bytes": {
+    "total": 4889,
+    "html": 4889,
+    "js": 0,
+    "css": 2364,
+    "images": 0
+  },
+  "htmlLines": 214,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 1233,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    },
+    "mobile": {
+      "height": 2423,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.3:1 (need 4.5:1) — text #888888 on #f8f5f0"
+    },
+    {
+      "rule": "cream-palette",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "cream/beige page background rgb(248, 245, 240)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-2/ollama-qwen3-14b-frontend-design-desktop-first.jpg",
+    "desktop-full": "shots-2/ollama-qwen3-14b-frontend-design-desktop-full.jpg",
+    "mobile-first": "shots-2/ollama-qwen3-14b-frontend-design-mobile-first.jpg",
+    "mobile-full": "shots-2/ollama-qwen3-14b-frontend-design-mobile-full.jpg"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "ollama-qwen3-14b",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 916,
+      "output": 2329,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 3245
+    },
+    "durationMin": 2.6,
+    "durationSource": "agent time",
+    "agentMin": 2.6
+  },
+  "files": 1,
+  "bytes": {
+    "total": 6116,
+    "html": 6116,
+    "js": 0,
+    "css": 2636,
+    "images": 0
+  },
+  "htmlLines": 209,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 1484,
+      "violations": []
+    },
+    "mobile": {
+      "height": 1972,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "monotonous-spacing",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "~16px used 8/12 times (67%)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-2/ollama-qwen3-14b-desktop-first.jpg",
+    "desktop-full": "shots-2/ollama-qwen3-14b-desktop-full.jpg",
+    "mobile-first": "shots-2/ollama-qwen3-14b-mobile-first.jpg",
+    "mobile-full": "shots-2/ollama-qwen3-14b-mobile-full.jpg"
+  }
+}

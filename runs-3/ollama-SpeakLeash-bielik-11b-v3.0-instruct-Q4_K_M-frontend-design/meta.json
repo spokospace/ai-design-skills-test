@@ -1,0 +1,68 @@
+{
+  "id": "ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 5395,
+      "output": 1532,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 6927
+    },
+    "durationMin": 4.3,
+    "durationSource": "agent time",
+    "agentMin": 4.3
+  },
+  "files": 1,
+  "bytes": {
+    "total": 1745,
+    "html": 1745,
+    "js": 0,
+    "css": 0,
+    "images": 0
+  },
+  "htmlLines": 58,
+  "external": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "axe": {
+    "desktop": {
+      "height": 900,
+      "violations": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    },
+    "mobile": {
+      "height": 844,
+      "violations": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "flat-type-hierarchy",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Role sizes: body 16px, h1 16px, h2 16px, h3 16px (largest adjacent step 1.00:1; target 1.25:1)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design-desktop-first.jpg",
+    "desktop-full": "shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design-desktop-full.jpg",
+    "mobile-first": "shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design-mobile-first.jpg",
+    "mobile-full": "shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design-mobile-full.jpg"
+  }
+}

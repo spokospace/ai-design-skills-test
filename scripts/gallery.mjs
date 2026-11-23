@@ -1,8 +1,8 @@
 // Builds index.html: every measured page with its numbers, grouped by whose model
 // built it: the Claude Code grid (setups × models), then OpenAI, Google and the rest.
 // Usage: node scripts/gallery.mjs            (reads results.json)
-//        TRIAL=2 node scripts/gallery.mjs    (reads results-2.json, writes trial-2.html:
-//                                             the repeat of the 15 Claude Code runs)
+//        TRIAL=<n> node scripts/gallery.mjs  (reads results-<n>.json, writes trial-<n>.html:
+//                                             a repeat of some of the runs)
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -23,7 +23,7 @@ const SETUPS = [
   ['impeccable', 'Impeccable', 'A design vocabulary, a critique and a slop detector.'],
   ['design-taste-frontend', 'Taste Skill', 'Art direction, real photographs and a browser check.'],
 ];
-// Three more runs are in runs/ but not part of the comparison: Ponytail is a
+// Ponytail's three runs are in runs/ but not part of the comparison: it is a
 // skill about writing less code, not about design.
 const EXTRA = [['ponytail', 'Ponytail', 'Not a design skill: write as little code as the task needs. Kept for reference.']];
 
@@ -33,7 +33,7 @@ const tok = (n) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)}M` : `${Math.round(n / 10
 
 function cell(id, modelName, setupName) {
   const r = byId[id];
-  if (!r || r.missing) return `<div class="card missing">No page</div>`;
+  if (r.missing) return `<div class="card missing"><h4>${esc(modelName)} <span>· ${esc(setupName)}</span></h4><p>No page</p></div>`;
   const l = r.log;
   const slop = (r.detector ?? []).filter((d) => d.category === 'slop').length;
   const axe = new Set([...r.axe.desktop.violations, ...r.axe.mobile.violations].map((v) => v.id)).size;
@@ -56,57 +56,76 @@ function cell(id, modelName, setupName) {
 </article>`;
 }
 
-const section = (key, title, note, cells) => `<section class="row" aria-labelledby="h-${key}">
+// A row lists the runs it could show as [id, model name, setup name]. Only runs
+// that were measured are drawn, so a repeat of part of the test (trial-2.html,
+// trial-3.html) gets the same page with fewer rows. A run that was measured
+// and left no page stays, as a "No page" card.
+const section = ([key, title, note, runs]) => {
+  const shown = runs.filter(([id]) => byId[id]);
+  if (!shown.length) return null;
+  return `<section class="row" aria-labelledby="h-${key}">
   <header><h3 id="h-${key}">${esc(title)}</h3><p>${esc(note)}</p></header>
-  <div class="grid">${cells.join('\n')}</div>
+  <div class="grid">${shown.map(([id, name, setup]) => cell(id, name, setup)).join('\n')}</div>
 </section>`;
+};
 
 // Rows are grouped by whose model built the pages; the group id is the jump target.
-const group = (key, title, note, sections) => `<section class="group" id="${key}" aria-labelledby="g-${key}">
+const group = ([key, title, note, rows]) => {
+  const sections = rows.map(section).filter(Boolean);
+  if (!sections.length) return null;
+  return { key, title, html: `<section class="group" id="${key}" aria-labelledby="g-${key}">
   <header><h2 id="g-${key}">${esc(title)}</h2><p>${esc(note)}</p></header>
 ${sections.join('\n')}
-</section>`;
-
-const cells = (list) => list.map(([id, name, setup]) => cell(id, name, setup));
+</section>` };
+};
 
 // Another vendor's coding agent: the same five setups, with the skills copied
 // into .agents/skills of the run folder.
-const agentRow = (key, title, note) =>
-  section(key, title, note, SETUPS.map(([s, name]) => cell(`${key}-${s}`, title, name)));
+const agentRow = (key, title, note) => [key, title, note, SETUPS.map(([s, name]) => [`${key}-${s}`, title, name])];
 
-const claudeRows = [...SETUPS, ...(TRIAL ? [] : EXTRA)].map(([key, name, note]) =>
-  section(key, name, note, MODELS.map(([m, mName]) => cell(`${m}-${key}`, mName, name))));
+const claudeRows = [...SETUPS, ...EXTRA].map(([key, name, note]) =>
+  [key, name, note, MODELS.map(([m, mName]) => [`${m}-${key}`, mName, name])]);
+
+// Models served by Ollama on the laptop; the run id is ollama-<id>[-<skill>].
+const LOCAL_MODELS = [
+  ['qwen3-14b', 'qwen3:14b'],
+  ['SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M', 'Bielik 11B v3.0'],
+  ['qwen2.5-coder-14b', 'qwen2.5-coder:14b'],
+];
+const LOCAL_SETUPS = [['', 'No skill'], ['-frontend-design', 'frontend-design'], ['-design-taste-frontend', 'Taste Skill']];
 
 const GROUPS = [
   ['claude', 'Claude Code', "Anthropic's coding agent with Sonnet 5.5, Opus 5.5 and Fable 5.2: one row per setup, one page per model.", claudeRows],
-  ...(TRIAL ? [] : [
-    ['openai', 'OpenAI', 'Codex as the coding agent and ChatGPT as the chat.', [
-      agentRow('codex', 'Codex', "The same brief and the same four skills in OpenAI's Codex CLI on a free ChatGPT plan (GPT-6 Luna, the plan's default model, reasoning effort left at its default). Every run finished in under five minutes."),
-      section('chatgpt', 'ChatGPT', 'The same brief pasted into a chat in the browser. The answer took one to two minutes.',
-        cells([['chatgpt-free', 'ChatGPT', 'Free plan']])),
-    ]],
-    ['google', 'Google', 'Antigravity as the coding agent and Gemini as the chat.', [
-      agentRow('agy', 'Antigravity CLI', "The same brief and the same four skills in Google's Antigravity CLI on a free personal account (Gemini 3.8 Flash at its High level, the account's default). It is where Google moved personal accounts when Gemini CLI stopped serving them. Shell commands ran in a read-only sandbox, so a skill's own scripts could not write files. The Taste Skill run used up the account's weekly quota after ten minutes and left no page."),
-      section('gemini', 'Gemini', 'The same brief pasted into a chat in the browser, once at each thinking level. The answer took one to two minutes at Low and about three at High.',
-        cells([['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High']])),
-    ]],
-    ['other', 'Other models', "Chat apps from other vendors, Kimi's desktop agent and two models running on the laptop.", [
-      section('chats', 'Chat and desktop apps', "The same brief pasted into a chat: Grok and DeepSeek in a browser, Copilot in its Windows app. The answers took one to two minutes. DeepSeek stopped just before the end of the code and needed one click on Continue. Kimi Work, the agent in Kimi's desktop app, wrote its file in about seven minutes and was then cut off by a server-busy message before it could check the page.",
-        cells([['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['kimi-work-free', 'Kimi Work', 'desktop app, free']])),
-      section('local', 'Local models', "Two models running on the laptop itself through Ollama, qwen3:14b and the Polish Bielik 11B v3.0: one message, no agent. For the pages with frontend-design the whole SKILL.md went in as the system message, because a bare model cannot open a skill on its own. The answers took four to nine minutes.",
-        cells([
-          ['ollama-qwen3-14b', 'qwen3:14b', 'No skill'],
-          ['ollama-qwen3-14b-frontend-design', 'qwen3:14b', 'frontend-design'],
-          ['ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M', 'Bielik 11B v3.0', 'No skill'],
-          ['ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design', 'Bielik 11B v3.0', 'frontend-design'],
-        ])),
-    ]],
-  ]),
-];
-const groups = GROUPS.map(([key, title, note, sections]) => group(key, title, note, sections)).join('\n');
+  ['openai', 'OpenAI', 'Codex as the coding agent and ChatGPT as the chat.', [
+    agentRow('codex', 'Codex', "The same brief and the same four skills in OpenAI's Codex CLI on a free ChatGPT plan (GPT-6 Luna, the plan's default model, reasoning effort left at its default). Every run finished in under five minutes."),
+    ['chatgpt', 'ChatGPT', 'The same brief pasted into a chat in the browser. The answer took one to two minutes.',
+      [['chatgpt-free', 'ChatGPT', 'Free plan']]],
+  ]],
+  ['google', 'Google', 'Antigravity as the coding agent and Gemini as the chat.', [
+    agentRow('agy', 'Antigravity CLI', "The same brief and the same four skills in Google's Antigravity CLI on a free personal account (Gemini 3.8 Flash at its High level, the account's default). It is where Google moved personal accounts when Gemini CLI stopped serving them. Shell commands ran in a read-only sandbox, so a skill's own scripts could not write files. The Taste Skill run used up the account's weekly quota after ten minutes and left no page."),
+    ['gemini', 'Gemini', 'The same brief pasted into a chat in the browser, once at each thinking level. The answer took one to two minutes at Low and about three at High.',
+      [['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High']]],
+  ]],
+  ['other', 'Other models', "Chat apps from other vendors, Kimi's desktop agent and models running on the laptop.", [
+    ['chats', 'Chat and desktop apps', "The same brief pasted into a chat: Grok and DeepSeek in a browser, Copilot in its Windows app. The answers took one to two minutes. DeepSeek stopped just before the end of the code and needed one click on Continue. Kimi Work, the agent in Kimi's desktop app, wrote its file in about seven minutes and was then cut off by a server-busy message before it could check the page.",
+      [['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['kimi-work-free', 'Kimi Work', 'desktop app, free']]],
+    ['local', 'Local models', "Models running on the laptop itself through Ollama: one message, no agent. For a page with a skill the whole SKILL.md went in as the system message, because a bare model cannot open a skill on its own. That is all of frontend-design, but only the instructions of Taste Skill: none of its scripts ran and no photograph was fetched. The answers took one to twelve minutes. One more attempt put qwen3:14b behind Claude Code as a real agent, with Taste Skill installed as a folder: in nine minutes it wrote two plans in its thinking, called no tool and left no page.",
+      [...LOCAL_MODELS.flatMap(([id, name]) => LOCAL_SETUPS.map(([suffix, setup]) => [`ollama-${id}${suffix}`, name, setup])),
+        // scripts/run-claude-local.sh: the one run with a local model as an agent.
+        ['claude-local-qwen3-14b-40k-design-taste-frontend', 'qwen3:14b in Claude Code', 'Taste Skill']]],
+  ]],
+].map(group).filter(Boolean);
+const groups = GROUPS.map((g) => g.html).join('\n');
 const jump = GROUPS.length > 1
-  ? `<nav class="jump" aria-label="Sections"><ul>${GROUPS.map(([key, title]) => `<li><a href="#${key}">${esc(title)}</a></li>`).join('')}</ul></nav>`
+  ? `<nav class="jump" aria-label="Sections"><ul>${GROUPS.map(({ key, title }) => `<li><a href="#${key}">${esc(title)}</a></li>`).join('')}</ul></nav>`
   : '';
+
+// What each page is: the first trial links to the repeats, a repeat says what it repeats.
+const TRIAL_NOTE = {
+  '': 'The fifteen Claude Code runs were <a href="trial-2.html">repeated once from scratch</a> to see how much comes back the same. The qwen3 and Bielik runs without a skill and with frontend-design were repeated twice: they are at the end of <a href="trial-2.html#other">the second trial</a> and on <a href="trial-3.html">a third page</a>.',
+  '-2': 'This page is the <strong>second trial</strong>: the fifteen Claude Code runs, and four of the local-model runs, repeated from scratch in a separate folder, to see how much comes back the same. <a href="./">The first trial</a> · <a href="trial-3.html">A third series of the local runs</a>',
+  '-3': 'This page is a <strong>third series</strong> of four local-model runs only: qwen3 and Bielik, without a skill and with frontend-design, repeated from scratch in a separate folder. <a href="./">The first trial</a> · <a href="trial-2.html">The second</a>',
+};
 
 const html = `<!doctype html>
 <html lang="en">
@@ -137,7 +156,8 @@ const html = `<!doctype html>
   .row header p { margin: 0; color: var(--muted); }
   .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
-  .card.missing { display: grid; place-items: center; color: var(--muted); min-height: 200px; }
+  .card.missing { display: grid; place-items: center; align-content: center; gap: 4px; color: var(--muted); min-height: 200px; }
+  .card.missing p { margin: 0; }
   .shot { display: block; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); }
   .shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
   .shot:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
@@ -156,10 +176,8 @@ const html = `<!doctype html>
 <body>
 <main>
   <h1>One brief, with and without design skills</h1>
-  <p class="lead">The same brief for the home page of a made-up housing cooperative, built in Claude Code by Sonnet 5.5, Opus 5.5 and Fable 5.2: once without a skill, then once with each of four design skills. ${TRIAL ? '' : "The same brief then went to OpenAI's and Google's agents, to chat apps and to two models running locally. "}One run per combination, so this shows tendencies, not a ranking.</p>
-  <p class="lead">${TRIAL
-    ? 'This page is the <strong>second trial</strong>: the same fifteen runs repeated from scratch in a separate folder, to see how much comes back the same. <a href="./">The first trial</a>'
-    : 'The fifteen runs were <a href="trial-2.html">repeated once from scratch</a> to see how much comes back the same.'}</p>
+  <p class="lead">The same brief for the home page of a made-up housing cooperative, built in Claude Code by Sonnet 5.5, Opus 5.5 and Fable 5.2: once without a skill, then once with each of four design skills. ${TRIAL ? '' : "The same brief then went to OpenAI's and Google's agents, to chat apps and to models running locally. "}One run per combination, so this shows tendencies, not a ranking.</p>
+  <p class="lead">${TRIAL_NOTE[TRIAL]}</p>
   <p class="lead"><a href="brief.md">The brief</a> (in Polish) · <a href="README.md">Method and versions</a> · <a href="https://spoko.space/blog/design-skills-for-ai-agents-tested/">The write-up on spoko.space</a></p>
   <p class="lead"><strong>Tokens</strong> include cache reads, which are most of them. <strong>Detector</strong> counts the findings of Impeccable's own rule-based checker (<code>npx impeccable detect</code>), so it judges every page by one skill's rules. <strong>axe rules</strong> counts distinct WCAG 2.2 A/AA rules axe-core flags at 1440 and 390 px.</p>
 ${jump}

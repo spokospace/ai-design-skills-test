@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>One brief, with and without design skills</title>
+<meta name="description" content="The same brief for a made-up housing cooperative's home page, built by Claude Sonnet 5.5, Opus 5.5 and Fable 5.2, without a skill and with four agent skills.">
+<style>
+  :root { color-scheme: light dark; --bg: #f6f7f9; --card: #fff; --ink: #14161a; --muted: #555c66; --line: #d9dde3; --accent: #0b6aa2; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0f1216; --card: #181c22; --ink: #e9ecf0; --muted: #a3abb6; --line: #2b313a; --accent: #6cc0f0; } }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 1280px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; margin: 0 0 12px; }
+  .lead { max-width: 70ch; color: var(--muted); margin: 0 0 8px; }
+  a { color: var(--accent); }
+  .jump ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 20px 0 0; padding: 0; }
+  .jump a { display: block; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); text-decoration: none; font-weight: 600; }
+  .jump a:hover { border-color: var(--accent); }
+  .group { margin-top: 56px; padding-top: 24px; border-top: 2px solid var(--line); scroll-margin-top: 12px; }
+  .group > header h2 { font-size: 1.6rem; line-height: 1.2; margin: 0 0 4px; }
+  .group > header p { margin: 0; color: var(--muted); max-width: 70ch; }
+  .row { margin-top: 32px; }
+  .row header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 12px; }
+  .row h3 { font-size: 1.25rem; margin: 0; }
+  .row header p { margin: 0; color: var(--muted); }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+  .card.missing { display: grid; place-items: center; align-content: center; gap: 4px; color: var(--muted); min-height: 200px; }
+  .card.missing p { margin: 0; }
+  .shot { display: block; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); }
+  .shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
+  .shot:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .card h4 { font-size: 1rem; margin: 12px 0 8px; }
+  .card h4 span { font-weight: 400; color: var(--muted); }
+  dl { display: grid; grid-template-columns: repeat(4, auto); gap: 6px 12px; margin: 0; font-size: .875rem; }
+  dl div { min-width: 0; }
+  dt { color: var(--muted); font-size: .75rem; }
+  dd { margin: 0; font-variant-numeric: tabular-nums; }
+  small { color: var(--muted); }
+  .links { font-size: .8125rem; margin: 10px 0 0; }
+  footer { margin-top: 48px; color: var(--muted); font-size: .875rem; max-width: 70ch; }
+  @media (max-width: 420px) { dl { grid-template-columns: repeat(3, auto); } }
+</style>
+</head>
+<body>
+<main>
+  <h1>One brief, with and without design skills</h1>
+  <p class="lead">The same brief for the home page of a made-up housing cooperative, built in Claude Code by Sonnet 5.5, Opus 5.5 and Fable 5.2: once without a skill, then once with each of four design skills. One run per combination, so this shows tendencies, not a ranking.</p>
+  <p class="lead">This page is a <strong>third series</strong> of four local-model runs only: qwen3 and Bielik, without a skill and with frontend-design, repeated from scratch in a separate folder. <a href="./">The first trial</a> · <a href="trial-2.html">The second</a></p>
+  <p class="lead"><a href="brief.md">The brief</a> (in Polish) · <a href="README.md">Method and versions</a> · <a href="https://spoko.space/blog/design-skills-for-ai-agents-tested/">The write-up on spoko.space</a></p>
+  <p class="lead"><strong>Tokens</strong> include cache reads, which are most of them. <strong>Detector</strong> counts the findings of Impeccable's own rule-based checker (<code>npx impeccable detect</code>), so it judges every page by one skill's rules. <strong>axe rules</strong> counts distinct WCAG 2.2 A/AA rules axe-core flags at 1440 and 390 px.</p>
+
+<section class="group" id="other" aria-labelledby="g-other">
+  <header><h2 id="g-other">Other models</h2><p>Chat apps from other vendors, Kimi's desktop agent and models running on the laptop.</p></header>
+<section class="row" aria-labelledby="h-local">
+  <header><h3 id="h-local">Local models</h3><p>Models running on the laptop itself through Ollama: one message, no agent. For a page with a skill the whole SKILL.md went in as the system message, because a bare model cannot open a skill on its own. That is all of frontend-design, but only the instructions of Taste Skill: none of its scripts ran and no photograph was fetched. The answers took one to twelve minutes. One more attempt put qwen3:14b behind Claude Code as a real agent, with Taste Skill installed as a folder: in nine minutes it wrote two plans in its thinking, called no tool and left no page.</p></header>
+  <div class="grid"><article class="card">
+  <a class="shot" href="runs-3/ollama-qwen3-14b/index.html" aria-label="Open the No skill page by qwen3:14b">
+    <img src="shots-3/ollama-qwen3-14b-desktop-first.jpg" alt="" loading="lazy" width="1440" height="900">
+  </a>
+  <h4>qwen3:14b <span>· No skill</span></h4>
+  <dl>
+    <div><dt>Time</dt><dd>3.2 min</dd></div>
+    <div><dt>Tokens</dt><dd>3k</dd></div>
+    <div><dt>Output</dt><dd>2k</dd></div>
+    <div><dt>Page</dt><dd>5 KB</dd></div>
+    <div><dt>JS</dt><dd>0 KB</dd></div>
+    <div><dt>Detector</dt><dd>6 <small>(3 slop)</small></dd></div>
+    <div><dt>axe rules</dt><dd>1</dd></div>
+  </dl>
+  <p class="links"><a href="runs-3/ollama-qwen3-14b/index.html">Page</a> · <a href="shots-3/ollama-qwen3-14b-desktop-full.jpg">Full desktop</a> · <a href="shots-3/ollama-qwen3-14b-mobile-full.jpg">Full phone</a> · <a href="runs-3/ollama-qwen3-14b/meta.json">meta.json</a></p>
+</article>
+<article class="card">
+  <a class="shot" href="runs-3/ollama-qwen3-14b-frontend-design/index.html" aria-label="Open the frontend-design page by qwen3:14b">
+    <img src="shots-3/ollama-qwen3-14b-frontend-design-desktop-first.jpg" alt="" loading="lazy" width="1440" height="900">
+  </a>
+  <h4>qwen3:14b <span>· frontend-design</span></h4>
+  <dl>
+    <div><dt>Time</dt><dd>3 min</dd></div>
+    <div><dt>Tokens</dt><dd>5k</dd></div>
+    <div><dt>Output</dt><dd>2k</dd></div>
+    <div><dt>Page</dt><dd>5 KB</dd></div>
+    <div><dt>JS</dt><dd>0 KB</dd></div>
+    <div><dt>Detector</dt><dd>2 <small>(0 slop)</small></dd></div>
+    <div><dt>axe rules</dt><dd>1</dd></div>
+  </dl>
+  <p class="links"><a href="runs-3/ollama-qwen3-14b-frontend-design/index.html">Page</a> · <a href="shots-3/ollama-qwen3-14b-frontend-design-desktop-full.jpg">Full desktop</a> · <a href="shots-3/ollama-qwen3-14b-frontend-design-mobile-full.jpg">Full phone</a> · <a href="runs-3/ollama-qwen3-14b-frontend-design/meta.json">meta.json</a></p>
+</article>
+<article class="card">
+  <a class="shot" href="runs-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M/index.html" aria-label="Open the No skill page by Bielik 11B v3.0">
+    <img src="shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-desktop-first.jpg" alt="" loading="lazy" width="1440" height="900">
+  </a>
+  <h4>Bielik 11B v3.0 <span>· No skill</span></h4>
+  <dl>
+    <div><dt>Time</dt><dd>4.7 min</dd></div>
+    <div><dt>Tokens</dt><dd>3k</dd></div>
+    <div><dt>Output</dt><dd>2k</dd></div>
+    <div><dt>Page</dt><dd>4 KB</dd></div>
+    <div><dt>JS</dt><dd>0 KB</dd></div>
+    <div><dt>Detector</dt><dd>1 <small>(1 slop)</small></dd></div>
+    <div><dt>axe rules</dt><dd>0</dd></div>
+  </dl>
+  <p class="links"><a href="runs-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M/index.html">Page</a> · <a href="shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-desktop-full.jpg">Full desktop</a> · <a href="shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-mobile-full.jpg">Full phone</a> · <a href="runs-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M/meta.json">meta.json</a></p>
+</article>
+<article class="card">
+  <a class="shot" href="runs-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design/index.html" aria-label="Open the frontend-design page by Bielik 11B v3.0">
+    <img src="shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design-desktop-first.jpg" alt="" loading="lazy" width="1440" height="900">
+  </a>
+  <h4>Bielik 11B v3.0 <span>· frontend-design</span></h4>
+  <dl>
+    <div><dt>Time</dt><dd>4.3 min</dd></div>
+    <div><dt>Tokens</dt><dd>7k</dd></div>
+    <div><dt>Output</dt><dd>2k</dd></div>
+    <div><dt>Page</dt><dd>2 KB</dd></div>
+    <div><dt>JS</dt><dd>0 KB</dd></div>
+    <div><dt>Detector</dt><dd>1 <small>(1 slop)</small></dd></div>
+    <div><dt>axe rules</dt><dd>1</dd></div>
+  </dl>
+  <p class="links"><a href="runs-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design/index.html">Page</a> · <a href="shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design-desktop-full.jpg">Full desktop</a> · <a href="shots-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design-mobile-full.jpg">Full phone</a> · <a href="runs-3/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design/meta.json">meta.json</a></p>
+</article></div>
+</section>
+</section>
+  <footer>
+    <p>The cooperative, its address, phone numbers and documents are made up. Every page says so in its footer. Photographs placed by Taste Skill come from open archives and are credited on the page that uses them.</p>
+  </footer>
+</main>
+</body>
+</html>

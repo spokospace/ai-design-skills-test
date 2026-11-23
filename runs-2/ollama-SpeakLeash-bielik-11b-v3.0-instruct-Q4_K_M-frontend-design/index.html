@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spółdzielnia Mieszkaniowa "Słoneczne Wzgórze"</title>
+    <style>
+        :root {
+            --primary: #3D4653;
+            --secondary: #D97757;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Inter', system-ui-menu-bar, sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .cta {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px;
+        }
+
+        .docs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .docs-table th, .docs-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>Słoneczne Wzgórze</h1>
+        <div class="cta">Zgłoś awarię</div>
+        <div class="cta">Sprawdź dokumenty</div>
+    </header>
+
+    <nav>
+        <ul style="list-style-type: none; padding: 0;">
+            <li><a href="#ogloszenia">Ogłoszenia</a></li>
+            <li><a href="#dokumenty">Dokumenty</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <section id="ogloszenia">
+        <h2>Aktualności</h2>
+        <p>Przerwa w dostawie wody... (link: #)</p>
+    </section>
+
+    <section id="dokumenty">
+        <h2>Dokumenty spółdzielni</h2>
+        <table class="docs-table">
+            <thead>
+                <tr>
+                    <th>Typ</th>
+                    <th>Data</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Statut</td>
+                    <td>03.2026</td>
+                    <td><a href="#">Pobierz</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="kontakt">
+        <h2>Kontakt</h2>
+        <p>Tel: +48 000 000 999</p>
+    </section>
+
+    <footer>
+        <p>Strona demonstracyjna. Spółdzielnia "Słoneczne Wzgórze" nie istnieje.</p>
+    </footer>
+</body>
+</html>

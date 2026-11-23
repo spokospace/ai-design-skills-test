@@ -1,0 +1,524 @@
+[
+ {
+  "id": "ollama-qwen3-14b",
+  "head": {
+   "doctype": true,
+   "lang": "pl",
+   "charset": true,
+   "viewport": "width=device-width, initial-scale=1.0",
+   "title": 45,
+   "description": 0,
+   "canonical": false,
+   "robots": null,
+   "openGraph": [],
+   "twitterCard": false,
+   "jsonLd": [],
+   "favicon": false,
+   "themeColor": false
+  },
+  "structure": {
+   "header": 1,
+   "nav": 1,
+   "navUnnamed": 0,
+   "main": 1,
+   "footer": 1,
+   "skipLink": false,
+   "h1": 1,
+   "headings": 4,
+   "skippedLevels": 0,
+   "time": 0,
+   "address": 0,
+   "tables": 0,
+   "tablesWithoutTh": 0,
+   "descriptionLists": 0
+  },
+  "aria": {
+   "label": 0,
+   "labelledby": 0,
+   "describedby": 0,
+   "hidden": 0,
+   "live": 0,
+   "current": 0,
+   "expanded": 0,
+   "roles": 0,
+   "brokenRefs": 0,
+   "duplicateIds": 0,
+   "img": 0,
+   "imgNoAlt": 0,
+   "imgEmptyAlt": 0,
+   "svg": 0,
+   "svgUnmarked": 0,
+   "emoji": 0,
+   "emojiHidden": 0
+  },
+  "interactive": {
+   "links": 11,
+   "deadLinks": 7,
+   "brokenAnchors": 0,
+   "tel": 0,
+   "mailto": 1,
+   "newTabNoRel": 0,
+   "buttons": 0,
+   "buttonsNoType": 0,
+   "clickableDivs": 0,
+   "inlineHandlers": 0,
+   "forms": 0,
+   "fields": 0,
+   "fieldsUnnamed": 0,
+   "fieldsAutocomplete": 0,
+   "search": 0
+  },
+  "dom": {
+   "nodes": 59,
+   "inlineStyles": 0,
+   "imgNoSize": 0,
+   "imgLazy": 0,
+   "imgResponsive": 0,
+   "scripts": 0,
+   "externalScripts": 0
+  },
+  "css": {
+   "bytes": 2166,
+   "breakpoints": [
+    "768px"
+   ],
+   "containerQueries": 0,
+   "clamp": 0,
+   "customProperties": 0,
+   "reducedMotion": false,
+   "colorScheme": false,
+   "contrastModes": false,
+   "print": false,
+   "focusVisible": 0,
+   "focus": 0,
+   "outlineNone": 0,
+   "important": 0,
+   "keyframes": 0,
+   "fontSizePx": 0,
+   "fontSizeRelative": 1
+  },
+  "widths": {
+   "320": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   },
+   "375": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   },
+   "768": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   },
+   "1024": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   },
+   "1440": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   }
+  }
+ },
+ {
+  "id": "ollama-qwen3-14b-frontend-design",
+  "head": {
+   "doctype": true,
+   "lang": "pl",
+   "charset": true,
+   "viewport": "width=device-width, initial-scale=1.0",
+   "title": 45,
+   "description": 0,
+   "canonical": false,
+   "robots": null,
+   "openGraph": [],
+   "twitterCard": false,
+   "jsonLd": [],
+   "favicon": false,
+   "themeColor": false
+  },
+  "structure": {
+   "header": 1,
+   "nav": 0,
+   "navUnnamed": 0,
+   "main": 0,
+   "footer": 1,
+   "skipLink": false,
+   "h1": 1,
+   "headings": 8,
+   "skippedLevels": 0,
+   "time": 0,
+   "address": 0,
+   "tables": 0,
+   "tablesWithoutTh": 0,
+   "descriptionLists": 0
+  },
+  "aria": {
+   "label": 0,
+   "labelledby": 0,
+   "describedby": 0,
+   "hidden": 0,
+   "live": 0,
+   "current": 0,
+   "expanded": 0,
+   "roles": 0,
+   "brokenRefs": 0,
+   "duplicateIds": 0,
+   "img": 0,
+   "imgNoAlt": 0,
+   "imgEmptyAlt": 0,
+   "svg": 0,
+   "svgUnmarked": 0,
+   "emoji": 0,
+   "emojiHidden": 0
+  },
+  "interactive": {
+   "links": 8,
+   "deadLinks": 7,
+   "brokenAnchors": 0,
+   "tel": 0,
+   "mailto": 1,
+   "newTabNoRel": 0,
+   "buttons": 0,
+   "buttonsNoType": 0,
+   "clickableDivs": 0,
+   "inlineHandlers": 0,
+   "forms": 0,
+   "fields": 0,
+   "fieldsUnnamed": 0,
+   "fieldsAutocomplete": 0,
+   "search": 0
+  },
+  "dom": {
+   "nodes": 62,
+   "inlineStyles": 0,
+   "imgNoSize": 0,
+   "imgLazy": 0,
+   "imgResponsive": 0,
+   "scripts": 0,
+   "externalScripts": 0
+  },
+  "css": {
+   "bytes": 2312,
+   "breakpoints": [
+    "600px"
+   ],
+   "containerQueries": 0,
+   "clamp": 0,
+   "customProperties": 5,
+   "reducedMotion": false,
+   "colorScheme": false,
+   "contrastModes": false,
+   "print": false,
+   "focusVisible": 0,
+   "focus": 0,
+   "outlineNone": 0,
+   "important": 0,
+   "keyframes": 0,
+   "fontSizePx": 0,
+   "fontSizeRelative": 7
+  },
+  "widths": {
+   "320": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   },
+   "375": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   },
+   "768": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   },
+   "1024": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   },
+   "1440": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 14.4,
+    "textUnder12": 0
+   }
+  }
+ },
+ {
+  "id": "ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M",
+  "head": {
+   "doctype": true,
+   "lang": "pl",
+   "charset": true,
+   "viewport": "width=device-width, initial-scale=1.0",
+   "title": 45,
+   "description": 0,
+   "canonical": false,
+   "robots": null,
+   "openGraph": [],
+   "twitterCard": false,
+   "jsonLd": [],
+   "favicon": false,
+   "themeColor": false
+  },
+  "structure": {
+   "header": 1,
+   "nav": 1,
+   "navUnnamed": 0,
+   "main": 1,
+   "footer": 1,
+   "skipLink": false,
+   "h1": 1,
+   "headings": 4,
+   "skippedLevels": 0,
+   "time": 0,
+   "address": 0,
+   "tables": 0,
+   "tablesWithoutTh": 0,
+   "descriptionLists": 0
+  },
+  "aria": {
+   "label": 0,
+   "labelledby": 0,
+   "describedby": 0,
+   "hidden": 0,
+   "live": 0,
+   "current": 0,
+   "expanded": 0,
+   "roles": 0,
+   "brokenRefs": 0,
+   "duplicateIds": 0,
+   "img": 0,
+   "imgNoAlt": 0,
+   "imgEmptyAlt": 0,
+   "svg": 0,
+   "svgUnmarked": 0,
+   "emoji": 0,
+   "emojiHidden": 0
+  },
+  "interactive": {
+   "links": 10,
+   "deadLinks": 7,
+   "brokenAnchors": 0,
+   "tel": 0,
+   "mailto": 0,
+   "newTabNoRel": 0,
+   "buttons": 0,
+   "buttonsNoType": 0,
+   "clickableDivs": 0,
+   "inlineHandlers": 0,
+   "forms": 0,
+   "fields": 0,
+   "fieldsUnnamed": 0,
+   "fieldsAutocomplete": 0,
+   "search": 0
+  },
+  "dom": {
+   "nodes": 51,
+   "inlineStyles": 0,
+   "imgNoSize": 0,
+   "imgLazy": 0,
+   "imgResponsive": 0,
+   "scripts": 0,
+   "externalScripts": 0
+  },
+  "css": {
+   "bytes": 1442,
+   "breakpoints": [
+    "600px"
+   ],
+   "containerQueries": 0,
+   "clamp": 0,
+   "customProperties": 0,
+   "reducedMotion": false,
+   "colorScheme": false,
+   "contrastModes": false,
+   "print": false,
+   "focusVisible": 0,
+   "focus": 0,
+   "outlineNone": 0,
+   "important": 0,
+   "keyframes": 0,
+   "fontSizePx": 0,
+   "fontSizeRelative": 2
+  },
+  "widths": {
+   "320": {
+    "overflow": 32,
+    "widest": "footer.footer",
+    "minFont": 16,
+    "textUnder12": 0
+   },
+   "375": {
+    "overflow": 32,
+    "widest": "footer.footer",
+    "minFont": 16,
+    "textUnder12": 0
+   },
+   "768": {
+    "overflow": 32,
+    "widest": "footer.footer",
+    "minFont": 16,
+    "textUnder12": 0
+   },
+   "1024": {
+    "overflow": 32,
+    "widest": "footer.footer",
+    "minFont": 16,
+    "textUnder12": 0
+   },
+   "1440": {
+    "overflow": 32,
+    "widest": "footer.footer",
+    "minFont": 16,
+    "textUnder12": 0
+   }
+  }
+ },
+ {
+  "id": "ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design",
+  "head": {
+   "doctype": true,
+   "lang": "pl",
+   "charset": true,
+   "viewport": "width=device-width, initial-scale=1.0",
+   "title": 45,
+   "description": 0,
+   "canonical": false,
+   "robots": null,
+   "openGraph": [],
+   "twitterCard": false,
+   "jsonLd": [],
+   "favicon": false,
+   "themeColor": false
+  },
+  "structure": {
+   "header": 1,
+   "nav": 1,
+   "navUnnamed": 0,
+   "main": 1,
+   "footer": 1,
+   "skipLink": false,
+   "h1": 1,
+   "headings": 6,
+   "skippedLevels": 0,
+   "time": 0,
+   "address": 0,
+   "tables": 0,
+   "tablesWithoutTh": 0,
+   "descriptionLists": 0
+  },
+  "aria": {
+   "label": 0,
+   "labelledby": 0,
+   "describedby": 0,
+   "hidden": 0,
+   "live": 0,
+   "current": 0,
+   "expanded": 0,
+   "roles": 0,
+   "brokenRefs": 0,
+   "duplicateIds": 0,
+   "img": 0,
+   "imgNoAlt": 0,
+   "imgEmptyAlt": 0,
+   "svg": 0,
+   "svgUnmarked": 0,
+   "emoji": 0,
+   "emojiHidden": 0
+  },
+  "interactive": {
+   "links": 5,
+   "deadLinks": 2,
+   "brokenAnchors": 1,
+   "tel": 0,
+   "mailto": 0,
+   "newTabNoRel": 0,
+   "buttons": 0,
+   "buttonsNoType": 0,
+   "clickableDivs": 0,
+   "inlineHandlers": 0,
+   "forms": 0,
+   "fields": 0,
+   "fieldsUnnamed": 0,
+   "fieldsAutocomplete": 0,
+   "search": 0
+  },
+  "dom": {
+   "nodes": 40,
+   "inlineStyles": 0,
+   "imgNoSize": 0,
+   "imgLazy": 0,
+   "imgResponsive": 0,
+   "scripts": 0,
+   "externalScripts": 0
+  },
+  "css": {
+   "bytes": 0,
+   "breakpoints": [],
+   "containerQueries": 0,
+   "clamp": 0,
+   "customProperties": 0,
+   "reducedMotion": false,
+   "colorScheme": false,
+   "contrastModes": false,
+   "print": false,
+   "focusVisible": 0,
+   "focus": 0,
+   "outlineNone": 0,
+   "important": 0,
+   "keyframes": 0,
+   "fontSizePx": 0,
+   "fontSizeRelative": 0
+  },
+  "widths": {
+   "320": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 16,
+    "textUnder12": 0
+   },
+   "375": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 16,
+    "textUnder12": 0
+   },
+   "768": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 16,
+    "textUnder12": 0
+   },
+   "1024": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 16,
+    "textUnder12": 0
+   },
+   "1440": {
+    "overflow": 0,
+    "widest": null,
+    "minFont": 16,
+    "textUnder12": 0
+   }
+  }
+ }
+]

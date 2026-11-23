@@ -1,0 +1,86 @@
+{
+  "id": "ollama-qwen3-14b-design-taste-frontend",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 9329,
+      "output": 2453,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 11782
+    },
+    "durationMin": 9.5,
+    "durationSource": "agent time",
+    "agentMin": 9.5
+  },
+  "files": 1,
+  "bytes": {
+    "total": 4644,
+    "html": 4644,
+    "js": 258,
+    "css": 1965,
+    "images": 0
+  },
+  "htmlLines": 162,
+  "external": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "axe": {
+    "desktop": {
+      "height": 2230,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 15
+        }
+      ]
+    },
+    "mobile": {
+      "height": 2327,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 15
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.4:1 (need 3:1) — text #ffffff on #d4a045"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.4:1 (need 4.5:1) — text #ffffff on #d4a045 (and 2 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.4:1 (need 4.5:1) — text #d4a045 on #ffffff (and 9 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.4:1 (need 4.5:1) — text #888888 on #f9f9f9"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/ollama-qwen3-14b-design-taste-frontend-desktop-first.jpg",
+    "desktop-full": "shots/ollama-qwen3-14b-design-taste-frontend-desktop-full.jpg",
+    "mobile-first": "shots/ollama-qwen3-14b-design-taste-frontend-mobile-first.jpg",
+    "mobile-full": "shots/ollama-qwen3-14b-design-taste-frontend-mobile-full.jpg"
+  }
+}

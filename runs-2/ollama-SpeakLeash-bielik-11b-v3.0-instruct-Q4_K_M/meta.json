@@ -1,0 +1,60 @@
+{
+  "id": "ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 1042,
+      "output": 1807,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 2849
+    },
+    "durationMin": 2.1,
+    "durationSource": "agent time",
+    "agentMin": 2.1
+  },
+  "files": 1,
+  "bytes": {
+    "total": 3916,
+    "html": 3916,
+    "js": 0,
+    "css": 1452,
+    "images": 0
+  },
+  "htmlLines": 125,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 916,
+      "violations": [
+        {
+          "id": "target-size",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    },
+    "mobile": {
+      "height": 1351,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: arial"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-2/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-desktop-first.jpg",
+    "desktop-full": "shots-2/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-desktop-full.jpg",
+    "mobile-first": "shots-2/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-mobile-first.jpg",
+    "mobile-full": "shots-2/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-mobile-full.jpg"
+  }
+}

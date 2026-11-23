@@ -873,6 +873,40 @@
     }
   },
   {
+    "id": "claude-local-qwen3-14b-40k-design-taste-frontend",
+    "missing": true,
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 0,
+      "denied": [],
+      "results": 1,
+      "ok": true,
+      "apiMin": 8.6,
+      "turns": 2,
+      "costUsd": 0.0958892,
+      "tokens": {
+        "input": 14078,
+        "output": 1838,
+        "cacheRead": 14086,
+        "cacheWrite": 0,
+        "total": 30002
+      },
+      "models": [
+        {
+          "name": "qwen3-14b-40k",
+          "input": 14078,
+          "output": 1838,
+          "cacheRead": 14086,
+          "cacheWrite": 0,
+          "costUsd": 0.0958892
+        }
+      ],
+      "durationMin": 8.6,
+      "durationSource": "agent time",
+      "agentMin": 8.6
+    }
+  },
+  {
     "id": "codex-design-taste-frontend",
     "log": {
       "skillsInvoked": [
@@ -2583,6 +2617,146 @@
     }
   },
   {
+    "id": "ollama-qwen2.5-coder-14b",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 0,
+      "denied": [],
+      "ok": true,
+      "tokens": {
+        "input": 935,
+        "output": 1228,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 2163
+      },
+      "durationMin": 1.1,
+      "durationSource": "agent time",
+      "agentMin": 1.1
+    },
+    "files": 1,
+    "bytes": {
+      "total": 3467,
+      "html": 3467,
+      "js": 0,
+      "css": 1102,
+      "images": 0
+    },
+    "htmlLines": 99,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 986,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      },
+      "mobile": {
+        "height": 1370,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "2.8:1 (need 4.5:1) — text #ffffff on #4caf50"
+      },
+      {
+        "rule": "overused-font",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Primary font: arial"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Role sizes: body 16px, h1 16px, h2 16px (largest adjacent step 1.00:1; target 1.25:1)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/ollama-qwen2.5-coder-14b-desktop-first.jpg",
+      "desktop-full": "shots/ollama-qwen2.5-coder-14b-desktop-full.jpg",
+      "mobile-first": "shots/ollama-qwen2.5-coder-14b-mobile-first.jpg",
+      "mobile-full": "shots/ollama-qwen2.5-coder-14b-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "ollama-qwen2.5-coder-14b-frontend-design",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 0,
+      "denied": [],
+      "ok": true,
+      "tokens": {
+        "input": 2864,
+        "output": 2997,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 5861
+      },
+      "durationMin": 2.8,
+      "durationSource": "agent time",
+      "agentMin": 2.8
+    },
+    "files": 1,
+    "bytes": {
+      "total": 5173,
+      "html": 5173,
+      "js": 0,
+      "css": 1836,
+      "images": 0
+    },
+    "htmlLines": 153,
+    "external": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "axe": {
+      "desktop": {
+        "height": 1310,
+        "violations": []
+      },
+      "mobile": {
+        "height": 2125,
+        "violations": []
+      }
+    },
+    "detector": [
+      {
+        "rule": "overused-font",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Primary font: roboto"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Role sizes: body 16px, h1 16px, h2 16px, h3 16px (largest adjacent step 1.00:1; target 1.25:1)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/ollama-qwen2.5-coder-14b-frontend-design-desktop-first.jpg",
+      "desktop-full": "shots/ollama-qwen2.5-coder-14b-frontend-design-desktop-full.jpg",
+      "mobile-first": "shots/ollama-qwen2.5-coder-14b-frontend-design-mobile-first.jpg",
+      "mobile-full": "shots/ollama-qwen2.5-coder-14b-frontend-design-mobile-full.jpg"
+    }
+  },
+  {
     "id": "ollama-qwen3-14b",
     "log": {
       "skillsInvoked": [],
@@ -2634,6 +2808,92 @@
       "desktop-full": "shots/ollama-qwen3-14b-desktop-full.jpg",
       "mobile-first": "shots/ollama-qwen3-14b-mobile-first.jpg",
       "mobile-full": "shots/ollama-qwen3-14b-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "ollama-qwen3-14b-design-taste-frontend",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 0,
+      "denied": [],
+      "ok": true,
+      "tokens": {
+        "input": 9329,
+        "output": 2453,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 11782
+      },
+      "durationMin": 9.5,
+      "durationSource": "agent time",
+      "agentMin": 9.5
+    },
+    "files": 1,
+    "bytes": {
+      "total": 4644,
+      "html": 4644,
+      "js": 258,
+      "css": 1965,
+      "images": 0
+    },
+    "htmlLines": 162,
+    "external": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "axe": {
+      "desktop": {
+        "height": 2230,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 15
+          }
+        ]
+      },
+      "mobile": {
+        "height": 2327,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 15
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "2.4:1 (need 3:1) — text #ffffff on #d4a045"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "2.4:1 (need 4.5:1) — text #ffffff on #d4a045 (and 2 more)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "2.4:1 (need 4.5:1) — text #d4a045 on #ffffff (and 9 more)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.4:1 (need 4.5:1) — text #888888 on #f9f9f9"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/ollama-qwen3-14b-design-taste-frontend-desktop-first.jpg",
+      "desktop-full": "shots/ollama-qwen3-14b-design-taste-frontend-desktop-full.jpg",
+      "mobile-first": "shots/ollama-qwen3-14b-design-taste-frontend-mobile-first.jpg",
+      "mobile-full": "shots/ollama-qwen3-14b-design-taste-frontend-mobile-full.jpg"
     }
   },
   {
@@ -2766,6 +3026,84 @@
       "desktop-full": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-desktop-full.jpg",
       "mobile-first": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-mobile-first.jpg",
       "mobile-full": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 0,
+      "denied": [],
+      "ok": true,
+      "tokens": {
+        "input": 20644,
+        "output": 3158,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "total": 23802
+      },
+      "durationMin": 11.9,
+      "durationSource": "agent time",
+      "agentMin": 11.9
+    },
+    "files": 1,
+    "bytes": {
+      "total": 6602,
+      "html": 6602,
+      "js": 0,
+      "css": 3733,
+      "images": 0
+    },
+    "htmlLines": 246,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 1288,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      },
+      "mobile": {
+        "height": 1756,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 1
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.8:1 (need 4.5:1) — text #ffffff on #e74c3c"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "1.9:1 (need 4.5:1) — text #666666 on #2c3e50"
+      },
+      {
+        "rule": "overused-font",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "Primary font: arial"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend-desktop-first.jpg",
+      "desktop-full": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend-desktop-full.jpg",
+      "mobile-first": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend-mobile-first.jpg",
+      "mobile-full": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend-mobile-full.jpg"
     }
   },
   {

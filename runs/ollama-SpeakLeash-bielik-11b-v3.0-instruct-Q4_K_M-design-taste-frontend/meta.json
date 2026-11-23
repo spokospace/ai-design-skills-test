@@ -1,0 +1,78 @@
+{
+  "id": "ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 20644,
+      "output": 3158,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 23802
+    },
+    "durationMin": 11.9,
+    "durationSource": "agent time",
+    "agentMin": 11.9
+  },
+  "files": 1,
+  "bytes": {
+    "total": 6602,
+    "html": 6602,
+    "js": 0,
+    "css": 3733,
+    "images": 0
+  },
+  "htmlLines": 246,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 1288,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    },
+    "mobile": {
+      "height": 1756,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.8:1 (need 4.5:1) — text #ffffff on #e74c3c"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "1.9:1 (need 4.5:1) — text #666666 on #2c3e50"
+    },
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: arial"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend-desktop-first.jpg",
+    "desktop-full": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend-desktop-full.jpg",
+    "mobile-first": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend-mobile-first.jpg",
+    "mobile-full": "shots/ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-design-taste-frontend-mobile-full.jpg"
+  }
+}

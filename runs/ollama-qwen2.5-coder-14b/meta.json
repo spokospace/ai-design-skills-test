@@ -1,0 +1,78 @@
+{
+  "id": "ollama-qwen2.5-coder-14b",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 935,
+      "output": 1228,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 2163
+    },
+    "durationMin": 1.1,
+    "durationSource": "agent time",
+    "agentMin": 1.1
+  },
+  "files": 1,
+  "bytes": {
+    "total": 3467,
+    "html": 3467,
+    "js": 0,
+    "css": 1102,
+    "images": 0
+  },
+  "htmlLines": 99,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 986,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    },
+    "mobile": {
+      "height": 1370,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.8:1 (need 4.5:1) — text #ffffff on #4caf50"
+    },
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: arial"
+    },
+    {
+      "rule": "flat-type-hierarchy",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Role sizes: body 16px, h1 16px, h2 16px (largest adjacent step 1.00:1; target 1.25:1)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/ollama-qwen2.5-coder-14b-desktop-first.jpg",
+    "desktop-full": "shots/ollama-qwen2.5-coder-14b-desktop-full.jpg",
+    "mobile-first": "shots/ollama-qwen2.5-coder-14b-mobile-first.jpg",
+    "mobile-full": "shots/ollama-qwen2.5-coder-14b-mobile-full.jpg"
+  }
+}

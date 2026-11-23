@@ -1,0 +1,72 @@
+{
+  "id": "ollama-qwen3-14b-frontend-design",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 2866,
+      "output": 2465,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 5331
+    },
+    "durationMin": 3,
+    "durationSource": "agent time",
+    "agentMin": 3
+  },
+  "files": 1,
+  "bytes": {
+    "total": 4641,
+    "html": 4641,
+    "js": 0,
+    "css": 2312,
+    "images": 0
+  },
+  "htmlLines": 196,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 1260,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 8
+        }
+      ]
+    },
+    "mobile": {
+      "height": 1920,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 8
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "1.7:1 (need 4.5:1) — text #f6c23e on #ffffff (and 6 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.7:1 (need 4.5:1) — text #999999 on #f8f9fa"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-3/ollama-qwen3-14b-frontend-design-desktop-first.jpg",
+    "desktop-full": "shots-3/ollama-qwen3-14b-frontend-design-desktop-full.jpg",
+    "mobile-first": "shots-3/ollama-qwen3-14b-frontend-design-mobile-first.jpg",
+    "mobile-full": "shots-3/ollama-qwen3-14b-frontend-design-mobile-full.jpg"
+  }
+}

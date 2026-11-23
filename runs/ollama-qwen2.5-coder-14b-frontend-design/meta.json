@@ -1,0 +1,62 @@
+{
+  "id": "ollama-qwen2.5-coder-14b-frontend-design",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": [],
+    "ok": true,
+    "tokens": {
+      "input": 2864,
+      "output": 2997,
+      "cacheRead": 0,
+      "cacheWrite": 0,
+      "total": 5861
+    },
+    "durationMin": 2.8,
+    "durationSource": "agent time",
+    "agentMin": 2.8
+  },
+  "files": 1,
+  "bytes": {
+    "total": 5173,
+    "html": 5173,
+    "js": 0,
+    "css": 1836,
+    "images": 0
+  },
+  "htmlLines": 153,
+  "external": [],
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ],
+  "axe": {
+    "desktop": {
+      "height": 1310,
+      "violations": []
+    },
+    "mobile": {
+      "height": 2125,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: roboto"
+    },
+    {
+      "rule": "flat-type-hierarchy",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Role sizes: body 16px, h1 16px, h2 16px, h3 16px (largest adjacent step 1.00:1; target 1.25:1)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/ollama-qwen2.5-coder-14b-frontend-design-desktop-first.jpg",
+    "desktop-full": "shots/ollama-qwen2.5-coder-14b-frontend-design-desktop-full.jpg",
+    "mobile-first": "shots/ollama-qwen2.5-coder-14b-frontend-design-mobile-first.jpg",
+    "mobile-full": "shots/ollama-qwen2.5-coder-14b-frontend-design-mobile-full.jpg"
+  }
+}
