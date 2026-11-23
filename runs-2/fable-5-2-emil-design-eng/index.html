@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” – strona demonstracyjna</title>
+<meta name="description" content="Pogotowie awaryjne, godziny pracy biura, ogłoszenia i dokumenty Spółdzielni Mieszkaniowej „Słoneczne Wzgórze”. Strona demonstracyjna – spółdzielnia nie istnieje.">
+<meta name="theme-color" content="#1c3a2b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231c3a2b'/%3E%3Ccircle cx='16' cy='14' r='6' fill='%23f0b24a'/%3E%3Cpath d='M0 32v-7c6-6 12-8 18-6s10 4 14 2v11z' fill='%237fb48f'/%3E%3C/svg%3E">
+<script>document.documentElement.className = 'js';</script>
+<style>
+  :root {
+    --bg: #f8f5ee;
+    --surface: #ffffff;
+    --ink: #17241c;
+    --ink-soft: #4a584f;
+    --green: #1c3a2b;
+    --green-mid: #2b6045;
+    --green-tint: #e6efe7;
+    --sun: #f0b24a;
+    --sun-tint: #fbefd6;
+    --alarm: #a12318;
+    --alarm-dark: #7f1a11;
+    --line: #dcd6c8;
+    --radius: 14px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --wrap: 1120px;
+    color-scheme: light;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.55;
+  }
+
+  h1, h2, h3, p, ul, ol, dl, dd, table { margin: 0; padding: 0; }
+  ul, ol { list-style: none; }
+  h1, h2, h3 { line-height: 1.15; text-wrap: balance; letter-spacing: -0.015em; }
+  a { color: inherit; }
+  button, input { font: inherit; color: inherit; }
+  svg { flex: none; }
+
+  :focus-visible {
+    outline: 3px solid var(--green-mid);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: var(--wrap);
+    margin-inline: auto;
+    padding-inline: 20px;
+  }
+
+  .skip {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    z-index: 100;
+    padding: 12px 18px;
+    background: var(--green);
+    color: #fff;
+    border-radius: 10px;
+    transform: translateY(-200%);
+  }
+  .skip:focus { transform: none; }
+
+  .nums { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ---------- Nagłówek ---------- */
+
+  .top {
+    background: var(--green);
+    color: #fff;
+  }
+  .top .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px 24px;
+    padding-block: 10px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .brand small {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    opacity: 0.8;
+    letter-spacing: 0.02em;
+  }
+  .nav {
+    display: flex;
+    gap: 4px;
+    margin-inline: -12px;
+  }
+  .nav a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding-inline: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+  }
+  .top :focus-visible { outline-color: var(--sun); }
+
+  /* ---------- Sekcja startowa ---------- */
+
+  .hero { padding-block: 28px 8px; }
+  .hero-grid {
+    display: grid;
+    gap: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(1.75rem, 1.2rem + 2.6vw, 3rem);
+    font-weight: 800;
+  }
+  .hero h1 span { display: block; font-size: 0.5em; font-weight: 600; letter-spacing: 0; color: var(--green-mid); margin-bottom: 6px; }
+  .hero-lead {
+    margin-top: 12px;
+    color: var(--ink-soft);
+    max-width: 34em;
+  }
+
+  .alarm {
+    background: var(--alarm);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 20px;
+    scroll-margin-top: 16px;
+  }
+  .alarm h2 { font-size: 1.3rem; }
+  .alarm p { margin-top: 4px; }
+  .alarm .fine { font-size: 0.95rem; opacity: 0.92; margin-top: 14px; }
+  .alarm :focus-visible { outline-color: #fff; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 56px;
+    padding: 10px 22px;
+    border: 0;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 160ms var(--ease-out), background-color 150ms ease;
+  }
+  .btn:active { transform: scale(0.97); }
+
+  .btn-call {
+    width: 100%;
+    margin-top: 16px;
+    min-height: 68px;
+    background: #fff;
+    color: var(--alarm-dark);
+    font-size: clamp(1.35rem, 1rem + 1.8vw, 1.7rem);
+  }
+
+  .office {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .office h2 { font-size: 1.3rem; }
+  .status {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+  .status::before {
+    content: "";
+    flex: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--line);
+    transform: translateY(-1px);
+  }
+  .status[data-state="open"]::before { background: #2f8f57; box-shadow: 0 0 0 4px #d8eedf; }
+  .status[data-state="closed"]::before { background: #8a8577; }
+  .office-links {
+    display: grid;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .btn-soft {
+    justify-content: flex-start;
+    background: var(--green-tint);
+    color: var(--green);
+  }
+  .btn-soft small { display: block; font-size: 0.85rem; font-weight: 500; color: var(--ink-soft); line-height: 1.2; }
+  .btn-soft span { line-height: 1.25; }
+
+  /* ---------- Sekcje ---------- */
+
+  section { scroll-margin-top: 16px; }
+  .block { padding-block: 36px; }
+  .block > .wrap > h2 {
+    font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.1rem);
+    font-weight: 800;
+  }
+  .block-intro { margin-top: 8px; color: var(--ink-soft); max-width: 40em; }
+
+  /* ---------- Ogłoszenia ---------- */
+
+  .news { display: grid; gap: 12px; margin-top: 20px; }
+  .news li {
+    display: grid;
+    grid-template-columns: 104px 1fr;
+    gap: 16px;
+    align-items: start;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+  .when {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 84px;
+    padding: 8px 4px;
+    border-radius: 10px;
+    background: var(--sun-tint);
+    text-align: center;
+    line-height: 1.1;
+  }
+  .when b { font-size: 1.6rem; font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .when span { font-size: 0.9rem; margin-top: 4px; }
+  .tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+  }
+  .news h3 { font-size: 1.2rem; margin-top: 2px; }
+  .news p { margin-top: 6px; color: var(--ink-soft); }
+
+  /* ---------- Dokumenty ---------- */
+
+  .docs-band { background: var(--surface); border-block: 1px solid var(--line); }
+  .doc-tools { display: none; margin-top: 20px; }
+  .js .doc-tools { display: block; }
+
+  .search { position: relative; max-width: 560px; }
+  .search label { display: block; font-weight: 600; margin-bottom: 6px; }
+  .search svg { position: absolute; left: 16px; bottom: 17px; color: var(--ink-soft); pointer-events: none; }
+  .search input {
+    width: 100%;
+    height: 56px;
+    padding: 0 16px 0 48px;
+    border: 2px solid #8d968f;
+    border-radius: 12px;
+    background: var(--bg);
+    font-size: 1.125rem;
+    transition: border-color 150ms ease, background-color 150ms ease;
+  }
+  .search input::placeholder { color: #6a756e; }
+  .search input:focus { outline: none; border-color: var(--green-mid); background: #fff; box-shadow: 0 0 0 3px #cfe2d4; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .chip {
+    min-height: 46px;
+    padding: 6px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 160ms var(--ease-out), background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+  }
+  .chip:active { transform: scale(0.97); }
+  .chip i { font-style: normal; font-weight: 500; opacity: 0.7; margin-left: 4px; font-variant-numeric: tabular-nums; }
+  .chip[aria-pressed="true"] { background: var(--green); border-color: var(--green); color: #fff; }
+
+  .doc-count { margin-top: 18px; font-size: 0.95rem; color: var(--ink-soft); }
+
+  .docs { margin-top: 8px; border-top: 1px solid var(--line); }
+  .docs li { border-bottom: 1px solid var(--line); }
+  .docs li[hidden] { display: none; }
+  .docs a {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+    align-items: center;
+    padding: 14px 8px;
+    margin-inline: -8px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 150ms ease;
+  }
+  .docs a:active { background: var(--green-tint); }
+  .docs .tag { grid-column: 1; }
+  .docs strong { grid-column: 1; font-size: 1.15rem; line-height: 1.3; text-decoration: underline; text-decoration-color: #9db5a5; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+  .docs em { grid-column: 1; font-style: normal; font-size: 0.95rem; color: var(--ink-soft); }
+  .docs .get {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--green-tint);
+    color: var(--green);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .empty {
+    margin-top: 16px;
+    padding: 24px 20px;
+    border: 1.5px dashed var(--line);
+    border-radius: var(--radius);
+    background: var(--bg);
+  }
+  .empty[hidden] { display: none; }
+  .empty p { overflow-wrap: anywhere; }
+  .empty .btn { margin-top: 14px; min-height: 48px; background: var(--green); color: #fff; }
+
+  .legal { margin-top: 20px; font-size: 0.95rem; color: var(--ink-soft); max-width: 46em; }
+
+  /* ---------- Kontakt ---------- */
+
+  .contact-grid { display: grid; gap: 16px; margin-top: 20px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+
+  .hours { width: 100%; border-collapse: collapse; }
+  .hours th, .hours td { padding: 12px 10px; text-align: left; font-weight: 500; border-top: 1px solid var(--line); }
+  .hours tr:first-child th, .hours tr:first-child td { border-top: 0; }
+  .hours td { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .hours tr.today th, .hours tr.today td { background: var(--sun-tint); font-weight: 700; }
+  .hours tr.today th { border-radius: 8px 0 0 8px; }
+  .hours tr.today td { border-radius: 0 8px 8px 0; }
+  .hours tr.today th::after { content: " · dziś"; font-weight: 500; }
+  .hours .off { color: var(--ink-soft); }
+  .note { margin-top: 12px; font-size: 0.95rem; color: var(--ink-soft); }
+
+  .lines > div { padding: 12px 0; border-top: 1px solid var(--line); }
+  .lines > div:first-child { border-top: 0; padding-top: 0; }
+  .lines dt { font-size: 0.9rem; color: var(--ink-soft); }
+  .lines dd { font-size: 1.2rem; font-weight: 600; }
+  .lines a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration: underline;
+    text-decoration-color: #9db5a5;
+    text-underline-offset: 4px;
+    overflow-wrap: anywhere;
+  }
+  .lines .hot { color: var(--alarm); }
+
+  /* ---------- Stopka ---------- */
+
+  footer {
+    background: var(--green);
+    color: #e3ece5;
+    padding-block: 28px;
+    font-size: 1rem;
+  }
+  .demo {
+    padding: 16px 18px;
+    border: 1.5px solid var(--sun);
+    border-radius: 12px;
+    color: #fff;
+    max-width: 46em;
+  }
+  .demo strong { color: var(--sun); }
+  footer .small { margin-top: 16px; font-size: 0.9rem; opacity: 0.85; }
+
+  /* ---------- Pasek alarmowy na telefonie ---------- */
+
+  .callbar { display: none; }
+
+  @media (max-width: 719px) {
+    body { padding-bottom: 84px; }
+    .news li { grid-template-columns: 1fr; gap: 12px; }
+    .when {
+      display: flex;
+      align-items: baseline;
+      justify-content: flex-start;
+      gap: 8px;
+      min-height: 0;
+      padding: 10px 14px;
+    }
+    .when span { margin-top: 0; font-size: 1rem; }
+    .callbar {
+      display: block;
+      position: fixed;
+      inset: auto 0 0 0;
+      z-index: 20;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(248, 245, 238, 0.94);
+      border-top: 1px solid var(--line);
+      transition: transform 260ms var(--ease-out), visibility 0s;
+    }
+    .callbar.is-away {
+      transform: translateY(100%);
+      visibility: hidden;
+      transition: transform 200ms var(--ease-out), visibility 0s 200ms;
+    }
+    .callbar .btn {
+      width: 100%;
+      min-height: 60px;
+      background: var(--alarm);
+      color: #fff;
+      font-size: 1.1rem;
+      line-height: 1.2;
+    }
+    .callbar small { display: block; font-size: 0.85rem; font-weight: 500; opacity: 0.92; }
+  }
+
+  /* ---------- Komunikat ---------- */
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    z-index: 30;
+    width: max-content;
+    max-width: calc(100vw - 32px);
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: var(--ink);
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 8px 28px rgba(23, 36, 28, 0.28);
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, 12px);
+    transition: opacity 200ms ease, transform 200ms ease, visibility 0s 200ms;
+  }
+  .toast.is-on {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    transition: opacity 400ms ease, transform 400ms ease, visibility 0s;
+  }
+  @media (max-width: 719px) { .toast { bottom: calc(96px + env(safe-area-inset-bottom)); } }
+
+  /* ---------- Większe ekrany ---------- */
+
+  @media (min-width: 720px) {
+    .wrap { padding-inline: 32px; }
+    .hero { padding-block: 48px 16px; }
+    .hero-grid { grid-template-columns: 1.05fr 1fr; gap: 24px 40px; align-items: start; }
+    .hero-text { grid-row: span 2; padding-top: 8px; }
+    .alarm, .office { padding: 24px; }
+    .office-links { grid-template-columns: 1fr 1fr; }
+    .block { padding-block: 56px; }
+    .news li { grid-template-columns: 128px 1fr; padding: 20px; gap: 24px; }
+    .contact-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .card { padding: 24px; }
+  }
+  @media (min-width: 720px) and (max-width: 959px) {
+    .hero-grid { grid-template-columns: 1fr 1fr; }
+    .hero-text { grid-column: 1 / -1; grid-row: auto; }
+  }
+
+  /* ---------- Najechanie tylko tam, gdzie jest mysz ---------- */
+
+  @media (hover: hover) and (pointer: fine) {
+    .nav a:hover { background: rgba(255, 255, 255, 0.14); }
+    .btn-call:hover { background: #fbe9e6; }
+    .btn-soft:hover { background: #d7e6da; }
+    .chip:hover { border-color: var(--green-mid); }
+    .chip[aria-pressed="true"]:hover { background: var(--green-mid); border-color: var(--green-mid); }
+    .docs a:hover { background: var(--green-tint); }
+    .docs a:hover .get { background: var(--green); color: #fff; }
+    .empty .btn:hover { background: var(--green-mid); }
+    .lines a:hover { text-decoration-color: currentColor; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .chip { transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease; }
+    .btn:active, .chip:active { transform: none; }
+    .callbar, .callbar.is-away { transition: none; }
+    .toast, .toast.is-on { transform: translate(-50%, 0); transition: opacity 200ms ease, visibility 0s; }
+  }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#tresc">Przejdź do treści</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Spółdzielnia Mieszkaniowa Słoneczne Wzgórze – początek strony">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <rect width="40" height="40" rx="10" fill="#2b6045"/>
+        <circle cx="20" cy="17" r="7.5" fill="#f0b24a"/>
+        <path d="M0 40v-9c7-7 15-10 22-7.500s13 5 18 2.500V40z" fill="#9fcbab"/>
+      </svg>
+      <span><small>Spółdzielnia Mieszkaniowa</small>Słoneczne Wzgórze</span>
+    </a>
+    <nav class="nav" aria-label="Główne">
+      <a href="#ogloszenia">Ogłoszenia</a>
+      <a href="#dokumenty">Dokumenty</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<main id="tresc">
+
+  <div class="hero">
+    <div class="wrap hero-grid">
+
+      <div class="hero-text">
+        <h1><span>Spółdzielnia Mieszkaniowa</span>„Słoneczne Wzgórze”</h1>
+        <p class="hero-lead">Osiedla Słoneczne Wzgórze i Przylesie: 6&nbsp;budynków, 412&nbsp;mieszkań. Tu znajdziesz numer alarmowy, godziny pracy biura, ogłoszenia i dokumenty spółdzielni.</p>
+      </div>
+
+      <section class="alarm" id="awarie" aria-labelledby="awarie-h">
+        <h2 id="awarie-h">Pogotowie awaryjne</h2>
+        <p>Woda, gaz, winda. Czynne całą dobę, także w święta.</p>
+        <a class="btn btn-call nums" href="tel:+48000000999">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.600 10.800a15.100 15.100 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.250c1.100.370 2.300.570 3.600.570a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.600 21 3 13.400 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.300.200 2.500.570 3.600a1 1 0 0 1-.250 1z"/></svg>
+          <span><span class="visually">Zadzwoń: </span>+48&nbsp;000&nbsp;000&nbsp;999</span>
+        </a>
+        <p class="fine">Gdy zagrożone jest życie lub zdrowie, dzwoń pod numer alarmowy 112.</p>
+      </section>
+
+      <section class="office" aria-labelledby="biuro-h">
+        <h2 id="biuro-h">Biuro spółdzielni</h2>
+        <p class="status" id="status">Poniedziałek 10:00–18:00, wtorek–piątek 7:30–15:30</p>
+        <div class="office-links">
+          <a class="btn btn-soft" href="tel:+48000000001">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.600 10.800a15.100 15.100 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.250c1.100.370 2.300.570 3.600.570a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.600 21 3 13.400 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.300.200 2.500.570 3.600a1 1 0 0 1-.250 1z"/></svg>
+            <span><small>Telefon do biura</small><span class="nums">+48&nbsp;000&nbsp;000&nbsp;001</span></span>
+          </a>
+          <a class="btn btn-soft" href="#kontakt">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span><small>Adres i e-mail</small>Godziny i kontakt</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <section class="block" id="ogloszenia" aria-labelledby="ogl-h">
+    <div class="wrap">
+      <h2 id="ogl-h">Ogłoszenia</h2>
+      <ul class="news">
+        <li>
+          <div class="when"><b>3</b><span>grudnia 2026</span></div>
+          <div>
+            <span class="tag">Woda · Przylesie 4</span>
+            <h3>Przerwa w dostawie zimnej wody</h3>
+            <p>W czwartek <time datetime="2026-12-03">3 grudnia</time> w godzinach <span class="nums">8:00–14:00</span> w budynku Przylesie&nbsp;4 nie będzie zimnej wody. Warto wcześniej przygotować zapas.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when"><b>7–18</b><span>grudnia 2026</span></div>
+          <div>
+            <span class="tag">Gaz · wszystkie budynki</span>
+            <h3>Roczne przeglądy instalacji gazowej</h3>
+            <p>Od <time datetime="2026-12-07">7</time> do <time datetime="2026-12-18">18 grudnia</time> we wszystkich budynkach odbędą się roczne przeglądy instalacji gazowej. Harmonogram wisi na klatkach schodowych.</p>
+          </div>
+        </li>
+        <li>
+          <div class="when"><b>24 i 31</b><span>grudnia 2026</span></div>
+          <div>
+            <span class="tag">Biuro</span>
+            <h3>Biuro nieczynne w Wigilię i sylwestra</h3>
+            <p><time datetime="2026-12-24">24</time> i <time datetime="2026-12-31">31 grudnia</time> biuro spółdzielni będzie zamknięte. Pogotowie awaryjne działa bez przerwy: <a class="nums" href="tel:+48000000999">+48&nbsp;000&nbsp;000&nbsp;999</a>.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block docs-band" id="dokumenty" aria-labelledby="dok-h">
+    <div class="wrap">
+      <h2 id="dok-h">Dokumenty spółdzielni</h2>
+      <p class="block-intro">Statut, regulaminy, uchwały, protokoły i sprawozdania finansowe. Wszystkie pliki są w formacie PDF.</p>
+
+      <div class="doc-tools">
+        <div class="search">
+          <label for="szukaj">Szukaj dokumentu</label>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.500-3.500"/></svg>
+          <input type="search" id="szukaj" placeholder="np. wodomierze, statut, 2025" autocomplete="off" enterkeyhint="search" aria-controls="lista-dok">
+        </div>
+        <div class="chips" id="chips" role="group" aria-label="Rodzaj dokumentu">
+          <button type="button" class="chip" data-cat="" aria-pressed="true">Wszystkie</button>
+          <button type="button" class="chip" data-cat="statut" aria-pressed="false">Statut</button>
+          <button type="button" class="chip" data-cat="regulaminy" aria-pressed="false">Regulaminy</button>
+          <button type="button" class="chip" data-cat="uchwaly" aria-pressed="false">Uchwały</button>
+          <button type="button" class="chip" data-cat="protokoly" aria-pressed="false">Protokoły obrad</button>
+          <button type="button" class="chip" data-cat="lustracja" aria-pressed="false">Lustracja</button>
+          <button type="button" class="chip" data-cat="sprawozdania" aria-pressed="false">Sprawozdania finansowe</button>
+        </div>
+        <p class="doc-count" id="ile" role="status" aria-live="polite"></p>
+      </div>
+
+      <ul class="docs" id="lista-dok">
+        <li data-cat="statut">
+          <a href="#">
+            <span class="tag">Statut</span>
+            <strong>Statut Spółdzielni</strong>
+            <em>Tekst jednolity, marzec 2026</em>
+            <span class="get" aria-hidden="true">PDF</span>
+          </a>
+        </li>
+        <li data-cat="regulaminy">
+          <a href="#">
+            <span class="tag">Regulamin</span>
+            <strong>Regulamin porządku domowego</strong>
+            <span class="get" aria-hidden="true">PDF</span>
+          </a>
+        </li>
+        <li data-cat="regulaminy">
+          <a href="#">
+            <span class="tag">Regulamin</span>
+            <strong>Regulamin rozliczania kosztów zużycia wody</strong>
+            <span class="get" aria-hidden="true">PDF</span>
+          </a>
+        </li>
+        <li data-cat="uchwaly">
+          <a href="#">
+            <span class="tag">Uchwała Zarządu</span>
+            <strong>Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy</strong>
+            <em>2026</em>
+            <span class="get" aria-hidden="true">PDF</span>
+          </a>
+        </li>
+        <li data-cat="protokoly">
+          <a href="#">
+            <span class="tag">Protokół obrad</span>
+            <strong>Protokół z Walnego Zgromadzenia</strong>
+            <em>Czerwiec 2026</em>
+            <span class="get" aria-hidden="true">PDF</span>
+          </a>
+        </li>
+        <li data-cat="lustracja">
+          <a href="#">
+            <span class="tag">Lustracja</span>
+            <strong>Protokół lustracji za lata 2023–2025</strong>
+            <span class="get" aria-hidden="true">PDF</span>
+          </a>
+        </li>
+        <li data-cat="sprawozdania">
+          <a href="#">
+            <span class="tag">Sprawozdanie finansowe</span>
+            <strong>Sprawozdanie finansowe za 2025 rok</strong>
+            <span class="get" aria-hidden="true">PDF</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="empty" id="brak" hidden>
+        <p id="brak-tekst"></p>
+        <button type="button" class="btn" id="wyczysc">Pokaż wszystkie dokumenty</button>
+      </div>
+
+      <p class="legal">Dokumenty udostępniamy na podstawie art.&nbsp;8¹ ust.&nbsp;3 ustawy o spółdzielniach mieszkaniowych. Jeśli nie możesz czegoś znaleźć, zadzwoń do biura lub napisz na <a href="mailto:biuro@example.com">biuro@example.com</a>.</p>
+    </div>
+  </section>
+
+  <section class="block" id="kontakt" aria-labelledby="kon-h">
+    <div class="wrap">
+      <h2 id="kon-h">Godziny pracy i kontakt</h2>
+      <div class="contact-grid">
+
+        <div class="card">
+          <h3>Godziny pracy biura</h3>
+          <table class="hours">
+            <tbody>
+              <tr data-days="1"><th scope="row">Poniedziałek</th><td>10:00–18:00</td></tr>
+              <tr data-days="2345"><th scope="row">Wtorek–piątek</th><td>7:30–15:30</td></tr>
+              <tr data-days="60"><th scope="row">Sobota i niedziela</th><td class="off">nieczynne</td></tr>
+            </tbody>
+          </table>
+          <p class="note">24 i 31 grudnia 2026 biuro jest nieczynne.</p>
+        </div>
+
+        <div class="card">
+          <h3>Kontakt</h3>
+          <dl class="lines">
+            <div>
+              <dt>Pogotowie awaryjne, całą dobę</dt>
+              <dd><a class="hot nums" href="tel:+48000000999">+48&nbsp;000&nbsp;000&nbsp;999</a></dd>
+            </div>
+            <div>
+              <dt>Telefon do biura</dt>
+              <dd><a class="nums" href="tel:+48000000001">+48&nbsp;000&nbsp;000&nbsp;001</a></dd>
+            </div>
+            <div>
+              <dt>E-mail</dt>
+              <dd><a href="mailto:biuro@example.com">biuro@example.com</a></dd>
+            </div>
+            <div>
+              <dt>Adres biura</dt>
+              <dd>ul. Przykładowa 1<br>00-000 Miasto</dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="demo"><strong>To jest strona demonstracyjna.</strong> Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” nie istnieje. Adres, numery telefonów, ogłoszenia i dokumenty zostały wymyślone na potrzeby pokazu, a odnośniki do plików nie prowadzą do prawdziwych dokumentów.</p>
+    <p class="small">Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” · ul. Przykładowa 1, 00-000 Miasto</p>
+  </div>
+</footer>
+
+<div class="callbar" id="callbar">
+  <a class="btn nums" href="tel:+48000000999">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.600 10.800a15.100 15.100 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.250c1.100.370 2.300.570 3.600.570a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.600 21 3 13.400 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.300.200 2.500.570 3.600a1 1 0 0 1-.250 1z"/></svg>
+    <span><small>Awaria? Pogotowie całą dobę</small>+48&nbsp;000&nbsp;000&nbsp;999</span>
+  </a>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<style>
+  .visually { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- Czy biuro jest teraz otwarte (czas polski) ---------- */
+
+  var HOURS = { 1: [600, 1080], 2: [450, 930], 3: [450, 930], 4: [450, 930], 5: [450, 930] };
+  // Dni zamknięcia z ogłoszenia oraz dni ustawowo wolne od pracy.
+  var CLOSED_DATES = ['2026-12-24', '2026-12-31', '2027-03-29', '2027-05-27'];
+  var CLOSED_YEARLY = ['01-01', '01-06', '05-01', '05-03', '08-15', '11-01', '11-11', '12-24', '12-25', '12-26'];
+  var DAY_ACC = ['w niedzielę', 'w poniedziałek', 'we wtorek', 'w środę', 'w czwartek', 'w piątek', 'w sobotę'];
+
+  function fmt(mins) {
+    var m = mins % 60;
+    return Math.floor(mins / 60) + ':' + (m < 10 ? '0' : '') + m;
+  }
+
+  function officeStatus() {
+    var el = document.getElementById('status');
+    var now;
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Warsaw', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+      }).formatToParts(new Date());
+      now = {};
+      parts.forEach(function (p) { now[p.type] = parseInt(p.value, 10); });
+    } catch (e) { return; }
+
+    function day(offset) {
+      var d = new Date(Date.UTC(now.year, now.month - 1, now.day + offset));
+      var iso = d.toISOString().slice(0, 10);
+      var off = CLOSED_DATES.indexOf(iso) > -1 || CLOSED_YEARLY.indexOf(iso.slice(5)) > -1;
+      return { dow: d.getUTCDay(), hours: off ? null : (HOURS[d.getUTCDay()] || null) };
+    }
+
+    var mins = now.hour * 60 + now.minute;
+    var today = day(0);
+    var text, state = 'closed';
+
+    if (today.hours && mins >= today.hours[0] && mins < today.hours[1]) {
+      state = 'open';
+      text = 'Otwarte dziś do ' + fmt(today.hours[1]);
+    } else if (today.hours && mins < today.hours[0]) {
+      text = 'Teraz zamknięte. Otwieramy dziś o ' + fmt(today.hours[0]);
+    } else {
+      text = 'Teraz zamknięte';
+      for (var i = 1; i <= 14; i++) {
+        var next = day(i);
+        if (next.hours) {
+          text += '. Otwieramy ' + (i === 1 ? 'jutro' : DAY_ACC[next.dow]) + ' o ' + fmt(next.hours[0]);
+          break;
+        }
+      }
+    }
+
+    el.textContent = text;
+    el.dataset.state = state;
+
+    var rows = document.querySelectorAll('.hours tr');
+    for (var r = 0; r < rows.length; r++) {
+      rows[r].classList.toggle('today', rows[r].dataset.days.indexOf(String(today.dow)) > -1);
+    }
+  }
+
+  officeStatus();
+  setInterval(officeStatus, 60000);
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) officeStatus(); });
+
+  /* ---------- Wyszukiwarka dokumentów ---------- */
+
+  var input = document.getElementById('szukaj');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var items = Array.prototype.slice.call(document.querySelectorAll('#lista-dok li'));
+  var count = document.getElementById('ile');
+  var empty = document.getElementById('brak');
+  var emptyText = document.getElementById('brak-tekst');
+  var list = document.getElementById('lista-dok');
+  var activeCat = '';
+
+  // „wodomierzy” znajdzie się także po wpisaniu „wodomierze” bez polskich znaków.
+  function norm(s) {
+    return s.toLowerCase().replace(/ł/g, 'l').normalize('NFD').replace(/[̀-ͯ]/g, '');
+  }
+
+  var index = items.map(function (li) { return norm(li.textContent.replace(/\s+/g, ' ')); });
+
+  chips.forEach(function (chip) {
+    var cat = chip.dataset.cat;
+    var n = cat ? items.filter(function (li) { return li.dataset.cat === cat; }).length : items.length;
+    var i = document.createElement('i');
+    i.textContent = n;
+    i.setAttribute('aria-hidden', 'true');
+    chip.appendChild(i);
+  });
+
+  function plural(n) {
+    if (n === 1) return '1 dokument';
+    var d = n % 10, h = n % 100;
+    return n + (d >= 2 && d <= 4 && (h < 12 || h > 14) ? ' dokumenty' : ' dokumentów');
+  }
+
+  function apply() {
+    var raw = input.value.trim();
+    var words = norm(raw).split(/\s+/).filter(Boolean);
+    var shown = 0;
+
+    items.forEach(function (li, i) {
+      var ok = (!activeCat || li.dataset.cat === activeCat) && words.every(function (w) {
+        // Dopasowanie po rdzeniu, żeby odmiana („wodomierze”/„wodomierzy”) nie przeszkadzała.
+        var cut = /\d/.test(w) ? 0 : (w.length > 5 ? 2 : (w.length > 3 ? 1 : 0));
+        var stem = w.slice(0, w.length - cut);
+        return index[i].indexOf(stem) > -1;
+      });
+      li.hidden = !ok;
+      if (ok) shown++;
+    });
+
+    list.hidden = shown === 0;
+    empty.hidden = shown !== 0;
+    count.textContent = shown === 0 ? '' : (shown === items.length ? 'Wszystkie dokumenty: ' + shown : 'Znaleziono: ' + plural(shown));
+
+    if (shown === 0) {
+      var chipName = activeCat ? chips.filter(function (c) { return c.dataset.cat === activeCat; })[0].firstChild.textContent : '';
+      emptyText.textContent = 'Nie znaleźliśmy dokumentu' +
+        (raw ? ' pasującego do „' + raw + '”' : '') +
+        (chipName ? ' w grupie „' + chipName + '”' : '') +
+        '. Sprawdź pisownię albo wpisz jedno słowo z nazwy.';
+    }
+  }
+
+  function setCat(cat) {
+    activeCat = cat;
+    chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.cat === cat)); });
+  }
+
+  input.addEventListener('input', apply);
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () { setCat(chip.dataset.cat); apply(); });
+  });
+  document.getElementById('wyczysc').addEventListener('click', function () {
+    input.value = '';
+    setCat('');
+    apply();
+    input.focus();
+  });
+  apply();
+
+  /* ---------- Pliki demonstracyjne: zamiast skoku na górę strony ---------- */
+
+  var toast = document.getElementById('toast');
+  var toastTimer;
+  list.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href="#"]');
+    if (!a) return;
+    e.preventDefault();
+    toast.textContent = 'To strona demonstracyjna. Ten plik nie istnieje.';
+    toast.classList.add('is-on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('is-on'); }, 4000);
+  });
+
+  /* ---------- Pasek alarmowy chowa się, gdy numer i tak jest na ekranie ---------- */
+
+  var bar = document.getElementById('callbar');
+  if ('IntersectionObserver' in window) {
+    var visible = new Set();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) visible.add(en.target); else visible.delete(en.target);
+      });
+      bar.classList.toggle('is-away', visible.size > 0);
+    }, { threshold: 0.35 });
+    io.observe(document.querySelector('.btn-call'));
+    io.observe(document.querySelector('.lines .hot'));
+  }
+})();
+</script>
+</body>
+</html>

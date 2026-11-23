@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” – strona demonstracyjna</title>
+<meta name="description" content="Pogotowie awaryjne, godziny pracy biura, ogłoszenia i dokumenty Spółdzielni Mieszkaniowej „Słoneczne Wzgórze”. Strona demonstracyjna, spółdzielnia jest fikcyjna.">
+<meta name="format-detection" content="telephone=no">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%23F2F4EE'/%3E%3Ccircle cx='24' cy='25' r='11' fill='%23F4BE2A'/%3E%3Cpath d='M0 48V34c10-9 22-11 48-4v18z' fill='%231F5A47'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --tynk: #F2F4EE;        /* ściana nad lamperią */
+    --bialy: #FFFFFF;
+    --lamperia: #1F5A47;    /* zielona farba olejna z klatki schodowej */
+    --lamperia-ciemna: #174536;
+    --atrament: #12231C;
+    --szary: #4B5A53;
+    --linia: #C9D1C6;
+    --slonce: #F4BE2A;
+    --alarm: #B8261A;
+    --alarm-ciemny: #8F1C12;
+
+    --tekst: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", Verdana, "Segoe UI", sans-serif;
+    --naglowek: "Bricolage Grotesque", "Atkinson Hyperlegible Next", "Trebuchet MS", sans-serif;
+
+    --szer: 70rem;
+    --bok: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    margin: 0;
+    background: var(--tynk);
+    color: var(--atrament);
+    font-family: var(--tekst);
+    font-size: 1.125rem;
+    line-height: 1.55;
+  }
+
+  h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 3px solid var(--atrament);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .na-ciemnym :focus-visible,
+  .na-ciemnym:focus-visible { outline-color: var(--slonce); }
+
+  .ramka {
+    max-width: var(--szer);
+    margin-inline: auto;
+    padding-inline: var(--bok);
+  }
+
+  .tel { white-space: nowrap; font-family: var(--naglowek); font-weight: 600; letter-spacing: .01em; }
+
+  .pomin {
+    position: absolute; left: 1rem; top: -5rem;
+    background: var(--atrament); color: var(--bialy);
+    padding: .75rem 1rem; border-radius: 6px; z-index: 50;
+  }
+  .pomin:focus { top: 1rem; }
+
+  /* ───── Nagłówek ───── */
+
+  .gora { padding-block: 1rem; }
+  .gora .ramka {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: .5rem 2rem;
+  }
+  .znak {
+    display: flex; align-items: center; gap: .75rem;
+    text-decoration: none;
+    font-family: var(--naglowek); font-weight: 800;
+    font-size: 1.125rem; line-height: 1.15;
+    margin-right: auto;
+  }
+  .znak svg { width: 2.75rem; height: 2.75rem; flex: none; }
+  .znak small { display: block; font-family: var(--tekst); font-weight: 400; font-size: .9375rem; color: var(--szary); }
+
+  .menu { display: flex; flex-wrap: wrap; gap: .25rem 1.5rem; }
+  .menu a {
+    display: inline-flex; align-items: center;
+    min-height: 3rem;
+    font-weight: 600;
+    text-decoration-thickness: 2px; text-underline-offset: .3em;
+    text-decoration-color: var(--linia);
+  }
+  .menu a:hover { text-decoration-color: var(--lamperia); }
+
+  .gora-awaria {
+    display: none;
+    align-items: center; gap: .5rem;
+    min-height: 3rem; padding: .25rem 1rem;
+    background: var(--alarm); color: var(--bialy);
+    border-radius: 8px; text-decoration: none; font-weight: 700;
+  }
+  .gora-awaria:hover { background: var(--alarm-ciemny); }
+
+  /* ───── Ściana: tynk u góry, lamperia na dole ───── */
+
+  .sciana { padding-block: clamp(1.5rem, 5vw, 4rem) 0; }
+  .sciana-uklad {
+    display: grid; gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .tytul {
+    font-family: var(--naglowek); font-weight: 800;
+    font-size: clamp(2.5rem, 10.5vw, 5.25rem);
+    line-height: .95; letter-spacing: -.02em;
+    text-wrap: balance;
+  }
+  .tytul span {
+    display: block;
+    font-size: clamp(1.25rem, 4.2vw, 1.75rem);
+    font-weight: 600; letter-spacing: 0; line-height: 1.2;
+    margin-bottom: .4em; color: var(--lamperia);
+  }
+  .wstep { margin-top: 1.25rem; max-width: 34em; font-size: 1.1875rem; }
+
+  .biuro-teraz {
+    margin-top: 1.5rem;
+    display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.25rem;
+  }
+  .stan {
+    display: inline-flex; align-items: baseline; gap: .6rem;
+    font-weight: 600;
+  }
+  .stan::before {
+    content: ""; flex: none; align-self: center;
+    width: .85rem; height: .85rem; border-radius: 50%;
+    background: var(--bialy); border: 3px solid var(--szary);
+  }
+  .stan[data-stan="otwarte"]::before { background: var(--lamperia); border-color: var(--lamperia); }
+  .stan[data-stan="zamkniete"]::before { background: var(--bialy); border-color: var(--szary); }
+
+  .przycisk {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 3.25rem; padding: .5rem 1.25rem;
+    border: 2px solid var(--atrament); border-radius: 8px;
+    background: var(--bialy); color: var(--atrament);
+    font: inherit; font-weight: 700; text-decoration: none;
+    cursor: pointer;
+  }
+  .przycisk:hover { background: var(--atrament); color: var(--bialy); }
+
+  /* Tabliczka emaliowana z numerem alarmowym */
+  .tabliczka {
+    position: relative; display: block;
+    background: var(--alarm); color: var(--bialy);
+    border-radius: 14px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    text-decoration: none;
+    container-type: inline-size;
+    box-shadow: 0 2px 0 var(--alarm-ciemny), 0 14px 24px -12px rgba(18, 35, 28, .55);
+    z-index: 2;
+  }
+  .tabliczka::before {           /* biała ramka jak na tabliczkach z numerem domu */
+    content: ""; position: absolute; inset: 8px;
+    border: 2px solid rgba(255, 255, 255, .85); border-radius: 8px;
+    pointer-events: none;
+  }
+  .tabliczka::after {            /* cztery wkręty */
+    content: ""; position: absolute; inset: 15px; pointer-events: none;
+    --w: radial-gradient(circle, #fff 0 2.5px, rgba(0,0,0,.35) 3px 4px, transparent 4.5px);
+    background: var(--w) left top / 10px 10px no-repeat,
+                var(--w) right top / 10px 10px no-repeat,
+                var(--w) left bottom / 10px 10px no-repeat,
+                var(--w) right bottom / 10px 10px no-repeat;
+  }
+  .tabliczka:hover { background: var(--alarm-ciemny); }
+  .tabliczka-nazwa { display: block; font-weight: 700; font-size: 1.25rem; line-height: 1.25; padding-inline: .5rem; }
+  .tabliczka-numer {
+    display: block; margin-block: .35rem .5rem; padding-inline: .5rem;
+    font-family: var(--naglowek); font-weight: 800;
+    font-size: 2rem; font-size: clamp(1.5rem, 10.4cqi, 3.25rem); line-height: 1.05;
+    white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .tabliczka-opis { display: block; padding-inline: .5rem; }
+  .tabliczka-akcja {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    margin: 1.1rem .5rem .25rem; min-height: 3.25rem;
+    background: var(--bialy); color: var(--alarm-ciemny);
+    border-radius: 8px; font-weight: 700;
+  }
+  .tabliczka svg, .gora-awaria svg, .pasek svg { width: 1.25em; height: 1.25em; flex: none; }
+
+  /* Lamperia: szlaczek, odstęp, pełny kolor */
+  .lamperia {
+    position: relative;
+    margin-top: -3.5rem;
+    padding-block: 5.25rem 2rem;
+    background: var(--lamperia); color: var(--bialy);
+    border-top: 14px solid var(--tynk);
+    box-shadow: 0 -4px 0 var(--lamperia);
+  }
+  .skroty { display: grid; gap: 0; }
+  .skroty a {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    min-height: 4rem; padding-block: .9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .28);
+    text-decoration: none;
+  }
+  .skroty li:last-child a { border-bottom: 0; }
+  .skroty strong { display: block; font-family: var(--naglowek); font-weight: 800; font-size: 1.375rem; line-height: 1.2; }
+  .skroty span { display: block; color: #DCE9E2; }
+  .skroty svg { width: 1.5rem; height: 1.5rem; flex: none; color: var(--slonce); }
+  .skroty a:hover strong { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: .2em; text-decoration-color: var(--slonce); }
+
+  /* ───── Sekcje ───── */
+
+  .sekcja { padding-block: clamp(3rem, 8vw, 5.5rem) 0; }
+  .sekcja-ostatnia { padding-bottom: clamp(3rem, 8vw, 5.5rem); }
+  .sekcja h2 {
+    font-family: var(--naglowek); font-weight: 800;
+    font-size: clamp(2rem, 6vw, 3rem); line-height: 1.05; letter-spacing: -.015em;
+  }
+  .sekcja-opis { margin-top: .75rem; max-width: 38em; color: var(--szary); }
+
+  /* Ogłoszenia: kartki z datą */
+  .ogloszenia { margin-top: 2rem; display: grid; gap: 1rem; }
+  .kartka {
+    display: grid; grid-template-columns: 1fr;
+    background: var(--bialy);
+    border: 1px solid var(--linia); border-left: 8px solid var(--lamperia);
+    border-radius: 4px;
+  }
+  .kartka[data-rodzaj="woda"] { border-left-color: #1C63A8; }
+  .kartka[data-rodzaj="gaz"] { border-left-color: var(--slonce); }
+  .kartka-data {
+    padding: 1.1rem 1.25rem 0;
+    font-family: var(--naglowek); font-weight: 800; font-size: 1.5rem; line-height: 1.15;
+  }
+  .kartka-data small { display: block; font-family: var(--tekst); font-weight: 600; font-size: 1.0625rem; color: var(--szary); margin-top: .2rem; }
+  .kartka-tresc { padding: .75rem 1.25rem 1.25rem; }
+  .kartka h3 { font-size: 1.3125rem; line-height: 1.25; font-weight: 700; }
+  .kartka-tresc p { margin-top: .5rem; max-width: 36em; }
+  .termin {
+    display: inline-block; margin-top: .85rem; padding: .15rem .7rem;
+    border: 2px solid var(--atrament); border-radius: 999px;
+    font-weight: 700; font-size: 1rem;
+  }
+  .termin[data-kiedy="teraz"] { background: var(--slonce); }
+  .termin[data-kiedy="po"] { border-color: var(--linia); color: var(--szary); font-weight: 400; }
+  .termin:empty { display: none; }
+
+  /* Dokumenty */
+  .szukaj { margin-top: 2rem; max-width: 40rem; }
+  .szukaj label { display: block; font-weight: 700; margin-bottom: .4rem; }
+  .szukaj-pole { position: relative; }
+  .szukaj input {
+    width: 100%; min-height: 3.5rem; padding: .5rem 3.5rem .5rem 1rem;
+    font: inherit; color: var(--atrament);
+    background: var(--bialy); border: 2px solid var(--atrament); border-radius: 8px;
+  }
+  .szukaj input::placeholder { color: #6B7872; }
+  .szukaj input::-webkit-search-cancel-button { display: none; }
+  .wyczysc {
+    position: absolute; right: .35rem; top: 50%; transform: translateY(-50%);
+    width: 2.75rem; height: 2.75rem; border: 0; border-radius: 6px;
+    background: transparent; color: var(--atrament); font-size: 1.5rem; line-height: 1; cursor: pointer;
+  }
+  .wyczysc:hover { background: var(--tynk); }
+  .wyczysc[hidden] { display: none; }
+
+  .dzialy { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+  .dzial {
+    min-height: 3rem; padding: .35rem 1rem;
+    font: inherit; font-weight: 600; color: var(--atrament);
+    background: transparent; border: 2px solid var(--linia); border-radius: 999px; cursor: pointer;
+  }
+  .dzial:hover { border-color: var(--atrament); }
+  .dzial[aria-pressed="true"] { background: var(--lamperia); border-color: var(--lamperia); color: var(--bialy); }
+  .dzial span { font-weight: 400; opacity: .8; }
+
+  .licznik { margin-top: 1.25rem; color: var(--szary); min-height: 1.6em; }
+
+  .grupa { margin-top: 1.75rem; }
+  .grupa[hidden] { display: none; }
+  .grupa h3 {
+    font-family: var(--naglowek); font-weight: 800; font-size: 1.375rem; line-height: 1.2;
+    padding-bottom: .5rem; border-bottom: 3px solid var(--atrament);
+  }
+  .grupa li[hidden] { display: none; }
+  .dok {
+    display: grid; grid-template-columns: auto 1fr; align-items: start; gap: .1rem 1rem;
+    padding: .9rem .25rem; min-height: 4rem;
+    border-bottom: 1px solid var(--linia);
+    text-decoration: none;
+  }
+  .dok:hover { background: var(--bialy); }
+  .dok-typ {
+    grid-row: span 2; margin-top: .15rem;
+    padding: .1rem .45rem; border-radius: 4px;
+    background: var(--atrament); color: var(--bialy);
+    font-weight: 700; font-size: .875rem; letter-spacing: .02em;
+  }
+  .dok-nazwa { font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .25em; text-decoration-color: var(--linia); }
+  .dok:hover .dok-nazwa { text-decoration-color: var(--lamperia); }
+  .dok-data { color: var(--szary); font-size: 1rem; }
+
+  .brak {
+    margin-top: 1.5rem; padding: 1.25rem; max-width: 40rem;
+    background: var(--bialy); border: 2px dashed var(--linia); border-radius: 8px;
+  }
+  .brak[hidden] { display: none; }
+  .brak .przycisk { margin-top: .9rem; }
+  .podstawa { margin-top: 2rem; max-width: 40em; color: var(--szary); font-size: 1rem; }
+
+  /* Kontakt */
+  .kontakt-uklad { margin-top: 2rem; display: grid; gap: 2.5rem; grid-template-columns: 1fr; }
+  .kontakt-uklad h3 { font-family: var(--naglowek); font-weight: 800; font-size: 1.375rem; margin-bottom: .75rem; }
+
+  .godziny { width: 100%; border-collapse: collapse; }
+  .godziny th, .godziny td { padding: .7rem .25rem; text-align: left; border-bottom: 1px solid var(--linia); font-weight: 400; vertical-align: baseline; }
+  .godziny td { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+  .godziny tr.dzis th, .godziny tr.dzis td { background: var(--bialy); font-weight: 700; box-shadow: inset 0 0 0 0 transparent; }
+  .godziny tr.dzis th { padding-left: .75rem; border-left: 6px solid var(--slonce); }
+  .godziny tr.dzis td { padding-right: .75rem; }
+  .godziny .zamkniete td { color: var(--szary); font-weight: 400; }
+  .uwaga { margin-top: 1rem; padding: .85rem 1rem; background: #FDF3D0; border-left: 6px solid var(--slonce); border-radius: 4px; }
+
+  .dane { display: grid; gap: 1.25rem; }
+  .dane dt { color: var(--szary); font-size: 1rem; }
+  .dane dd { font-size: 1.3125rem; font-weight: 600; line-height: 1.35; }
+  .dane dd a { text-decoration-thickness: 2px; text-underline-offset: .25em; }
+  .dane .alarmowy dd a { color: var(--alarm); font-family: var(--naglowek); font-weight: 800; font-size: 1.75rem; }
+
+  /* Stopka */
+  .stopka { background: var(--atrament); color: #DDE5E0; padding-block: 2.5rem 7.5rem; }
+  .demo {
+    padding: 1.1rem 1.25rem; max-width: 46rem;
+    border: 2px solid var(--slonce); border-radius: 8px; color: var(--bialy);
+  }
+  .demo strong { display: block; font-family: var(--naglowek); font-weight: 800; font-size: 1.375rem; line-height: 1.2; margin-bottom: .35rem; color: var(--slonce); }
+  .stopka-dol { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: .5rem 2rem; font-size: 1rem; }
+
+  /* Pasek na telefonie: dwa numery zawsze pod kciukiem */
+  .pasek {
+    position: fixed; inset: auto 0 0 0; z-index: 20;
+    display: grid; grid-template-columns: 1.35fr 1fr; gap: .5rem;
+    padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom));
+    background: var(--tynk); border-top: 2px solid var(--atrament);
+  }
+  .pasek a {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    min-height: 3.25rem; border-radius: 8px;
+    font-weight: 700; text-decoration: none; text-align: center; line-height: 1.15;
+  }
+  .pasek-awaria { background: var(--alarm); color: var(--bialy); }
+  .pasek-biuro { background: var(--bialy); color: var(--atrament); border: 2px solid var(--atrament); }
+
+  /* ───── Szerzej ───── */
+
+  @media (min-width: 40rem) {
+    .kartka { grid-template-columns: 13rem 1fr; }
+    .kartka-data { padding: 1.4rem 1rem 1.4rem 1.5rem; }
+    .kartka-tresc { padding: 1.4rem 1.5rem 1.4rem 0; }
+    .skroty { grid-template-columns: repeat(3, 1fr); gap: 0 2.5rem; }
+    .skroty a { border-bottom: 0; align-items: flex-start; }
+    .dok { grid-template-columns: auto 1fr auto; align-items: baseline; }
+    .dok-typ { grid-row: auto; }
+    .dok-data { text-align: right; white-space: nowrap; }
+  }
+
+  @media (min-width: 56rem) {
+    body { font-size: 1.1875rem; }
+    .pasek { display: none; }
+    .gora-awaria { display: inline-flex; }
+    .stopka { padding-bottom: 2.5rem; }
+    .sciana-uklad { grid-template-columns: 1.2fr minmax(24rem, .8fr); gap: 3.5rem; align-items: end; }
+    .sciana-uklad > div:first-child { padding-bottom: 7.5rem; }
+    .tabliczka { margin-bottom: -1rem; }
+    .lamperia { margin-top: -4.5rem; padding-block: 6.5rem 2.25rem; }
+    .skroty { max-width: none; }
+    .kontakt-uklad { grid-template-columns: 1fr 1fr; gap: 4.5rem; }
+    .grupy { columns: 2; column-gap: 3.5rem; }
+    .grupa { break-inside: avoid; }
+  }
+
+  @media print {
+    .pasek, .menu, .szukaj, .dzialy, .gora-awaria { display: none; }
+    .lamperia { background: none; color: inherit; }
+  }
+</style>
+</head>
+<body>
+
+<a class="pomin" href="#tresc">Przejdź do treści</a>
+
+<header class="gora">
+  <div class="ramka">
+    <a class="znak" href="#" aria-label="Spółdzielnia Mieszkaniowa Słoneczne Wzgórze, początek strony">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="10" fill="#fff"/><circle cx="24" cy="25" r="11" fill="#F4BE2A"/><path d="M0 48V34c10-9 22-11 48-4v18z" fill="#1F5A47"/><rect x="29" y="20" width="9" height="14" fill="#12231C"/><rect x="31" y="23" width="2" height="2" fill="#F2F4EE"/><rect x="34.5" y="23" width="2" height="2" fill="#F2F4EE"/><rect x="31" y="27" width="2" height="2" fill="#F2F4EE"/><rect x="34.5" y="27" width="2" height="2" fill="#F2F4EE"/></svg>
+      <span>Słoneczne Wzgórze <small>Spółdzielnia Mieszkaniowa</small></span>
+    </a>
+    <nav class="menu" aria-label="Główne">
+      <a href="#ogloszenia">Ogłoszenia</a>
+      <a href="#dokumenty">Dokumenty</a>
+      <a href="#kontakt">Biuro i kontakt</a>
+    </nav>
+    <a class="gora-awaria na-ciemnym" href="tel:+48000000999">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+      Awaria: <span class="tel">000 000 999</span>
+    </a>
+  </div>
+</header>
+
+<main id="tresc">
+
+  <section class="sciana" aria-labelledby="tytul">
+    <div class="ramka sciana-uklad">
+      <div>
+        <h1 class="tytul" id="tytul"><span>Spółdzielnia Mieszkaniowa</span> Słoneczne Wzgórze</h1>
+        <p class="wstep">Zarządzamy osiedlami Słoneczne Wzgórze i Przylesie: 6 budynków, 412 mieszkań.</p>
+        <div class="biuro-teraz">
+          <p class="stan" id="stan-biura" aria-live="polite">Biuro: poniedziałek 10:00–18:00, wtorek–piątek 7:30–15:30</p>
+          <a class="przycisk" href="tel:+48000000001">Zadzwoń do biura</a>
+        </div>
+      </div>
+
+      <a class="tabliczka na-ciemnym" href="tel:+48000000999">
+        <span class="tabliczka-nazwa">Pogotowie awaryjne, całą dobę</span>
+        <span class="tabliczka-numer">+48 000 000 999</span>
+        <span class="tabliczka-opis">Woda, gaz, winda. Także w nocy, w weekendy i święta.</span>
+        <span class="tabliczka-akcja">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+          Zadzwoń na pogotowie
+        </span>
+      </a>
+    </div>
+
+    <div class="lamperia na-ciemnym">
+      <nav class="ramka" aria-label="Najczęściej szukane">
+        <ul class="skroty">
+          <li><a href="#ogloszenia">
+            <span><strong>Ogłoszenia</strong><span>Przerwa w dostawie wody, przeglądy gazowe, dni bez biura</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a></li>
+          <li><a href="#dokumenty">
+            <span><strong>Dokumenty</strong><span>Statut, regulaminy, uchwały, protokoły, sprawozdania</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a></li>
+          <li><a href="#kontakt">
+            <span><strong>Biuro i kontakt</strong><span>Godziny pracy, adres, telefon, <span style="white-space:nowrap">e-mail</span></span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          </a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <section class="sekcja" id="ogloszenia" aria-labelledby="h-ogloszenia">
+    <div class="ramka">
+      <h2 id="h-ogloszenia">Ogłoszenia</h2>
+      <div class="ogloszenia">
+
+        <article class="kartka" data-rodzaj="woda">
+          <p class="kartka-data">3 grudnia 2026 <small>czwartek, 8:00–14:00</small></p>
+          <div class="kartka-tresc">
+            <h3>Przylesie 4: przerwa w dostawie zimnej wody</h3>
+            <p>W budynku Przylesie 4 nie będzie zimnej wody od 8:00 do 14:00. Wcześniej warto nabrać zapas wody i na czas przerwy zakręcić krany.</p>
+            <span class="termin" data-terminy="2026-12-03/2026-12-03"></span>
+          </div>
+        </article>
+
+        <article class="kartka" data-rodzaj="gaz">
+          <p class="kartka-data">7–18 grudnia 2026 <small>od poniedziałku do piątku</small></p>
+          <div class="kartka-tresc">
+            <h3>Roczne przeglądy instalacji gazowej we wszystkich budynkach</h3>
+            <p>Harmonogram wisi na klatkach schodowych. Sprawdź termin dla swojej klatki i tego dnia wpuść kontrolera do mieszkania.</p>
+            <span class="termin" data-terminy="2026-12-07/2026-12-18"></span>
+          </div>
+        </article>
+
+        <article class="kartka" data-rodzaj="biuro">
+          <p class="kartka-data">24 i 31 grudnia 2026 <small>dwa czwartki</small></p>
+          <div class="kartka-tresc">
+            <h3>Biuro nieczynne w Wigilię i w sylwestra</h3>
+            <p>Pogotowie awaryjne działa bez zmian, całą dobę: <a class="tel" href="tel:+48000000999">+48 000 000 999</a>.</p>
+            <span class="termin" data-terminy="2026-12-24/2026-12-24,2026-12-31/2026-12-31"></span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sekcja" id="dokumenty" aria-labelledby="h-dokumenty">
+    <div class="ramka">
+      <h2 id="h-dokumenty">Dokumenty spółdzielni</h2>
+      <p class="sekcja-opis">Wpisz fragment nazwy albo numer uchwały. Możesz też wybrać rodzaj dokumentu.</p>
+
+      <div class="szukaj" role="search">
+        <label for="szukaj">Szukaj dokumentu</label>
+        <div class="szukaj-pole">
+          <input type="search" id="szukaj" autocomplete="off" placeholder="np. wodomierze, statut, 14/2026" aria-controls="grupy">
+          <button type="button" class="wyczysc" id="wyczysc" aria-label="Wyczyść wyszukiwanie" hidden>×</button>
+        </div>
+      </div>
+
+      <div class="dzialy" id="dzialy" role="group" aria-label="Rodzaj dokumentu" hidden></div>
+      <p class="licznik" id="licznik" role="status" aria-live="polite"></p>
+
+      <div class="grupy" id="grupy">
+
+        <section class="grupa" data-dzial="Statut">
+          <h3>Statut</h3>
+          <ul>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Statut Spółdzielni (tekst jednolity, marzec 2026)</span><span class="dok-data">marzec 2026</span></a></li>
+          </ul>
+        </section>
+
+        <section class="grupa" data-dzial="Regulaminy">
+          <h3>Regulaminy</h3>
+          <ul>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Regulamin porządku domowego</span><span class="dok-data">2024</span></a></li>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Regulamin rozliczania kosztów zużycia wody</span><span class="dok-data">2025</span></a></li>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Regulamin Rady Nadzorczej</span><span class="dok-data">2023</span></a></li>
+          </ul>
+        </section>
+
+        <section class="grupa" data-dzial="Uchwały">
+          <h3>Uchwały</h3>
+          <ul>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy</span><span class="dok-data">2026</span></a></li>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Uchwała Rady Nadzorczej nr 9/2026 w sprawie planu remontów na 2027 rok</span><span class="dok-data">2026</span></a></li>
+          </ul>
+        </section>
+
+        <section class="grupa" data-dzial="Protokoły obrad">
+          <h3>Protokoły obrad</h3>
+          <ul>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Protokół z Walnego Zgromadzenia, czerwiec 2026</span><span class="dok-data">czerwiec 2026</span></a></li>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Protokół z posiedzenia Rady Nadzorczej, wrzesień 2026</span><span class="dok-data">wrzesień 2026</span></a></li>
+          </ul>
+        </section>
+
+        <section class="grupa" data-dzial="Protokoły lustracji">
+          <h3>Protokoły lustracji</h3>
+          <ul>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Protokół lustracji za lata 2023–2025</span><span class="dok-data">2026</span></a></li>
+          </ul>
+        </section>
+
+        <section class="grupa" data-dzial="Sprawozdania finansowe">
+          <h3>Sprawozdania finansowe</h3>
+          <ul>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Sprawozdanie finansowe za 2025 rok</span><span class="dok-data">2026</span></a></li>
+            <li><a class="dok" href="#"><span class="dok-typ">PDF</span><span class="dok-nazwa">Sprawozdanie finansowe za 2024 rok</span><span class="dok-data">2025</span></a></li>
+          </ul>
+        </section>
+
+      </div>
+
+      <div class="brak" id="brak" hidden>
+        <p><strong>Nie ma dokumentu o takiej nazwie.</strong> Spróbuj wpisać krótszy fragment, na przykład samo „woda” albo „2026”.</p>
+        <button type="button" class="przycisk" id="pokaz-wszystkie">Pokaż wszystkie dokumenty</button>
+      </div>
+
+      <p class="podstawa">Dokumenty udostępniamy zgodnie z art. 8¹ ust. 3 ustawy o spółdzielniach mieszkaniowych. Na tej stronie demonstracyjnej pliki nie są podłączone, więc odnośniki niczego nie otwierają.</p>
+    </div>
+  </section>
+
+  <section class="sekcja sekcja-ostatnia" id="kontakt" aria-labelledby="h-kontakt">
+    <div class="ramka">
+      <h2 id="h-kontakt">Biuro i kontakt</h2>
+      <div class="kontakt-uklad">
+
+        <div>
+          <h3>Godziny pracy biura</h3>
+          <table class="godziny">
+            <tbody>
+              <tr data-dzien="1"><th scope="row">Poniedziałek</th><td>10:00–18:00</td></tr>
+              <tr data-dzien="2"><th scope="row">Wtorek</th><td>7:30–15:30</td></tr>
+              <tr data-dzien="3"><th scope="row">Środa</th><td>7:30–15:30</td></tr>
+              <tr data-dzien="4"><th scope="row">Czwartek</th><td>7:30–15:30</td></tr>
+              <tr data-dzien="5"><th scope="row">Piątek</th><td>7:30–15:30</td></tr>
+              <tr class="zamkniete" data-dzien="6 0"><th scope="row">Sobota i niedziela</th><td>nieczynne</td></tr>
+            </tbody>
+          </table>
+          <p class="uwaga">24 i 31 grudnia 2026 biuro jest nieczynne.</p>
+        </div>
+
+        <div>
+          <h3>Dane kontaktowe</h3>
+          <dl class="dane">
+            <div class="alarmowy">
+              <dt>Pogotowie awaryjne, całą dobę (woda, gaz, winda)</dt>
+              <dd><a class="tel" href="tel:+48000000999">+48 000 000 999</a></dd>
+            </div>
+            <div>
+              <dt>Telefon do biura</dt>
+              <dd><a class="tel" href="tel:+48000000001">+48 000 000 001</a></dd>
+            </div>
+            <div>
+              <dt>E-mail</dt>
+              <dd><a href="mailto:biuro@example.com">biuro@example.com</a></dd>
+            </div>
+            <div>
+              <dt>Adres biura</dt>
+              <dd>ul. Przykładowa 1<br>00-000 Miasto</dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="stopka na-ciemnym">
+  <div class="ramka">
+    <p class="demo"><strong>To jest strona demonstracyjna.</strong> Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” nie istnieje. Adres, numery telefonów, ogłoszenia i dokumenty są zmyślone i służą wyłącznie do pokazania projektu strony. Pod te numery nie należy dzwonić w razie prawdziwej awarii.</p>
+    <div class="stopka-dol">
+      <span>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” (fikcyjna)</span>
+      <a href="#">Wróć na górę strony</a>
+    </div>
+  </div>
+</footer>
+
+<nav class="pasek" aria-label="Szybki telefon">
+  <a class="pasek-awaria" href="tel:+48000000999">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+    Awaria, całą dobę
+  </a>
+  <a class="pasek-biuro" href="tel:+48000000001">Biuro</a>
+</nav>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Czas w Polsce, niezależnie od ustawień telefonu ── */
+  function terazWPolsce() {
+    var czesci = {};
+    try {
+      new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Warsaw', hourCycle: 'h23',
+        year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'
+      }).formatToParts(new Date()).forEach(function (c) { czesci[c.type] = c.value; });
+    } catch (e) {
+      var d = new Date();
+      czesci = { year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate(), hour: d.getHours(), minute: d.getMinutes() };
+    }
+    var dzien = Date.UTC(+czesci.year, +czesci.month - 1, +czesci.day);
+    return { dzien: dzien, minuty: (+czesci.hour % 24) * 60 + +czesci.minute };
+  }
+
+  var DOBA = 86400000;
+  function iso(ms) { return new Date(ms).toISOString().slice(0, 10); }
+  function zIso(s) { var p = s.split('-'); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
+  function godz(min) { var m = min % 60; return Math.floor(min / 60) + ':' + (m < 10 ? '0' : '') + m; }
+  function dni(n) { return n === 1 ? 'jutro' : 'za ' + n + ' dni'; }
+
+  var teraz = terazWPolsce();
+
+  /* ── Czy biuro jest teraz otwarte ── */
+  var GODZINY = { 1: [600, 1080], 2: [450, 930], 3: [450, 930], 4: [450, 930], 5: [450, 930] };
+  var NIECZYNNE = ['2026-12-24', '2026-12-31'];
+  var W_DZIEN = ['w niedzielę', 'w poniedziałek', 'we wtorek', 'w środę', 'w czwartek', 'w piątek', 'w sobotę'];
+
+  function godzinyDnia(ms) {
+    if (NIECZYNNE.indexOf(iso(ms)) !== -1) return null;
+    return GODZINY[new Date(ms).getUTCDay()] || null;
+  }
+
+  var stan = document.getElementById('stan-biura');
+  var dzis = godzinyDnia(teraz.dzien);
+  if (dzis && teraz.minuty >= dzis[0] && teraz.minuty < dzis[1]) {
+    stan.textContent = 'Biuro jest teraz otwarte, do ' + godz(dzis[1]) + '.';
+    stan.dataset.stan = 'otwarte';
+  } else {
+    var kiedy = '';
+    if (dzis && teraz.minuty < dzis[0]) {
+      kiedy = 'dzisiaj o ' + godz(dzis[0]);
+    } else {
+      for (var i = 1; i <= 14; i++) {
+        var d = teraz.dzien + i * DOBA, g = godzinyDnia(d);
+        if (g) { kiedy = (i === 1 ? 'jutro' : W_DZIEN[new Date(d).getUTCDay()]) + ' o ' + godz(g[0]); break; }
+      }
+    }
+    stan.textContent = 'Biuro jest teraz zamknięte.' + (kiedy ? ' Otwieramy ' + kiedy + '.' : '');
+    stan.dataset.stan = 'zamkniete';
+  }
+
+  var nrDnia = String(new Date(teraz.dzien).getUTCDay());
+  document.querySelectorAll('.godziny tr').forEach(function (tr) {
+    if (tr.dataset.dzien.split(' ').indexOf(nrDnia) !== -1) {
+      tr.classList.add('dzis');
+      tr.querySelector('th').insertAdjacentText('beforeend', ' (dzisiaj)');
+    }
+  });
+
+  /* ── Ile dni do terminu z ogłoszenia ── */
+  document.querySelectorAll('.termin').forEach(function (el) {
+    var okresy = el.dataset.terminy.split(',').map(function (o) { var p = o.split('/'); return [zIso(p[0]), zIso(p[1])]; });
+    var najblizszy = okresy.filter(function (o) { return o[1] >= teraz.dzien; })[0];
+    if (!najblizszy) { el.textContent = 'Termin minął'; el.dataset.kiedy = 'po'; return; }
+    if (najblizszy[0] <= teraz.dzien) {
+      el.textContent = najblizszy[0] === najblizszy[1] ? 'Dzisiaj' : 'Trwa, do ' + new Date(najblizszy[1]).getUTCDate() + ' grudnia';
+      el.dataset.kiedy = 'teraz';
+    } else {
+      var n = Math.round((najblizszy[0] - teraz.dzien) / DOBA);
+      el.textContent = n === 1 ? 'Jutro' : 'Za ' + n + ' dni';
+      if (okresy.length > 1 && najblizszy !== okresy[0]) el.textContent = 'Kolejny dzień ' + dni(n);
+    }
+  });
+
+  /* ── Wyszukiwarka dokumentów ── */
+  function prosto(s) {
+    return s.toLowerCase().replace(/ł/g, 'l').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[–—]/g, '-');
+  }
+
+  var pole = document.getElementById('szukaj');
+  var wyczysc = document.getElementById('wyczysc');
+  var dzialy = document.getElementById('dzialy');
+  var licznik = document.getElementById('licznik');
+  var brak = document.getElementById('brak');
+  var grupy = [].slice.call(document.querySelectorAll('.grupa'));
+  var wybrany = '';
+
+  var pozycje = [];
+  grupy.forEach(function (g) {
+    [].forEach.call(g.querySelectorAll('li'), function (li) {
+      pozycje.push({ li: li, dzial: g.dataset.dzial, tekst: prosto(li.textContent + ' ' + g.dataset.dzial) });
+    });
+  });
+
+  function dodajDzial(nazwa, ile, wartosc) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'dzial'; b.dataset.dzial = wartosc;
+    b.setAttribute('aria-pressed', wartosc === '' ? 'true' : 'false');
+    b.innerHTML = nazwa + ' <span>(' + ile + ')</span>';
+    dzialy.appendChild(b);
+  }
+  dodajDzial('Wszystkie', pozycje.length, '');
+  grupy.forEach(function (g) { dodajDzial(g.dataset.dzial, g.querySelectorAll('li').length, g.dataset.dzial); });
+  dzialy.hidden = false;
+
+  function odmiana(n) {
+    if (n === 1) return '1 dokument';
+    var j = n % 10, d = n % 100;
+    return n + (j >= 2 && j <= 4 && (d < 12 || d > 14) ? ' dokumenty' : ' dokumentów');
+  }
+
+  function filtruj() {
+    var slowa = prosto(pole.value).split(/\s+/).filter(Boolean);
+    var ile = 0;
+    pozycje.forEach(function (p) {
+      var pasuje = (!wybrany || p.dzial === wybrany) && slowa.every(function (s) { return p.tekst.indexOf(s) !== -1; });
+      p.li.hidden = !pasuje;
+      if (pasuje) ile++;
+    });
+    grupy.forEach(function (g) { g.hidden = !g.querySelector('li:not([hidden])'); });
+    wyczysc.hidden = !pole.value;
+    brak.hidden = ile !== 0;
+    var filtr = slowa.length || wybrany;
+    licznik.textContent = ile === 0 ? '' : (filtr ? 'Znaleziono: ' : 'Razem: ') + odmiana(ile);
+  }
+
+  function ustawDzial(wartosc) {
+    wybrany = wartosc;
+    [].forEach.call(dzialy.children, function (b) { b.setAttribute('aria-pressed', String(b.dataset.dzial === wartosc)); });
+    filtruj();
+  }
+
+  pole.addEventListener('input', filtruj);
+  wyczysc.addEventListener('click', function () { pole.value = ''; filtruj(); pole.focus(); });
+  dzialy.addEventListener('click', function (e) {
+    var b = e.target.closest('.dzial');
+    if (b) ustawDzial(b.dataset.dzial);
+  });
+  document.getElementById('pokaz-wszystkie').addEventListener('click', function () {
+    pole.value = ''; ustawDzial(''); pole.focus();
+  });
+
+  /* Pliki nie istnieją: odnośnik nie powinien przerzucać na górę strony */
+  document.getElementById('grupy').addEventListener('click', function (e) {
+    if (e.target.closest('a[href="#"]')) e.preventDefault();
+  });
+
+  filtruj();
+})();
+</script>
+</body>
+</html>

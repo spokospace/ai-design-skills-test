@@ -1,0 +1,70 @@
+{
+  "id": "fable-5-2-impeccable",
+  "log": {
+    "skillsInvoked": [
+      "impeccable"
+    ],
+    "toolCalls": 86,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 17.2,
+    "turns": 47,
+    "costUsd": 10.1125238,
+    "tokens": {
+      "input": 104,
+      "output": 111228,
+      "cacheRead": 4749619,
+      "cacheWrite": 382853,
+      "total": 5243804
+    },
+    "models": [
+      {
+        "name": "claude-fable-5-2",
+        "input": 104,
+        "output": 111228,
+        "cacheRead": 4749619,
+        "cacheWrite": 382853,
+        "costUsd": 10.1125238
+      }
+    ],
+    "durationMin": 16.6,
+    "durationSource": "wall clock",
+    "agentMin": 16.6
+  },
+  "files": 3,
+  "bytes": {
+    "total": 94904,
+    "html": 41804,
+    "js": 8959,
+    "css": 17851,
+    "images": 0
+  },
+  "htmlLines": 836,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 2965,
+      "violations": []
+    },
+    "mobile": {
+      "height": 5018,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"alarm\": children flush against bg on all sides (no inset)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-2/fable-5-2-impeccable-desktop-first.jpg",
+    "desktop-full": "shots-2/fable-5-2-impeccable-desktop-full.jpg",
+    "mobile-first": "shots-2/fable-5-2-impeccable-mobile-first.jpg",
+    "mobile-full": "shots-2/fable-5-2-impeccable-mobile-full.jpg"
+  }
+}

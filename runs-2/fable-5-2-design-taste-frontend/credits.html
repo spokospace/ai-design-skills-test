@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pl" data-type="service" data-radius="soft" data-buttons="tonal" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Słoneczne Wzgórze: photograph credits</title>
+<meta name="description" content="The photographers, licences and source pages of the photographs on the Słoneczne Wzgórze website.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”">
+<meta property="og:description" content="Pogotowie awaryjne, biuro, ogłoszenia i dokumenty dla mieszkańców osiedli Słoneczne Wzgórze i Przylesie.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#ddd6c6">
+<!-- <link rel="canonical" href="https://[domena spółdzielni]/"> : do uzupełnienia, gdy będzie domena -->
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #ddd6c6; --p-surface: #d2cab8; --p-ink: #2a2a26; --p-muted: #55534b;
+  --p-accent: #4f6238; --p-accent-ink: #ffffff; --p-action: #4f6238; --p-action-ink: #ffffff;
+  --p-inv-bg: #2a2a26; --p-inv-surface: #353430; --p-inv-ink: #ddd6c6; --p-inv-muted: #a39e92;
+  --p-inv-accent: #ddd6c6; --p-inv-accent-ink: #2a2a26; --p-inv-action: #ddd6c6; --p-inv-action-ink: #2a2a26;
+  --font-display: "Nunito", system-ui, sans-serif;
+  --font-text: "Nunito", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --display-tracking-xl: -0.03em;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
+<!-- page CSS: tylko wnętrze listy dokumentów i numer pogotowia -->
+<style>
+  .sos { display: grid; gap: var(--s-1); }
+  .sos__number { display: inline-flex; align-items: center; min-height: 44px; justify-self: start; font: var(--display-weight) var(--t-h3)/1.15 var(--font-display); letter-spacing: var(--display-tracking); font-variant-numeric: tabular-nums; }
+  /* tablet: trzy kroki z obrazami mieszczą się na jednym ekranie */
+  @media (min-width: 640px) and (max-width: 1023px) { #awarie .mo-pc__visual > img { max-height: 20svh; } }
+  .docs__tools { display: grid; gap: var(--s-4); align-content: start; }
+  .docs__filters { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+  .docs__filters .pill { cursor: pointer; font: inherit; font-size: var(--t-small); font-weight: 500; min-height: 44px; }
+  .docs__filters .pill[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .docs__list > li[hidden] { display: none; }
+  .docs__list > li { align-items: center; padding-block: var(--s-2); }
+  .docs__list > li:first-child { padding-top: 0; }
+  .docs__list .rows__name { display: inline-flex; align-items: center; min-height: 44px; justify-self: start; font-size: var(--t-lead); line-height: 1.3; }
+  .docs__list > li > p { margin-top: calc(-1 * var(--s-2)); }
+  .docs__empty { padding-block: var(--s-4); }
+  .notice__name { font-size: var(--t-lead); }
+  .contact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4) var(--gutter); list-style: none; margin: 0; padding: 0; }
+  .contact > li { display: grid; gap: 0; align-content: start; }
+  .contact .link, .contact__text { font-size: var(--t-lead); min-height: 44px; display: inline-flex; align-items: center; justify-self: start; }
+  @media (max-width: 479px) { .contact { grid-template-columns: 1fr; gap: var(--s-2); } }
+</style>
+</head>
+<body>
+<!-- type: service (site-kind other): spółdzielnia mieszkaniowa
+     deal: hero photo (rozdany ponownie: pierwszy, film, wymaga filmu albo ciemnego kadru, a tu nie ma żadnego),
+           nav nav-split (bez panelu), close close-type, footer footer-visit, rhythm space, buttons tonal, mark initial,
+           grounds none; palette moss-sand: piaskowe tło i oliwkowa zieleń odpowiadają nazwom osiedli
+           (Słoneczne Wzgórze, Przylesie); type nunito
+     moments: pinned-chapters w #awarie (trzy rodzaje awarii, jedna po drugiej)
+     screens: hero 1 · awarie 2 · ogloszenia 1 · dokumenty 1 · biuro 1 · footer.closing 1
+     voice: urzędowo-prosty; krótkie zdania, liczby i godziny z briefu, zwroty wprost do mieszkańca -->
+
+<header class="nav nav--split">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Przejdź do treści</a>
+    <nav class="nav__links" aria-label="Główna">
+      <div class="nav__item"><a class="nav__link" href="#awarie">Awarie</a></div>
+      <div class="nav__item"><a class="nav__link" href="#ogloszenia">Ogłoszenia</a></div>
+      <div class="nav__item"><a class="nav__link" href="#dokumenty">Dokumenty</a></div>
+      <div class="nav__item"><a class="nav__link" href="#biuro">Biuro</a></div>
+    </nav>
+    <a class="nav__logo" href="#top"><span class="mark mark--initial" aria-hidden="true">S</span>Słoneczne Wzgórze</a>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="tel:+48000000999">Zadzwoń na pogotowie</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <p><a class="link" href="index.html">Słoneczne Wzgórze</a></p>
+  <section class="credits-list" id="credits" aria-labelledby="credits-h">
+    <h1 id="credits-h">Photograph credits</h1>
+    <ul>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Urban_greenery_in_the_housing_estate_in_Tomasz%C3%B3w_Mazowiecki,_Poland.jpg">WrS.tm.pl</a>, <a href="http://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a>, adapted</li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:OsiedleWysokie-Bloki%E2%80%9EPuchatki%E2%80%9D3A,3B-POL,_Krak%C3%B3w.jpg">Mach240390</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>, adapted</li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Water_supply,_Piping,_Plastic_pipes_in_bathroom,_Water_meters,_Rostov-on-Don,_Russia.jpg">Vyacheslav Argenberg</a>, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Common_gas_meter_in_Stalin-era_apartment_building.JPG">Dmitry G</a>, <a href="https://creativecommons.org/publicdomain/mark/1.0/">Public domain</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:EU-EE-TLN-LAS-Paekaare-interior_of_Soviet_elevator_after_upgrade.JPG">Dmitry G</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a></li>
+      <li><a href="https://commons.wikimedia.org/wiki/File:Osiedle_Polan_w_Poznaniu_-_bloki_nr_9-11_i_18-23_-_listopad_2022.jpg">Koefbac</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a></li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer closing footer--visit" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Awarię zgłoś od razu, o każdej porze</h2>
+        <p class="t-small muted">Pogotowie awaryjne: +48 000 000 999. Sprawy biurowe załatwisz w godzinach pracy biura.</p>
+      </div>
+      <a class="btn btn--primary btn--xl" href="tel:+48000000999">Zadzwoń na pogotowie<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-6 stack-4">
+          <address class="footer__address">ul. Przykładowa 1<br>00-000 Miasto</address>
+        </div>
+        <div class="span-6 start-7 stack-4">
+          <h3>Godziny pracy biura</h3>
+          <dl class="hours" data-tz="Europe/Warsaw">
+            <dt data-days="mon">Poniedziałek</dt><dd>10:00–18:00</dd>
+            <dt data-days="tue-fri">Wtorek–piątek</dt><dd>7:30–15:30</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”. To strona demonstracyjna: spółdzielnia i jej dane nie istnieją.</span>
+        <a class="credits" href="credits.html">Zdjęcia: Wikimedia Commons</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Szybki kontakt">
+  <a class="btn btn--primary" href="tel:+48000000999">Zadzwoń na pogotowie</a>
+</nav>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script>
+/* Lista dokumentów: szukanie po nazwie i filtr rodzaju. Działa też po otwarciu strony prosto z pliku. */
+(function () {
+  var list = document.querySelector('[data-doc-list]');
+  if (!list) return;
+  var items = [].slice.call(list.children);
+  var q = document.getElementById('docs-q');
+  var count = document.querySelector('[data-doc-count]');
+  var empty = document.querySelector('[data-doc-empty]');
+  var buttons = [].slice.call(document.querySelectorAll('[data-doc-filter]'));
+  var kind = '';
+  var plain = function (s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l'); };
+  var word = function (n) {
+    var d = n % 10, h = n % 100;
+    return n === 1 ? 'dokument' : (d >= 2 && d <= 4 && !(h >= 12 && h <= 14)) ? 'dokumenty' : 'dokumentów';
+  };
+  function apply() {
+    var needle = plain(q.value.trim()), shown = 0;
+    items.forEach(function (li) {
+      var ok = (!kind || li.dataset.doc === kind) && (!needle || plain(li.textContent).indexOf(needle) > -1);
+      li.hidden = !ok; if (ok) shown++;
+    });
+    count.textContent = shown + ' ' + word(shown);
+    empty.hidden = shown > 0;
+  }
+  q.addEventListener('input', apply);
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      kind = b.dataset.docFilter;
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      apply();
+    });
+  });
+})();
+/* Otwarcie prosto z pliku (file://): przeglądarka nie wczyta modułów zestawu, więc menu na telefonie
+   i pasek z numerem pogotowia dostają tu prostą obsługę. Z serwera robi to assets/system.js. */
+(function () {
+  if (location.protocol !== 'file:') return;
+  var nav = document.querySelector('.nav'), toggle = nav && nav.querySelector('.nav__toggle');
+  if (toggle) {
+    var setOpen = function (open) {
+      nav.classList.toggle('is-open', open);
+      document.body.classList.toggle('nav-locked', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open')); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a[href]')) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  }
+  var bar = document.querySelector('nav.actionbar');
+  if (bar) bar.setAttribute('data-bar', 'always');
+})();
+</script>
+</body>
+</html>

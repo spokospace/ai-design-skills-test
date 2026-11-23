@@ -1,0 +1,94 @@
+{
+  "id": "opus-5-5-impeccable",
+  "log": {
+    "skillsInvoked": [
+      "impeccable"
+    ],
+    "toolCalls": 79,
+    "denied": [],
+    "results": 2,
+    "ok": true,
+    "apiMin": 14.1,
+    "turns": 40,
+    "costUsd": 5.2654196,
+    "tokens": {
+      "input": 130,
+      "output": 97943,
+      "cacheRead": 5265063,
+      "cacheWrite": 372351,
+      "total": 5735487
+    },
+    "models": [
+      {
+        "name": "claude-opus-5-5",
+        "input": 130,
+        "output": 97943,
+        "cacheRead": 5265063,
+        "cacheWrite": 372351,
+        "costUsd": 5.2654196
+      }
+    ],
+    "durationMin": 14.8,
+    "durationSource": "wall clock",
+    "agentMin": 10.9
+  },
+  "files": 3,
+  "bytes": {
+    "total": 140348,
+    "html": 54940,
+    "js": 8703,
+    "css": 22593,
+    "images": 0
+  },
+  "htmlLines": 864,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3770,
+      "violations": []
+    },
+    "mobile": {
+      "height": 6509,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"board\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"plan-map\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<ol> \"notices\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against border-top on top (no inset)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-2/opus-5-5-impeccable-desktop-first.jpg",
+    "desktop-full": "shots-2/opus-5-5-impeccable-desktop-full.jpg",
+    "mobile-first": "shots-2/opus-5-5-impeccable-mobile-first.jpg",
+    "mobile-full": "shots-2/opus-5-5-impeccable-mobile-full.jpg"
+  }
+}

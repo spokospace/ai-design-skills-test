@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</title>
+<meta name="description" content="Strona demonstracyjna fikcyjnej spółdzielni mieszkaniowej: pogotowie awaryjne, godziny biura, ogłoszenia i dokumenty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --beton:#E4E7E2; --papier:#F5F6F3; --tusz:#13233F; --slonce:#F4B400;
+  --alarm:#B3261E; --elewacja:#2E6B5E; --linia:#13233F;
+  --font:"Atkinson Hyperlegible","Verdana","Segoe UI",sans-serif;
+  --w:72rem; --gutter:clamp(1rem,4vw,2.5rem);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:1rem}
+body{margin:0;font:400 1.25rem/1.55 var(--font);color:var(--tusz);background:var(--beton);-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:4px solid var(--tusz);outline-offset:3px;box-shadow:0 0 0 7px var(--slonce)}
+.wrap{max-width:var(--w);margin:0 auto;padding-inline:var(--gutter)}
+.skip{position:absolute;left:-999px;top:0;background:var(--tusz);color:#fff;padding:.75rem 1rem;z-index:10}
+.skip:focus{left:0}
+h1,h2,h3{line-height:1.1;margin:0;font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(1.9rem,5vw,2.75rem);margin-bottom:1.25rem}
+h3{font-size:1.35rem;line-height:1.25}
+p{margin:0 0 1em;max-width:62ch}
+
+/* Pas pogotowia */
+.alarm{background:var(--slonce);border-bottom:4px solid var(--tusz)}
+.alarm .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 2rem;padding-block:.9rem}
+.alarm p{margin:0;font-weight:700;max-width:none}
+.alarm a{font-size:clamp(1.9rem,7vw,2.8rem);font-weight:700;text-decoration:none;background:var(--alarm);color:#fff;padding:.2rem 1.1rem;border-radius:.4rem;line-height:1.3;min-height:3.5rem;display:inline-flex;align-items:center;white-space:nowrap}
+.alarm a:hover{background:#8f1d17}
+.alarm small{font-size:1rem;flex-basis:100%;margin-top:-.1rem}
+@media(min-width:48rem){.alarm small{flex-basis:auto}}
+
+/* Nagłówek */
+header.top{background:var(--papier);border-bottom:2px solid var(--linia)}
+header.top .wrap{display:flex;flex-wrap:wrap;gap:.5rem 2rem;justify-content:space-between;align-items:center;padding-block:.9rem}
+.logo{font-weight:700;font-size:1.3rem;line-height:1.15;text-decoration:none}
+.logo span{display:block;font-weight:400;font-size:1rem}
+nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.25rem 1.5rem}
+nav a{display:inline-block;padding:.6rem 0;font-weight:700;text-decoration:none;border-bottom:3px solid transparent}
+nav a:hover{border-color:var(--slonce)}
+
+/* Hero */
+.hero{background:var(--elewacja);color:#fff;overflow:hidden;position:relative}
+.hero .wrap{display:grid;gap:2rem;padding-block:clamp(2rem,6vw,4.5rem) 0}
+.hero h1{font-size:clamp(2.4rem,8.5vw,5.2rem);max-width:13ch;letter-spacing:-.025em}
+.hero .lead{font-size:1.3rem;max-width:34ch;margin-top:1.25rem;color:#E9F2EF}
+.stats{display:flex;flex-wrap:wrap;gap:.4rem 1.75rem;margin:0;padding:0;list-style:none;font-weight:700}
+.stats li{font-size:1.1rem}
+.stats b{font-size:1.35rem;color:var(--slonce)}
+.facade{display:block;width:100%;height:auto;margin-top:.5rem;max-height:20rem}
+.facade .w{fill:#1E4A41}
+.facade .on{fill:var(--slonce);opacity:0}
+.go .facade .on{animation:light .5s forwards;animation-delay:var(--d)}
+@keyframes light{to{opacity:1}}
+.nojs .facade .on{opacity:1}
+@media(min-width:60rem){
+  .hero .wrap{grid-template-columns:1fr 1.15fr;align-items:end;gap:3rem}
+  .hero .txt{padding-bottom:3.5rem}
+}
+
+/* Sekcje */
+section.blok{padding-block:clamp(2.5rem,7vw,4.5rem)}
+.blok.jasny{background:var(--papier)}
+
+/* Biuro status */
+.status{display:grid;gap:1.5rem}
+@media(min-width:56rem){.status{grid-template-columns:1fr 1fr;gap:3rem}}
+.open{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.3rem;padding:.55rem 1rem;border-radius:.4rem;border:3px solid var(--tusz);margin-bottom:1rem;background:var(--papier)}
+.open i{width:1rem;height:1rem;border-radius:50%;background:#777;flex:none}
+.open[data-s="tak"] i{background:#1d8a3d}
+.open[data-s="nie"] i{background:var(--alarm)}
+table.godz{border-collapse:collapse;width:100%;max-width:30rem}
+.godz th,.godz td{text-align:left;padding:.7rem .5rem;border-bottom:1px solid var(--linia);font-weight:400}
+.godz th{font-weight:700;padding-left:0}
+.godz tr.dzis{background:var(--slonce);font-weight:700}
+.godz tr.dzis th{padding-left:.5rem}
+.godz tr.dzis td{font-weight:700}
+
+/* Ogłoszenia */
+.ogl{list-style:none;margin:0;padding:0;border-top:3px solid var(--linia)}
+.ogl li{display:grid;gap:.5rem 1.5rem;padding:1.25rem 0;border-bottom:1px solid var(--linia)}
+@media(min-width:48rem){.ogl li{grid-template-columns:12rem 1fr}}
+.data{font-weight:700;font-size:1.3rem;line-height:1.2}
+.data span{display:block;font-weight:400;font-size:1rem;margin-top:.2rem}
+.ogl p{margin:.4rem 0 0}
+.znak{display:inline-block;font-size:1rem;font-weight:700;background:var(--tusz);color:#fff;padding:.1rem .6rem;border-radius:.25rem;margin-bottom:.4rem}
+.znak.woda{background:#1F5F9E}.znak.gaz{background:var(--alarm)}.znak.biuro{background:var(--elewacja)}
+
+/* Dokumenty */
+.narzedzia{display:grid;gap:1rem;margin-bottom:1.5rem}
+label.szukaj{font-weight:700;display:block;margin-bottom:.35rem}
+input[type=search]{font:inherit;width:100%;max-width:34rem;min-height:3.5rem;padding:.5rem 1rem;border:3px solid var(--tusz);border-radius:.4rem;background:#fff;color:var(--tusz)}
+.filtry{display:flex;flex-wrap:wrap;gap:.6rem}
+.filtry button{font:inherit;font-weight:700;min-height:3rem;padding:.4rem 1rem;border:3px solid var(--tusz);background:#fff;color:var(--tusz);border-radius:.4rem;cursor:pointer}
+.filtry button[aria-pressed="true"]{background:var(--tusz);color:#fff}
+.filtry button:hover{background:var(--slonce);color:var(--tusz)}
+.grupa{margin-top:1.75rem}
+.grupa h3{padding-bottom:.4rem;border-bottom:3px solid var(--linia)}
+.grupa ul{list-style:none;margin:0;padding:0}
+.grupa li a{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem .25rem;border-bottom:1px solid var(--linia);text-decoration:none;min-height:3.5rem}
+.grupa li a:hover{background:var(--slonce)}
+.grupa li a span.t{text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+.grupa li a:hover span.t{text-decoration-thickness:3px}
+.pdf{flex:none;font-size:.95rem;font-weight:700;border:2px solid var(--tusz);padding:.05rem .5rem;border-radius:.25rem;background:#fff}
+.brak{font-weight:700;padding:1rem 0}
+.prawo{font-size:1rem;margin-top:2rem;max-width:62ch}
+
+/* Kontakt */
+.kontakt{display:grid;gap:2rem}
+@media(min-width:56rem){.kontakt{grid-template-columns:1fr 1fr;gap:3rem}}
+dl.k{margin:0}
+dl.k dt{font-weight:700;margin-top:1.1rem}
+dl.k dd{margin:0}
+dl.k a{font-weight:700;font-size:1.5rem;text-underline-offset:.2em}
+.avar{background:var(--tusz);color:#fff;padding:1.5rem;border-radius:.5rem;align-self:start}
+.avar h3{font-size:1.6rem;margin-bottom:.5rem}
+.avar a{display:block;font-size:clamp(2rem,8vw,2.8rem);font-weight:700;color:var(--slonce);text-decoration:none;margin:.5rem 0}
+.avar p{margin:0}
+
+/* Stopka */
+footer{background:var(--tusz);color:#fff;padding-block:2rem 2.5rem;font-size:1.05rem}
+footer p{max-width:70ch}
+footer strong{background:var(--slonce);color:var(--tusz);padding:.1rem .5rem}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .facade .on{opacity:1;animation:none!important}
+}
+</style>
+</head>
+<body class="nojs">
+<a class="skip" href="#tresc">Przejdź do treści</a>
+
+<div class="alarm" role="region" aria-label="Pogotowie awaryjne">
+  <div class="wrap">
+    <p>Awaria wody, gazu lub windy?</p>
+    <a href="tel:+48000000999" aria-label="Zadzwoń do pogotowia awaryjnego: plus 48 000 000 999">+48 000 000 999</a>
+    <small>Pogotowie awaryjne działa całą dobę.</small>
+  </div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#">Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”<span>Osiedla Słoneczne Wzgórze i Przylesie</span></a>
+    <nav aria-label="Główne">
+      <ul>
+        <li><a href="#biuro">Biuro</a></li>
+        <li><a href="#ogloszenia">Ogłoszenia</a></li>
+        <li><a href="#dokumenty">Dokumenty</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="tresc">
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap">
+      <div class="txt">
+        <h1 id="h1">Tu mieszkamy razem.</h1>
+        <p class="lead">Ogłoszenia, godziny biura i dokumenty spółdzielni w jednym miejscu.</p>
+        <ul class="stats">
+          <li><b>6</b> budynków</li>
+          <li><b>412</b> mieszkań</li>
+          <li><b>2</b> osiedla</li>
+        </ul>
+      </div>
+      <svg class="facade" id="facade" viewBox="0 0 600 300" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMax meet"></svg>
+    </div>
+  </section>
+
+  <section class="blok" id="biuro" aria-labelledby="hb">
+    <div class="wrap status">
+      <div>
+        <h2 id="hb">Biuro spółdzielni</h2>
+        <div class="open" id="open" data-s="" role="status"><i></i><span id="openTxt">Sprawdzam godziny pracy…</span></div>
+        <p>ul. Przykładowa 1, 00-000 Miasto<br>Telefon do biura: <a href="tel:+48000000001"><strong>+48 000 000 001</strong></a></p>
+      </div>
+      <div>
+        <table class="godz" id="godz">
+          <caption class="sr" style="position:absolute;left:-999px">Godziny pracy biura</caption>
+          <tbody>
+            <tr data-d="1"><th scope="row">Poniedziałek</th><td>10:00–18:00</td></tr>
+            <tr data-d="2"><th scope="row">Wtorek</th><td>7:30–15:30</td></tr>
+            <tr data-d="3"><th scope="row">Środa</th><td>7:30–15:30</td></tr>
+            <tr data-d="4"><th scope="row">Czwartek</th><td>7:30–15:30</td></tr>
+            <tr data-d="5"><th scope="row">Piątek</th><td>7:30–15:30</td></tr>
+            <tr><th scope="row">Sobota i niedziela</th><td>nieczynne</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="blok jasny" id="ogloszenia" aria-labelledby="ho">
+    <div class="wrap">
+      <h2 id="ho">Ogłoszenia</h2>
+      <ul class="ogl">
+        <li>
+          <div class="data">3 grudnia 2026<span>8:00–14:00</span></div>
+          <div><span class="znak woda">Woda</span>
+            <h3>Przerwa w dostawie zimnej wody</h3>
+            <p>Zimnej wody nie będzie w budynku Przylesie 4. Warto zrobić zapas wody wcześniej.</p></div>
+        </li>
+        <li>
+          <div class="data">7–18 grudnia 2026</div>
+          <div><span class="znak gaz">Gaz</span>
+            <h3>Roczne przeglądy instalacji gazowej</h3>
+            <p>Przeglądy obejmą wszystkie budynki. Harmonogram wisi na klatkach schodowych.</p></div>
+        </li>
+        <li>
+          <div class="data">24 i 31 grudnia 2026</div>
+          <div><span class="znak biuro">Biuro</span>
+            <h3>Biuro nieczynne</h3>
+            <p>W tych dniach biuro jest zamknięte. W awarii dzwoń na pogotowie: <a href="tel:+48000000999"><strong>+48 000 000 999</strong></a>.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="blok" id="dokumenty" aria-labelledby="hd">
+    <div class="wrap">
+      <h2 id="hd">Dokumenty spółdzielni</h2>
+      <p>Statut, regulaminy, uchwały, protokoły, lustracje i sprawozdania. Wpisz słowo albo wybierz rodzaj dokumentu.</p>
+      <div class="narzedzia">
+        <div>
+          <label class="szukaj" for="q">Szukaj dokumentu</label>
+          <input type="search" id="q" placeholder="na przykład: woda" autocomplete="off">
+        </div>
+        <div class="filtry" id="filtry" role="group" aria-label="Rodzaj dokumentu"></div>
+      </div>
+      <div id="lista" aria-live="polite"></div>
+      <p class="prawo">Spółdzielnia udostępnia te dokumenty zgodnie z art. 8¹ ust. 3 ustawy o spółdzielniach mieszkaniowych.</p>
+    </div>
+  </section>
+
+  <section class="blok jasny" id="kontakt" aria-labelledby="hk">
+    <div class="wrap">
+      <h2 id="hk">Kontakt</h2>
+      <div class="kontakt">
+        <dl class="k">
+          <dt>Biuro</dt><dd>ul. Przykładowa 1, 00-000 Miasto</dd>
+          <dt>Telefon do biura</dt><dd><a href="tel:+48000000001">+48 000 000 001</a></dd>
+          <dt>E-mail</dt><dd><a href="mailto:biuro@example.com">biuro@example.com</a></dd>
+          <dt>Godziny pracy</dt><dd>poniedziałek 10:00–18:00<br>wtorek–piątek 7:30–15:30</dd>
+        </dl>
+        <div class="avar">
+          <h3>Pogotowie awaryjne</h3>
+          <p>Woda, gaz, winda. Całą dobę, także w święta.</p>
+          <a href="tel:+48000000999">+48 000 000 999</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Strona demonstracyjna.</strong> Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”, jej osiedla, budynki, dokumenty, adresy, numery telefonów i ogłoszenia są wymyślone. Taka spółdzielnia nie istnieje.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* Fasada: 6 budynków, część okien się świeci */
+  var svg=document.getElementById('facade'),NS='http://www.w3.org/2000/svg';
+  var b=[[0,5,6],[1,8,5],[2,6,6],[3,9,5],[4,5,7],[5,7,5]]; // [indeks, piętra, okna]
+  var x=10,out='',n=0,seed=7;
+  function rnd(){seed=(seed*9301+49297)%233280;return seed/233280}
+  var widths=[88,86,98,86,106,88],gap=6;
+  b.forEach(function(bd,i){
+    var w=widths[i],fl=bd[1],cols=bd[2]>6?4:(bd[2]>5?3:3);
+    cols=i%2?3:4; var ww=(w-12)/cols; var h=fl*30+14,y0=300-h;
+    out+='<rect x="'+x+'" y="'+y0+'" width="'+w+'" height="'+h+'" fill="#F5F6F3" opacity="'+(i%2?.92:1)+'"/>';
+    for(var f=0;f<fl;f++)for(var c=0;c<cols;c++){
+      var wx=x+6+c*ww+3,wy=y0+10+f*30,wd=ww-6;
+      out+='<rect class="w" x="'+wx+'" y="'+wy+'" width="'+wd+'" height="18"/>';
+      if(rnd()<.42){out+='<rect class="on" style="--d:'+(Math.round(n++*55))+'ms" x="'+wx+'" y="'+wy+'" width="'+wd+'" height="18"/>'}
+    }
+    x+=w+gap;
+  });
+  svg.setAttribute('viewBox','0 0 '+(x-gap+10)+' 300');
+  svg.innerHTML=out;
+  document.body.classList.remove('nojs');
+  requestAnimationFrame(function(){document.body.classList.add('go')});
+
+  /* Godziny biura */
+  var H={1:[600,1080],2:[450,930],3:[450,930],4:[450,930],5:[450,930]};
+  var closed={'2026-12-24':1,'2026-12-31':1};
+  var d=new Date(),dow=d.getDay(),min=d.getHours()*60+d.getMinutes();
+  var key=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  function t(m){return Math.floor(m/60)+':'+String(m%60).padStart(2,'0')}
+  var el=document.getElementById('open'),tx=document.getElementById('openTxt');
+  var row=document.querySelector('#godz tr[data-d="'+dow+'"]');
+  if(row)row.className='dzis';
+  var h=H[dow],s,txt;
+  if(closed[key]){s='nie';txt='Dziś biuro jest nieczynne.'}
+  else if(h&&min>=h[0]&&min<h[1]){s='tak';txt='Biuro jest teraz otwarte do '+t(h[1])+'.'}
+  else if(h&&min<h[0]){s='nie';txt='Biuro jest zamknięte. Dziś otwiera o '+t(h[0])+'.'}
+  else{s='nie';txt='Biuro jest teraz zamknięte.'}
+  el.dataset.s=s;tx.textContent=txt;
+
+  /* Dokumenty */
+  var G=[
+   ['Statut',[['Statut Spółdzielni (tekst jednolity, marzec 2026)']]],
+   ['Regulaminy',[['Regulamin porządku domowego'],['Regulamin rozliczania kosztów zużycia wody']]],
+   ['Uchwały i protokoły obrad',[['Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy'],['Protokół z Walnego Zgromadzenia, czerwiec 2026']]],
+   ['Protokoły lustracji',[['Protokół lustracji za lata 2023–2025']]],
+   ['Sprawozdania finansowe',[['Sprawozdanie finansowe za 2025 rok']]]
+  ];
+  var cat='Wszystkie',q='',box=document.getElementById('lista'),fb=document.getElementById('filtry'),inp=document.getElementById('q');
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ł/g,'l')}
+  ['Wszystkie'].concat(G.map(function(g){return g[0]})).forEach(function(c){
+    var bt=document.createElement('button');bt.type='button';bt.textContent=c;
+    bt.setAttribute('aria-pressed',c===cat);
+    bt.onclick=function(){cat=c;[].forEach.call(fb.children,function(x){x.setAttribute('aria-pressed',x===bt)});draw()};
+    fb.appendChild(bt);
+  });
+  function draw(){
+    var html='',cnt=0;
+    G.forEach(function(g){
+      if(cat!=='Wszystkie'&&cat!==g[0])return;
+      var it=g[1].filter(function(d){return !q||norm(d[0]+' '+g[0]).indexOf(q)>-1});
+      if(!it.length)return;
+      cnt+=it.length;
+      html+='<div class="grupa"><h3>'+esc(g[0])+'</h3><ul>'+it.map(function(d){
+        return '<li><a href="#"><span class="t">'+esc(d[0])+'</span><span class="pdf" aria-label="plik PDF">PDF</span></a></li>'}).join('')+'</ul></div>';
+    });
+    box.innerHTML=cnt?html:'<p class="brak">Nie znaleziono dokumentu. Zmień słowo albo wybierz „Wszystkie”.</p>';
+  }
+  inp.addEventListener('input',function(){q=norm(inp.value.trim());draw()});
+  draw();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{
+  "id": "fable-5-2-frontend-design",
+  "log": {
+    "skillsInvoked": [
+      "frontend-design"
+    ],
+    "toolCalls": 18,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 4.6,
+    "turns": 24,
+    "costUsd": 2.385356,
+    "tokens": {
+      "input": 20,
+      "output": 30889,
+      "cacheRead": 557540,
+      "cacheWrite": 64883,
+      "total": 653332
+    },
+    "models": [
+      {
+        "name": "claude-fable-5-2",
+        "input": 20,
+        "output": 30889,
+        "cacheRead": 557540,
+        "cacheWrite": 64883,
+        "costUsd": 2.385356
+      }
+    ],
+    "durationMin": 5,
+    "durationSource": "wall clock",
+    "agentMin": 5
+  },
+  "files": 1,
+  "bytes": {
+    "total": 37630,
+    "html": 37630,
+    "js": 6674,
+    "css": 16442,
+    "images": 0
+  },
+  "htmlLines": 801,
+  "external": [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
+  ],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3840,
+      "violations": []
+    },
+    "mobile": {
+      "height": 6196,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 8px + border-radius: 4px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 8px + border-radius: 4px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 8px + border-radius: 4px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 4px"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "1.1:1 (need 3:1) — text #dce9e2 on #f2f4ee (and 2 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "1.1:1 (need 4.5:1) — text #dce9e2 on #f2f4ee (and 2 more)"
+    },
+    {
+      "rule": "hard-offset-shadow",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "box-shadow: 0 -4px 0 #1F5A47: hard offset with no blur; check whether this belongs to the intended visual direction"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"lamperia\": children flush against border-top on top (no inset)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-2/fable-5-2-frontend-design-desktop-first.jpg",
+    "desktop-full": "shots-2/fable-5-2-frontend-design-desktop-full.jpg",
+    "mobile-first": "shots-2/fable-5-2-frontend-design-mobile-first.jpg",
+    "mobile-full": "shots-2/fable-5-2-frontend-design-mobile-full.jpg"
+  }
+}

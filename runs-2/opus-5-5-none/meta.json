@@ -1,0 +1,110 @@
+{
+  "id": "opus-5-5-none",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 2,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 2.2,
+    "turns": 3,
+    "costUsd": 0.8659926,
+    "tokens": {
+      "input": 6,
+      "output": 16958,
+      "cacheRead": 110363,
+      "cacheWrite": 63092,
+      "total": 190419
+    },
+    "models": [
+      {
+        "name": "claude-opus-5-5",
+        "input": 6,
+        "output": 16958,
+        "cacheRead": 110363,
+        "cacheWrite": 63092,
+        "costUsd": 0.8659926
+      }
+    ],
+    "durationMin": 4.3,
+    "durationSource": "wall clock",
+    "agentMin": 4.3
+  },
+  "files": 1,
+  "bytes": {
+    "total": 31779,
+    "html": 31779,
+    "js": 6173,
+    "css": 11216,
+    "images": 0
+  },
+  "htmlLines": 642,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3955,
+      "violations": []
+    },
+    "mobile": {
+      "height": 6858,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 14px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 14px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 14px"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"emergency-bar\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"block\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"block\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"block\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cream-palette",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "cream/beige page background rgb(251, 248, 242)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-2/opus-5-5-none-desktop-first.jpg",
+    "desktop-full": "shots-2/opus-5-5-none-desktop-full.jpg",
+    "mobile-first": "shots-2/opus-5-5-none-mobile-first.jpg",
+    "mobile-full": "shots-2/opus-5-5-none-mobile-full.jpg"
+  }
+}

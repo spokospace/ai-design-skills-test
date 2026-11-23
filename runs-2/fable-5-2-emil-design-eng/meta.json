@@ -1,0 +1,100 @@
+{
+  "id": "fable-5-2-emil-design-eng",
+  "log": {
+    "skillsInvoked": [
+      "emil-design-eng"
+    ],
+    "toolCalls": 11,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 3.6,
+    "turns": 14,
+    "costUsd": 2.5181382,
+    "tokens": {
+      "input": 16,
+      "output": 24512,
+      "cacheRead": 363651,
+      "cacheWrite": 91550,
+      "total": 479729
+    },
+    "models": [
+      {
+        "name": "claude-fable-5-2",
+        "input": 16,
+        "output": 24512,
+        "cacheRead": 363651,
+        "cacheWrite": 91550,
+        "costUsd": 2.5181382
+      }
+    ],
+    "durationMin": 3.8,
+    "durationSource": "wall clock",
+    "agentMin": 3.8
+  },
+  "files": 1,
+  "bytes": {
+    "total": 34345,
+    "html": 34345,
+    "js": 6746,
+    "css": 15096,
+    "images": 0
+  },
+  "htmlLines": 945,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3237,
+      "violations": []
+    },
+    "mobile": {
+      "height": 4581,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "placeholder \"np. wodomierze, statut, 2025\" 4.4:1 (need 4.5:1) — text #6a756e on #f8f5ee"
+    },
+    {
+      "rule": "tiny-text",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "8px body text"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"block\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div>: children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "flat-type-hierarchy",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Role sizes: body 18px, h3 19.2px, h2 20.8px (largest adjacent step 1.08:1; target 1.25:1)"
+    },
+    {
+      "rule": "cream-palette",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "cream/beige page background rgb(248, 245, 238)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-2/fable-5-2-emil-design-eng-desktop-first.jpg",
+    "desktop-full": "shots-2/fable-5-2-emil-design-eng-desktop-full.jpg",
+    "mobile-first": "shots-2/fable-5-2-emil-design-eng-mobile-first.jpg",
+    "mobile-full": "shots-2/fable-5-2-emil-design-eng-mobile-full.jpg"
+  }
+}

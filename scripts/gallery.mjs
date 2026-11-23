@@ -1,10 +1,14 @@
-// Builds index.html: the 15 pages as a grid (setups × models) with their numbers.
-// Usage: node scripts/gallery.mjs   (reads results.json)
+// Builds index.html: the 15 pages as a grid (setups × models) with their numbers,
+// then the Codex and chat rows.
+// Usage: node scripts/gallery.mjs            (reads results.json)
+//        TRIAL=2 node scripts/gallery.mjs    (reads results-2.json, writes trial-2.html:
+//                                             the repeat of the 15 Claude Code runs)
 import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
-const results = JSON.parse(fs.readFileSync(path.join(ROOT, 'results.json'), 'utf8'));
+const TRIAL = process.env.TRIAL ? `-${process.env.TRIAL}` : '';
+const results = JSON.parse(fs.readFileSync(path.join(ROOT, `results${TRIAL}.json`), 'utf8'));
 const byId = Object.fromEntries(results.map((r) => [r.id, r]));
 
 const MODELS = [
@@ -35,7 +39,7 @@ function cell(id, modelName, setupName) {
   const axe = new Set([...r.axe.desktop.violations, ...r.axe.mobile.violations].map((v) => v.id)).size;
   const cut = l.ok === false && !!l.tokens;
   return `<article class="card">
-  <a class="shot" href="runs/${id}/index.html" aria-label="Open the ${esc(setupName)} page by ${esc(modelName)}">
+  <a class="shot" href="runs${TRIAL}/${id}/index.html" aria-label="Open the ${esc(setupName)} page by ${esc(modelName)}">
     <img src="${r.shots['desktop-first']}" alt="" loading="lazy" width="1440" height="900">
   </a>
   <h3>${esc(modelName)} <span>· ${esc(setupName)}</span></h3>
@@ -48,7 +52,7 @@ function cell(id, modelName, setupName) {
     <div><dt>Detector</dt><dd>${(r.detector ?? []).length} <small>(${slop} slop)</small></dd></div>
     <div><dt>axe rules</dt><dd>${axe}</dd></div>
   </dl>
-  <p class="links"><a href="runs/${id}/index.html">Page</a> · <a href="${r.shots['desktop-full']}">Full desktop</a> · <a href="${r.shots['mobile-full']}">Full phone</a> · <a href="runs/${id}/meta.json">meta.json</a></p>
+  <p class="links"><a href="runs${TRIAL}/${id}/index.html">Page</a> · <a href="${r.shots['desktop-full']}">Full desktop</a> · <a href="${r.shots['mobile-full']}">Full phone</a> · <a href="runs${TRIAL}/${id}/meta.json">meta.json</a></p>
 </article>`;
 }
 
@@ -57,7 +61,7 @@ const section = (key, title, note, cells) => `<section class="row" aria-labelled
   <div class="grid">${cells.join('\n')}</div>
 </section>`;
 
-const rows = [...SETUPS, ...EXTRA].map(([key, name, note]) =>
+const rows = [...SETUPS, ...(TRIAL ? [] : EXTRA)].map(([key, name, note]) =>
   section(key, name, note, MODELS.map(([m, mName]) => cell(`${m}-${key}`, mName, name)))).join('\n');
 
 // The same brief in OpenAI's Codex CLI on a free ChatGPT plan, with the skills
@@ -116,11 +120,13 @@ const html = `<!doctype html>
 <main>
   <h1>One brief, three models, four skills</h1>
   <p class="lead">The same brief for the home page of a made-up housing cooperative, built in Claude Code by Sonnet 5.5, Opus 5.5 and Fable 5.2: once without a skill, then once with each of four design skills. One run per combination, so this shows tendencies, not a ranking.</p>
+  <p class="lead">${TRIAL
+    ? 'This page is the <strong>second trial</strong>: the same fifteen runs repeated from scratch in a separate folder, to see how much comes back the same. <a href="./">The first trial</a>'
+    : 'The fifteen runs were <a href="trial-2.html">repeated once from scratch</a> to see how much comes back the same.'}</p>
   <p class="lead"><a href="brief.md">The brief</a> (in Polish) · <a href="README.md">Method and versions</a> · <a href="https://spoko.space/blog/design-skills-for-ai-agents-tested/">The write-up on spoko.space</a></p>
   <p class="lead"><strong>Tokens</strong> include cache reads, which are most of them. <strong>Detector</strong> counts the findings of Impeccable's own rule-based checker (<code>npx impeccable detect</code>), so it judges every page by one skill's rules. <strong>axe rules</strong> counts distinct WCAG 2.2 A/AA rules axe-core flags at 1440 and 390 px.</p>
 ${rows}
-${codexRow}
-${chatRow}
+${TRIAL ? '' : codexRow + '\n' + chatRow}
   <footer>
     <p>The cooperative, its address, phone numbers and documents are made up. Every page says so in its footer. Photographs placed by Taste Skill come from open archives and are credited on the page that uses them.</p>
   </footer>
@@ -128,5 +134,6 @@ ${chatRow}
 </body>
 </html>
 `;
-fs.writeFileSync(path.join(ROOT, 'index.html'), html);
-console.log('index.html written');
+const out = TRIAL ? `trial${TRIAL}.html` : 'index.html';
+fs.writeFileSync(path.join(ROOT, out), html);
+console.log(`${out} written`);

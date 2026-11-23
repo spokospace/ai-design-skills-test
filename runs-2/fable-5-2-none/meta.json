@@ -1,0 +1,86 @@
+{
+  "id": "fable-5-2-none",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 10,
+    "denied": [],
+    "results": 1,
+    "ok": true,
+    "apiMin": 5.3,
+    "turns": 13,
+    "costUsd": 2.8629040000000003,
+    "tokens": {
+      "input": 14,
+      "output": 34246,
+      "cacheRead": 370600,
+      "cacheWrite": 88677,
+      "total": 493537
+    },
+    "models": [
+      {
+        "name": "claude-fable-5-2",
+        "input": 14,
+        "output": 34246,
+        "cacheRead": 370600,
+        "cacheWrite": 88677,
+        "costUsd": 2.8629040000000003
+      }
+    ],
+    "durationMin": 5.5,
+    "durationSource": "wall clock",
+    "agentMin": 5.5
+  },
+  "files": 1,
+  "bytes": {
+    "total": 40925,
+    "html": 40925,
+    "js": 8525,
+    "css": 15472,
+    "images": 0
+  },
+  "htmlLines": 824,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 3162,
+      "violations": []
+    },
+    "mobile": {
+      "height": 5036,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px + border-radius: 12px"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<section> \"section\": children flush against border-top on top (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"panel\": children flush against border+bg on top/right/left (no inset)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots-2/fable-5-2-none-desktop-first.jpg",
+    "desktop-full": "shots-2/fable-5-2-none-desktop-full.jpg",
+    "mobile-first": "shots-2/fable-5-2-none-mobile-first.jpg",
+    "mobile-full": "shots-2/fable-5-2-none-mobile-full.jpg"
+  }
+}

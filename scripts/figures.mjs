@@ -8,7 +8,7 @@ import { pathToFileURL } from 'node:url';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const OUT = path.join(ROOT, 'figures');
 fs.mkdirSync(OUT, { recursive: true });
-const shot = (id, kind) => pathToFileURL(path.join(ROOT, 'shots', `${id}-${kind}.jpg`)).href;
+const shot = (id, kind, trial = '') => pathToFileURL(path.join(ROOT, `shots${trial}`, `${id}-${kind}.jpg`)).href;
 
 const MODELS = [['sonnet-5-5', 'Sonnet 5.5'], ['opus-5-5', 'Opus 5.5'], ['fable-5-2', 'Fable 5.2']];
 const SETUPS = (lang) => [
@@ -30,6 +30,16 @@ const grid = (lang) => `<style>${BASE}
 img{width:460px;height:287px}</style><div class="g"><div></div>
 ${MODELS.map(([, n]) => `<div class="h">${n}</div>`).join('')}
 ${SETUPS(lang).map(([s, n]) => `<div class="l">${n}</div>` + MODELS.map(([m]) => `<img src="${shot(`${m}-${s}`, 'desktop-first')}">`).join('')).join('')}</div>`;
+
+// The first trial next to its repeat: rows are setups, columns are models,
+// each with trial 1 and trial 2 side by side.
+const repeat = (lang) => `<style>${BASE}
+.g{display:grid;grid-template-columns:150px repeat(3,372px 372px);gap:14px 8px;padding:24px;width:max-content}
+.g>:nth-child(6n+3),.g>:nth-child(6n+5){margin-right:14px}
+img{width:372px;height:232px}.h{grid-column:span 2}.t{font-size:15px;color:#555c66;align-self:end}</style><div class="g"><div></div>
+${MODELS.map(([, n]) => `<div class="h">${n}</div>`).join('')}<div></div>
+${MODELS.map(() => `<div class="t">${lang === 'pl' ? 'próba 1' : 'trial 1'}</div><div class="t">${lang === 'pl' ? 'próba 2' : 'trial 2'}</div>`).join('')}
+${SETUPS(lang).map(([s, n]) => `<div class="l">${n}</div>` + MODELS.map(([m]) => `<img src="${shot(`${m}-${s}`, 'desktop-first')}"><img src="${shot(`${m}-${s}`, 'desktop-first', '-2')}">`).join('')).join('')}</div>`;
 
 // One setup, three models side by side, larger.
 const row = (setup) => `<style>${BASE}
@@ -89,6 +99,7 @@ const figures = {
   board: board(),
   'chats-en': chats('en'), 'chats-pl': chats('pl'),
   'codex-en': codex('en'), 'codex-pl': codex('pl'),
+  ...(fs.existsSync(path.join(ROOT, 'shots-2')) ? { 'repeat-en': repeat('en'), 'repeat-pl': repeat('pl') } : {}),
 };
 
 const browser = await chromium.launch();

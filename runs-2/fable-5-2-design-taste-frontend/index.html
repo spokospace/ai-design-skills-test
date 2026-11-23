@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="pl" data-type="service" data-radius="soft" data-buttons="tonal" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Słoneczne Wzgórze: spółdzielnia mieszkaniowa osiedli Słoneczne Wzgórze i Przylesie</title>
+<meta name="description" content="Pogotowie awaryjne całą dobę, godziny pracy biura, ogłoszenia i dokumenty spółdzielni dla mieszkańców 6 budynków i 412 mieszkań.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”">
+<meta property="og:description" content="Pogotowie awaryjne, biuro, ogłoszenia i dokumenty dla mieszkańców osiedli Słoneczne Wzgórze i Przylesie.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#ddd6c6">
+<!-- <link rel="canonical" href="https://[domena spółdzielni]/"> : do uzupełnienia, gdy będzie domena -->
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #ddd6c6; --p-surface: #d2cab8; --p-ink: #2a2a26; --p-muted: #55534b;
+  --p-accent: #4f6238; --p-accent-ink: #ffffff; --p-action: #4f6238; --p-action-ink: #ffffff;
+  --p-inv-bg: #2a2a26; --p-inv-surface: #353430; --p-inv-ink: #ddd6c6; --p-inv-muted: #a39e92;
+  --p-inv-accent: #ddd6c6; --p-inv-accent-ink: #2a2a26; --p-inv-action: #ddd6c6; --p-inv-action-ink: #2a2a26;
+  --font-display: "Nunito", system-ui, sans-serif;
+  --font-text: "Nunito", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --display-tracking-xl: -0.03em;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
+<!-- page CSS: tylko wnętrze listy dokumentów i numer pogotowia -->
+<style>
+  .sos { display: grid; gap: var(--s-1); }
+  .sos__number { display: inline-flex; align-items: center; min-height: 44px; justify-self: start; font: var(--display-weight) var(--t-h3)/1.15 var(--font-display); letter-spacing: var(--display-tracking); font-variant-numeric: tabular-nums; }
+  /* tablet: trzy kroki z obrazami mieszczą się na jednym ekranie */
+  @media (min-width: 640px) and (max-width: 1023px) {
+    #awarie .mo-pc__visual > img { max-height: 15svh; }
+    #dokumenty .docs__list > li { padding-block: max(2px, calc((100svh - 1024px) * 0.08 + 2px)); }
+    .close--type .btn--xl { height: var(--btn-h, 44px); min-height: 0; font-size: var(--t-body); }
+    .closing__links > .grid > .span-3 { grid-column: span 6; }
+  }
+  @media (min-width: 1024px) { #dokumenty .docs__list > li { padding-block: var(--s-4); } }
+  /* telefon: trzy kroki zajmują dokładnie dwa ekrany; na bardzo wąskim ekranie sekcje ze zdjęciem dostają drugi ekran */
+  @media (max-width: 639px) {
+    #awarie:not(.is-live) { min-height: 200svh; }
+    #awarie:not(.is-live) .mo-pc__visual > img { aspect-ratio: 1 / 1; max-height: 30svh; }
+    #ogloszenia .frame--fill { min-height: 130px; }
+    .hero--photo .btn--secondary { display: none; }
+    #dokumenty .docs__list > li { padding-block: 14px; }
+  }
+  @media (max-width: 359px) { #ogloszenia, #biuro { --hm: 2; } }
+  .docs__side { display: grid; gap: var(--s-6); align-content: start; }
+  .docs__side .section-head { margin-bottom: 0; }
+  .docs__tools { display: grid; gap: var(--s-4); align-content: start; }
+  .docs__filters { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+  .docs__filters .pill { cursor: pointer; font: inherit; font-size: var(--t-small); font-weight: 500; min-height: 44px; }
+  .docs__filters .pill[aria-pressed="true"] { background: var(--p-action); color: var(--p-action-ink); border-color: var(--p-action); }
+  .docs__list > li[hidden] { display: none; }
+  .docs__list > li { align-items: center; padding-block: var(--s-2); }
+  .docs__list > li:first-child { padding-top: 0; }
+  .docs__list .rows__name { display: inline-flex; align-items: center; min-height: 44px; justify-self: start; font-size: var(--t-lead); line-height: 1.3; }
+  .docs__list > li > p { margin-top: calc(-1 * var(--s-2)); }
+  .docs__empty { padding-block: var(--s-4); }
+  .notice__name { font-size: var(--t-lead); }
+  .contact { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-4) var(--gutter); list-style: none; margin: 0; padding: 0; }
+  .contact > li { display: grid; gap: 0; align-content: start; }
+  .contact .link, .contact__text { font-size: var(--t-lead); min-height: 44px; display: inline-flex; align-items: center; justify-self: start; }
+  @media (max-width: 479px) { .contact { grid-template-columns: 1fr; gap: var(--s-2); } }
+</style>
+</head>
+<body>
+<!-- type: service (site-kind other): spółdzielnia mieszkaniowa
+     deal: hero photo (rozdany ponownie: pierwszy, film, wymaga filmu albo ciemnego kadru, a tu nie ma żadnego),
+           nav nav-split (bez panelu), close close-type, footer footer-visit, rhythm space, buttons tonal, mark initial,
+           grounds none; palette moss-sand: piaskowe tło i oliwkowa zieleń odpowiadają nazwom osiedli
+           (Słoneczne Wzgórze, Przylesie); type nunito
+     moments: pinned-chapters w #awarie (trzy rodzaje awarii, jedna po drugiej)
+     screens: hero 1 · awarie 2 · ogloszenia 1 · dokumenty 1 · biuro 1 · footer.closing 1
+     voice: urzędowo-prosty; krótkie zdania, liczby i godziny z briefu, zwroty wprost do mieszkańca -->
+
+<header class="nav nav--split">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Przejdź do treści</a>
+    <nav class="nav__links" aria-label="Główna">
+      <div class="nav__item"><a class="nav__link" href="#awarie">Awarie</a></div>
+      <div class="nav__item"><a class="nav__link" href="#ogloszenia">Ogłoszenia</a></div>
+      <div class="nav__item"><a class="nav__link" href="#dokumenty">Dokumenty</a></div>
+      <div class="nav__item"><a class="nav__link" href="#biuro">Biuro</a></div>
+    </nav>
+    <a class="nav__logo" href="#top"><span class="mark mark--initial" aria-hidden="true">S</span>Słoneczne Wzgórze</a>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="tel:+48000000999">Zadzwoń na pogotowie</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO: photo. Zdjęcie zastępcze osiedla (do podmiany na własne zdjęcie spółdzielni). -->
+  <section class="hero hero--photo" data-enter data-calm="left" aria-labelledby="hero-h">
+    <img class="hero__bg" src="assets/img/photo-f105012021-1920.webp" srcset="assets/img/photo-f105012021-1280.webp 1280w, assets/img/photo-f105012021-1920.webp 1920w" sizes="(max-width: 1023px) 190vw, 150vw" width="1920" height="1024" alt="Alejka przez trawnik między blokami osiedla, wokół świerki, krzewy i drzewa" style="--ly-pos: 62% 60%; --ly-pos-phone: 55% 60%" fetchpriority="high" decoding="async" data-source="stand-in" data-subject="osiedle bloków wśród zieleni">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__text">
+        <h1 id="hero-h">Spółdzielnia Słoneczne Wzgórze</h1>
+        <p class="hero__lead">Spółdzielnia mieszkaniowa osiedli Słoneczne Wzgórze i Przylesie: 6 budynków, 412 mieszkań. Pogotowie awaryjne całą dobę: +48 000 000 999.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="tel:+48000000999">Zadzwoń na pogotowie</a><a class="btn btn--secondary" href="#ogloszenia">Zobacz ogłoszenia</a></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- AWARIE: pinned-chapters (moments.md). Numer stoi nad krokami i jest widoczny przez cały czas. -->
+  <section class="section" id="awarie" style="--h: 2" data-moment="pinned-chapters" aria-labelledby="awarie-h">
+    <div class="wrap mo-pc__grid">
+      <div class="mo-pc__text">
+        <h2 id="awarie-h">Pogotowie awaryjne 24 godziny na dobę</h2>
+        <p class="sos"><span>Woda, gaz i winda, także w nocy i w święta:</span><a class="link sos__number" href="tel:+48000000999">+48 000 000 999</a></p>
+        <ol class="mo-pc__steps">
+          <li class="mo-pc__step">
+            <h3>Zalewa mieszkanie albo pękła rura</h3>
+            <p>Zakręć zawór przy wodomierzu w swoim mieszkaniu i zadzwoń na pogotowie. Podaj budynek, klatkę i numer mieszkania.</p>
+            <figure class="mo-pc__visual"><img src="assets/img/photo-f127002503.webp" srcset="assets/img/photo-f127002503-500.webp 500w, assets/img/photo-f127002503-960.webp 960w, assets/img/photo-f127002503.webp 1280w" sizes="(max-width: 1023px) 100vw, 50vw" width="1280" height="853" alt="Otwarta klapka w ścianie z płytek, za nią rury, zawory i dwa wodomierze" loading="lazy" decoding="async" data-source="stand-in" data-subject="wodomierze i zawory"></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Czuć gaz w mieszkaniu lub na klatce</h3>
+            <p>Nie włączaj światła ani urządzeń. Otwórz okna, zakręć zawór przy gazomierzu, wyjdź z mieszkania i zadzwoń sprzed budynku. W nagłym zagrożeniu dzwoń też pod 112.</p>
+            <figure class="mo-pc__visual"><img src="assets/img/photo-f31147675.webp" srcset="assets/img/photo-f31147675-500.webp 500w, assets/img/photo-f31147675-960.webp 960w, assets/img/photo-f31147675.webp 1280w" sizes="(max-width: 1023px) 100vw, 50vw" width="1280" height="1707" alt="Gazomierz na ścianie klatki schodowej, obok rura z żółtym zaworem" loading="lazy" decoding="async" data-source="stand-in" data-subject="gazomierz i zawór gazu"></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Winda stanęła między piętrami</h3>
+            <p>Naciśnij przycisk alarmu w kabinie i zaczekaj na pomoc. Nie otwieraj drzwi siłą. Sąsiad może zadzwonić na pogotowie za Ciebie.</p>
+            <figure class="mo-pc__visual"><img src="assets/img/photo-f16726810-960.webp" srcset="assets/img/photo-f16726810-500.webp 500w, assets/img/photo-f16726810-960.webp 960w" sizes="(max-width: 1023px) 100vw, 50vw" width="960" height="1280" alt="Otwarte drzwi windy w bloku, w środku kabina ze stali i lustro" loading="lazy" decoding="async" data-source="stand-in" data-subject="kabina windy"></figure>
+          </li>
+        </ol>
+      </div>
+      <div class="mo-pc__visuals frame"></div>
+    </div>
+  </section>
+
+  <!-- OGŁOSZENIA: lista obok zdjęcia (split 6/6) -->
+  <section class="section" id="ogloszenia" aria-labelledby="ogloszenia-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="ogloszenia-h">Ogłoszenia na grudzień 2026</h2>
+      </div>
+      <div class="grid grid--top fill">
+        <ul class="rows span-6">
+          <li><span class="rows__name notice__name">Przerwa w dostawie zimnej wody</span><p>Budynek Przylesie 4, od 8:00 do 14:00.</p><span class="rows__value">3 grudnia</span></li>
+          <li><span class="rows__name notice__name">Roczne przeglądy instalacji gazowej</span><p>We wszystkich budynkach. Harmonogram wisi na klatkach schodowych.</p><span class="rows__value">7–18 grudnia</span></li>
+          <li><span class="rows__name notice__name">Biuro nieczynne</span><p>W te dni <a href="#awarie">pogotowie awaryjne</a> odbiera jak zwykle.</p><span class="rows__value">24 i 31 grudnia</span></li>
+        </ul>
+        <div class="frame frame--photo frame--fill span-6 start-7">
+          <img class="frame__img" src="assets/img/photo-f153801987-sq960.webp" srcset="assets/img/photo-f153801987-sq640.webp 640w, assets/img/photo-f153801987-sq960.webp 960w" sizes="(max-width: 1023px) 100vw, 50vw" width="960" height="960" alt="Chodnik z czerwonej kostki wzdłuż bloku, po obu stronach drzewa i krzewy" loading="lazy" decoding="async" data-source="stand-in" data-subject="chodnik przy bloku">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOKUMENTY: wyszukiwarka i filtr rodzaju nad listą (art. 8¹ ust. 3 usm). Plików nie ma: linki wracają do sekcji. -->
+  <section class="section g2m" id="dokumenty" aria-labelledby="dokumenty-h">
+    <div class="wrap grid grid--top">
+      <div class="docs__side span-6">
+      <div class="section-head">
+        <h2 id="dokumenty-h">Dokumenty spółdzielni</h2>
+        <p>Udostępniamy je na podstawie art. 8¹ ust. 3 ustawy o spółdzielniach mieszkaniowych. Wpisz nazwę albo wybierz rodzaj.</p>
+      </div>
+        <div class="docs__tools">
+          <div class="field">
+            <label for="docs-q">Szukaj dokumentu</label>
+            <input id="docs-q" type="search" autocomplete="off" enterkeyhint="search">
+          </div>
+          <div class="docs__filters" role="group" aria-label="Rodzaj dokumentu">
+            <button class="pill" type="button" data-doc-filter="" aria-pressed="true">Wszystkie</button>
+            <button class="pill" type="button" data-doc-filter="statut" aria-pressed="false">Statut</button>
+            <button class="pill" type="button" data-doc-filter="regulamin" aria-pressed="false">Regulaminy</button>
+            <button class="pill" type="button" data-doc-filter="uchwala" aria-pressed="false">Uchwały</button>
+            <button class="pill" type="button" data-doc-filter="protokol" aria-pressed="false">Protokoły obrad</button>
+            <button class="pill" type="button" data-doc-filter="lustracja" aria-pressed="false">Lustracja</button>
+            <button class="pill" type="button" data-doc-filter="sprawozdanie" aria-pressed="false">Sprawozdania</button>
+          </div>
+          <p class="t-small muted" role="status" data-doc-count>7 dokumentów</p>
+        </div>
+      </div>
+      <div class="span-6 start-7">
+          <ul class="rows docs__list" data-doc-list>
+            <li data-doc="statut"><a class="rows__name" href="#dokumenty">Statut Spółdzielni</a><p class="muted">Tekst jednolity, marzec 2026</p><span class="rows__value muted">Statut</span></li>
+            <li data-doc="regulamin"><a class="rows__name" href="#dokumenty">Regulamin porządku domowego</a><span class="rows__value muted">Regulamin</span></li>
+            <li data-doc="regulamin"><a class="rows__name" href="#dokumenty">Regulamin rozliczania kosztów zużycia wody</a><span class="rows__value muted">Regulamin</span></li>
+            <li data-doc="uchwala"><a class="rows__name" href="#dokumenty">Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy</a><span class="rows__value muted">Uchwała</span></li>
+            <li data-doc="protokol"><a class="rows__name" href="#dokumenty">Protokół z Walnego Zgromadzenia, czerwiec 2026</a><span class="rows__value muted">Protokół obrad</span></li>
+            <li data-doc="lustracja"><a class="rows__name" href="#dokumenty">Protokół lustracji za lata 2023–2025</a><span class="rows__value muted">Lustracja</span></li>
+            <li data-doc="sprawozdanie"><a class="rows__name" href="#dokumenty">Sprawozdanie finansowe za 2025 rok</a><span class="rows__value muted">Sprawozdanie</span></li>
+          </ul>
+          <p class="docs__empty" data-doc-empty hidden>Nie ma takiego dokumentu. Zmień słowo albo zapytaj w biurze.</p>
+        </div>
+    </div>
+  </section>
+
+  <!-- BIURO: adres, godziny i kontakt obok zdjęcia (split 6/6) -->
+  <section class="section" id="biuro" aria-labelledby="biuro-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="biuro-h">Biuro spółdzielni</h2>
+      </div>
+      <div class="grid grid--top fill">
+        <div class="span-6 stack-5">
+          <address class="t-lead" style="font-style: normal">ul. Przykładowa 1<br>00-000 Miasto</address>
+          <dl class="hours t-lead" data-tz="Europe/Warsaw">
+            <dt data-days="mon">Poniedziałek</dt><dd>10:00–18:00</dd>
+            <dt data-days="tue-fri">Wtorek–piątek</dt><dd>7:30–15:30</dd>
+          </dl>
+          <ul class="contact">
+            <li><span class="t-label muted">Telefon do biura</span><a class="link" href="tel:+48000000001">+48 000 000 001</a></li>
+            <li><span class="t-label muted">E-mail</span><a class="link" href="mailto:biuro@example.com">biuro@example.com</a></li>
+            <li><span class="t-label muted">Biuro nieczynne</span><span class="contact__text">24 i 31 grudnia 2026</span></li>
+          </ul>
+        </div>
+        <div class="frame frame--photo frame--fill span-6 start-7">
+          <img class="frame__img" src="assets/img/photo-f126733292.webp" srcset="assets/img/photo-f126733292-500.webp 500w, assets/img/photo-f126733292-960.webp 960w, assets/img/photo-f126733292.webp 1280w" sizes="(max-width: 1023px) 100vw, 50vw" width="1280" height="962" alt="Widok z okna na długi blok z wielkiej płyty, parking i świerk na pierwszym planie" loading="lazy" decoding="async" data-source="stand-in" data-subject="blok i parking osiedla">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing footer--visit g2m" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Awarię zgłoś od razu, o każdej porze</h2>
+        <p class="t-small muted">Pogotowie awaryjne: +48 000 000 999. Sprawy biurowe załatwisz w godzinach pracy biura.</p>
+      </div>
+      <a class="btn btn--primary btn--xl" href="tel:+48000000999">Zadzwoń na pogotowie<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+    </div>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-6 stack-4">
+          <address class="footer__address">ul. Przykładowa 1<br>00-000 Miasto</address>
+        </div>
+        <div class="span-3 start-7 stack-4">
+          <h3>Godziny pracy biura</h3>
+          <dl class="hours" data-tz="Europe/Warsaw">
+            <dt data-days="mon">Poniedziałek</dt><dd>10:00–18:00</dd>
+            <dt data-days="tue-fri">Wtorek–piątek</dt><dd>7:30–15:30</dd>
+          </dl>
+        </div>
+        <div class="span-3 footer__col">
+          <h3>Na stronie</h3>
+          <ul><li><a href="#awarie">Awarie</a></li><li><a href="#ogloszenia">Ogłoszenia</a></li><li><a href="#dokumenty">Dokumenty</a></li><li><a href="#biuro">Biuro</a></li></ul>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”. To strona demonstracyjna: spółdzielnia i jej dane nie istnieją.</span>
+        <a class="credits" href="credits.html">Zdjęcia: Wikimedia Commons</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Szybki kontakt">
+  <a class="btn btn--primary" href="tel:+48000000999">Zadzwoń na pogotowie</a>
+</nav>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+<script>
+/* Lista dokumentów: szukanie po nazwie i filtr rodzaju. Działa też po otwarciu strony prosto z pliku. */
+(function () {
+  var list = document.querySelector('[data-doc-list]');
+  if (!list) return;
+  var items = [].slice.call(list.children);
+  var q = document.getElementById('docs-q');
+  var count = document.querySelector('[data-doc-count]');
+  var empty = document.querySelector('[data-doc-empty]');
+  var buttons = [].slice.call(document.querySelectorAll('[data-doc-filter]'));
+  var kind = '';
+  var plain = function (s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ł/g, 'l'); };
+  var word = function (n) {
+    var d = n % 10, h = n % 100;
+    return n === 1 ? 'dokument' : (d >= 2 && d <= 4 && !(h >= 12 && h <= 14)) ? 'dokumenty' : 'dokumentów';
+  };
+  function apply() {
+    var needle = plain(q.value.trim()), shown = 0;
+    items.forEach(function (li) {
+      var ok = (!kind || li.dataset.doc === kind) && (!needle || plain(li.textContent).indexOf(needle) > -1);
+      li.hidden = !ok; if (ok) shown++;
+    });
+    count.textContent = shown + ' ' + word(shown);
+    empty.hidden = shown > 0;
+  }
+  q.addEventListener('input', apply);
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      kind = b.dataset.docFilter;
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      apply();
+    });
+  });
+})();
+/* Otwarcie prosto z pliku (file://): przeglądarka nie wczyta modułów zestawu, więc menu na telefonie
+   i pasek z numerem pogotowia dostają tu prostą obsługę. Z serwera robi to assets/system.js. */
+(function () {
+  if (location.protocol !== 'file:') return;
+  var nav = document.querySelector('.nav'), toggle = nav && nav.querySelector('.nav__toggle');
+  if (toggle) {
+    var setOpen = function (open) {
+      nav.classList.toggle('is-open', open);
+      document.body.classList.toggle('nav-locked', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('is-open')); });
+    nav.addEventListener('click', function (e) { if (e.target.closest('a[href]')) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  }
+  var bar = document.querySelector('nav.actionbar');
+  if (bar) bar.setAttribute('data-bar', 'always');
+})();
+</script>
+</body>
+</html>
