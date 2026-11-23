@@ -1,0 +1,79 @@
+{
+  "id": "deepseek-free",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": []
+  },
+  "files": 1,
+  "bytes": {
+    "total": 24315,
+    "html": 24315,
+    "js": 1675,
+    "css": 9707,
+    "images": 0
+  },
+  "htmlLines": 641,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 1868,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    },
+    "mobile": {
+      "height": 2941,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.2:1 (need 4.5:1) — text #c24a2e on #e7eff5 (and 2 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.4:1 (need 4.5:1) — text #c24a2e on #fdf0ec (and 1 more)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/deepseek-free-desktop-first.jpg",
+    "desktop-full": "shots/deepseek-free-desktop-full.jpg",
+    "mobile-first": "shots/deepseek-free-mobile-first.jpg",
+    "mobile-full": "shots/deepseek-free-mobile-full.jpg"
+  }
+}

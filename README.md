@@ -24,7 +24,7 @@ are made up, and every page says so in its footer.
 
 Three more runs, with [Ponytail](https://github.com/dietrichgebert/ponytail) (commit `dec89d9`), are kept in `runs/` and shown as an extra row in the gallery. Ponytail is a skill about writing less code, not about design, so it is not part of the comparison.
 
-The same brief was also pasted into three chat apps in a browser, in temporary chats without personalisation: ChatGPT on the Free plan, Grok on the free plan and Gemini on the Plus plan. Those pages are in `runs/chatgpt-free`, `runs/grok-free` and `runs/gemini-plus` and in the gallery's last row. A chat reports no token counts, so they have none.
+The same brief was also pasted into four chat apps in a browser: ChatGPT on the Free plan, Grok on the free plan, DeepSeek (free) and Gemini on the Plus plan, the last one twice, with the thinking level at Low and at High (the stronger Gemini model needs a higher plan). ChatGPT, Grok and Gemini ran in temporary chats without personalisation; DeepSeek has no such mode. DeepSeek stopped a few dozen characters before the end of the code and was continued with one click. Those pages are in `runs/chatgpt-free`, `runs/grok-free`, `runs/deepseek-free`, `runs/gemini-plus` and `runs/gemini-plus-high` and in the gallery's last row. A chat reports no token counts, so they have none.
 
 A run with a skill gets one extra first line in the prompt, "Użyj skilla `<name>`." ("Use the `<name>` skill."), and the skill in the project's `.claude/skills/`. Nothing else differs.
 

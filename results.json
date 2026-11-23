@@ -205,6 +205,85 @@
     }
   },
   {
+    "id": "deepseek-free",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 0,
+      "denied": []
+    },
+    "files": 1,
+    "bytes": {
+      "total": 24315,
+      "html": 24315,
+      "js": 1675,
+      "css": 9707,
+      "images": 0
+    },
+    "htmlLines": 641,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 1868,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          }
+        ]
+      },
+      "mobile": {
+        "height": 2941,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 4px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 4px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 4px"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "advisory",
+        "snippet": "4.2:1 (need 4.5:1) — text #c24a2e on #e7eff5 (and 2 more)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "advisory",
+        "snippet": "4.4:1 (need 4.5:1) — text #c24a2e on #fdf0ec (and 1 more)"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/deepseek-free-desktop-first.jpg",
+      "desktop-full": "shots/deepseek-free-desktop-full.jpg",
+      "mobile-first": "shots/deepseek-free-mobile-first.jpg",
+      "mobile-full": "shots/deepseek-free-mobile-full.jpg"
+    }
+  },
+  {
     "id": "fable-5-2-design-taste-frontend",
     "log": {
       "skillsInvoked": [
@@ -821,6 +900,91 @@
       "desktop-full": "shots/gemini-plus-desktop-full.jpg",
       "mobile-first": "shots/gemini-plus-mobile-first.jpg",
       "mobile-full": "shots/gemini-plus-mobile-full.jpg"
+    }
+  },
+  {
+    "id": "gemini-plus-high",
+    "log": {
+      "skillsInvoked": [],
+      "toolCalls": 0,
+      "denied": []
+    },
+    "files": 1,
+    "bytes": {
+      "total": 30474,
+      "html": 30474,
+      "js": 1100,
+      "css": 14187,
+      "images": 0
+    },
+    "htmlLines": 974,
+    "external": [],
+    "consoleErrors": [],
+    "axe": {
+      "desktop": {
+        "height": 2796,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 8
+          }
+        ]
+      },
+      "mobile": {
+        "height": 5617,
+        "violations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 8
+          }
+        ]
+      }
+    },
+    "detector": [
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 12px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 12px"
+      },
+      {
+        "rule": "side-tab",
+        "category": "slop",
+        "severity": "warning",
+        "snippet": "border-left: 6px + border-radius: 12px"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "advisory",
+        "snippet": "2.1:1 (need 3:1) — text #ffffff on #f59e0b (gradient on div.logo-icon)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.6:1 (need 4.5:1) — text #0284c7 on #e0f2fe (and 6 more)"
+      },
+      {
+        "rule": "low-contrast",
+        "category": "quality",
+        "severity": "warning",
+        "snippet": "3.8:1 (need 4.5:1) — text #64748b on #0f172a"
+      }
+    ],
+    "shots": {
+      "desktop-first": "shots/gemini-plus-high-desktop-first.jpg",
+      "desktop-full": "shots/gemini-plus-high-desktop-full.jpg",
+      "mobile-first": "shots/gemini-plus-high-mobile-first.jpg",
+      "mobile-full": "shots/gemini-plus-high-mobile-full.jpg"
     }
   },
   {

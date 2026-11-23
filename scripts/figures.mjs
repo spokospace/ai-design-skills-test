@@ -53,18 +53,22 @@ const board = () => `<style>body{margin:0;background:#1d1f24}
 img{display:block;width:560px;height:350px;object-fit:cover;object-position:top;border-radius:4px}</style>
 <div class="g">${BOARD.map((id) => `<img src="${shot(id, 'desktop-first')}">`).join('')}</div>`;
 
-// The three chat apps, with the plan each account was on.
+// The chat apps, with the plan each account was on. Three free ones in the
+// first row, the two Gemini runs (thinking level Low and High) in the second.
 const chats = (lang) => {
+  const pl = lang === 'pl';
   const items = [
-    ['chatgpt-free', lang === 'pl' ? 'ChatGPT (plan Free)' : 'ChatGPT (Free plan)'],
-    ['gemini-plus', lang === 'pl' ? 'Gemini (plan Plus)' : 'Gemini (Plus plan)'],
-    ['grok-free', lang === 'pl' ? 'Grok (plan darmowy)' : 'Grok (free plan)'],
+    ['chatgpt-free', pl ? 'ChatGPT (plan Free)' : 'ChatGPT (Free plan)'],
+    ['grok-free', pl ? 'Grok (plan darmowy)' : 'Grok (free plan)'],
+    ['deepseek-free', pl ? 'DeepSeek (darmowy)' : 'DeepSeek (free)'],
+    ['gemini-plus', pl ? 'Gemini (plan Plus, myślenie Low)' : 'Gemini (Plus plan, thinking Low)'],
+    ['gemini-plus-high', pl ? 'Gemini (plan Plus, myślenie High)' : 'Gemini (Plus plan, thinking High)'],
   ];
   return `<style>${BASE}
-.g{display:grid;grid-template-columns:repeat(3,720px);gap:20px;padding:24px;width:max-content}
+.g{display:grid;grid-template-columns:repeat(3,720px);gap:24px 20px;padding:24px;width:max-content}
+.c{display:grid;gap:10px}
 img{width:720px;height:450px}</style><div class="g">
-${items.map(([, n]) => `<div class="h">${n}</div>`).join('')}
-${items.map(([id]) => `<img src="${shot(id, 'desktop-first')}">`).join('')}</div>`;
+${items.map(([id, n]) => `<div class="c"><div class="h">${n}</div><img src="${shot(id, 'desktop-first')}"></div>`).join('')}</div>`;
 };
 
 const figures = {
