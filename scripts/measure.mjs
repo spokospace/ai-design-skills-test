@@ -91,6 +91,16 @@ function runLog(id) {
         tokens: { ...tokens, total: tokens.input + tokens.output + tokens.cacheRead },
       });
     }
+    // A local model through Ollama (scripts/run-ollama.mjs): one line with the
+    // counts of the whole answer. Thinking tokens are part of eval_count.
+    if (ev.eval_count != null && ev.total_duration != null) {
+      const tokens = { input: ev.prompt_eval_count ?? 0, output: ev.eval_count, cacheRead: 0, cacheWrite: 0 };
+      Object.assign(log, {
+        ok: ev.done_reason === 'stop',
+        agentMs: ev.total_duration / 1e6,
+        tokens: { ...tokens, total: tokens.input + tokens.output },
+      });
+    }
     if (ev.type === 'result') {
       // usage covers the main model only; modelUsage also has helper models
       // (e.g. Haiku for summaries), so totals are summed from it.

@@ -58,6 +58,10 @@ function inspect() {
   const levels = q('h1,h2,h3,h4,h5,h6').filter(shown).map((h) => +h.tagName[1]);
   const focusable = q('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
   const first = focusable[0];
+  // A skip link is the first focusable element and leads to the main content.
+  // A menu link to a section is not one, so the target or the wording has to say so.
+  const mainEl = document.querySelector('main, [role="main"]');
+  const skipTarget = first?.matches('a[href^="#"]') ? byId(first.getAttribute('href').slice(1)) : null;
   const navs = q('nav, [role="navigation"]');
   const structure = {
     header: landmark('body > header, body > * > header', 'banner'),
@@ -65,7 +69,7 @@ function inspect() {
     navUnnamed: navs.length > 1 ? navs.filter((n) => !n.hasAttribute('aria-label') && !n.hasAttribute('aria-labelledby')).length : 0,
     main: landmark('main', 'main'),
     footer: landmark('body > footer, body > * > footer', 'contentinfo'),
-    skipLink: !!(first?.matches('a[href^="#"]') && byId(first.getAttribute('href').slice(1))),
+    skipLink: !!skipTarget && (skipTarget === mainEl || (!!mainEl && skipTarget.contains(mainEl)) || /przejd|pomi|skip|tre[śs]ci/i.test(first.textContent)),
     h1: levels.filter((l) => l === 1).length,
     headings: levels.length,
     skippedLevels: levels.filter((l, i) => i && l > levels[i - 1] + 1).length,

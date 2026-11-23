@@ -76,9 +76,9 @@ const agentRows = AGENTS.filter(([key]) => byId[`${key}-none`])
 
 // The same brief pasted into chat apps (temporary chats where the app has them).
 // A chat reports no token counts, so those cells are left out.
-const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High'], ['kimi-work-free', 'Kimi Work', 'desktop app, free']];
-const chatRow = section('chats', 'Chat and desktop apps',
-  "The same brief pasted into a chat: four in a browser, Copilot in its Windows app. The answers took one to two minutes, and about three with Gemini's thinking level set to High. DeepSeek stopped just before the end of the code and needed one click on Continue. Kimi Work, the agent in Kimi's desktop app, wrote its file in about seven minutes and was then cut off by a server-busy message before it could check the page.",
+const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High'], ['kimi-work-free', 'Kimi Work', 'desktop app, free'], ['ollama-qwen3-14b', 'qwen3:14b', 'local model, Ollama']];
+const chatRow = section('chats', 'Chat apps, a desktop app and a local model',
+  "The same brief pasted into a chat: four in a browser, Copilot in its Windows app. The answers took one to two minutes, and about three with Gemini's thinking level set to High. DeepSeek stopped just before the end of the code and needed one click on Continue. Kimi Work, the agent in Kimi's desktop app, wrote its file in about seven minutes and was then cut off by a server-busy message before it could check the page. The last page comes from qwen3:14b running on the laptop itself through Ollama: one message, no agent, five and a half minutes.",
   CHATS.map(([id, name, plan]) => cell(id, name, plan)));
 
 const html = `<!doctype html>
