@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</title>
+    <style>
+        :root {
+            --primary: #3D4653;
+            --secondary: #6E7A84;
+            --background: #F4F1EA;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--background);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .menu {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .menu-item {
+            position: relative;
+            padding: 10px 20px;
+            background: var(--secondary);
+            color: black;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateX(5px);
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .cta {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--secondary);
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <h1>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</h1>
+        <nav class="menu">
+            <a href="#awaryjne" class="menu-item">Awaryjne</a>
+            <a href="#dokumenty" class="menu-item">Dokumenty</a>
+            <a href="#ogloszenia" class="menu-item">Ogłoszenia</a>
+            <a href="#kontakt" class="menu-item">Kontakt</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="awaryjne" class="section">
+            <h2>Pogotowie awaryjne</h2>
+            <p>🚨 <strong>+48 000 000 999</strong> (całodobowo)</p>
+            <p>Zgłaszaj awarie wody, gazu, wind.</p>
+            <a href="#" class="cta">Zgłoś awarię</a>
+        </section>
+
+        <section id="dokumenty" class="section">
+            <h2>Dokumenty spółdzielni</h2>
+            <ul>
+                <li><a href="#">Statut Spółdzielni (tekst jednolity, marzec 2026)</a></li>
+                <li><a href="#">Regulamin porządku domowego</a></li>
+                <li><a href="#">Sprawozdanie finansowe za 2025 rok</a></li>
+            </ul>
+        </section>
+
+        <section id="ogloszenia" class="section">
+            <h2>Ogłoszenia</h2>
+            <ul>
+                <li>3 grudnia 2026: przerwa w dostawie wody w bud. Przylesie 4</li>
+                <li>7-18 grudnia: przeglądy gazu we wszystkich budynkach</li>
+                <li>Biuro nieczynne 24 i 31 grudnia</li>
+            </ul>
+        </section>
+
+        <section id="kontakt" class="section">
+            <h2>Kontakt</h2>
+            <p>Biuro: ul. Przykładowa 1, 00-000 Miasto</p>
+            <p>Godziny: pon. 10:00-18:00, wt-pt 7:30-15:30</p>
+            <p>Tel: +48 000 000 001 | E-mail: biuro@example.com</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Strona demonstracyjna. Spółdzielnia „Słoneczne Wzgórze” nie istnieje.</p>
+    </footer>
+</body>
+</html>

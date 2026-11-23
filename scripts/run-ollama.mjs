@@ -2,23 +2,37 @@
 // a model served by Ollama, with no agent around it. The model cannot write
 // files, so the page is cut out of its answer, as with the chat apps.
 //
-// Usage: RUNS_WORK=<work folder> node scripts/run-ollama.mjs <model> [context tokens]
-//        OLLAMA_HOST=http://127.0.0.1:11434 by default
+// With a skill there is nothing to discover or open either, so its SKILL.md is
+// handed over whole as the system message and the brief gets the same first
+// line the agents get. That only stands in for a skill made of one file.
+//
+// Usage: RUNS_WORK=<work folder> node scripts/run-ollama.mjs <model> [skill|none] [context tokens]
+//        OLLAMA_HOST=http://127.0.0.1:11434 by default; SKILLS_SRC for a run with a skill
 import fs from 'node:fs';
 import path from 'node:path';
 
-const model = process.argv[2];
 // Ollama's default context is too small for the brief plus a whole page.
-const numCtx = +(process.argv[3] ?? 16384);
-if (!model) throw new Error('usage: run-ollama.mjs <model> [context tokens]');
+const [model, skill = 'none', numCtx = 16384] = process.argv.slice(2);
+if (!model) throw new Error('usage: run-ollama.mjs <model> [skill|none] [context tokens]');
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const WORK = process.env.RUNS_WORK ?? path.resolve(ROOT, '..', 'skill-runs');
-const HOST = process.env.OLLAMA_HOST ?? 'http://127.0.0.1:11434';
-const id = `ollama-${model.replace(/[^\w.]+/g, '-')}`;
+// Ollama's own OLLAMA_HOST is often a bare bind address such as 0.0.0.0:11434.
+const HOST = (process.env.OLLAMA_HOST ?? '127.0.0.1:11434').replace(/^(?!https?:\/\/)/, 'http://').replace('//0.0.0.0', '//127.0.0.1');
+const id = `ollama-${model.replace(/[^\w.]+/g, '-')}${skill === 'none' ? '' : `-${skill}`}`;
 const dir = path.join(WORK, id);
 fs.rmSync(dir, { recursive: true, force: true });
 fs.mkdirSync(dir, { recursive: true });
+
+const brief = fs.readFileSync(path.join(ROOT, 'brief.md'), 'utf8');
+// The first line of a run with a skill is the one prepare_run adds in lib/run-common.sh.
+const skillFile = () => {
+  if (!process.env.SKILLS_SRC) throw new Error('set SKILLS_SRC to the folder holding the installed skills');
+  return fs.readFileSync(path.join(process.env.SKILLS_SRC, skill, 'SKILL.md'), 'utf8');
+};
+const messages = skill === 'none'
+  ? [{ role: 'user', content: brief }]
+  : [{ role: 'system', content: skillFile() }, { role: 'user', content: `Użyj skilla \`${skill}\`.\n\n${brief}` }];
 
 const started = Date.now();
 const res = await fetch(`${HOST}/api/chat`, {
@@ -27,8 +41,8 @@ const res = await fetch(`${HOST}/api/chat`, {
   body: JSON.stringify({
     model,
     stream: true,
-    options: { num_ctx: numCtx },
-    messages: [{ role: 'user', content: fs.readFileSync(path.join(ROOT, 'brief.md'), 'utf8') }],
+    options: { num_ctx: +numCtx },
+    messages,
   }),
 });
 if (!res.ok) throw new Error(`Ollama answered ${res.status}: ${await res.text()}`);

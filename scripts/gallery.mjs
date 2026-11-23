@@ -1,5 +1,5 @@
-// Builds index.html: the 15 pages as a grid (setups × models) with their numbers,
-// then the Codex and chat rows.
+// Builds index.html: every measured page with its numbers, grouped by whose model
+// built it: the Claude Code grid (setups × models), then OpenAI, Google and the rest.
 // Usage: node scripts/gallery.mjs            (reads results.json)
 //        TRIAL=2 node scripts/gallery.mjs    (reads results-2.json, writes trial-2.html:
 //                                             the repeat of the 15 Claude Code runs)
@@ -42,7 +42,7 @@ function cell(id, modelName, setupName) {
   <a class="shot" href="runs${TRIAL}/${id}/index.html" aria-label="Open the ${esc(setupName)} page by ${esc(modelName)}">
     <img src="${r.shots['desktop-first']}" alt="" loading="lazy" width="1440" height="900">
   </a>
-  <h3>${esc(modelName)} <span>· ${esc(setupName)}</span></h3>
+  <h4>${esc(modelName)} <span>· ${esc(setupName)}</span></h4>
   <dl>
     ${l.tokens ? `<div><dt>Time</dt><dd>${l.durationMin} min${cut ? ' <abbr title="Stopped at the 50-minute limit">(cut)</abbr>' : ''}</dd></div>
     <div><dt>Tokens</dt><dd>${tok(l.tokens.total)}${l.tokens.partial ? '+' : ''}</dd></div>
@@ -57,29 +57,56 @@ function cell(id, modelName, setupName) {
 }
 
 const section = (key, title, note, cells) => `<section class="row" aria-labelledby="h-${key}">
-  <header><h2 id="h-${key}">${esc(title)}</h2><p>${esc(note)}</p></header>
+  <header><h3 id="h-${key}">${esc(title)}</h3><p>${esc(note)}</p></header>
   <div class="grid">${cells.join('\n')}</div>
 </section>`;
 
-const rows = [...SETUPS, ...(TRIAL ? [] : EXTRA)].map(([key, name, note]) =>
-  section(key, name, note, MODELS.map(([m, mName]) => cell(`${m}-${key}`, mName, name)))).join('\n');
+// Rows are grouped by whose model built the pages; the group id is the jump target.
+const group = (key, title, note, sections) => `<section class="group" id="${key}" aria-labelledby="g-${key}">
+  <header><h2 id="g-${key}">${esc(title)}</h2><p>${esc(note)}</p></header>
+${sections.join('\n')}
+</section>`;
 
-// The same brief in other vendors' coding agents, with the skills copied into
-// .agents/skills of the run folder. A row appears once its runs are measured.
-const AGENTS = [
-  ['codex', 'Codex', "The same brief and the same four skills in OpenAI's Codex CLI on a free ChatGPT plan (GPT-6 Luna, the plan's default model, reasoning effort left at its default). Every run finished in under five minutes."],
-  ['agy', 'Antigravity CLI', "The same brief and the same four skills in Google's Antigravity CLI on a free personal account (Gemini 3.8 Flash at its High level, the account's default). It is where Google moved personal accounts when Gemini CLI stopped serving them. Shell commands ran in a read-only sandbox, so a skill's own scripts could not write files. The Taste Skill run used up the account's weekly quota after ten minutes and left no page."],
+const cells = (list) => list.map(([id, name, setup]) => cell(id, name, setup));
+
+// Another vendor's coding agent: the same five setups, with the skills copied
+// into .agents/skills of the run folder.
+const agentRow = (key, title, note) =>
+  section(key, title, note, SETUPS.map(([s, name]) => cell(`${key}-${s}`, title, name)));
+
+const claudeRows = [...SETUPS, ...(TRIAL ? [] : EXTRA)].map(([key, name, note]) =>
+  section(key, name, note, MODELS.map(([m, mName]) => cell(`${m}-${key}`, mName, name))));
+
+const GROUPS = [
+  ['claude', 'Claude Code', "Anthropic's coding agent with Sonnet 5.5, Opus 5.5 and Fable 5.2: one row per setup, one page per model.", claudeRows],
+  ...(TRIAL ? [] : [
+    ['openai', 'OpenAI', 'Codex as the coding agent and ChatGPT as the chat.', [
+      agentRow('codex', 'Codex', "The same brief and the same four skills in OpenAI's Codex CLI on a free ChatGPT plan (GPT-6 Luna, the plan's default model, reasoning effort left at its default). Every run finished in under five minutes."),
+      section('chatgpt', 'ChatGPT', 'The same brief pasted into a chat in the browser. The answer took one to two minutes.',
+        cells([['chatgpt-free', 'ChatGPT', 'Free plan']])),
+    ]],
+    ['google', 'Google', 'Antigravity as the coding agent and Gemini as the chat.', [
+      agentRow('agy', 'Antigravity CLI', "The same brief and the same four skills in Google's Antigravity CLI on a free personal account (Gemini 3.8 Flash at its High level, the account's default). It is where Google moved personal accounts when Gemini CLI stopped serving them. Shell commands ran in a read-only sandbox, so a skill's own scripts could not write files. The Taste Skill run used up the account's weekly quota after ten minutes and left no page."),
+      section('gemini', 'Gemini', 'The same brief pasted into a chat in the browser, once at each thinking level. The answer took one to two minutes at Low and about three at High.',
+        cells([['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High']])),
+    ]],
+    ['other', 'Other models', "Chat apps from other vendors, Kimi's desktop agent and two models running on the laptop.", [
+      section('chats', 'Chat and desktop apps', "The same brief pasted into a chat: Grok and DeepSeek in a browser, Copilot in its Windows app. The answers took one to two minutes. DeepSeek stopped just before the end of the code and needed one click on Continue. Kimi Work, the agent in Kimi's desktop app, wrote its file in about seven minutes and was then cut off by a server-busy message before it could check the page.",
+        cells([['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['kimi-work-free', 'Kimi Work', 'desktop app, free']])),
+      section('local', 'Local models', "Two models running on the laptop itself through Ollama, qwen3:14b and the Polish Bielik 11B v3.0: one message, no agent. For the pages with frontend-design the whole SKILL.md went in as the system message, because a bare model cannot open a skill on its own. The answers took four to nine minutes.",
+        cells([
+          ['ollama-qwen3-14b', 'qwen3:14b', 'No skill'],
+          ['ollama-qwen3-14b-frontend-design', 'qwen3:14b', 'frontend-design'],
+          ['ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M', 'Bielik 11B v3.0', 'No skill'],
+          ['ollama-SpeakLeash-bielik-11b-v3.0-instruct-Q4_K_M-frontend-design', 'Bielik 11B v3.0', 'frontend-design'],
+        ])),
+    ]],
+  ]),
 ];
-const agentRows = AGENTS.filter(([key]) => byId[`${key}-none`])
-  .map(([key, title, note]) => section(key, title, note, SETUPS.map(([s, name]) => cell(`${key}-${s}`, title, name))))
-  .join('\n');
-
-// The same brief pasted into chat apps (temporary chats where the app has them).
-// A chat reports no token counts, so those cells are left out.
-const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High'], ['kimi-work-free', 'Kimi Work', 'desktop app, free'], ['ollama-qwen3-14b', 'qwen3:14b', 'local model, Ollama']];
-const chatRow = section('chats', 'Chat apps, a desktop app and a local model',
-  "The same brief pasted into a chat: four in a browser, Copilot in its Windows app. The answers took one to two minutes, and about three with Gemini's thinking level set to High. DeepSeek stopped just before the end of the code and needed one click on Continue. Kimi Work, the agent in Kimi's desktop app, wrote its file in about seven minutes and was then cut off by a server-busy message before it could check the page. The last page comes from qwen3:14b running on the laptop itself through Ollama: one message, no agent, five and a half minutes.",
-  CHATS.map(([id, name, plan]) => cell(id, name, plan)));
+const groups = GROUPS.map(([key, title, note, sections]) => group(key, title, note, sections)).join('\n');
+const jump = GROUPS.length > 1
+  ? `<nav class="jump" aria-label="Sections"><ul>${GROUPS.map(([key, title]) => `<li><a href="#${key}">${esc(title)}</a></li>`).join('')}</ul></nav>`
+  : '';
 
 const html = `<!doctype html>
 <html lang="en">
@@ -98,9 +125,15 @@ const html = `<!doctype html>
   h1 { font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; margin: 0 0 12px; }
   .lead { max-width: 70ch; color: var(--muted); margin: 0 0 8px; }
   a { color: var(--accent); }
-  .row { margin-top: 40px; }
+  .jump ul { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 20px 0 0; padding: 0; }
+  .jump a { display: block; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); text-decoration: none; font-weight: 600; }
+  .jump a:hover { border-color: var(--accent); }
+  .group { margin-top: 56px; padding-top: 24px; border-top: 2px solid var(--line); scroll-margin-top: 12px; }
+  .group > header h2 { font-size: 1.6rem; line-height: 1.2; margin: 0 0 4px; }
+  .group > header p { margin: 0; color: var(--muted); max-width: 70ch; }
+  .row { margin-top: 32px; }
   .row header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-bottom: 12px; }
-  .row h2 { font-size: 1.25rem; margin: 0; }
+  .row h3 { font-size: 1.25rem; margin: 0; }
   .row header p { margin: 0; color: var(--muted); }
   .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
@@ -108,8 +141,8 @@ const html = `<!doctype html>
   .shot { display: block; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); }
   .shot img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; }
   .shot:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-  .card h3 { font-size: 1rem; margin: 12px 0 8px; }
-  .card h3 span { font-weight: 400; color: var(--muted); }
+  .card h4 { font-size: 1rem; margin: 12px 0 8px; }
+  .card h4 span { font-weight: 400; color: var(--muted); }
   dl { display: grid; grid-template-columns: repeat(4, auto); gap: 6px 12px; margin: 0; font-size: .875rem; }
   dl div { min-width: 0; }
   dt { color: var(--muted); font-size: .75rem; }
@@ -123,14 +156,14 @@ const html = `<!doctype html>
 <body>
 <main>
   <h1>One brief, with and without design skills</h1>
-  <p class="lead">The same brief for the home page of a made-up housing cooperative, built in Claude Code by Sonnet 5.5, Opus 5.5 and Fable 5.2: once without a skill, then once with each of four design skills. One run per combination, so this shows tendencies, not a ranking.</p>
+  <p class="lead">The same brief for the home page of a made-up housing cooperative, built in Claude Code by Sonnet 5.5, Opus 5.5 and Fable 5.2: once without a skill, then once with each of four design skills. ${TRIAL ? '' : "The same brief then went to OpenAI's and Google's agents, to chat apps and to two models running locally. "}One run per combination, so this shows tendencies, not a ranking.</p>
   <p class="lead">${TRIAL
     ? 'This page is the <strong>second trial</strong>: the same fifteen runs repeated from scratch in a separate folder, to see how much comes back the same. <a href="./">The first trial</a>'
     : 'The fifteen runs were <a href="trial-2.html">repeated once from scratch</a> to see how much comes back the same.'}</p>
   <p class="lead"><a href="brief.md">The brief</a> (in Polish) · <a href="README.md">Method and versions</a> · <a href="https://spoko.space/blog/design-skills-for-ai-agents-tested/">The write-up on spoko.space</a></p>
   <p class="lead"><strong>Tokens</strong> include cache reads, which are most of them. <strong>Detector</strong> counts the findings of Impeccable's own rule-based checker (<code>npx impeccable detect</code>), so it judges every page by one skill's rules. <strong>axe rules</strong> counts distinct WCAG 2.2 A/AA rules axe-core flags at 1440 and 390 px.</p>
-${rows}
-${TRIAL ? '' : agentRows + '\n' + chatRow}
+${jump}
+${groups}
   <footer>
     <p>The cooperative, its address, phone numbers and documents are made up. Every page says so in its footer. Photographs placed by Taste Skill come from open archives and are credited on the page that uses them.</p>
   </footer>
