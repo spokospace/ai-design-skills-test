@@ -1,0 +1,207 @@
+{
+  "id": "agy-none",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 21,
+    "denied": [],
+    "ok": true,
+    "turns": 1,
+    "tokens": {
+      "input": 111818,
+      "output": 55481,
+      "cacheRead": 1293530,
+      "cacheWrite": 0,
+      "total": 1460829
+    },
+    "durationMin": 9,
+    "durationSource": "wall clock",
+    "agentMin": 8.9
+  },
+  "files": 1,
+  "bytes": {
+    "total": 124910,
+    "html": 124910,
+    "js": 11693,
+    "css": 43368,
+    "images": 0
+  },
+  "htmlLines": 3085,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 6569,
+      "violations": [
+        {
+          "id": "aria-prohibited-attr",
+          "impact": "serious",
+          "nodes": 1
+        },
+        {
+          "id": "aria-required-children",
+          "impact": "critical",
+          "nodes": 1
+        },
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    },
+    "mobile": {
+      "height": 15567,
+      "violations": [
+        {
+          "id": "aria-prohibited-attr",
+          "impact": "serious",
+          "nodes": 1
+        },
+        {
+          "id": "aria-required-children",
+          "impact": "critical",
+          "nodes": 1
+        },
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 5
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 10px"
+    },
+    {
+      "rule": "border-accent-on-rounded",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-top: 4px + border-radius: 10px"
+    },
+    {
+      "rule": "border-accent-on-rounded",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-top: 4px + border-radius: 10px"
+    },
+    {
+      "rule": "border-accent-on-rounded",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-top: 4px + border-radius: 10px"
+    },
+    {
+      "rule": "border-accent-on-rounded",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-top: 4px + border-radius: 10px"
+    },
+    {
+      "rule": "border-accent-on-rounded",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-top: 4px + border-radius: 10px"
+    },
+    {
+      "rule": "border-accent-on-rounded",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-top: 4px + border-radius: 10px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.2:1 (need 4.5:1) — text #ffffff on #d97706"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.47:1 (need 4.5:1) — text #fdf4f4 on #dc2626 (gradient on article.emergency-card-large)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.0:1 (need 4.5:1) — text #d97706 on #f8fafc (and 1 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.2:1 (need 4.5:1) — text #d97706 on #ffffff (and 1 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "2.9:1 (need 4.5:1) — text #d97706 on #f1f5f9"
+    },
+    {
+      "rule": "dark-glow",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Zero-offset box-shadow glow (#4ade80)"
+    },
+    {
+      "rule": "tight-leading",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "line-height 1.20x (need >=1.3)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"map-svg-container\": children flush against bg on all sides (no inset)"
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Bieżące informacje\" above h2 \"Ogłoszenia i Komunikaty dla Mieszkańców\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Zasoby mieszkaniowe\" above h2 \"Osiedla w Zarządzie Spółdzielni\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Dla mieszkańców\" above h2 \"Zgłoszenie Usterki i Częste Pytania\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Informacje adresowe\" above h2 \"Biuro i Kontakt z Administracją\""
+    },
+    {
+      "rule": "dark-glow",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Zero-offset box-shadow glow (#4ade80)"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/agy-none-desktop-first.jpg",
+    "desktop-full": "shots/agy-none-desktop-full.jpg",
+    "mobile-first": "shots/agy-none-mobile-first.jpg",
+    "mobile-full": "shots/agy-none-mobile-full.jpg"
+  }
+}

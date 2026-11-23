@@ -1,0 +1,102 @@
+{
+  "id": "agy-frontend-design",
+  "log": {
+    "skillsInvoked": [
+      "frontend-design"
+    ],
+    "toolCalls": 22,
+    "denied": [],
+    "ok": true,
+    "turns": 1,
+    "tokens": {
+      "input": 110890,
+      "output": 46085,
+      "cacheRead": 1282882,
+      "cacheWrite": 0,
+      "total": 1439857
+    },
+    "durationMin": 8,
+    "durationSource": "wall clock",
+    "agentMin": 8
+  },
+  "files": 1,
+  "bytes": {
+    "total": 99758,
+    "html": 99758,
+    "js": 8238,
+    "css": 40302,
+    "images": 0
+  },
+  "htmlLines": 2812,
+  "external": [
+    "https://fonts.googleapis.com",
+    "https://fonts.gstatic.com"
+  ],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 5565,
+      "violations": []
+    },
+    "mobile": {
+      "height": 12323,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px + border-radius: 6px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 10px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 10px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 10px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px"
+    },
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: plus jakarta sans"
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Spółdzielnia Mieszkaniowa\" above h1 \"„Słoneczne Wzgórze”\""
+    },
+    {
+      "rule": "dark-glow",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Colored box-shadow glow (#c81e1e) on dark page"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/agy-frontend-design-desktop-first.jpg",
+    "desktop-full": "shots/agy-frontend-design-desktop-full.jpg",
+    "mobile-first": "shots/agy-frontend-design-mobile-first.jpg",
+    "mobile-full": "shots/agy-frontend-design-mobile-full.jpg"
+  }
+}

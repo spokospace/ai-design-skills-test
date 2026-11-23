@@ -1,0 +1,3149 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” | Oficjalny portal mieszkańców</title>
+  <meta name="description" content="Oficjalna strona Spółdzielni Mieszkaniowej „Słoneczne Wzgórze”. Informacje dla mieszkańców osiedli Słoneczne Wzgórze i Przylesie: pogotowie awaryjne 24/7, ogłoszenia, dokumenty i kontakt.">
+  <meta name="theme-color" content="#0f4c81">
+
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS & RESET (Emil Kowalski Design Engineering Principles)
+       ========================================================================== */
+    :root {
+      /* Animation curves & durations */
+      --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+      --duration-press: 160ms;
+      --duration-ui: 220ms;
+      --duration-modal: 280ms;
+
+      /* Core Color Palette: Trustworthy Navy, Warm Sun Amber, Emergency Crimson, Sage Green */
+      --color-primary: #0f4c81;
+      --color-primary-dark: #0a3357;
+      --color-primary-light: #e8f3fc;
+      --color-accent: #d97706;
+      --color-accent-hover: #b45309;
+      --color-accent-light: #fef3c7;
+      --color-emergency: #b91c1c;
+      --color-emergency-hover: #991b1b;
+      --color-emergency-light: #fee2e2;
+      --color-sage: #166534;
+      --color-sage-light: #dcfce7;
+
+      /* Neutral surfaces and text */
+      --color-bg: #f8fafc;
+      --color-surface: #ffffff;
+      --color-surface-hover: #f1f5f9;
+      --color-surface-subtle: #f8fafc;
+      --color-border: #e2e8f0;
+      --color-border-strong: #cbd5e1;
+      --color-text-primary: #0f172a;
+      --color-text-secondary: #475569;
+      --color-text-muted: #64748b;
+      --color-text-on-dark: #ffffff;
+
+      /* Typography & Metrics */
+      --font-stack: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-scale: 1;
+      --font-size-base: calc(1.0625rem * var(--font-scale)); /* 17px base for senior readability */
+      --line-height-base: 1.6;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 4px 10px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+      --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.1), 0 4px 8px -4px rgba(15, 23, 42, 0.05);
+
+      /* Radii */
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+
+      /* Layout */
+      --container-max: 1200px;
+      --space-unit: 1rem;
+    }
+
+    /* High Contrast Mode for WCAG AAA Accessibility */
+    body.high-contrast {
+      --color-primary: #000000;
+      --color-primary-dark: #000000;
+      --color-primary-light: #ffff00;
+      --color-accent: #000000;
+      --color-accent-light: #ffff00;
+      --color-emergency: #000000;
+      --color-emergency-light: #ffff00;
+      --color-sage: #000000;
+      --color-sage-light: #ffff00;
+      --color-bg: #ffffff;
+      --color-surface: #ffffff;
+      --color-surface-hover: #ffff00;
+      --color-surface-subtle: #ffffff;
+      --color-border: #000000;
+      --color-border-strong: #000000;
+      --color-text-primary: #000000;
+      --color-text-secondary: #000000;
+      --color-text-muted: #000000;
+      --color-text-on-dark: #ffffff;
+      --shadow-sm: none;
+      --shadow-md: none;
+      --shadow-lg: none;
+    }
+
+    body.high-contrast * {
+      border-color: #000000 !important;
+    }
+
+    body.high-contrast .btn-emergency,
+    body.high-contrast .badge-urgent,
+    body.high-contrast .emergency-bar {
+      background: #000000 !important;
+      color: #ffff00 !important;
+      outline: 3px solid #ffff00;
+    }
+
+    body.high-contrast a {
+      text-decoration: underline !important;
+      color: #000000 !important;
+    }
+
+    /* Font size scaling */
+    body.font-large {
+      --font-scale: 1.15;
+    }
+
+    body.font-xl {
+      --font-scale: 1.30;
+    }
+
+    /* Box sizing and resets */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 100%;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-stack);
+      font-size: var(--font-size-base);
+      line-height: var(--line-height-base);
+      color: var(--color-text-primary);
+      background-color: var(--color-bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Accessible focus indicator */
+    :focus-visible {
+      outline: 3px solid var(--color-accent);
+      outline-offset: 3px;
+    }
+
+    /* Skip link for keyboard users */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--color-primary-dark);
+      color: #ffffff;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-sm);
+      z-index: 9999;
+      font-weight: 700;
+      text-decoration: none;
+      transition: top var(--duration-ui) var(--ease-out);
+    }
+    .skip-link:focus {
+      top: 1rem;
+    }
+
+    /* ==========================================================================
+       BUTTON & INTERACTIVE MICRO-INTERACTIONS (Emil Kowalski Principles)
+       ========================================================================== */
+    button, .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      line-height: 1.2;
+      min-height: 48px; /* Touch target minimum for elderly / mobile */
+      transition: transform var(--duration-press) var(--ease-out),
+                  background-color var(--duration-press) var(--ease-out),
+                  border-color var(--duration-press) var(--ease-out),
+                  box-shadow var(--duration-press) var(--ease-out),
+                  color var(--duration-press) var(--ease-out);
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    /* Crucial Emil Kowalski principle: press state feedback */
+    button:active, .btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Button Variants */
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-primary:hover {
+        background-color: var(--color-primary-dark);
+        box-shadow: var(--shadow-md);
+      }
+    }
+
+    .btn-emergency {
+      background-color: var(--color-emergency);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(185, 28, 28, 0.35);
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-emergency:hover {
+        background-color: var(--color-emergency-hover);
+        box-shadow: 0 6px 18px rgba(185, 28, 28, 0.45);
+      }
+    }
+
+    .btn-secondary {
+      background-color: #ffffff;
+      color: var(--color-primary);
+      border-color: var(--color-border-strong);
+      box-shadow: var(--shadow-sm);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-secondary:hover {
+        background-color: var(--color-surface-hover);
+        border-color: var(--color-primary);
+      }
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--color-text-primary);
+      border-color: var(--color-border-strong);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-outline:hover {
+        background-color: var(--color-surface-hover);
+      }
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.85rem;
+      font-size: 0.9rem;
+      min-height: 40px;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-icon-only {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    /* ==========================================================================
+       TOP ACCESSIBILITY BAR
+       ========================================================================== */
+    .a11y-bar {
+      background-color: #0d2137;
+      color: #e2e8f0;
+      font-size: 0.875rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.4rem 0;
+    }
+    .a11y-bar-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .a11y-badge-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #94a3b8;
+    }
+    .a11y-badge-info svg {
+      color: #f59e0b;
+    }
+    .a11y-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .a11y-group {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: 2px;
+    }
+    .a11y-btn {
+      background: transparent;
+      color: #ffffff;
+      border: none;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      min-height: 32px;
+      transition: background-color var(--duration-press) var(--ease-out);
+    }
+    .a11y-btn.active {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .a11y-toggle-btn {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.25rem 0.65rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* ==========================================================================
+       TOP EMERGENCY BANNER (Direct Call for Panic / Urgent Moments)
+       ========================================================================== */
+    .emergency-banner {
+      background: linear-gradient(90deg, #991b1b 0%, #b91c1c 100%);
+      color: #ffffff;
+      padding: 0.65rem 0;
+      border-bottom: 2px solid #7f1d1d;
+      position: relative;
+      z-index: 50;
+    }
+    .emergency-banner-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .emergency-banner-text {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 600;
+    }
+    .emergency-live-indicator {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 12px;
+      height: 12px;
+      position: relative;
+    }
+    .emergency-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #fef08a;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #fef08a;
+    }
+    .emergency-banner-title {
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+    .emergency-banner-sub {
+      color: #fecaca;
+      font-size: 0.875rem;
+      font-weight: 400;
+      margin-left: 0.25rem;
+    }
+    .emergency-banner-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-emergency-call {
+      background-color: #ffffff;
+      color: #991b1b;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius-full);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+      min-height: 40px;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-emergency-call:hover {
+        background-color: #fee2e2;
+        color: #7f1d1d;
+      }
+    }
+
+    /* ==========================================================================
+       MAIN NAVIGATION & HEADER
+       ========================================================================== */
+    .site-header {
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: var(--shadow-sm);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      gap: 1.5rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: var(--color-text-primary);
+    }
+    .brand-logo-icon {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #0f4c81 0%, #1e3a8a 100%);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(15, 76, 129, 0.25);
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--color-primary-dark);
+      letter-spacing: -0.01em;
+    }
+    .brand-subtitle {
+      font-size: 0.825rem;
+      color: var(--color-text-muted);
+      line-height: 1.2;
+    }
+
+    /* Desktop Navigation */
+    .nav-desktop {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .nav-link {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.975rem;
+      padding: 0.55rem 0.85rem;
+      border-radius: var(--radius-sm);
+      transition: color var(--duration-press) var(--ease-out),
+                  background-color var(--duration-press) var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .nav-link:hover {
+        color: var(--color-primary);
+        background-color: var(--color-primary-light);
+      }
+    }
+    .nav-link.active {
+      color: var(--color-primary);
+      background-color: var(--color-primary-light);
+      font-weight: 700;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem;
+      cursor: pointer;
+      color: var(--color-text-primary);
+      width: 44px;
+      height: 44px;
+    }
+
+    /* Mobile Nav Drawer */
+    .nav-mobile {
+      display: none;
+      background-color: #ffffff;
+      border-top: 1px solid var(--color-border);
+      padding: 1rem 1.25rem 1.5rem;
+      box-shadow: var(--shadow-lg);
+    }
+    .nav-mobile.open {
+      display: block;
+      animation: menuSlideDown 200ms var(--ease-out) forwards;
+    }
+    @keyframes menuSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .nav-mobile-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .nav-mobile-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--color-text-primary);
+      border-radius: var(--radius-sm);
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+    }
+    .nav-mobile-link:active {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+
+    /* ==========================================================================
+       HERO SECTION WITH RESIDENT-CENTRIC QUICK ACTIONS
+       ========================================================================== */
+    .hero {
+      background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .hero-content {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 2.25rem;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background-color: var(--color-accent-light);
+      color: #92400e;
+      border: 1px solid #fde68a;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--color-primary-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .hero-lead {
+      font-size: 1.15rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* 4 Primary Action Cards */
+    .quick-actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .quick-card {
+      background-color: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--duration-ui) var(--ease-out),
+                  box-shadow var(--duration-ui) var(--ease-out),
+                  border-color var(--duration-ui) var(--ease-out);
+      position: relative;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .quick-card:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-border-strong);
+      }
+    }
+    .quick-card-emergency {
+      border-color: #fca5a5;
+      background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
+    }
+    .quick-card-emergency::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background-color: var(--color-emergency);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .quick-card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .quick-card-icon.red {
+      background-color: var(--color-emergency-light);
+      color: var(--color-emergency);
+    }
+    .quick-card-icon.blue {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+    }
+    .quick-card-icon.amber {
+      background-color: var(--color-accent-light);
+      color: var(--color-accent-hover);
+    }
+    .quick-card-icon.green {
+      background-color: var(--color-sage-light);
+      color: var(--color-sage);
+    }
+    .quick-card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--color-text-primary);
+    }
+    .quick-card-desc {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+    .quick-card-cta {
+      margin-top: auto;
+    }
+
+    /* Live office status pill inside card */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 700;
+      width: fit-content;
+      margin-bottom: 0.75rem;
+    }
+    .status-pill.open {
+      background-color: var(--color-sage-light);
+      color: #14532d;
+      border: 1px solid #bbf7d0;
+    }
+    .status-pill.closed {
+      background-color: #f1f5f9;
+      color: #475569;
+      border: 1px solid #e2e8f0;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .status-pill.open .status-dot {
+      background-color: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+    }
+    .status-pill.closed .status-dot {
+      background-color: #94a3b8;
+    }
+
+    /* ==========================================================================
+       SECTION COMMON STYLES
+       ========================================================================== */
+    .section {
+      padding: 3.5rem 0;
+    }
+    .section-alt {
+      background-color: #f1f5f9;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .section-header {
+      margin-bottom: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .section-kicker {
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--color-primary);
+    }
+    .section-kicker.emergency {
+      color: var(--color-emergency);
+    }
+    .section-title {
+      font-size: 1.95rem;
+      font-weight: 800;
+      color: var(--color-primary-dark);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      max-width: 750px;
+    }
+
+    /* ==========================================================================
+       EMERGENCY DETAILED DISPATCH SECTION
+       ========================================================================== */
+    .emergency-box {
+      background: #ffffff;
+      border: 2px solid #fecaca;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .emergency-box-header {
+      background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
+      color: #ffffff;
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+    .emergency-box-header h3 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .emergency-box-header p {
+      color: #fecaca;
+      font-size: 0.95rem;
+    }
+    .emergency-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      padding: 1.75rem;
+      background-color: #fffafb;
+    }
+    .emergency-card {
+      background: #ffffff;
+      border: 1px solid #fee2e2;
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+    }
+    .emergency-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #991b1b;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .emergency-card-text {
+      font-size: 0.925rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+      line-height: 1.5;
+    }
+    .emergency-card-instruction {
+      background-color: #fef2f2;
+      border-left: 3px solid #dc2626;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+      color: #7f1d1d;
+      margin-bottom: 1rem;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .btn-call-direct {
+      background-color: #b91c1c;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      width: 100%;
+      padding: 0.75rem 1rem;
+    }
+
+    /* ==========================================================================
+       ANNOUNCEMENTS SECTION (Ogłoszenia)
+       ========================================================================== */
+    .announcements-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .announcement-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--duration-ui) var(--ease-out),
+                  box-shadow var(--duration-ui) var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .announcement-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+    }
+    .announcement-card.urgent {
+      border-left: 6px solid var(--color-emergency);
+      background: linear-gradient(90deg, #fffbfb 0%, #ffffff 100%);
+    }
+    .announcement-card.important {
+      border-left: 6px solid var(--color-accent);
+      background: linear-gradient(90deg, #fffdfa 0%, #ffffff 100%);
+    }
+    .announcement-card.notice {
+      border-left: 6px solid var(--color-primary);
+    }
+    .announcement-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .announcement-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge-urgent {
+      background-color: var(--color-emergency-light);
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+    .badge-important {
+      background-color: var(--color-accent-light);
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+    .badge-info {
+      background-color: var(--color-primary-light);
+      color: var(--color-primary-dark);
+      border: 1px solid #bfdbfe;
+    }
+    .announcement-date-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      background-color: var(--color-bg);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--color-border);
+    }
+    .announcement-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.3;
+    }
+    .announcement-body {
+      font-size: 1.025rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    .announcement-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.15rem;
+      margin-top: 0.25rem;
+    }
+    .announcement-meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .announcement-meta-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      font-weight: 600;
+    }
+    .announcement-meta-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    /* ==========================================================================
+       STATUTORY DOCUMENTS SECTION (Art. 8¹ ust. 3)
+       ========================================================================== */
+    .documents-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .documents-legal-notice {
+      background-color: var(--color-primary-light);
+      border-left: 4px solid var(--color-primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 1.75rem;
+      font-size: 0.95rem;
+      color: var(--color-primary-dark);
+    }
+    .documents-legal-notice strong {
+      font-weight: 700;
+    }
+
+    /* Search and Filter Toolbar */
+    .docs-toolbar {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .docs-search-bar {
+      position: relative;
+      width: 100%;
+    }
+    .docs-search-input {
+      width: 100%;
+      height: 52px;
+      padding: 0.75rem 1rem 0.75rem 3rem;
+      font-size: 1.05rem;
+      font-family: inherit;
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-md);
+      background-color: #ffffff;
+      color: var(--color-text-primary);
+      transition: border-color var(--duration-press) var(--ease-out),
+                  box-shadow var(--duration-press) var(--ease-out);
+    }
+    .docs-search-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.15);
+    }
+    .docs-search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      pointer-events: none;
+    }
+    .docs-search-clear {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--color-text-muted);
+      padding: 0.5rem;
+      cursor: pointer;
+      display: none;
+      min-height: auto;
+    }
+    .docs-search-clear.visible {
+      display: block;
+    }
+
+    /* Filter Category Pills */
+    .docs-categories {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .category-btn {
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.925rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 40px;
+      transition: background-color var(--duration-press) var(--ease-out),
+                  border-color var(--duration-press) var(--ease-out),
+                  color var(--duration-press) var(--ease-out),
+                  transform var(--duration-press) var(--ease-out);
+    }
+    .category-btn:active {
+      transform: scale(0.97);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .category-btn:hover {
+        border-color: var(--color-primary);
+        color: var(--color-primary);
+      }
+    }
+    .category-btn.active {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Document List Items */
+    .docs-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .doc-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 1.15rem 1.35rem;
+      background-color: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      transition: transform var(--duration-ui) var(--ease-out),
+                  border-color var(--duration-ui) var(--ease-out),
+                  background-color var(--duration-ui) var(--ease-out),
+                  box-shadow var(--duration-ui) var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .doc-item:hover {
+        background-color: #ffffff;
+        border-color: var(--color-primary);
+        box-shadow: var(--shadow-sm);
+        transform: translateX(4px);
+      }
+    }
+    .doc-left {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      flex-grow: 1;
+    }
+    .doc-icon-wrapper {
+      width: 44px;
+      height: 44px;
+      background-color: #fee2e2;
+      color: #b91c1c;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .doc-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .doc-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.35;
+    }
+    .doc-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      flex-wrap: wrap;
+    }
+    .doc-meta-badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      background-color: #e2e8f0;
+      color: #334155;
+    }
+    .doc-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    /* Empty state */
+    .docs-empty-state {
+      display: none;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background-color: var(--color-bg);
+      border-radius: var(--radius-md);
+      border: 2px dashed var(--color-border);
+    }
+    .docs-empty-state.visible {
+      display: block;
+    }
+
+    /* ==========================================================================
+       HOUSING ESTATE PROFILE (Osiedle w liczbach & Zasoby)
+       ========================================================================== */
+    .estate-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .stat-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-number {
+      font-size: 2.75rem;
+      font-weight: 900;
+      color: var(--color-primary);
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+    .stat-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+    .stat-sub {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .buildings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .building-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .building-card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .building-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .building-card-icon.amber {
+      background-color: var(--color-accent-light);
+      color: var(--color-accent-hover);
+    }
+    .building-card-icon.green {
+      background-color: var(--color-sage-light);
+      color: var(--color-sage);
+    }
+    .building-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+    }
+    .building-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+    }
+    .building-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .building-list svg {
+      color: var(--color-sage);
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       CONTACT & OFFICE DETAILS SECTION
+       ========================================================================== */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 900px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    .contact-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .contact-detail-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .contact-icon-box {
+      width: 44px;
+      height: 44px;
+      background-color: var(--color-primary-light);
+      color: var(--color-primary);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon-box.red {
+      background-color: var(--color-emergency-light);
+      color: var(--color-emergency);
+    }
+    .contact-detail-content {
+      flex-grow: 1;
+    }
+    .contact-detail-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.2rem;
+    }
+    .contact-detail-val {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.35;
+    }
+    .contact-detail-sub {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      margin-top: 0.2rem;
+    }
+    .contact-actions-inline {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Hours Table */
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+    }
+    .hours-table tr {
+      border-bottom: 1px solid var(--color-border);
+    }
+    .hours-table tr:last-child {
+      border-bottom: none;
+    }
+    .hours-table td {
+      padding: 0.55rem 0;
+    }
+    .hours-table .day {
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+    .hours-table .hours {
+      text-align: right;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+    }
+    .hours-table tr.today {
+      background-color: var(--color-primary-light);
+      border-radius: var(--radius-sm);
+    }
+    .hours-table tr.today td {
+      padding: 0.55rem 0.65rem;
+      color: var(--color-primary-dark);
+      font-weight: 800;
+    }
+
+    /* Contact Form */
+    .form-group {
+      margin-bottom: 1.15rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.925rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .form-label .req {
+      color: var(--color-emergency);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-sm);
+      background-color: #ffffff;
+      color: var(--color-text-primary);
+      transition: border-color var(--duration-press) var(--ease-out),
+                  box-shadow var(--duration-press) var(--ease-out);
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(15, 76, 129, 0.15);
+    }
+    textarea.form-control {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    /* ==========================================================================
+       DEMO NOTICE / FOOTER
+       ========================================================================== */
+    .site-footer {
+      background-color: #0b1d30;
+      color: #94a3b8;
+      padding: 3.5rem 0 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: auto;
+    }
+    .footer-disclaimer-box {
+      background: rgba(239, 68, 68, 0.15);
+      border: 2px dashed #ef4444;
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      color: #fecaca;
+    }
+    .footer-disclaimer-box h4 {
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .footer-disclaimer-box p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+    }
+    .footer-col-title {
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color var(--duration-press) var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .footer-links a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+      }
+    }
+    .footer-bottom {
+      padding-top: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
+    .footer-bottom p {
+      color: #64748b;
+    }
+
+    /* ==========================================================================
+       TOAST COMPONENT (Emil Kowalski Sonner-inspired principle)
+       ========================================================================== */
+    .toast-container {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      pointer-events: none;
+      max-width: 420px;
+      width: calc(100% - 3rem);
+    }
+    @media (max-width: 600px) {
+      .toast-container {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        width: auto;
+      }
+    }
+    .toast {
+      pointer-events: auto;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 0.9rem 1.15rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      /* Emil Kowalski: Start from scale(0.95), not 0; use ease-out under 300ms */
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+      transition: opacity var(--duration-ui) var(--ease-out),
+                  transform var(--duration-ui) var(--ease-out);
+    }
+    .toast.show {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    .toast.hide {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+      /* Exit faster than enter */
+      transition: opacity 160ms var(--ease-out), transform 160ms var(--ease-out);
+    }
+    .toast-icon {
+      flex-shrink: 0;
+      color: #38bdf8;
+    }
+    .toast.success .toast-icon {
+      color: #4ade80;
+    }
+    .toast.warning .toast-icon {
+      color: #facc15;
+    }
+
+    /* ==========================================================================
+       MODAL DIALOG (Origin-aware, centered, accessible)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--duration-modal) var(--ease-out),
+                  visibility var(--duration-modal) var(--ease-out);
+    }
+    .modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .modal-dialog {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      /* Modals stay centered: Emil Kowalski exemption */
+      transform-origin: center;
+      transform: scale(0.95);
+      opacity: 0;
+      transition: transform var(--duration-modal) var(--ease-out),
+                  opacity var(--duration-modal) var(--ease-out);
+      overflow: hidden;
+    }
+    .modal-backdrop.open .modal-dialog {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .modal-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+    }
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      min-height: auto;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-body {
+      padding: 1.5rem;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      background-color: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE ADJUSTMENTS
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 1.85rem;
+      }
+      .section-title {
+        font-size: 1.6rem;
+      }
+      .nav-desktop {
+        display: none;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .doc-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .doc-actions {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+      }
+      .doc-actions .btn {
+        flex: 1;
+      }
+      .emergency-banner-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .emergency-banner-actions {
+        width: 100%;
+      }
+      .emergency-banner-actions .btn-emergency-call {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* Emil Kowalski: prefers-reduced-motion support */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#glowna-tresc" class="skip-link">Przejdź bezpośrednio do treści (Skip to content)</a>
+
+  <!-- TOP ACCESSIBILITY BAR -->
+  <div class="a11y-bar">
+    <div class="container a11y-bar-content">
+      <div class="a11y-badge-info">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Serwis dostosowany dla seniorów i osób słabowidzących (WCAG 2.1 AA)</span>
+      </div>
+      <div class="a11y-controls" role="group" aria-label="Ustawienia dostępności widoku">
+        <span style="font-size:0.8rem; color:#94a3b8;">Rozmiar tekstu:</span>
+        <div class="a11y-group">
+          <button type="button" class="a11y-btn active" id="btn-font-normal" title="Standardowa wielkość liter" aria-label="Rozmiar czcionki standardowy">A</button>
+          <button type="button" class="a11y-btn" id="btn-font-large" title="Większa czcionka" aria-label="Rozmiar czcionki duży">A+</button>
+          <button type="button" class="a11y-btn" id="btn-font-xl" title="Bardzo duża czcionka" aria-label="Rozmiar czcionki bardzo duży">A++</button>
+        </div>
+        <button type="button" class="a11y-toggle-btn" id="btn-contrast-toggle" aria-label="Włącz lub wyłącz wysoki kontrast">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 0 0 20z"/></svg>
+          <span id="contrast-label">Wysoki kontrast</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY / PROMINENT EMERGENCY BANNER (24/7 CALLOUT) -->
+  <aside class="emergency-banner" aria-label="Pogotowie awaryjne 24/7">
+    <div class="container emergency-banner-inner">
+      <div class="emergency-banner-text">
+        <span class="emergency-live-indicator" aria-hidden="true">
+          <span class="emergency-dot"></span>
+        </span>
+        <div>
+          <strong class="emergency-banner-title">POGOTOWIE AWARYJNE 24H:</strong>
+          <span class="emergency-banner-sub">Woda, gaz, winda, prąd • Dyżur całodobowy</span>
+        </div>
+      </div>
+      <div class="emergency-banner-actions">
+        <a href="tel:+48000000999" class="btn btn-emergency-call" aria-label="Zadzwoń do pogotowia awaryjnego pod numer +48 000 000 999">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +48 000 000 999
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand" aria-label="Strona główna Spółdzielni Mieszkaniowej Słoneczne Wzgórze">
+        <div class="brand-logo-icon" aria-hidden="true">
+          <!-- Stylized sun rising over modern residential buildings -->
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="7" r="4" fill="#fbbf24" stroke="#d97706"/>
+            <path d="M3 21h18"/>
+            <path d="M5 21V11l4-2v12"/>
+            <path d="M15 21V7l4 2v12"/>
+            <line x1="9" y1="13" x2="9" y2="13.01"/>
+            <line x1="9" y1="17" x2="9" y2="17.01"/>
+            <line x1="15" y1="11" x2="15" y2="11.01"/>
+            <line x1="15" y1="15" x2="15" y2="15.01"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">SM „Słoneczne Wzgórze”</span>
+          <span class="brand-subtitle">Osiedle Słoneczne Wzgórze &amp; Przylesie</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="nav-desktop" aria-label="Menu główne">
+        <a href="#awaria" class="nav-link" style="color:var(--color-emergency); font-weight:700;">Pogotowie 24h</a>
+        <a href="#ogloszenia" class="nav-link">Ogłoszenia</a>
+        <a href="#dokumenty" class="nav-link">Dokumenty</a>
+        <a href="#zasoby" class="nav-link">O Spółdzielni</a>
+        <a href="#kontakt" class="nav-link">Biuro i Kontakt</a>
+        <a href="#kontakt" class="btn btn-primary btn-sm" style="margin-left:0.5rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Kontakt z biurem
+        </a>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button type="button" class="menu-toggle" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Otwórz menu nawigacji">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" id="menu-icon-bars">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="nav-mobile" id="mobile-nav" aria-label="Menu mobilne">
+      <ul class="nav-mobile-list">
+        <li>
+          <a href="#awaria" class="nav-mobile-link mobile-link" style="color:var(--color-emergency); font-weight:700;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Pogotowie Awaryjne 24h
+          </a>
+        </li>
+        <li>
+          <a href="#ogloszenia" class="nav-mobile-link mobile-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            Aktualne Ogłoszenia
+          </a>
+        </li>
+        <li>
+          <a href="#dokumenty" class="nav-mobile-link mobile-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            Dokumenty i Uchwały (art. 8¹)
+          </a>
+        </li>
+        <li>
+          <a href="#zasoby" class="nav-mobile-link mobile-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            O Spółdzielni i Zasobach
+          </a>
+        </li>
+        <li>
+          <a href="#kontakt" class="nav-mobile-link mobile-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Godziny pracy i Kontakt
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main id="glowna-tresc">
+
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Dla mieszkańców osiedli Słoneczne Wzgórze &amp; Przylesie
+          </div>
+          <h1 id="hero-heading" class="hero-title">Witaj w Spółdzielni Mieszkaniowej „Słoneczne Wzgórze”</h1>
+          <p class="hero-lead">
+            Zapewniamy bezpieczny dom dla 412 rodzin w 6 budynkach mieszkalnych. Poniżej szybko znajdziesz najważniejsze kontakty awaryjne, bieżące komunikaty administracji oraz dokumenty spółdzielni.
+          </p>
+        </div>
+
+        <!-- 4 Resident Quick Access Cards (Senior-Optimized Big Hit Areas) -->
+        <div class="quick-actions-grid" role="region" aria-label="Szybki dostęp do kluczowych spraw">
+
+          <!-- Card 1: Emergency -->
+          <article class="quick-card quick-card-emergency">
+            <div class="quick-card-icon red" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h2 class="quick-card-title">Pogotowie Awaryjne</h2>
+            <p class="quick-card-desc">
+              Pęknięta rura, ulatniający się gaz, zacięta winda lub brak prądu. Dyżur techniczny przez 24 godziny na dobę.
+            </p>
+            <div class="quick-card-cta">
+              <a href="tel:+48000000999" class="btn btn-emergency" style="width:100%;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +48 000 000 999
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: Office and Hours -->
+          <article class="quick-card">
+            <div class="quick-card-icon blue" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <!-- Dynamic Office Status Pill -->
+            <div class="status-pill open" id="hero-office-status" aria-live="polite">
+              <span class="status-dot"></span>
+              <span id="hero-office-status-text">Sprawdzanie godzin biura...</span>
+            </div>
+            <h2 class="quick-card-title">Biuro Spółdzielni</h2>
+            <p class="quick-card-desc">
+              ul. Przykładowa 1 • Poniedziałek: 10:00–18:00, Wtorek–Piątek: 7:30–15:30. Obsługa spraw czynszowych i wniosków.
+            </p>
+            <div class="quick-card-cta">
+              <a href="tel:+48000000001" class="btn btn-secondary" style="width:100%;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                +48 000 000 001
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: Announcements -->
+          <article class="quick-card">
+            <div class="quick-card-icon amber" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </div>
+            <h2 class="quick-card-title">Ważne Ogłoszenia</h2>
+            <p class="quick-card-desc">
+              Przerwa w dostawie wody (3.12), przeglądy gazowe (7–18.12) oraz dni wolne od pracy biura w okresie świątecznym.
+            </p>
+            <div class="quick-card-cta">
+              <a href="#ogloszenia" class="btn btn-secondary" style="width:100%;">
+                Zobacz ogłoszenia (3)
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 4: Documents -->
+          <article class="quick-card">
+            <div class="quick-card-icon green" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h2 class="quick-card-title">Baza Dokumentów</h2>
+            <p class="quick-card-desc">
+              Zgodnie z art. 8¹ ust. 3 ustawy: statut, regulaminy, uchwały zarządu, protokoły z Walnego i finanse.
+            </p>
+            <div class="quick-card-cta">
+              <a href="#dokumenty" class="btn btn-secondary" style="width:100%;">
+                Szukaj dokumentów
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: POGOTOWIE AWARYJNE 24/7 (DETAILED EMERGENCY BREAKDOWN) -->
+    <section id="awaria" class="section" aria-labelledby="awaria-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker emergency">Dyżur całodobowy techniczny</span>
+          <h2 id="awaria-heading" class="section-title">Pogotowie Awaryjne (24/7) – Co zrobić w razie awarii?</h2>
+          <p class="section-subtitle">
+            Gdy liczy się każda minuta, dzwoń bezpośrednio pod centralny numer dyspozytora technicznego. Pogotowie obsługuje awarie pionów wodnych, sieci gazowej, instalacji elektrycznych na klatkach oraz dźwigów osobowych.
+          </p>
+        </div>
+
+        <div class="emergency-box">
+          <div class="emergency-box-header">
+            <div>
+              <h3>
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Centralny Numer Alarmowy Spółdzielni
+              </h3>
+              <p>Dostępny 7 dni w tygodniu, 24 godziny na dobę, również w święta</p>
+            </div>
+            <a href="tel:+48000000999" class="btn btn-emergency-call" style="font-size:1.35rem; padding:0.6rem 1.5rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +48 000 000 999
+            </a>
+          </div>
+
+          <div class="emergency-grid">
+
+            <!-- Water Emergency -->
+            <div class="emergency-card">
+              <h3 class="emergency-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                Awaria Wodno-Kanalizacyjna
+              </h3>
+              <p class="emergency-card-text">
+                Zalania, pęknięte rury w szachcie instalacyjnym, wybicia kanalizacji lub nagły brak wody w całym pionie budynku.
+              </p>
+              <div class="emergency-card-instruction">
+                <strong>Instrukcja:</strong> W razie wycieku w lokalu najpierw zakręć główny zawór odcinający w szachcie łazienkowym.
+              </div>
+              <a href="tel:+48000000999" class="btn btn-call-direct" aria-label="Zadzwoń do pogotowia wodnego: +48 000 000 999">
+                Zgłoś awarię wody
+              </a>
+            </div>
+
+            <!-- Gas Emergency -->
+            <div class="emergency-card">
+              <h3 class="emergency-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                Pogotowie Gazowe
+              </h3>
+              <p class="emergency-card-text">
+                Wyczuwalny zapach nawonnika gazu na klatce schodowej, w piwnicy lub w mieszkaniu. Zagrożenie wybuchem!
+              </p>
+              <div class="emergency-card-instruction">
+                <strong>Instrukcja:</strong> Natychmiast otwórz okna, nie używaj dzwonka, zapałek ani włączników światła. Opuść budynek.
+              </div>
+              <a href="tel:+48000000999" class="btn btn-call-direct" aria-label="Zadzwoń do pogotowia gazowego: +48 000 000 999">
+                Zgłoś ulatnianie gazu
+              </a>
+            </div>
+
+            <!-- Elevator Emergency -->
+            <div class="emergency-card">
+              <h3 class="emergency-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><polyline points="8 8 10 6 12 8"/><polyline points="16 16 14 18 12 16"/></svg>
+                Pogotowie Dźwigowe (Windy)
+              </h3>
+              <p class="emergency-card-text">
+                Uwięzienie pasażerów w kabinie windy lub unieruchomienie dźwigu. Zgłoszenia o uwięzieniu traktowane są priorytetowo.
+              </p>
+              <div class="emergency-card-instruction">
+                <strong>Instrukcja:</strong> W kabinie wciśnij żółty przycisk alarmowy lub zadzwoń pod numer pogotowia. Nie próbuj forsować drzwi.
+              </div>
+              <a href="tel:+48000000999" class="btn btn-call-direct" aria-label="Zgłoś awarię windy: +48 000 000 999">
+                Zgłoś awarię windy
+              </a>
+            </div>
+
+            <!-- Electricity Emergency -->
+            <div class="emergency-card">
+              <h3 class="emergency-card-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                Pogotowie Elektryczne
+              </h3>
+              <p class="emergency-card-text">
+                Brak zasilania na całej klatce schodowej, awaria oświetlenia wejść, dymienie z rozdzielnicy głównej w korytarzu.
+              </p>
+              <div class="emergency-card-instruction">
+                <strong>Instrukcja:</strong> Nie dotykaj uszkodzonych przewodów ani rozdzielnic. Odłącz wrażliwe urządzenia w mieszkaniu.
+              </div>
+              <a href="tel:+48000000999" class="btn btn-call-direct" aria-label="Zgłoś awarię elektryczną: +48 000 000 999">
+                Zgłoś awarię prądu
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ANNOUNCEMENTS (OGŁOSZENIA) -->
+    <section id="ogloszenia" class="section section-alt" aria-labelledby="ogloszenia-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Tablica ogłoszeń i komunikaty</span>
+          <h2 id="ogloszenia-heading" class="section-title">Bieżące Ogłoszenia Administracji</h2>
+          <p class="section-subtitle">
+            Ważne informacje o planowanych pracach konserwacyjnych, przeglądach technicznych i funkcjonowaniu biura spółdzielni.
+          </p>
+        </div>
+
+        <div class="announcements-wrapper">
+
+          <!-- Announcement 1: Water Cut-off (Przylesie 4) -->
+          <article class="announcement-card urgent" aria-labelledby="ann-1-title">
+            <div class="announcement-header">
+              <div class="announcement-badges">
+                <span class="badge badge-urgent">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  Pilny komunikat techniczny
+                </span>
+                <span class="badge badge-info">Osiedle Przylesie</span>
+              </div>
+              <div class="announcement-date-chip">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <strong>3 grudnia 2026 (czwartek)</strong>
+              </div>
+            </div>
+
+            <h3 id="ann-1-title" class="announcement-title">
+              Przerwa w dostawie zimnej wody w budynku Przylesie 4
+            </h3>
+            <p class="announcement-body">
+              Informujemy mieszkańców budynku <strong>Przylesie 4</strong>, że w dniu <strong>3 grudnia 2026 r. w godzinach od 8:00 do 14:00</strong> nastąpi przerwa w dostawie zimnej wody. Wyłączenie spowodowane jest koniecznością wymiany głównego zaworu odcinającego na przyłączu wodociągowym budynku.
+            </p>
+
+            <div class="announcement-meta-grid">
+              <div class="announcement-meta-item">
+                <span class="announcement-meta-label">Termin wyłączenia</span>
+                <span class="announcement-meta-value">3 grudnia 2026, godz. 8:00 – 14:00</span>
+              </div>
+              <div class="announcement-meta-item">
+                <span class="announcement-meta-label">Dotyczy budynku</span>
+                <span class="announcement-meta-value">Przylesie 4 (wszystkie klatki)</span>
+              </div>
+              <div class="announcement-meta-item">
+                <span class="announcement-meta-label">Zalecenie dla mieszkańców</span>
+                <span class="announcement-meta-value">Prosimy o wcześniejsze zabezpieczenie zapasu wody</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Announcement 2: Gas Inspection (All buildings) -->
+          <article class="announcement-card important" aria-labelledby="ann-2-title">
+            <div class="announcement-header">
+              <div class="announcement-badges">
+                <span class="badge badge-important">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  Obowiązkowy przegląd roczny
+                </span>
+                <span class="badge badge-info">Wszystkie budynki (6)</span>
+              </div>
+              <div class="announcement-date-chip">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <strong>Od 7 do 18 grudnia 2026</strong>
+              </div>
+            </div>
+
+            <h3 id="ann-2-title" class="announcement-title">
+              Roczne przeglądy instalacji gazowej we wszystkich budynkach spółdzielni
+            </h3>
+            <p class="announcement-body">
+              Zgodnie z wymogami prawa budowlanego w dniach <strong>od 7 do 18 grudnia 2026 r.</strong> uprawnieni instalatorzy przeprowadzą doroczną kontrolę szczelności instalacji gazowej oraz urządzeń odbiorczych (kuchenki, piecyki) we wszystkich 412 mieszkaniach.
+            </p>
+
+            <div class="announcement-meta-grid">
+              <div class="announcement-meta-item">
+                <span class="announcement-meta-label">Zakres prac</span>
+                <span class="announcement-meta-value">Przegląd szczelności instalacji i przewodów</span>
+              </div>
+              <div class="announcement-meta-item">
+                <span class="announcement-meta-label">Lokalizacje</span>
+                <span class="announcement-meta-value">Słoneczne Wzgórze 1, 2, 3 oraz Przylesie 2, 4, 6</span>
+              </div>
+              <div class="announcement-meta-item">
+                <span class="announcement-meta-label">Szczegółowy harmonogram</span>
+                <span class="announcement-meta-value">Wywieszony w gablotach na klatkach schodowych</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Announcement 3: Office Closed Holidays -->
+          <article class="announcement-card notice" aria-labelledby="ann-3-title">
+            <div class="announcement-header">
+              <div class="announcement-badges">
+                <span class="badge badge-info">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                  Komunikat organizacyjny
+                </span>
+                <span class="badge" style="background:#e2e8f0; color:#334155;">Biuro Spółdzielni</span>
+              </div>
+              <div class="announcement-date-chip">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <strong>24 i 31 grudnia 2026</strong>
+              </div>
+            </div>
+
+            <h3 id="ann-3-title" class="announcement-title">
+              Biuro spółdzielni nieczynne w dniach 24 i 31 grudnia 2026
+            </h3>
+            <p class="announcement-body">
+              Uprzejmie informujemy, że w Wigilię (czwartek, 24 grudnia 2026) oraz w Sylwestra (czwartek, 31 grudnia 2026) biuro administracji spółdzielni przy ul. Przykładowej 1 będzie nieczynne. W pilnych sprawach technicznych prosimy o kontakt z całodobowym pogotowiem awaryjnym pod numerem <strong>+48 000 000 999</strong>.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: STATUTORY DOCUMENTS (ART. 8¹ UST. 3) -->
+    <section id="dokumenty" class="section" aria-labelledby="dokumenty-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Prawo spółdzielcze i jawność</span>
+          <h2 id="dokumenty-heading" class="section-title">Dokumenty Spółdzielni Mieszkaniowej</h2>
+          <p class="section-subtitle">
+            Zgodnie z <strong>art. 8¹ ust. 3 ustawy o spółdzielniach mieszkaniowych</strong> spółdzielnia udostępnia członkom statut, regulaminy, uchwały organów, protokoły obrad, protokoły lustracji oraz roczne sprawozdania finansowe.
+          </p>
+        </div>
+
+        <div class="documents-card">
+          <div class="documents-legal-notice">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="float:left; margin-right:0.6rem; margin-top:2px;" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <strong>Podstawa prawna:</strong> Zgodnie z art. 8¹ ust. 3 ustawy z dnia 15 grudnia 2000 r. o spółdzielniach mieszkaniowych (Dz.U. z 2024 r. poz. 558 z późn. zm.) członek spółdzielni ma prawo zapoznawać się z dokumentami spółdzielni. Poniższa wyszukiwarka pozwala szybko zlokalizować interesujący dokument.
+          </div>
+
+          <!-- Search & Filter Controls -->
+          <div class="docs-toolbar">
+            <div class="docs-search-bar">
+              <label for="docs-search" class="visually-hidden" style="position:absolute; width:1px; height:1px; overflow:hidden;">Szukaj dokumentu</label>
+              <svg class="docs-search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="docs-search" class="docs-search-input" placeholder="Wpisz nazwę dokumentu, np. statut, woda, lustracja, 2026..." aria-describedby="search-count-hint">
+              <button type="button" id="docs-clear-btn" class="docs-search-clear" title="Wyczyść pole wyszukiwania" aria-label="Wyczyść szukanie">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+
+            <div class="docs-categories" role="group" aria-label="Filtruj dokumenty według kategorii">
+              <button type="button" class="category-btn active" data-category="all">Wszystkie dokumenty (<span id="count-all">7</span>)</button>
+              <button type="button" class="category-btn" data-category="statut">Statut i regulaminy (<span id="count-statut">3</span>)</button>
+              <button type="button" class="category-btn" data-category="uchwaly">Uchwały i protokoły (<span id="count-uchwaly">2</span>)</button>
+              <button type="button" class="category-btn" data-category="finanse">Lustracja i finanse (<span id="count-finanse">2</span>)</button>
+            </div>
+          </div>
+
+          <div id="search-count-hint" style="font-size:0.875rem; color:var(--color-text-muted); margin-bottom:1rem;" aria-live="polite">
+            Wyświetlanie <strong id="docs-visible-count">7</strong> z <strong>7</strong> dokumentów spółdzielni
+          </div>
+
+          <!-- Document List -->
+          <ul class="docs-list" id="documents-list">
+
+            <!-- Doc 1: Statut -->
+            <li class="doc-item" data-category="statut" data-title="statut spółdzielni mieszkaniowej słoneczne wzgórze tekst jednolity marzec 2026">
+              <div class="doc-left">
+                <div class="doc-icon-wrapper" aria-hidden="true">PDF</div>
+                <div class="doc-info">
+                  <h3 class="doc-title">Statut Spółdzielni Mieszkaniowej „Słoneczne Wzgórze”</h3>
+                  <div class="doc-meta">
+                    <span class="doc-meta-badge">Statut i regulaminy</span>
+                    <span>Tekst jednolity, marzec 2026</span>
+                    <span>Rozmiar: 620 KB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="doc-actions">
+                <button type="button" class="btn btn-outline btn-sm btn-doc-preview" data-name="Statut Spółdzielni (marzec 2026)" data-desc="Tekst jednolity Statutu uchwalony przez Walne Zgromadzenie w marcu 2026 roku. Zawiera podstawowe zasady członkostwa, praw i obowiązków mieszkańców, organów spółdzielni oraz gospodarki zasobami mieszkaniowymi.">
+                  Podgląd
+                </button>
+                <a href="#" class="btn btn-primary btn-sm btn-doc-download" data-name="Statut Spółdzielni (marzec 2026)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Pobierz PDF
+                </a>
+              </div>
+            </li>
+
+            <!-- Doc 2: Regulamin porządku domowego -->
+            <li class="doc-item" data-category="statut" data-title="regulamin porządku domowego i współżycia mieszkańców">
+              <div class="doc-left">
+                <div class="doc-icon-wrapper" aria-hidden="true">PDF</div>
+                <div class="doc-info">
+                  <h3 class="doc-title">Regulamin porządku domowego i współżycia mieszkańców</h3>
+                  <div class="doc-meta">
+                    <span class="doc-meta-badge">Statut i regulaminy</span>
+                    <span>Cisza nocna, remonty, części wspólne</span>
+                    <span>Rozmiar: 280 KB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="doc-actions">
+                <button type="button" class="btn btn-outline btn-sm btn-doc-preview" data-name="Regulamin porządku domowego" data-desc="Zbiór reguł regulujących korzystanie z lokali mieszkalnych, klatek schodowych, wind, suszarni, piwnic oraz terenów zielonych osiedli Słoneczne Wzgórze i Przylesie.">
+                  Podgląd
+                </button>
+                <a href="#" class="btn btn-primary btn-sm btn-doc-download" data-name="Regulamin porządku domowego">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Pobierz PDF
+                </a>
+              </div>
+            </li>
+
+            <!-- Doc 3: Regulamin rozliczania wody -->
+            <li class="doc-item" data-category="statut" data-title="regulamin rozliczania kosztów zużycia wody i odprowadzania ścieków">
+              <div class="doc-left">
+                <div class="doc-icon-wrapper" aria-hidden="true">PDF</div>
+                <div class="doc-info">
+                  <h3 class="doc-title">Regulamin rozliczania kosztów zużycia wody</h3>
+                  <div class="doc-meta">
+                    <span class="doc-meta-badge">Statut i regulaminy</span>
+                    <span>Rozliczanie zużycia i odprowadzania ścieków</span>
+                    <span>Rozmiar: 340 KB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="doc-actions">
+                <button type="button" class="btn btn-outline btn-sm btn-doc-preview" data-name="Regulamin rozliczania kosztów zużycia wody" data-desc="Szczegółowe zasady montażu wodomierzy, odczytów radiowych, okresów rozliczeniowych oraz pokrywania różnic bilansowych między wodomierzem głównym a licznikami lokalowymi.">
+                  Podgląd
+                </button>
+                <a href="#" class="btn btn-primary btn-sm btn-doc-download" data-name="Regulamin rozliczania kosztów zużycia wody">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Pobierz PDF
+                </a>
+              </div>
+            </li>
+
+            <!-- Doc 4: Uchwała Zarządu 14/2026 -->
+            <li class="doc-item" data-category="uchwaly" data-title="uchwała zarządu nr 14/2026 w sprawie wymiany wodomierzy legalizacja">
+              <div class="doc-left">
+                <div class="doc-icon-wrapper" aria-hidden="true">PDF</div>
+                <div class="doc-info">
+                  <h3 class="doc-title">Uchwała Zarządu nr 14/2026 w sprawie wymiany wodomierzy</h3>
+                  <div class="doc-meta">
+                    <span class="doc-meta-badge">Uchwały i protokoły</span>
+                    <span>Zarząd Spółdzielni • Kwiecień 2026</span>
+                    <span>Rozmiar: 195 KB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="doc-actions">
+                <button type="button" class="btn btn-outline btn-sm btn-doc-preview" data-name="Uchwała Zarządu nr 14/2026" data-desc="Uchwała określająca planową akcję wymiany i legalizacji radiowych wodomierzy ciepłej i zimnej wody w zasobach spółdzielni wraz z harmonogramem montażu.">
+                  Podgląd
+                </button>
+                <a href="#" class="btn btn-primary btn-sm btn-doc-download" data-name="Uchwała Zarządu nr 14/2026">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Pobierz PDF
+                </a>
+              </div>
+            </li>
+
+            <!-- Doc 5: Protokół Walne Zgromadzenie -->
+            <li class="doc-item" data-category="uchwaly" data-title="protokół z walnego zgromadzenia czerwiec 2026 uchwały absolutorium">
+              <div class="doc-left">
+                <div class="doc-icon-wrapper" aria-hidden="true">PDF</div>
+                <div class="doc-info">
+                  <h3 class="doc-title">Protokół z Walnego Zgromadzenia, czerwiec 2026</h3>
+                  <div class="doc-meta">
+                    <span class="doc-meta-badge">Uchwały i protokoły</span>
+                    <span>Walne Zgromadzenie Członków • Czerwiec 2026</span>
+                    <span>Rozmiar: 850 KB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="doc-actions">
+                <button type="button" class="btn btn-outline btn-sm btn-doc-preview" data-name="Protokół z Walnego Zgromadzenia (czerwiec 2026)" data-desc="Pełny protokół z dorocznego Walnego Zgromadzenia Członków Spółdzielni obejmujący zatwierdzenie sprawozdań organów, udzielenie absolutorium Zarządowi oraz przyjęte uchwały.">
+                  Podgląd
+                </button>
+                <a href="#" class="btn btn-primary btn-sm btn-doc-download" data-name="Protokół z Walnego Zgromadzenia (czerwiec 2026)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Pobierz PDF
+                </a>
+              </div>
+            </li>
+
+            <!-- Doc 6: Protokół lustracji -->
+            <li class="doc-item" data-category="finanse" data-title="protokół lustracji za lata 2023–2025 lustracja pełna związek rewizyjny">
+              <div class="doc-left">
+                <div class="doc-icon-wrapper" aria-hidden="true">PDF</div>
+                <div class="doc-info">
+                  <h3 class="doc-title">Protokół lustracji za lata 2023–2025</h3>
+                  <div class="doc-meta">
+                    <span class="doc-meta-badge">Lustracja i finanse</span>
+                    <span>Ustawowa lustracja pełnej działalności</span>
+                    <span>Rozmiar: 1.4 MB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="doc-actions">
+                <button type="button" class="btn btn-outline btn-sm btn-doc-preview" data-name="Protokół lustracji za lata 2023–2025" data-desc="Protokół z ustawowej lustracji działalności gospodarczej, finansowej i organizacyjnej Spółdzielni przeprowadzonej przez uprawniony Związek Rewizyjny Spółdzielni Mieszkaniowych.">
+                  Podgląd
+                </button>
+                <a href="#" class="btn btn-primary btn-sm btn-doc-download" data-name="Protokół lustracji za lata 2023–2025">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Pobierz PDF
+                </a>
+              </div>
+            </li>
+
+            <!-- Doc 7: Sprawozdanie finansowe 2025 -->
+            <li class="doc-item" data-category="finanse" data-title="sprawozdanie finansowe za 2025 rok bilans rachunek zysków i strat">
+              <div class="doc-left">
+                <div class="doc-icon-wrapper" aria-hidden="true">PDF</div>
+                <div class="doc-info">
+                  <h3 class="doc-title">Sprawozdanie finansowe za 2025 rok</h3>
+                  <div class="doc-meta">
+                    <span class="doc-meta-badge">Lustracja i finanse</span>
+                    <span>Bilans, RZiS, informacja dodatkowa</span>
+                    <span>Rozmiar: 510 KB</span>
+                  </div>
+                </div>
+              </div>
+              <div class="doc-actions">
+                <button type="button" class="btn btn-outline btn-sm btn-doc-preview" data-name="Sprawozdanie finansowe za 2025 rok" data-desc="Roczne sprawozdanie finansowe Spółdzielni za rok obrotowy 2025: bilans majątkowy, rachunek zysków i strat, informacja dodatkowa oraz uchwała Walnego Zgromadzenia zatwierdzająca sprawozdanie.">
+                  Podgląd
+                </button>
+                <a href="#" class="btn btn-primary btn-sm btn-doc-download" data-name="Sprawozdanie finansowe za 2025 rok">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Pobierz PDF
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+          <!-- Empty search results notice -->
+          <div class="docs-empty-state" id="docs-empty-state">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 0.75rem;" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            <h4 style="font-size:1.15rem; font-weight:700; color:var(--color-text-primary); margin-bottom:0.25rem;">Nie znaleziono dokumentów</h4>
+            <p style="font-size:0.95rem; color:var(--color-text-muted);">
+              Dla wpisanej frazy nie odnaleziono pasującego pliku. Sprawdź pisownię lub wybierz inną kategorię.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ABOUT OUR ESTATES & NUMBERS -->
+    <section id="zasoby" class="section section-alt" aria-labelledby="zasoby-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Nasza społeczność</span>
+          <h2 id="zasoby-heading" class="section-title">O Spółdzielni i Naszych Osiedlach</h2>
+          <p class="section-subtitle">
+            Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” zarządza dwoma kameralnymi osiedlami mieszkaniowymi w otoczeniu zieleni miejskiej.
+          </p>
+        </div>
+
+        <!-- 3 Highlight Stats -->
+        <div class="estate-stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Osiedla mieszkaniowe</div>
+            <div class="stat-sub">Słoneczne Wzgórze oraz Przylesie</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Budynków wielorodzinnych</div>
+            <div class="stat-sub">Wyposażonych w cichobieżne windy</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">412</div>
+            <div class="stat-label">Lokali mieszkalnych</div>
+            <div class="stat-sub">Zamieszkanych przez naszą wspólnotę</div>
+          </div>
+        </div>
+
+        <!-- Estates Grid -->
+        <div class="buildings-grid">
+
+          <!-- Estate 1: Słoneczne Wzgórze -->
+          <div class="building-card">
+            <div class="building-card-header">
+              <div class="building-card-icon amber" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              </div>
+              <div>
+                <h3 class="building-card-title">Osiedle Słoneczne Wzgórze</h3>
+                <span style="font-size:0.875rem; color:var(--color-text-muted);">3 budynki mieszkalne • 216 mieszkań</span>
+              </div>
+            </div>
+            <ul class="building-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Budynek nr 1:</strong> 4 klatki, 72 mieszkania, plac zabaw</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Budynek nr 2:</strong> 4 klatki, 72 mieszkania, strefa rekreacji</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Budynek nr 3:</strong> 4 klatki, 72 mieszkania, ogród deszczowy</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Estate 2: Przylesie -->
+          <div class="building-card">
+            <div class="building-card-header">
+              <div class="building-card-icon green" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L3 9h3v13h12V9h3L12 2z"/></svg>
+              </div>
+              <div>
+                <h3 class="building-card-title">Osiedle Przylesie</h3>
+                <span style="font-size:0.875rem; color:var(--color-text-muted);">3 budynki mieszkalne • 196 mieszkań</span>
+              </div>
+            </div>
+            <ul class="building-list">
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Przylesie 2:</strong> 4 klatki, 64 mieszkania</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Przylesie 4:</strong> 4 klatki, 64 mieszkania (planowane prace 3.12)</span>
+              </li>
+              <li>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                <span><strong>Przylesie 6:</strong> 4 klatki, 68 mieszkań, sąsiedztwo lasu</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: OFFICE, HOURS & CONTACT -->
+    <section id="kontakt" class="section" aria-labelledby="kontakt-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Bezpośredni kontakt</span>
+          <h2 id="kontakt-heading" class="section-title">Godziny Pracy Biura i Dane Kontaktowe</h2>
+          <p class="section-subtitle">
+            Jesteśmy do Twojej dyspozycji w siedzibie biura spółdzielni, telefonicznie oraz mailowo. W poniedziałki zapraszamy również po południu.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+
+          <!-- Left Column: Official Contact Details & Live Hours -->
+          <div class="contact-card">
+
+            <!-- Real-Time Status Card Badge -->
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.5rem; padding-bottom:1.25rem; border-bottom:1px solid var(--color-border);">
+              <h3 style="font-size:1.35rem; font-weight:800; color:var(--color-primary-dark);">Siedziba Spółdzielni</h3>
+              <div class="status-pill open" id="contact-office-status">
+                <span class="status-dot"></span>
+                <span id="contact-office-status-text">Sprawdzanie godzin biura...</span>
+              </div>
+            </div>
+
+            <!-- Address -->
+            <div class="contact-detail-row">
+              <div class="contact-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-detail-content">
+                <div class="contact-detail-label">Adres biura</div>
+                <div class="contact-detail-val">ul. Przykładowa 1, 00-000 Miasto</div>
+                <div class="contact-detail-sub">Budynek parterowy z podjazdem dla osób niepełnosprawnych i wózków dziecięcych</div>
+              </div>
+            </div>
+
+            <!-- Office Phone -->
+            <div class="contact-detail-row">
+              <div class="contact-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="contact-detail-content">
+                <div class="contact-detail-label">Telefon do biura</div>
+                <div class="contact-detail-val">+48 000 000 001</div>
+                <div class="contact-actions-inline">
+                  <a href="tel:+48000000001" class="btn btn-primary btn-sm">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    Zadzwoń do biura
+                  </a>
+                  <button type="button" class="btn btn-outline btn-sm btn-copy" data-copy="+48000000001" title="Kopiuj numer do schowka">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Kopiuj numer
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-detail-row">
+              <div class="contact-icon-box" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-detail-content">
+                <div class="contact-detail-label">Adres poczty elektronicznej</div>
+                <div class="contact-detail-val">biuro@example.com</div>
+                <div class="contact-actions-inline">
+                  <a href="mailto:biuro@example.com" class="btn btn-secondary btn-sm">Napisz e-mail</a>
+                  <button type="button" class="btn btn-outline btn-sm btn-copy" data-copy="biuro@example.com" title="Kopiuj adres e-mail">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                    Kopiuj e-mail
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Emergency Phone Contact Row -->
+            <div class="contact-detail-row">
+              <div class="contact-icon-box red" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div class="contact-detail-content">
+                <div class="contact-detail-label" style="color:var(--color-emergency);">Pogotowie awaryjne (24/7)</div>
+                <div class="contact-detail-val" style="color:var(--color-emergency);">+48 000 000 999</div>
+                <div class="contact-detail-sub">Woda, gaz, winda, prąd • Całą dobę</div>
+              </div>
+            </div>
+
+            <!-- Office Hours Table -->
+            <div style="margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid var(--color-border);">
+              <h4 style="font-size:1.1rem; font-weight:700; color:var(--color-primary-dark); margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Harmonogram godzin przyjęć
+              </h4>
+              <table class="hours-table" aria-label="Harmonogram godzin otwarcia biura">
+                <tbody>
+                  <tr id="row-mon">
+                    <td class="day">Poniedziałek</td>
+                    <td class="hours">10:00 – 18:00 <span style="font-size:0.8rem; font-weight:normal; color:var(--color-text-muted);">(dyżur popołudniowy)</span></td>
+                  </tr>
+                  <tr id="row-tue">
+                    <td class="day">Wtorek</td>
+                    <td class="hours">07:30 – 15:30</td>
+                  </tr>
+                  <tr id="row-wed">
+                    <td class="day">Środa</td>
+                    <td class="hours">07:30 – 15:30</td>
+                  </tr>
+                  <tr id="row-thu">
+                    <td class="day">Czwartek</td>
+                    <td class="hours">07:30 – 15:30</td>
+                  </tr>
+                  <tr id="row-fri">
+                    <td class="day">Piątek</td>
+                    <td class="hours">07:30 – 15:30</td>
+                  </tr>
+                  <tr id="row-sat">
+                    <td class="day">Sobota</td>
+                    <td class="hours" style="color:var(--color-text-muted);">Nieczynne (dyżur pogotowia)</td>
+                  </tr>
+                  <tr id="row-sun">
+                    <td class="day">Niedziela i Święta</td>
+                    <td class="hours" style="color:var(--color-text-muted);">Nieczynne (dyżur pogotowia)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Quick Message Form -->
+          <div class="contact-card">
+            <h3 style="font-size:1.35rem; font-weight:800; color:var(--color-primary-dark); margin-bottom:0.4rem;">
+              Napisz wiadomość do administracji
+            </h3>
+            <p style="font-size:0.95rem; color:var(--color-text-secondary); margin-bottom:1.5rem;">
+              Masz pytanie w sprawie opłat, zaświadczenia lub usterki nienaglącej? Wypełnij prosty formularz – pracownik biura odpowie telefonicznie lub mailowo.
+            </p>
+
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="form-name" class="form-label">Imię i nazwisko <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="form-name" class="form-control" required placeholder="np. Jan Kowalski" autocomplete="name">
+              </div>
+
+              <div class="form-group">
+                <label for="form-address" class="form-label">Adres mieszkania (budynek i nr lokalu) <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="form-address" class="form-control" required placeholder="np. Słoneczne Wzgórze 2 m. 14">
+              </div>
+
+              <div class="form-group">
+                <label for="form-phone" class="form-label">Numer telefonu kontaktowego <span class="req" aria-hidden="true">*</span></label>
+                <input type="tel" id="form-phone" class="form-control" required placeholder="+48 ..." autocomplete="tel">
+              </div>
+
+              <div class="form-group">
+                <label for="form-subject" class="form-label">Temat sprawy <span class="req" aria-hidden="true">*</span></label>
+                <select id="form-subject" class="form-control" required>
+                  <option value="" disabled selected>-- Wybierz temat sprawy --</option>
+                  <option value="rozliczenia">Rozliczenie wody / czynsz</option>
+                  <option value="usterka">Zgłoszenie usterki (nienaglącej)</option>
+                  <option value="zaswiadczenie">Wniosek o zaświadczenie</option>
+                  <option value="inne">Inna sprawa mieszkańca</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="form-message" class="form-label">Treść wiadomości <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="form-message" class="form-control" rows="4" required placeholder="Opisz krótko swoją sprawę..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width:100%; font-size:1.05rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Wyślij wiadomość do biura
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER WITH MANDATORY EXPLICIT DEMO DISCLAIMER -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <!-- MANDATORY DEMONSTRATION NOTICE -->
+      <div class="footer-disclaimer-box" role="note" aria-label="Informacja o demonstracyjnym charakterze strony">
+        <h4>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          INFORMACJA O CHARAKTERZE STRONY:
+        </h4>
+        <p>
+          <strong>To strona demonstracyjna, a spółdzielnia i jej dane nie istnieją.</strong>
+          Wszystkie zaprezentowane dane teleadresowe, numery telefonów, ogłoszenia, regulaminy oraz dokumenty są fikcyjne i zostały wymyślone wyłącznie na potrzeby testu projektowego.
+        </p>
+      </div>
+
+      <div class="footer-grid">
+
+        <!-- Col 1: About Institution -->
+        <div>
+          <h4 class="footer-col-title">Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze”</h4>
+          <p style="font-size:0.95rem; line-height:1.6; margin-bottom:1rem; color:#cbd5e1;">
+            Zarządzamy 6 budynkami i 412 lokalami mieszkalnymi na terenie osiedli Słoneczne Wzgórze i Przylesie. Dbamy o bezpieczeństwo, czystość i komfort codziennego życia mieszkańców.
+          </p>
+          <p style="font-size:0.875rem; color:#94a3b8;">
+            Siedziba: ul. Przykładowa 1, 00-000 Miasto<br>
+            Biuro: +48 000 000 001 | E-mail: biuro@example.com
+          </p>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="footer-col-title">Szybkie skróty</h4>
+          <ul class="footer-links">
+            <li><a href="#awaria">Pogotowie awaryjne 24h</a></li>
+            <li><a href="#ogloszenia">Tablica ogłoszeń</a></li>
+            <li><a href="#dokumenty">Dokumenty (art. 8¹ ust. 3)</a></li>
+            <li><a href="#zasoby">Nasze osiedla</a></li>
+            <li><a href="#kontakt">Godziny przyjęć biura</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Accessibility & Help -->
+        <div>
+          <h4 class="footer-col-title">Dostępność i pomoc</h4>
+          <ul class="footer-links">
+            <li><a href="#" id="link-reset-a11y">Przywróć standardowy widok</a></li>
+            <li><a href="tel:+48000000999" style="color:#fca5a5; font-weight:700;">Pogotowie: +48 000 000 999</a></li>
+            <li><a href="mailto:biuro@example.com">Pomoc techniczna dla mieszkańców</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Spółdzielnia Mieszkaniowa „Słoneczne Wzgórze” (projekt demonstracyjny). Wszelkie prawa zastrzeżone.</p>
+        <p>Projekt wykonany zgodnie z zasadami dostępności cyfrowej WCAG 2.1 AA.</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- DOCUMENT PREVIEW MODAL (Emil Kowalski origin & scale principles) -->
+  <div class="modal-backdrop" id="doc-modal" role="dialog" aria-modal="true" aria-labelledby="modal-doc-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <div style="width:32px; height:32px; background:#fee2e2; color:#b91c1c; border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:0.75rem;" aria-hidden="true">PDF</div>
+          <h3 id="modal-doc-title" class="modal-title">Podgląd dokumentu</h3>
+        </div>
+        <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Zamknij okno podglądu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-doc-desc" style="margin-bottom:1.25rem;">Opis dokumentu...</div>
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:1rem; font-size:0.9rem; color:#475569;">
+          <strong>Informacja demonstracyjna:</strong> Na potrzeby niniejszego portalu testowego pliki binarne PDF nie istnieją na serwerze. Kliknięcie przycisku pobierania generuje demonstracyjne potwierdzenie pobrania pliku.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="modal-cancel-btn">Zamknij</button>
+        <button type="button" class="btn btn-primary" id="modal-download-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Pobierz plik PDF
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER (Sonner-inspired) -->
+  <div class="toast-container" id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- SCRIPT -->
+  <script>
+    /* ==========================================================================
+       EMIL KOWALSKI DESIGN ENGINEERING - VANILLA JS LOGIC
+       ========================================================================== */
+
+    (function() {
+      'use strict';
+
+      // --- 1. TOAST NOTIFICATION DISPATCHER (Sonner principles) ---
+      const toastContainer = document.getElementById('toast-container');
+
+      function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        
+        let iconSvg = '';
+        if (type === 'success') {
+          iconSvg = '<svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>';
+        } else if (type === 'warning') {
+          iconSvg = '<svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+        } else {
+          iconSvg = '<svg class="toast-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+        }
+
+        toast.innerHTML = `
+          ${iconSvg}
+          <div style="flex-grow:1; line-height:1.4;">${message}</div>
+        `;
+
+        toastContainer.appendChild(toast);
+
+        // Emil Kowalski: smooth enter transition
+        requestAnimationFrame(() => {
+          toast.classList.add('show');
+        });
+
+        // Auto dismiss after 3.5s
+        setTimeout(() => {
+          toast.classList.remove('show');
+          toast.classList.add('hide');
+          toast.addEventListener('transitionend', () => {
+            if (toast.parentNode) {
+              toast.parentNode.removeChild(toast);
+            }
+          }, { once: true });
+        }, 3500);
+      }
+
+      // --- 2. ACCESSIBILITY CONTROLS (Font Size & High Contrast) ---
+      const btnFontNormal = document.getElementById('btn-font-normal');
+      const btnFontLarge = document.getElementById('btn-font-large');
+      const btnFontXl = document.getElementById('btn-font-xl');
+      const btnContrastToggle = document.getElementById('btn-contrast-toggle');
+      const contrastLabel = document.getElementById('contrast-label');
+      const linkResetA11y = document.getElementById('link-reset-a11y');
+
+      function setFontSize(size) {
+        document.body.classList.remove('font-large', 'font-xl');
+        btnFontNormal.classList.remove('active');
+        btnFontLarge.classList.remove('active');
+        btnFontXl.classList.remove('active');
+
+        if (size === 'large') {
+          document.body.classList.add('font-large');
+          btnFontLarge.classList.add('active');
+          localStorage.setItem('sm_font_size', 'large');
+          showToast('Ustawiono większy rozmiar czcionki', 'info');
+        } else if (size === 'xl') {
+          document.body.classList.add('font-xl');
+          btnFontXl.classList.add('active');
+          localStorage.setItem('sm_font_size', 'xl');
+          showToast('Ustawiono bardzo duży rozmiar czcionki', 'info');
+        } else {
+          btnFontNormal.classList.add('active');
+          localStorage.setItem('sm_font_size', 'normal');
+        }
+      }
+
+      btnFontNormal.addEventListener('click', () => setFontSize('normal'));
+      btnFontLarge.addEventListener('click', () => setFontSize('large'));
+      btnFontXl.addEventListener('click', () => setFontSize('xl'));
+
+      function toggleContrast() {
+        const isHigh = document.body.classList.toggle('high-contrast');
+        localStorage.setItem('sm_contrast', isHigh ? 'high' : 'normal');
+        if (isHigh) {
+          contrastLabel.textContent = 'Standardowy kontrast';
+          btnContrastToggle.setAttribute('aria-pressed', 'true');
+          showToast('Włączono tryb wysokiego kontrastu (WCAG AAA)', 'info');
+        } else {
+          contrastLabel.textContent = 'Wysoki kontrast';
+          btnContrastToggle.setAttribute('aria-pressed', 'false');
+          showToast('Przywrócono standardowy kontrast', 'info');
+        }
+      }
+
+      btnContrastToggle.addEventListener('click', toggleContrast);
+
+      if (linkResetA11y) {
+        linkResetA11y.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.body.classList.remove('high-contrast', 'font-large', 'font-xl');
+          localStorage.removeItem('sm_contrast');
+          localStorage.removeItem('sm_font_size');
+          btnFontNormal.classList.add('active');
+          btnFontLarge.classList.remove('active');
+          btnFontXl.classList.remove('active');
+          contrastLabel.textContent = 'Wysoki kontrast';
+          showToast('Przywrócono ustawienia domyślne widoku', 'info');
+        });
+      }
+
+      // Restore stored accessibility preferences
+      try {
+        const savedFont = localStorage.getItem('sm_font_size');
+        if (savedFont === 'large' || savedFont === 'xl') {
+          setFontSize(savedFont);
+        }
+        const savedContrast = localStorage.getItem('sm_contrast');
+        if (savedContrast === 'high') {
+          document.body.classList.add('high-contrast');
+          contrastLabel.textContent = 'Standardowy kontrast';
+          btnContrastToggle.setAttribute('aria-pressed', 'true');
+        }
+      } catch (e) {
+        // LocalStorage sandbox fallback
+      }
+
+      // --- 3. MOBILE MENU TOGGLE ---
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileNav = document.getElementById('mobile-nav');
+
+      if (mobileBtn && mobileNav) {
+        mobileBtn.addEventListener('click', () => {
+          const isOpen = mobileNav.classList.toggle('open');
+          mobileBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          mobileBtn.setAttribute('aria-label', isOpen ? 'Zamknij menu nawigacji' : 'Otwórz menu nawigacji');
+        });
+
+        // Close mobile nav on click of link
+        document.querySelectorAll('.mobile-link').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileNav.classList.remove('open');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      // --- 4. REAL-TIME OFFICE HOURS CALCULATION ---
+      // Schedule:
+      // Mon: 10:00 - 18:00
+      // Tue - Fri: 07:30 - 15:30
+      // Sat - Sun: Closed
+      function updateOfficeStatus() {
+        const now = new Date();
+        const day = now.getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+        const hour = now.getHours();
+        const min = now.getMinutes();
+        const totalMinutes = hour * 60 + min;
+
+        let isOpen = false;
+        let closingTime = '';
+        let nextOpen = '';
+
+        // Highlight today's row in hours table
+        const dayRows = {
+          1: 'row-mon',
+          2: 'row-tue',
+          3: 'row-wed',
+          4: 'row-thu',
+          5: 'row-fri',
+          6: 'row-sat',
+          0: 'row-sun'
+        };
+        const currentDayRowId = dayRows[day];
+        if (currentDayRowId) {
+          const row = document.getElementById(currentDayRowId);
+          if (row) row.classList.add('today');
+        }
+
+        if (day === 1) { // Monday (10:00 - 18:00)
+          if (totalMinutes >= 10 * 60 && totalMinutes < 18 * 60) {
+            isOpen = true;
+            closingTime = '18:00';
+          } else {
+            nextOpen = totalMinutes < 10 * 60 ? 'dzisiaj o 10:00' : 'we wtorek o 7:30';
+          }
+        } else if (day >= 2 && day <= 5) { // Tuesday - Friday (7:30 - 15:30)
+          if (totalMinutes >= (7 * 60 + 30) && totalMinutes < (15 * 60 + 30)) {
+            isOpen = true;
+            closingTime = '15:30';
+          } else {
+            if (totalMinutes < (7 * 60 + 30)) {
+              nextOpen = 'dzisiaj o 7:30';
+            } else if (day === 5) {
+              nextOpen = 'w poniedziałek o 10:00';
+            } else {
+              nextOpen = 'jutro o 7:30';
+            }
+          }
+        } else { // Weekend
+          nextOpen = 'w poniedziałek o 10:00';
+        }
+
+        const heroStatus = document.getElementById('hero-office-status');
+        const heroStatusText = document.getElementById('hero-office-status-text');
+        const contactStatus = document.getElementById('contact-office-status');
+        const contactStatusText = document.getElementById('contact-office-status-text');
+
+        if (isOpen) {
+          const text = `Biuro jest TERAZ OTWARTE (do ${closingTime})`;
+          if (heroStatus) {
+            heroStatus.className = 'status-pill open';
+            heroStatusText.textContent = text;
+          }
+          if (contactStatus) {
+            contactStatus.className = 'status-pill open';
+            contactStatusText.textContent = text;
+          }
+        } else {
+          const text = `Biuro jest teraz ZAMKNIĘTE (otwarcie: ${nextOpen})`;
+          if (heroStatus) {
+            heroStatus.className = 'status-pill closed';
+            heroStatusText.textContent = text;
+          }
+          if (contactStatus) {
+            contactStatus.className = 'status-pill closed';
+            contactStatusText.textContent = text;
+          }
+        }
+      }
+
+      updateOfficeStatus();
+
+      // --- 5. SEARCH & FILTER FOR STATUTORY DOCUMENTS ---
+      const searchInput = document.getElementById('docs-search');
+      const clearSearchBtn = document.getElementById('docs-clear-btn');
+      const categoryBtns = document.querySelectorAll('.category-btn');
+      const docItems = document.querySelectorAll('.doc-item');
+      const emptyState = document.getElementById('docs-empty-state');
+      const visibleCountElem = document.getElementById('docs-visible-count');
+
+      let currentCategory = 'all';
+      let searchQuery = '';
+
+      function filterDocuments() {
+        let visibleCount = 0;
+        const query = searchQuery.trim().toLowerCase();
+
+        docItems.forEach(item => {
+          const category = item.getAttribute('data-category');
+          const title = (item.getAttribute('data-title') || '').toLowerCase();
+          const textContent = item.textContent.toLowerCase();
+
+          const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+          const matchesSearch = (!query || title.includes(query) || textContent.includes(query));
+
+          if (matchesCategory && matchesSearch) {
+            item.style.display = 'flex';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        if (visibleCountElem) {
+          visibleCountElem.textContent = visibleCount;
+        }
+
+        if (emptyState) {
+          if (visibleCount === 0) {
+            emptyState.classList.add('visible');
+          } else {
+            emptyState.classList.remove('visible');
+          }
+        }
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value;
+          if (clearSearchBtn) {
+            if (searchQuery.length > 0) {
+              clearSearchBtn.classList.add('visible');
+            } else {
+              clearSearchBtn.classList.remove('visible');
+            }
+          }
+          filterDocuments();
+        });
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          searchQuery = '';
+          clearSearchBtn.classList.remove('visible');
+          searchInput.focus();
+          filterDocuments();
+        });
+      }
+
+      categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          categoryBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentCategory = btn.getAttribute('data-category');
+          filterDocuments();
+        });
+      });
+
+      // --- 6. DOCUMENT PREVIEW MODAL & SIMULATED DOWNLOADS ---
+      const docModal = document.getElementById('doc-modal');
+      const modalTitle = document.getElementById('modal-doc-title');
+      const modalDesc = document.getElementById('modal-doc-desc');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+      const modalCancelBtn = document.getElementById('modal-cancel-btn');
+      const modalDownloadBtn = document.getElementById('modal-download-btn');
+      let activeDocName = '';
+
+      function openModal(name, desc) {
+        activeDocName = name;
+        modalTitle.textContent = name;
+        modalDesc.textContent = desc;
+        docModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        modalCloseBtn.focus();
+      }
+
+      function closeModal() {
+        docModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.btn-doc-preview').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const name = btn.getAttribute('data-name');
+          const desc = btn.getAttribute('data-desc');
+          openModal(name, desc);
+        });
+      });
+
+      if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+      if (modalCancelBtn) modalCancelBtn.addEventListener('click', closeModal);
+      if (docModal) {
+        docModal.addEventListener('click', (e) => {
+          if (e.target === docModal) closeModal();
+        });
+      }
+
+      // ESC key to close modal
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && docModal.classList.contains('open')) {
+          closeModal();
+        }
+      });
+
+      // Simulated download action
+      function handleDownload(name) {
+        showToast(`Rozpoczęto pobieranie pliku: "${name}.pdf"`, 'success');
+      }
+
+      document.querySelectorAll('.btn-doc-download').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const name = link.getAttribute('data-name');
+          handleDownload(name);
+        });
+      });
+
+      if (modalDownloadBtn) {
+        modalDownloadBtn.addEventListener('click', () => {
+          closeModal();
+          handleDownload(activeDocName);
+        });
+      }
+
+      // --- 7. COPY BUTTONS WITH INSTANT USER FEEDBACK ---
+      document.querySelectorAll('.btn-copy').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const textToCopy = btn.getAttribute('data-copy');
+          if (textToCopy) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              showToast(`Skopiowano do schowka: ${textToCopy}`, 'success');
+            }).catch(() => {
+              showToast(`Skopiowano: ${textToCopy}`, 'info');
+            });
+          }
+        });
+      });
+
+      // --- 8. CONTACT FORM SUBMISSION ---
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('form-name').value.trim();
+          const address = document.getElementById('form-address').value.trim();
+          const phone = document.getElementById('form-phone').value.trim();
+          const message = document.getElementById('form-message').value.trim();
+
+          if (!name || !address || !phone || !message) {
+            showToast('Proszę wypełnić wszystkie wymagane pola formularza.', 'warning');
+            return;
+          }
+
+          showToast('Dziękujemy! Wiadomość została wysłana do biura spółdzielni.', 'success');
+          contactForm.reset();
+        });
+      }
+
+    })();
+  </script>
+</body>
+</html>

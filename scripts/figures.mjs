@@ -64,8 +64,11 @@ img{display:block;width:560px;height:350px;object-fit:cover;object-position:top;
 <div class="g">${BOARD.map((id) => `<img src="${shot(id, 'desktop-first')}">`).join('')}</div>`;
 
 // A grid of labelled first screens, three to a row.
-const shotGrid = (items) => `<style>${BASE}
-.g{display:grid;grid-template-columns:repeat(3,720px);gap:24px 20px;padding:24px;width:max-content}
+const hasShot = (id) => fs.existsSync(path.join(ROOT, 'shots', `${id}-desktop-first.jpg`));
+
+// Two to a row when that leaves no odd tile out (four runs), otherwise three.
+const shotGrid = (items, cols = items.length % 3 && items.length % 2 === 0 ? 2 : 3) => `<style>${BASE}
+.g{display:grid;grid-template-columns:repeat(${cols},720px);gap:24px 20px;padding:24px;width:max-content}
 .c{display:grid;gap:10px}
 img{width:720px;height:450px}</style><div class="g">
 ${items.map(([id, n]) => `<div class="c"><div class="h">${n}</div><img src="${shot(id, 'desktop-first')}"></div>`).join('')}</div>`;
@@ -85,12 +88,13 @@ const chats = (lang) => {
   ]);
 };
 
-// The same brief in Codex on a free ChatGPT plan (GPT-6 Luna): no skill, then
-// each of the four skills.
-const codex = (lang) => shotGrid(SETUPS(lang).map(([key, name]) => [
-  `codex-${key}`,
-  key === 'none' ? (lang === 'pl' ? 'Codex bez skilla' : 'Codex, no skill') : `Codex + ${name}`,
-]));
+// The same brief in another vendor's agent (Codex on GPT-6 Luna, Antigravity
+// CLI on Gemini 3.8 Flash): no skill, then each of the four skills.
+// A run that left no page has no screenshot and is left out.
+const AGENTS = [['codex', 'Codex'], ['agy', 'Antigravity']];
+const agent = (prefix, label, lang) => shotGrid(SETUPS(lang)
+  .filter(([key]) => hasShot(`${prefix}-${key}`))
+  .map(([key, name]) => [`${prefix}-${key}`, key === 'none' ? (lang === 'pl' ? `${label} bez skilla` : `${label}, no skill`) : `${label} + ${name}`]));
 
 const figures = {
   'grid-en': grid('en'), 'grid-pl': grid('pl'),
@@ -98,7 +102,8 @@ const figures = {
   'phones-en': phones('en'), 'phones-pl': phones('pl'),
   board: board(),
   'chats-en': chats('en'), 'chats-pl': chats('pl'),
-  'codex-en': codex('en'), 'codex-pl': codex('pl'),
+  ...Object.fromEntries(AGENTS.filter(([prefix]) => hasShot(`${prefix}-none`))
+    .flatMap(([prefix, label]) => ['en', 'pl'].map((lang) => [`${prefix}-${lang}`, agent(prefix, label, lang)]))),
   ...(fs.existsSync(path.join(ROOT, 'shots-2')) ? { 'repeat-en': repeat('en'), 'repeat-pl': repeat('pl') } : {}),
 };
 

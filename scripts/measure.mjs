@@ -10,10 +10,10 @@
 //        TRIAL=2 RUNS_WORK=<second work folder> node scripts/measure.mjs
 import { chromium } from 'playwright';
 import { AxeBuilder } from '@axe-core/playwright';
-import { createServer } from 'node:http';
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
+import { serve } from './lib/static.mjs';
 
 const ROOT = path.resolve(import.meta.dirname, '..');
 const WORK = process.env.RUNS_WORK ?? path.resolve(ROOT, '..', 'skill-runs');
@@ -22,27 +22,6 @@ const TRIAL = process.env.TRIAL ? `-${process.env.TRIAL}` : '';
 const OUT = path.join(ROOT, `runs${TRIAL}`);
 const SHOTS = path.join(ROOT, `shots${TRIAL}`);
 const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'];
-const TYPES = {
-  '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
-  '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png',
-  '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.avif': 'image/avif',
-  '.woff2': 'font/woff2', '.woff': 'font/woff', '.ico': 'image/x-icon', '.pdf': 'application/pdf',
-};
-
-function serve(dir) {
-  const server = createServer((req, res) => {
-    const rel = decodeURIComponent(new URL(req.url, 'http://x').pathname).replace(/^\/+/, '') || 'index.html';
-    const file = path.resolve(dir, rel);
-    if (!file.startsWith(path.resolve(dir)) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
-      res.writeHead(404).end();
-      return;
-    }
-    res.writeHead(200, { 'content-type': TYPES[path.extname(file).toLowerCase()] ?? 'application/octet-stream' });
-    fs.createReadStream(file).pipe(res);
-  });
-  return new Promise((resolve) => server.listen(0, '127.0.0.1', () => resolve(server)));
-}
 
 /** Scroll the whole page so scroll-triggered reveals have fired before a full-page shot. */
 async function scrollThrough(page) {
@@ -55,6 +34,13 @@ async function scrollThrough(page) {
     scrollTo(0, 0);
   });
   await page.waitForTimeout(800);
+}
+
+/** One tool call in a Codex or Antigravity log; `text` is where a skill file path would show up. */
+function noteTool(log, text) {
+  log.toolCalls++;
+  const skill = text?.match(/skills[\\/]+([\w-]+)[\\/]+SKILL\.md/)?.[1];
+  if (skill && !log.skillsInvoked.includes(skill)) log.skillsInvoked.push(skill);
 }
 
 function runLog(id) {
@@ -77,9 +63,7 @@ function runLog(id) {
     }
     // Codex (`codex exec --json`) logs items and one usage block per turn.
     if (ev.type === 'item.completed' && ['command_execution', 'file_change', 'mcp_tool_call', 'web_search'].includes(ev.item?.type)) {
-      log.toolCalls++;
-      const skill = ev.item.command?.match(/skills[\\/]+([\w-]+)[\\/]+SKILL\.md/)?.[1];
-      if (skill && !log.skillsInvoked.includes(skill)) log.skillsInvoked.push(skill);
+      noteTool(log, ev.item.command);
     }
     if (ev.type === 'turn.completed' && ev.usage) {
       const c = (log.codex ??= { input: 0, cached: 0, output: 0 });
@@ -88,6 +72,25 @@ function runLog(id) {
       c.output += ev.usage.output_tokens ?? 0;
     }
     if (ev.type === 'turn.failed' || ev.type === 'error') log.failed = true;
+    // Antigravity CLI (`agy -p --output-format stream-json`) logs steps under
+    // `event`, and one usage block in its result.
+    const step = ev.event === 'step_update' ? ev.step_update : null;
+    if (step?.step_type === 'tool' && step.state === 'DONE') {
+      noteTool(log, JSON.stringify(step.tool_info?.parameters ?? {}));
+    }
+    if (ev.event === 'result' && ev.result) {
+      const u = ev.result.usage ?? {};
+      // agy reports cache reads beside input_tokens (its total_tokens is input
+      // plus output), so they are added here, as in the Claude numbers.
+      // Thinking tokens are part of the output.
+      const tokens = { input: u.input_tokens ?? 0, output: u.output_tokens ?? 0, cacheRead: u.cache_read_tokens ?? 0, cacheWrite: 0 };
+      Object.assign(log, {
+        ok: ev.result.status === 'SUCCESS',
+        turns: ev.result.num_turns,
+        agentMs: (ev.result.duration_seconds ?? 0) * 1000,
+        tokens: { ...tokens, total: tokens.input + tokens.output + tokens.cacheRead },
+      });
+    }
     if (ev.type === 'result') {
       // usage covers the main model only; modelUsage also has helper models
       // (e.g. Haiku for summaries), so totals are summed from it.

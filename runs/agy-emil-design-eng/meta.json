@@ -1,0 +1,207 @@
+{
+  "id": "agy-emil-design-eng",
+  "log": {
+    "skillsInvoked": [
+      "emil-design-eng"
+    ],
+    "toolCalls": 16,
+    "denied": [],
+    "ok": true,
+    "turns": 1,
+    "tokens": {
+      "input": 142435,
+      "output": 60299,
+      "cacheRead": 1153159,
+      "cacheWrite": 0,
+      "total": 1355893
+    },
+    "durationMin": 8.8,
+    "durationSource": "wall clock",
+    "agentMin": 8.8
+  },
+  "files": 1,
+  "bytes": {
+    "total": 132053,
+    "html": 132053,
+    "js": 15949,
+    "css": 46090,
+    "images": 0
+  },
+  "htmlLines": 3150,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 6958,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 3
+        }
+      ]
+    },
+    "mobile": {
+      "height": 15271,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 3
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 3px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 3px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 3px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 3px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 16px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 16px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 16px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 4px"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "advisory",
+      "snippet": "4.47:1 (need 4.5:1) — text #fecaca on #b91c1c (gradient on aside.emergency-banner)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.6:1 (need 4.5:1) — text #64748b on #0b1d30 (and 1 more)"
+    },
+    {
+      "rule": "dark-glow",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Zero-offset box-shadow glow (#fef08a)"
+    },
+    {
+      "rule": "dark-glow",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Zero-offset box-shadow glow (#22c55e)"
+    },
+    {
+      "rule": "dark-glow",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Zero-offset box-shadow glow (#22c55e)"
+    },
+    {
+      "rule": "icon-tile-stack",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "48x48px icon tile above h2 \"Pogotowie Awaryjne\""
+    },
+    {
+      "rule": "icon-tile-stack",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "48x48px icon tile above h2 \"Ważne Ogłoszenia\""
+    },
+    {
+      "rule": "icon-tile-stack",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "48x48px icon tile above h2 \"Baza Dokumentów\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Dyżur całodobowy techniczny\" above h2 \"Pogotowie Awaryjne (24/7) – Co zrobić w razie awarii?\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Tablica ogłoszeń i komunikaty\" above h2 \"Bieżące Ogłoszenia Administracji\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Prawo spółdzielcze i jawność\" above h2 \"Dokumenty Spółdzielni Mieszkaniowej\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Nasza społeczność\" above h2 \"O Spółdzielni i Naszych Osiedlach\""
+    },
+    {
+      "rule": "kicker-above-heading",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "kicker \"Bezpośredni kontakt\" above h2 \"Godziny Pracy Biura i Dane Kontaktowe\""
+    },
+    {
+      "rule": "nested-cards",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Card inside card (div) (and 3 more)"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": ".quick-card-emergency::before — absolute 4px pseudo-element stripe (top: 0)"
+    },
+    {
+      "rule": "dark-glow",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Colored box-shadow glow (#b91c1c) on dark page"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/agy-emil-design-eng-desktop-first.jpg",
+    "desktop-full": "shots/agy-emil-design-eng-desktop-full.jpg",
+    "mobile-first": "shots/agy-emil-design-eng-mobile-first.jpg",
+    "mobile-full": "shots/agy-emil-design-eng-mobile-full.jpg"
+  }
+}

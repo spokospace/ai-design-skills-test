@@ -1,0 +1,129 @@
+{
+  "id": "agy-impeccable",
+  "log": {
+    "skillsInvoked": [
+      "impeccable"
+    ],
+    "toolCalls": 18,
+    "denied": [],
+    "ok": true,
+    "turns": 1,
+    "tokens": {
+      "input": 121901,
+      "output": 64271,
+      "cacheRead": 911214,
+      "cacheWrite": 0,
+      "total": 1097386
+    },
+    "durationMin": 9.4,
+    "durationSource": "wall clock",
+    "agentMin": 9.3
+  },
+  "files": 1,
+  "bytes": {
+    "total": 116499,
+    "html": 116499,
+    "js": 16012,
+    "css": 40415,
+    "images": 0
+  },
+  "htmlLines": 2977,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 4830,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 3
+        }
+      ]
+    },
+    "mobile": {
+      "height": 10539,
+      "violations": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "nodes": 3
+        }
+      ]
+    }
+  },
+  "detector": [
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.2:1 (need 4.5:1) — text #c97a18 on #f9fbf9"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "3.7:1 (need 4.5:1) — text #75877e on #f9fbf9 (and 1 more)"
+    },
+    {
+      "rule": "low-contrast",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": ":hover state 1.3:1 (need 4.5:1) — text #113828 on #184e38"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"doc-file-badge\": children flush against border+bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"doc-file-badge\": children flush against border+bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"doc-file-badge\": children flush against border+bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"doc-file-badge\": children flush against border+bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"doc-file-badge\": children flush against border+bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"doc-file-badge\": children flush against border+bg on all sides (no inset)"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"doc-file-badge\": children flush against border+bg on all sides (no inset)"
+    },
+    {
+      "rule": "flat-type-hierarchy",
+      "category": "slop",
+      "severity": "advisory",
+      "snippet": "Role sizes: body 15.7px, h3 18.4px, h2 21.6px (largest adjacent step 1.17:1; target 1.25:1; weight separates headings fr"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/agy-impeccable-desktop-first.jpg",
+    "desktop-full": "shots/agy-impeccable-desktop-full.jpg",
+    "mobile-first": "shots/agy-impeccable-mobile-first.jpg",
+    "mobile-full": "shots/agy-impeccable-mobile-full.jpg"
+  }
+}

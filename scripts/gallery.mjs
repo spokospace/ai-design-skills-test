@@ -64,17 +64,21 @@ const section = (key, title, note, cells) => `<section class="row" aria-labelled
 const rows = [...SETUPS, ...(TRIAL ? [] : EXTRA)].map(([key, name, note]) =>
   section(key, name, note, MODELS.map(([m, mName]) => cell(`${m}-${key}`, mName, name)))).join('\n');
 
-// The same brief in OpenAI's Codex CLI on a free ChatGPT plan, with the skills
-// copied into .agents/skills of the run folder.
-const codexRow = section('codex', 'Codex',
-  "The same brief and the same four skills in OpenAI's Codex CLI on a free ChatGPT plan (GPT-6 Luna, the plan's default model, reasoning effort left at its default). Every run finished in under five minutes.",
-  SETUPS.map(([key, name]) => cell(`codex-${key}`, 'Codex', name)));
+// The same brief in other vendors' coding agents, with the skills copied into
+// .agents/skills of the run folder. A row appears once its runs are measured.
+const AGENTS = [
+  ['codex', 'Codex', "The same brief and the same four skills in OpenAI's Codex CLI on a free ChatGPT plan (GPT-6 Luna, the plan's default model, reasoning effort left at its default). Every run finished in under five minutes."],
+  ['agy', 'Antigravity CLI', "The same brief and the same four skills in Google's Antigravity CLI on a free personal account (Gemini 3.8 Flash at its High level, the account's default). It is where Google moved personal accounts when Gemini CLI stopped serving them. Shell commands ran in a read-only sandbox, so a skill's own scripts could not write files. The Taste Skill run used up the account's weekly quota after ten minutes and left no page."],
+];
+const agentRows = AGENTS.filter(([key]) => byId[`${key}-none`])
+  .map(([key, title, note]) => section(key, title, note, SETUPS.map(([s, name]) => cell(`${key}-${s}`, title, name))))
+  .join('\n');
 
 // The same brief pasted into chat apps (temporary chats where the app has them).
 // A chat reports no token counts, so those cells are left out.
-const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High']];
-const chatRow = section('chats', 'Chat apps',
-  "The same brief pasted into a chat: four in a browser, Copilot in its Windows app. The answers took one to two minutes, and about three with Gemini's thinking level set to High. DeepSeek stopped just before the end of the code and needed one click on Continue.",
+const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High'], ['kimi-work-free', 'Kimi Work', 'desktop app, free']];
+const chatRow = section('chats', 'Chat and desktop apps',
+  "The same brief pasted into a chat: four in a browser, Copilot in its Windows app. The answers took one to two minutes, and about three with Gemini's thinking level set to High. DeepSeek stopped just before the end of the code and needed one click on Continue. Kimi Work, the agent in Kimi's desktop app, wrote its file in about seven minutes and was then cut off by a server-busy message before it could check the page.",
   CHATS.map(([id, name, plan]) => cell(id, name, plan)));
 
 const html = `<!doctype html>
@@ -126,7 +130,7 @@ const html = `<!doctype html>
   <p class="lead"><a href="brief.md">The brief</a> (in Polish) · <a href="README.md">Method and versions</a> · <a href="https://spoko.space/blog/design-skills-for-ai-agents-tested/">The write-up on spoko.space</a></p>
   <p class="lead"><strong>Tokens</strong> include cache reads, which are most of them. <strong>Detector</strong> counts the findings of Impeccable's own rule-based checker (<code>npx impeccable detect</code>), so it judges every page by one skill's rules. <strong>axe rules</strong> counts distinct WCAG 2.2 A/AA rules axe-core flags at 1440 and 390 px.</p>
 ${rows}
-${TRIAL ? '' : codexRow + '\n' + chatRow}
+${TRIAL ? '' : agentRows + '\n' + chatRow}
   <footer>
     <p>The cooperative, its address, phone numbers and documents are made up. Every page says so in its footer. Photographs placed by Taste Skill come from open archives and are credited on the page that uses them.</p>
   </footer>
