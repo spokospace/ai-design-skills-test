@@ -54,15 +54,17 @@ img{display:block;width:560px;height:350px;object-fit:cover;object-position:top;
 <div class="g">${BOARD.map((id) => `<img src="${shot(id, 'desktop-first')}">`).join('')}</div>`;
 
 // The chat apps, with the plan each account was on. Three free ones in the
-// first row, the two Gemini runs (thinking level Low and High) in the second.
+// first row; Copilot and the two Gemini runs (thinking level Low and High, which
+// the Polish interface calls Podstawowy and Rozszerzony) in the second.
 const chats = (lang) => {
   const pl = lang === 'pl';
   const items = [
     ['chatgpt-free', pl ? 'ChatGPT (plan Free)' : 'ChatGPT (Free plan)'],
     ['grok-free', pl ? 'Grok (plan darmowy)' : 'Grok (free plan)'],
     ['deepseek-free', pl ? 'DeepSeek (darmowy)' : 'DeepSeek (free)'],
-    ['gemini-plus', pl ? 'Gemini (plan Plus, myślenie Low)' : 'Gemini (Plus plan, thinking Low)'],
-    ['gemini-plus-high', pl ? 'Gemini (plan Plus, myślenie High)' : 'Gemini (Plus plan, thinking High)'],
+    ['copilot-free', pl ? 'Copilot (aplikacja w Windows, darmowy)' : 'Copilot (Windows app, free)'],
+    ['gemini-plus', pl ? 'Gemini (plan Plus, myślenie podstawowe)' : 'Gemini (Plus plan, thinking Low)'],
+    ['gemini-plus-high', pl ? 'Gemini (plan Plus, myślenie rozszerzone)' : 'Gemini (Plus plan, thinking High)'],
   ];
   return `<style>${BASE}
 .g{display:grid;grid-template-columns:repeat(3,720px);gap:24px 20px;padding:24px;width:max-content}

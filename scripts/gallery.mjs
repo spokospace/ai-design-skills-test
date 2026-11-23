@@ -59,9 +59,9 @@ const rows = [...SETUPS, ...EXTRA].map(([key, name, note]) => `<section class="r
 
 // The same brief pasted into chat apps in a browser (temporary chats, no
 // personalisation). A chat reports no token counts, so those cells are left out.
-const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High']];
+const CHATS = [['chatgpt-free', 'ChatGPT', 'Free plan'], ['grok-free', 'Grok', 'free plan'], ['deepseek-free', 'DeepSeek', 'free'], ['copilot-free', 'Copilot', 'Windows app, free'], ['gemini-plus', 'Gemini', 'Plus plan, thinking Low'], ['gemini-plus-high', 'Gemini', 'Plus plan, thinking High']];
 const chatRow = `<section class="row" aria-labelledby="h-chats">
-  <header><h2 id="h-chats">Chat apps</h2><p>The same brief pasted into a browser chat. The answers took about a minute, and about three with Gemini's thinking level set to High. DeepSeek stopped just before the end of the code and needed one click on Continue.</p></header>
+  <header><h2 id="h-chats">Chat apps</h2><p>The same brief pasted into a chat: four in a browser, Copilot in its Windows app. The answers took one to two minutes, and about three with Gemini's thinking level set to High. DeepSeek stopped just before the end of the code and needed one click on Continue.</p></header>
   <div class="grid">${CHATS.map(([id, name, plan]) => cell(id, name, plan)).join('\n')}</div>
 </section>`;
 

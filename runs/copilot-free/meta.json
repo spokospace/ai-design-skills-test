@@ -1,0 +1,67 @@
+{
+  "id": "copilot-free",
+  "log": {
+    "skillsInvoked": [],
+    "toolCalls": 0,
+    "denied": []
+  },
+  "files": 1,
+  "bytes": {
+    "total": 12068,
+    "html": 12068,
+    "js": 400,
+    "css": 3676,
+    "images": 0
+  },
+  "htmlLines": 510,
+  "external": [],
+  "consoleErrors": [],
+  "axe": {
+    "desktop": {
+      "height": 2117,
+      "violations": []
+    },
+    "mobile": {
+      "height": 4208,
+      "violations": []
+    }
+  },
+  "detector": [
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 8px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 8px"
+    },
+    {
+      "rule": "side-tab",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "border-left: 6px + border-radius: 8px"
+    },
+    {
+      "rule": "cramped-padding",
+      "category": "quality",
+      "severity": "warning",
+      "snippet": "<div> \"topbar\": children flush against bg on right/left (no inset)"
+    },
+    {
+      "rule": "overused-font",
+      "category": "slop",
+      "severity": "warning",
+      "snippet": "Primary font: arial"
+    }
+  ],
+  "shots": {
+    "desktop-first": "shots/copilot-free-desktop-first.jpg",
+    "desktop-full": "shots/copilot-free-desktop-full.jpg",
+    "mobile-first": "shots/copilot-free-mobile-first.jpg",
+    "mobile-full": "shots/copilot-free-mobile-full.jpg"
+  }
+}
