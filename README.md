@@ -73,7 +73,7 @@ A run with a skill gets one extra first line in the prompt, "Użyj skilla `<name
 
 `scripts/audit-code.mjs` reads the code of every collected page and writes `code.json` (`code-2.json` for the second trial): the document head (language, description, canonical, Open Graph, structured data), structure (landmarks, skip link, headings), ARIA attributes and what they point at, images and emoji, links and forms, CSS habits (breakpoints, reduced motion, focus styles, print styles), and whether the layout overflows at 320, 375, 768, 1024 and 1440 px, with the element that causes it. It counts what is in the markup; it does not judge whether a label is well written. Loading speed is left out: every page is one static file.
 
-One run per combination is a sample of one. The pages show what each setup tends to do with this brief, not a ranking of models or skills.
+One or two runs per combination is a small sample. The pages show what each setup tends to do with this brief, not a ranking of models or skills.
 
 ## Repeat it
 
